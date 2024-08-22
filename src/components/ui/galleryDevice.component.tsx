@@ -1,22 +1,14 @@
 import Image from "next/image";
 import React from "react";
-import device1 from "@/assets/img/device1.jpg";
-import device3 from "@/assets/img/device3.jpg";
 import device4 from "@/assets/img/device4.jpg";
-import device5 from "@/assets/img/device5.jpg";
 import device6 from "@/assets/img/device6.jpg";
-import device7 from "@/assets/img/device7.jpg";
 import device8 from "@/assets/img/device8.jpg";
 import device10 from "@/assets/img/device10.jpg";
 import device12 from "@/assets/img/device12.jpg";
 
 const images = {
-  device1,
-  device3,
   device4,
-  device5,
   device6,
-  device7,
   device8,
   device10,
   device12,

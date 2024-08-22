@@ -17,7 +17,7 @@ instance.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem(localStorageKey.accessToken);
     if (token) {
-      config.headers["Authorization"] = `Bearer ${token}`;
+      config.headers["token"] = `Bearer ${token}`;
       config.headers["Content-Type"] = "application/json";
       // config.headers["ngrok-skip-browser-warning"] = "true";
     }
@@ -57,9 +57,9 @@ instance.interceptors.response.use(
               result?.access_token
             );
           }
-          originalRequest.headers[
-            "Authorization"
-          ] = `Bearer ${localStorage.getItem(localStorageKey.accessToken)}`;
+          originalRequest.headers["token"] = `Bearer ${localStorage.getItem(
+            localStorageKey.accessToken
+          )}`;
 
           refreshAttempts++;
           return instance(originalRequest);
@@ -72,7 +72,11 @@ instance.interceptors.response.use(
         localStorage.removeItem(localStorageKey.userId);
       }
     } else {
-      return error.response;
+      if (error?.response?.data) {
+        console.log("5: ", JSON.parse(error.response.data));
+        return JSON.parse(error.response.data);
+      }
+      return error.response.data;
     }
     return Promise.reject(error.response);
   }

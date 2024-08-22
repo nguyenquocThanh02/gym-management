@@ -11,6 +11,7 @@ import LinkArrow from "@/components/ui/linkArrowCustom";
 import AboutGymMax from "@/components/ui/aboutGymMax.component";
 import CarouselTrainer from "@/components/ui/carouselCardTrainer";
 import CardPackage from "@/components/ui/cardPackage";
+import HeroSection from "@/components/ui/heroSection.component";
 export default function Home() {
   return (
     <main className="overflow-hidden ">
@@ -47,23 +48,16 @@ export default function Home() {
         </div>
         <LinkArrow href="/personal-trainer">See more</LinkArrow>
       </div>
-      <div className="bg-attachment flex flex-col justify-center items-center">
-        <Image src={logo} alt="logo" className="w-[160px]" />
-
-        <h3 className="text-3xl font-bold text-White text-shadow text-center">
-          The only bad workout is the one that did not happen.
-        </h3>
-      </div>
+      <HeroSection>
+        The only bad workout is the one that did not happen. Lets start right
+        now
+      </HeroSection>
       <AboutGymMax />
 
-      <div className="bg-attachment flex flex-col justify-center items-center">
-        <Image src={logo} alt="logo" className="lg:w-[160px] w-[20vw]" />
-
-        <h3 className="text-xl lg:text-3xl font-bold text-White text-shadow w-1/2 text-center">
-          Fitness is not about being better than someone else. It is about being
-          better than you used to be.
-        </h3>
-      </div>
+      <HeroSection>
+        Fitness is not about being better than someone else. It is about being
+        better than you used to be.
+      </HeroSection>
 
       <div className="l-container my-8">
         <h2 className="text-Primary text-shadow text-center text-3xl font-bold mb-3">
@@ -81,14 +75,10 @@ export default function Home() {
         <LinkArrow href="/personal-trainer">See more</LinkArrow>
       </div>
 
-      <div className="bg-attachment flex flex-col justify-center items-center">
-        <Image src={logo} alt="logo" className="w-[160px]" />
-
-        <h3 className="text-3xl font-bold text-White text-shadow w-1/2 text-center">
-          Believe in yourself and all that you are. Know that there is something
-          inside you that is greater than any obstacle.
-        </h3>
-      </div>
+      <HeroSection>
+        Believe in yourself and all that you are. Know that there is something
+        inside you that is greater than any obstacle.
+      </HeroSection>
 
       <div className="my-16 l-container flex flex-col items-center gap-5">
         <h2 className="text-Primary text-shadow text-center text-3xl font-bold">

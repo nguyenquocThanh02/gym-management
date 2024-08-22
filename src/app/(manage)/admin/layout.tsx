@@ -6,6 +6,7 @@ import {
   Dumbbell,
   Home,
   Package,
+  PersonStanding,
   ShoppingCart,
   Users2,
 } from "lucide-react";
@@ -48,14 +49,19 @@ export default function Layout({
       name: "Device Management",
       icon: <Dumbbell className="h-5 w-5" />,
     },
+    {
+      href: "/admin/manage-personal-trainer",
+      name: "Personal Trainer Management",
+      icon: <PersonStanding className="h-5 w-5" />,
+    },
   ];
 
   return (
     <div className="flex min-h-screen w-full flex-col bg-white text-black">
       <NavbarManage navItems={navItems} />
-      <div className="flex flex-col sm:gap-4 sm:pl-14">
+      <div className="flex flex-col sm:gap-4 sm:pl-14 min-h-screen">
         <HeaderManage navItems={navItems} />
-        <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 mb-8">
+        <main className="grid  flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 mb-8">
           {children}
         </main>
         <FooterManage />

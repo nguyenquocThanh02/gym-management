@@ -4,6 +4,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
+        hostname: "firebasestorage.googleapis.com",
+        pathname: "/v0/b/videocallapp-4fbc2.appspot.com/o/**",
+      },
+      {
+        protocol: "https",
         hostname: "media.istockphoto.com",
         pathname: "**",
       },

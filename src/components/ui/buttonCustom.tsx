@@ -1,6 +1,5 @@
 import React, { ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { Button } from "./button";
 
 interface ButtonCustomProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
@@ -47,7 +46,7 @@ const ButtonCustom: React.FC<ButtonCustomProps> = ({
         className={cn(
           "absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200",
           !isCustomVariant
-            ? "bg-Background"
+            ? "bg-white"
             : "from-Secondary to-Primary bg-gradient-to-r",
           "group-hover:h-full ease"
         )}
@@ -56,7 +55,7 @@ const ButtonCustom: React.FC<ButtonCustomProps> = ({
         className={cn(
           "absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200",
           !isCustomVariant
-            ? "bg-Background"
+            ? "bg-white"
             : "from-Secondary to-Primary bg-gradient-to-r",
           "group-hover:h-full ease"
         )}
@@ -65,7 +64,7 @@ const ButtonCustom: React.FC<ButtonCustomProps> = ({
         className={cn(
           "absolute inset-0 w-full h-full duration-300 delay-300",
           !isCustomVariant
-            ? "bg-Background"
+            ? "bg-white"
             : "from-Secondary to-Primary bg-gradient-to-r",
           "opacity-0 group-hover:opacity-100"
         )}

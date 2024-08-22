@@ -10,3 +10,8 @@ export type typeRegister = {
   accountName: string;
   dateOfBirth: string | "";
 };
+
+export type typeLogin = {
+  account: string;
+  password: string;
+};

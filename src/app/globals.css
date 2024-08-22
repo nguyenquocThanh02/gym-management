@@ -121,6 +121,17 @@
     opacity: 0.9;
   }
 
+  .bg-auth-attachment {
+    background-image: url("../assets/img/sliderLogin.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    min-height: 100vh;
+    height: fit-content;
+    opacity: 0.9;
+  }
+
   .text-shadow {
     text-shadow: 2px 2px 4px #000000;
   }

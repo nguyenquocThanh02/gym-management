@@ -50,7 +50,7 @@ const RegisterForm = () => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="lg:flex lg:flex-wrap  w-full"
+          className="lg:flex lg:flex-wrap w-full"
         >
           <div className="lg:w-6/12 px-4 md:px-0">
             <div className=" flex flex-col gap-3 md:mx-12 md:p-0 lg:mx-6 lg:p-12">
@@ -58,14 +58,10 @@ const RegisterForm = () => {
                 control={form.control}
                 name="fullname"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="text-shadow">
                     <FormLabel>Full Name</FormLabel>
                     <FormControl>
-                      <Input
-                        className="bg-Background"
-                        placeholder="Nguyen Van A"
-                        {...field}
-                      />
+                      <Input placeholder="Nguyen Van A" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -75,14 +71,10 @@ const RegisterForm = () => {
                 control={form.control}
                 name="email"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="text-shadow">
                     <FormLabel>Email *</FormLabel>
                     <FormControl>
-                      <Input
-                        className="bg-Background"
-                        placeholder="abc@gmail.com"
-                        {...field}
-                      />
+                      <Input placeholder="abc@gmail.com" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -92,7 +84,7 @@ const RegisterForm = () => {
                 control={form.control}
                 name="phone"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="text-shadow">
                     <FormLabel>Phone *</FormLabel>
                     <FormControl className="">
                       <PhoneInput className="" placeholder="XXXX" {...field} />
@@ -105,14 +97,10 @@ const RegisterForm = () => {
                 control={form.control}
                 name="dateOfBirth"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="text-shadow">
                     <FormLabel>Date Of Birth</FormLabel>
                     <FormControl>
-                      <Input
-                        className="bg-Background"
-                        placeholder="01/01/1999"
-                        {...field}
-                      />
+                      <Input placeholder="01/01/1999" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -126,14 +114,10 @@ const RegisterForm = () => {
                 control={form.control}
                 name="account"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="text-shadow">
                     <FormLabel>Account Name *</FormLabel>
                     <FormControl>
-                      <Input
-                        className="bg-Background"
-                        placeholder="Account name or email"
-                        {...field}
-                      />
+                      <Input placeholder="Account name or email" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -143,15 +127,10 @@ const RegisterForm = () => {
                 control={form.control}
                 name="password"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="text-shadow">
                     <FormLabel>Password *</FormLabel>
                     <FormControl>
-                      <Input
-                        className="bg-Background"
-                        type="password"
-                        placeholder="******"
-                        {...field}
-                      />
+                      <Input type="password" placeholder="******" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -161,22 +140,17 @@ const RegisterForm = () => {
                 control={form.control}
                 name="confirmPassword"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="text-shadow">
                     <FormLabel>Confirm Password *</FormLabel>
                     <FormControl>
-                      <Input
-                        className="bg-Background"
-                        type="password"
-                        placeholder="******"
-                        {...field}
-                      />
+                      <Input type="password" placeholder="******" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
               <ButtonCustom
-                variant="custom"
+                // variant="custom"
                 type="submit"
                 className="w-full mt-4"
               >

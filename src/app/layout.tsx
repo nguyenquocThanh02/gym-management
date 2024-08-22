@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import ReactQueryProvider from "@/react-query.provider";
 import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/sonner";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({
           )}
         >
           {children}
+          <Toaster position="bottom-center" expand={true} richColors />
         </body>
       </ReactQueryProvider>
     </html>

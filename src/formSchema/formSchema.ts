@@ -56,6 +56,7 @@ export const registerRule = z
       });
     }
   });
+
 export const loginRule = z.object({
   account: z.string().min(2).max(50),
   password: z.string().min(8).max(50),
@@ -85,4 +86,39 @@ export const registerPackageRule = z.object({
         message: "Phone number is invalid.",
       }
     ),
+});
+
+export const ptRule = z.object({
+  name: z
+    .string()
+    .min(1, "Name is required")
+    .max(30, "Name must be less than 100 characters"),
+  experienceYears: z.union([
+    z
+      .number()
+      .min(0, "Experience years must be a positive number")
+      .max(50, "Experience years must be less than 50"),
+    z
+      .string()
+      .regex(/^\d+$/, "Experience years must be a valid number")
+      .transform((value) => parseInt(value, 10))
+      .refine((value) => value >= 0 && value <= 50, {
+        message: "Experience years must be between 0 and 50",
+      }),
+  ]),
+  phone: z
+    .string()
+    .min(10, "Phone number must be at least 10 characters")
+    .max(15, "Phone number must be less than 15 characters"),
+  specialty: z
+    .string()
+    .min(1, "Specialty is required")
+    .max(50, "Specialty must be less than 50 characters"),
+  address: z
+    .string()
+    .min(1, "Address is required")
+    .max(255, "Address must be less than 255 characters"),
+  email: z.string().email("Invalid email address").optional(),
+  profileImage: z.string().optional(),
+  bio: z.string().max(500, "Bio must be less than 500 characters").optional(),
 });
