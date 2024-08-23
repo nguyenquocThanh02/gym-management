@@ -108,7 +108,7 @@
     border-bottom-left-radius: 46px;
     border-bottom-right-radius: 46px;
     /* animation: fade-in-down 1s ease-in 0s 1; */
-    @apply shadow-md shadow-sm shadow-white bg-black;
+    @apply shadow-md shadow-sm shadow-Light bg-Dark;
   }
 
   .bg-attachment {
@@ -118,6 +118,17 @@
     background-size: cover;
     width: 100vw;
     height: 50vh;
+    opacity: 0.9;
+  }
+
+  .bg-auth-attachment {
+    background-image: url("../assets/img/sliderLogin.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    min-height: 100vh;
+    height: fit-content;
     opacity: 0.9;
   }
 

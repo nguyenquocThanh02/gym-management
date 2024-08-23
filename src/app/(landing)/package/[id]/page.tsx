@@ -1,18 +1,16 @@
 "use client";
 
-import RegisterForm from "@/components/logic/registerForm.component";
-import RegisterPackage from "@/components/logic/registerPackageForm.component";
-import ButtonCustom from "@/components/ui/buttonCustom";
-import CardArtical from "@/components/ui/cardArtical.component";
-import { Input } from "@/components/ui/input";
+import RegisterPackage from "@/components/form/registerPackage.form";
+import ButtonCustom from "@/components/custom/button.custom";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { CircleCheck } from "lucide-react";
 import React from "react";
+import { Switch } from "@/components/ui/switch";
 
 const ArticalPage = () => {
   return (
-    <div className="l-container mt-[90px] ">
-      <h1 className="text-center font-bold text-2xl md:text-4xl my-5">
+    <div className="l-container pb-10">
+      <h1 className="text-center font-bold text-2xl md:text-4xl my-6">
         Book Package
       </h1>
       <div className="flex flex-col md:flex-row gap-3">
@@ -81,7 +79,7 @@ const ArticalPage = () => {
           </div>
           <div className="mt-3 flex gap-3">
             Payment with paypal
-            <input type="checkbox" onClick={(e) => console.log(e?.target)} />
+            <Switch className="" />
           </div>
           <ButtonCustom className="w-full mt-4">Register</ButtonCustom>
         </div>

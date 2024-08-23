@@ -1,11 +1,11 @@
-import instance from "@/axios/auth.axios";
-import { typeRefresh, typeRegister } from "@/types/auth.type";
+import noAuthInstance from "@/axios/no-auth.axios";
+import { typeLogin, typeRefresh, typeRegister } from "@/types/auth.type";
 
 export const AuthenApis = {
   register: async (data: typeRegister) => {
     try {
       console.log("day: ", data);
-      const response = await instance.post("/user/register", data);
+      const response = await noAuthInstance.post("/user/register", data);
       console.log("responde: ", response);
       return response;
     } catch (error) {
@@ -13,10 +13,10 @@ export const AuthenApis = {
       return error;
     }
   },
-  login: async (data) => {
+  login: async (data: typeLogin, role: string = "user") => {
     try {
       console.log("day: ", data);
-      const response = await instance.post("/user/login", data);
+      const response = await noAuthInstance.post(`/user/login/${role}`, data);
       return response;
     } catch (error) {
       return error;
@@ -24,7 +24,7 @@ export const AuthenApis = {
   },
   handleRefreshToken: async (data: typeRefresh) => {
     try {
-      const response = await instance.post("/refreshToken", data);
+      const response = await noAuthInstance.post("/refreshToken", data);
       return response;
     } catch (error) {
       return error;

@@ -1,4 +1,4 @@
-import AboutGymMax from "@/components/ui/aboutGymMax.component";
+import AboutGymMax from "@/components/normal/aboutGymMax.component";
 import { typeFeature } from "@/types/aboutGymMax.type";
 import gymView1 from "@/assets/img/gymView1.jpg";
 import gymView2 from "@/assets/img/gymView2.jpg";
@@ -50,7 +50,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className="l-container flex flex-col justify-center items-center gap-5 bg-white/30 mt-[90px] rounded-ss-full">
+    <div className="l-container flex flex-col justify-center items-center gap-5 bg-BgLight/30 rounded-ss-full">
       <h1 className="text-center font-bold text-2xl md:text-4xl">About us</h1>
       <p className="text-justify italic leading-loose w-3/4">
         <strong className="font-bold text-2xl md:text-8xl">
@@ -92,14 +92,14 @@ const AboutUs = () => {
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between">
           {features?.map((item, index) => (
             <li key={index} className="list-none">
-              <div className="px-3 py-5 transition-all duration-500 hover:bg-white/20 hover:rounded-xl flex items-center">
+              <div className="px-3 py-5 transition-all duration-500 hover:bg-BgLight/20 hover:rounded-xl flex items-center">
                 <div
                   className={`rounded-lg text-3xl w-16 h-16 flex items-center justify-center ${item.color}`}
                 >
                   {item.icon}
                 </div>
                 <div className="ml-4 w-4/5">
-                  <h5 className="text-Text text-base mb-1.5 font-semibold">
+                  <h5 className="text-Light text-base mb-1.5 font-semibold">
                     {item.name}
                   </h5>
                   <p className="text-sm font-medium text-gray-400">

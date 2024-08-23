@@ -8,12 +8,8 @@ import {
   useTransform,
   MotionValue,
 } from "framer-motion";
-import device1 from "@/assets/img/device1.jpg";
-import device3 from "@/assets/img/device3.jpg";
 import device4 from "@/assets/img/device4.jpg";
-import device5 from "@/assets/img/device5.jpg";
 import device6 from "@/assets/img/device6.jpg";
-import device7 from "@/assets/img/device7.jpg";
 import device8 from "@/assets/img/device8.jpg";
 import device10 from "@/assets/img/device10.jpg";
 import device12 from "@/assets/img/device12.jpg";
@@ -21,12 +17,8 @@ import Image from "next/image";
 
 // Tạo đối tượng hình ảnh
 const images = {
-  device1,
-  device3,
   device4,
-  device5,
   device6,
-  device7,
   device8,
   device10,
   device12,
@@ -54,7 +46,7 @@ const Devices = () => {
   ];
 
   return (
-    <div className="l-container bg-white/30 rounded-full">
+    <div className="l-container -mt-[86px] bg-BgLight/30 rounded-full">
       <h1 className="text-center font-bold text-4xl fixed top-28 left-0 right-0 mx-auto z-10 text-shadow">
         Devices
       </h1>
@@ -85,10 +77,10 @@ function ImageCustom({ src, index }: { src: string; index: number }) {
         className="device-child transition duration-500 hover:scale-125"
         ref={ref}
       >
-        <Image src={device1} alt="Device" className="device-img" />
+        <Image src={src} alt="Device" className="device-img" />
       </div>
       <motion.div
-        className="absolute md:left-[calc(50%+130px)] md:bottom-[100px] border border-white p-1 w-fit h-fit"
+        className="absolute md:left-[calc(50%+130px)] md:bottom-[100px] border border-Light p-1 w-fit h-fit"
         style={{ y }}
       >
         <h2 className="text-shadow font-bold text-3xl">Tạ đòn 20kg x 2</h2>

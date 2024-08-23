@@ -4,7 +4,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { typeQuestionAnswer } from "@/types/questionAnswer.type";
 
 const QuestionAnswer = () => {
   const questionAnswers: { question: string; answer: string }[] = [
@@ -91,7 +90,7 @@ const QuestionAnswer = () => {
   ];
 
   return (
-    <div className="l-container bg-white/30 mt-[90px] rounded-ss-full">
+    <div className="l-container bg-BgLight/30 rounded-ss-full py-10">
       <h1 className="text-center font-bold text-4xl">Q&A</h1>
       <Accordion type="single" collapsible className="w-full py-4">
         {questionAnswers?.map((item, index) => (

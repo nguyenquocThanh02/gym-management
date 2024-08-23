@@ -3,7 +3,7 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <div className="l-container mt-[90px]">
+    <div className="l-container">
       <h1 className="text-center font-bold text-2xl md:text-4xl">Contact</h1>
 
       <div className="w-full flex flex-col  justify-center items-center gap-8 pt-8">
