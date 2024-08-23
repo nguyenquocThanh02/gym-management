@@ -9,18 +9,17 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
-import { Button } from "../ui/button";
 import { z } from "zod";
 import { loginRule } from "@/formSchema/formSchema";
 import { useCreateForm } from "@/hooks/useCreateForm.hook";
-import ButtonCustom from "../ui/buttonCustom";
-import LinkCustom from "../ui/linkCustom";
+import ButtonCustom from "../custom/button.custom";
+import LinkCustom from "../custom/link.custom";
 import { AuthenApis } from "@/services/auth.service";
 import { localStorageKey } from "@/constants/localStorage";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import HeroSection from "../ui/heroSection.component";
-import WaitingLayout from "../layouts/waiting.layout";
+import HeroSection from "../normal/heroSection.component";
+import WaitingLayout from "../layout/waiting.layout";
 
 type typeResult = {
   status?: number | string;
@@ -80,7 +79,7 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
                   <FormLabel>Account</FormLabel>
                   <FormControl>
                     <Input
-                      className="text-Background"
+                      className="text-Dark"
                       placeholder="Account name or email"
                       {...field}
                     />
@@ -98,7 +97,7 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
                   <FormLabel>Password</FormLabel>
                   <FormControl>
                     <Input
-                      className="text-Background"
+                      className="text-Dark"
                       type="password"
                       placeholder="******"
                       {...field}

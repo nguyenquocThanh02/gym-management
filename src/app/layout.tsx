@@ -26,10 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <ReactQueryProvider>
         <body
-          className={cn(
-            "min-h-screen font-sans antialiased bg-Background text-Text",
-            poppins.variable
-          )}
+          className={cn("min-h-screen font-sans antialiased", poppins.variable)}
         >
           {children}
           <Toaster position="bottom-center" expand={true} richColors />

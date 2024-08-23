@@ -29,7 +29,7 @@ type NavbarManageProps = {
 const HeaderManage: React.FC<NavbarManageProps> = ({ navItems }) => {
   return (
     <>
-      <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b px-4 sm:static sm:h-auto sm:border-0 sm:px-6 sm:pt-2">
+      <header className="sticky top-0 z-20 flex h-14 items-center gap-4 border-b px-4 sm:static sm:h-auto sm:border-0 sm:px-6 sm:pt-2">
         <Sheet>
           <SheetTrigger asChild>
             <Button size="icon" variant="outline" className="sm:hidden">
@@ -61,7 +61,7 @@ const HeaderManage: React.FC<NavbarManageProps> = ({ navItems }) => {
         </Sheet>
         <div className="hidden sm:flex gap-2 justify-center items-center">
           <Image src={logo} alt="logo" className="w-14 h-14" />
-          <h3 className="text-lg font-bold text-Text text-shadow">
+          <h3 className="text-lg font-bold text-Light text-shadow">
             Gym<strong className="text-Primary">Max</strong>
           </h3>
         </div>
@@ -70,7 +70,7 @@ const HeaderManage: React.FC<NavbarManageProps> = ({ navItems }) => {
           <Input
             type="search"
             placeholder="Search..."
-            className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
+            className="w-full rounded-lg pl-8 md:w-[200px] lg:w-[320px]"
           />
         </div>
         {/* accout admin or trainee */}

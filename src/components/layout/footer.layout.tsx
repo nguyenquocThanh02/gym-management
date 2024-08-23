@@ -1,7 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import logo from "@/assets/img/logo.png";
-import Image from "next/image";
 import {
   Facebook,
   Instagram,
@@ -44,58 +42,48 @@ const Footer = () => {
             </div>
             <ul className="text-lg flex items-center justify-center flex-col gap-7 md:flex-row md:gap-12 transition-all duration-500 py-10 mb-10 border-b border-gray-200">
               <li>
-                <Link href="#" className="text-White hover:text-White">
-                  Pagedone
-                </Link>
+                <Link href="#">Pagedone</Link>
               </li>
               <li>
-                <Link href="#" className=" text-White hover:text-White">
-                  Products
-                </Link>
+                <Link href="#">Products</Link>
               </li>
               <li>
-                <Link href="#" className=" text-White hover:text-White">
-                  Resources
-                </Link>
+                <Link href="#">Resources</Link>
               </li>
               <li>
-                <Link href="#" className=" text-White hover:text-White">
-                  Blogs
-                </Link>
+                <Link href="#">Blogs</Link>
               </li>
               <li>
-                <Link href="#" className=" text-White hover:text-White">
-                  Support
-                </Link>
+                <Link href="#">Support</Link>
               </li>
             </ul>
             <div className="flex space-x-10 justify-center items-center mb-10">
               <Link
                 href="#"
-                className="block  text-White transition-all duration-500 hover:text-indigo-600 "
+                className="block transition-all duration-500 hover:text-indigo-600 "
               >
                 <X size={36} />
               </Link>
               <Link
                 href="#"
-                className="block  text-White transition-all duration-500 hover:text-indigo-600 "
+                className="block transition-all duration-500 hover:text-indigo-600 "
               >
                 <Instagram size={36} />
               </Link>
               <Link
                 href="#"
-                className="block  text-White transition-all duration-500 hover:text-indigo-600 "
+                className="block transition-all duration-500 hover:text-indigo-600 "
               >
                 <Facebook size={36} />
               </Link>
               <Link
                 href="#"
-                className="block  text-White transition-all duration-500 hover:text-indigo-600 "
+                className="block transition-all duration-500 hover:text-indigo-600 "
               >
                 <Youtube size={36} />
               </Link>
             </div>
-            <span className="text-lg text-White text-center block">
+            <span className="text-lg text-center block">
               <Link href="https://pagedone.io/">NQT</Link> 2024, All rights
               reserved.
             </span>

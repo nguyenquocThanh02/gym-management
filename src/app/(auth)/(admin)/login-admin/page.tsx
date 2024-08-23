@@ -1,4 +1,4 @@
-import LoginForm from "@/components/logic/loginForm.component";
+import LoginForm from "@/components/form/login.form";
 import React from "react";
 
 const LoginAdmin = () => {

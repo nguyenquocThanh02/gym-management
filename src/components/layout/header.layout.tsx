@@ -4,9 +4,9 @@ import Link from "next/link";
 import logo from "@/assets/img/logo.png";
 import Image from "next/image";
 import { AlignJustify, ChevronDown } from "lucide-react";
-import HeaderDetail from "./headerDetail.component";
+import HeaderDetail from "./headerDetail.layout";
 import { typeNavBar } from "@/types/navbar.type";
-import ButtonCustom from "../ui/buttonCustom";
+import ButtonCustom from "../custom/button.custom";
 
 import {
   HoverCard,
@@ -14,6 +14,7 @@ import {
   HoverCardTrigger,
 } from "../ui/hover-card";
 import { Button } from "../ui/button";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
   const headerRef: RefObject<HTMLDivElement> = useRef(null);
@@ -64,12 +65,11 @@ const Header = () => {
     },
   ];
 
+  const paramPath = usePathname();
+
   return (
     <>
-      <nav
-        ref={headerRef}
-        className="fixed top-0 w-full py-2 z-20 bg-Background"
-      >
+      <nav ref={headerRef} className="fixed top-0 w-full py-2 z-20 bg-BgDark">
         <div className="container">
           <div className="w-full flex  flex-col lg:flex-row lg:justify-center">
             <div className=" flex justify-between  lg:flex-row">
@@ -98,19 +98,35 @@ const Header = () => {
                       <HoverCardTrigger asChild>
                         <Button
                           variant="ghost"
-                          className="flex justify-center items-center gap-1"
+                          className={`flex justify-center items-center gap-1 ${
+                            [
+                              "/Q&A",
+                              "/about-us",
+                              "/devices",
+                              "/personal-trainer",
+                            ].includes(paramPath)
+                              ? "text-Primary"
+                              : ""
+                          }`}
                         >
                           <span>{item.name}</span>
                           <ChevronDown className="mt-1" size={17} />
                         </Button>
                       </HoverCardTrigger>
-                      <HoverCardContent className="w-full ml-[7%] mt-4 bg-Background">
+                      <HoverCardContent className="w-full ml-[7%] mt-4 bg-BgDark/95">
                         {item.dropdown}
                       </HoverCardContent>
                     </HoverCard>
                   ) : (
                     <Link href={item.path} key={index}>
-                      <Button variant="ghost">{item.name}</Button>
+                      <Button
+                        variant="ghost"
+                        className={`${
+                          paramPath === item.path ? "text-Primary" : ""
+                        }`}
+                      >
+                        {item.name}
+                      </Button>
                     </Link>
                   )
                 )}

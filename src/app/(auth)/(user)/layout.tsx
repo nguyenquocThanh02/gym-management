@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
-import Header from "@/components/layouts/header.component";
-import Footer from "@/components/layouts/footer.component";
-import Interactive from "@/components/layouts/interactive.component";
+import Header from "@/components/layout/header.layout";
+import Footer from "@/components/layout/footer.layout";
+import Interactive from "@/components/layout/interactive.layout";
 
 export const metadata: Metadata = {
   title: "Create Next App",

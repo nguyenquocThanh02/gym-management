@@ -4,7 +4,7 @@ import Image from "next/image";
 import gymView1 from "@/assets/img/gymView1.jpg";
 import gymView2 from "@/assets/img/gymView2.jpg";
 
-import LinkArrow from "@/components/ui/linkArrowCustom";
+import LinkArrow from "@/components/custom/linkArrow.custom";
 const AboutGymMax = () => {
   return (
     <div>
@@ -12,7 +12,7 @@ const AboutGymMax = () => {
         <h2 className="text-Primary text-center text-3xl font-bold mb-4">
           Summary GymMax
         </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 my-10 bg-white/30 items-center px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 my-10 bg-BgLight/30 items-center px-8">
           <div className="flex lg:items-end flex-col justify-center">
             <Image
               src={gymView2}

@@ -1,4 +1,4 @@
-import Link from "next/link";
+"use client";
 import React from "react";
 import {
   Breadcrumb,
@@ -8,7 +8,9 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import LinkCustom from "./linkCustom";
+import LinkCustom from "./link.custom";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 interface BreadcrumbItemProps {
   link?: string;
@@ -20,6 +22,8 @@ interface BreadcrumbCustomProps {
 }
 
 export function BreadcrumbCustom({ links }: BreadcrumbCustomProps) {
+  const paramPath = usePathname();
+
   return (
     <Breadcrumb className="mt-3 mb-3">
       <BreadcrumbList>
@@ -27,7 +31,13 @@ export function BreadcrumbCustom({ links }: BreadcrumbCustomProps) {
           <React.Fragment key={index}>
             {item.link ? (
               <BreadcrumbItem>
-                <LinkCustom href={item.link} className="" text={item.name} />
+                <LinkCustom
+                  href={item.link}
+                  className={cn("transition-colors", {
+                    "text-Primary": paramPath === item.link,
+                  })}
+                  text={item.name}
+                />
               </BreadcrumbItem>
             ) : (
               <BreadcrumbItem>

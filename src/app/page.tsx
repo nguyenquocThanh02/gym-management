@@ -1,26 +1,24 @@
 // import Video from "next-video";
-import Header from "@/components/layouts/header.component";
-import Image from "next/image";
-import logo from "@/assets/img/logo.png";
-import Footer from "@/components/layouts/footer.component";
-import Interactive from "@/components/layouts/interactive.component";
+import Header from "@/components/layout/header.layout";
+import Footer from "@/components/layout/footer.layout";
+import Interactive from "@/components/layout/interactive.layout";
 
-import GalleryDevice from "@/components/ui/galleryDevice.component";
-import Video from "@/components/ui/videoCustom";
-import LinkArrow from "@/components/ui/linkArrowCustom";
-import AboutGymMax from "@/components/ui/aboutGymMax.component";
-import CarouselTrainer from "@/components/ui/carouselCardTrainer";
-import CardPackage from "@/components/ui/cardPackage";
-import HeroSection from "@/components/ui/heroSection.component";
+import GalleryDevice from "@/components/normal/galleryDevice.component";
+import Video from "@/components/custom/video.custom";
+import LinkArrow from "@/components/custom/linkArrow.custom";
+import AboutGymMax from "@/components/normal/aboutGymMax.component";
+import CarouselTrainer from "@/components/normal/carouselCardTrainer.component";
+import CardPackage from "@/components/normal/cardPackage.component";
+import HeroSection from "@/components/normal/heroSection.component";
 export default function Home() {
   return (
-    <main className="overflow-hidden ">
+    <section className="overflow-hidden bg-BgDark text-Light">
       <Header />
       <Interactive />
       <div className="relative">
         <Video />
-        <div className="absolute bottom-0 right-0 top-0 left-0 bg-Background opacity-20 transition-opacity duration-300"></div>
-        <div className="absolute w-full bottom-3 xl:bottom-[108px] left-8 text-shadow text-Text opacity-90 transition-opacity duration-300">
+        <div className="absolute bottom-0 right-0 top-0 left-0 bg-Dark opacity-20 transition-opacity duration-300"></div>
+        <div className="absolute w-full bottom-3 xl:bottom-[108px] left-8 text-shadow opacity-90 transition-opacity duration-300">
           <h1 className="xl:text-[260px] text-4xl font-extrabold">
             Gym
             <span className="text-Primary ">Max</span>
@@ -34,7 +32,7 @@ export default function Home() {
         <h2 className="text-Primary text-shadow text-center text-3xl font-bold mb-5">
           Popular memberships
         </h2>
-        <p className="text-center italic text-lg bg-white/30 p-3">
+        <p className="text-center italic text-lg bg-BgLight/30 p-3">
           With a variety of service packages tailored to your needs, you can
           choose monthly, quarterly, or to save costs, opt for longer-term
           packages such as yearly with many additional options. Do not worry if
@@ -46,7 +44,7 @@ export default function Home() {
           <CardPackage />
           <CardPackage />
         </div>
-        <LinkArrow href="/personal-trainer">See more</LinkArrow>
+        <LinkArrow href="/package">See more</LinkArrow>
       </div>
       <HeroSection>
         The only bad workout is the one that did not happen. Lets start right
@@ -63,7 +61,7 @@ export default function Home() {
         <h2 className="text-Primary text-shadow text-center text-3xl font-bold mb-3">
           Personal Trainers
         </h2>
-        <p className="text-center italic text-lg bg-white/30 p-3">
+        <p className="text-center italic text-lg bg-BgLight/30 p-3">
           We have a team of professional personal trainers with many years of
           experience, ready to support you with expertise in various areas such
           as weight loss, muscle building, competitive training, cardio, and
@@ -84,7 +82,7 @@ export default function Home() {
         <h2 className="text-Primary text-shadow text-center text-3xl font-bold">
           Devices of GymMax
         </h2>
-        <p className="italic text-lg text-center bg-white/30 px-3">
+        <p className="italic text-lg text-center bg-BgLight/30 px-3">
           Our gym is equipped with state-of-the-art fitness machines and
           equipment to support all your workout needs. From advanced cardio
           machines and strength training equipment to free weights and
@@ -94,9 +92,9 @@ export default function Home() {
           productive and enjoyable workout experience.
         </p>
         <GalleryDevice />
-        <LinkArrow href="/personal-trainer">See more</LinkArrow>
+        <LinkArrow href="/devices">See more</LinkArrow>
       </div>
       <Footer />
-    </main>
+    </section>
   );
 }

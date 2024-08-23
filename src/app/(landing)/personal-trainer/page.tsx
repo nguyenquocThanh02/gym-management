@@ -1,5 +1,5 @@
 "use client";
-import CardTrainer from "@/components/ui/cardTrainer.component";
+import CardTrainer from "@/components/normal/cardTrainer.component";
 import { PTApis } from "@/services/pt.service";
 import { typePT } from "@/types/pt.type";
 import { useQuery } from "@tanstack/react-query";
@@ -15,7 +15,7 @@ const PersonalTrainer = () => {
 
   console.log(data);
   return (
-    <div className="l-container mt-[90px] bg-white/30 rounded-ss-full ">
+    <div className="l-container bg-BgLight/30 rounded-ss-full pb-8">
       <h1 className="text-center font-bold text-2xl md:text-4xl my-5">
         Personal Trainers
       </h1>

@@ -3,7 +3,6 @@ import React from "react";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -12,11 +11,9 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { z } from "zod";
-import { loginRule, registerPackageRule } from "@/formSchema/formSchema";
+import { registerPackageRule } from "@/formSchema/formSchema";
 import { useCreateForm } from "@/hooks/useCreateForm.hook";
-import ButtonCustom from "../ui/buttonCustom";
-import LinkCustom from "../ui/linkCustom";
-import { AuthenApis } from "@/services/auth.service";
+import ButtonCustom from "../custom/button.custom";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { cn } from "@/lib/utils";
 import { CalendarIcon } from "lucide-react";
@@ -57,7 +54,7 @@ const RegisterPackage = () => {
                     <FormLabel>Fullname</FormLabel>
                     <FormControl>
                       <Input
-                        className="bg-Background"
+                        className="bg-BgDark"
                         placeholder="fullname"
                         {...field}
                       />
@@ -74,7 +71,7 @@ const RegisterPackage = () => {
                     <FormLabel>Phone</FormLabel>
                     <FormControl>
                       <Input
-                        className="bg-Background"
+                        className="bg-BgDark"
                         placeholder="phone"
                         {...field}
                       />
@@ -91,7 +88,7 @@ const RegisterPackage = () => {
                     <FormLabel>Email</FormLabel>
                     <FormControl>
                       <Input
-                        className="bg-Background"
+                        className="bg-BgDark"
                         placeholder="email"
                         {...field}
                       />
@@ -113,7 +110,7 @@ const RegisterPackage = () => {
                           <Button
                             variant={"outline"}
                             className={cn(
-                              "w-full pl-3 text-left font-normal bg-Background hover:bg-Background hover:text-white",
+                              "w-full pl-3 text-left font-normal bg-BgDark hover:bg-BgDark hover:text-white",
                               !field.value && "text-muted-foreground"
                             )}
                           >

@@ -32,6 +32,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ChevronDown, ChevronsDownIcon } from "lucide-react";
+import ButtonCustom from "@/components/custom/button.custom";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -82,7 +83,10 @@ export function DataTable<TData, TValue>({
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
+            <Button
+              variant="outline"
+              className="ml-auto border-Primary border text-Primary hover:text-Primary"
+            >
               Columns <ChevronDown className="ml-2 mt-[3px] h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>

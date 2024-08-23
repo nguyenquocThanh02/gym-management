@@ -4,9 +4,8 @@ import { PTApis } from "@/services/pt.service";
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
 import { useQuery } from "@tanstack/react-query";
-import { BreadcrumbCustom } from "@/components/ui/breadscrumbCustom";
-import ButtonCustom from "@/components/ui/buttonCustom";
-import { useRouter } from "next/navigation";
+import { BreadcrumbCustom } from "@/components/custom/breadscrumb.custom";
+import ButtonCustom from "@/components/custom/button.custom";
 import Link from "next/link";
 import { typePT } from "@/types/pt.type";
 

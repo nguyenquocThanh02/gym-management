@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import NavbarManage from "@/components/layouts/navbarManage.layout";
-import HeaderManage from "@/components/layouts/headerManage.layout";
+import NavbarManage from "@/components/layout/navbarManage.layout";
+import HeaderManage from "@/components/layout/headerManage.layout";
 import {
   ChartLine,
   Dumbbell,
@@ -10,7 +10,7 @@ import {
   ShoppingCart,
   Users2,
 } from "lucide-react";
-import FooterManage from "@/components/layouts/footerManage.layout";
+import FooterManage from "@/components/layout/footerManage.layout";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -57,7 +57,7 @@ export default function Layout({
   ];
 
   return (
-    <div className="flex min-h-screen w-full flex-col bg-white text-black">
+    <div className="flex min-h-screen w-full flex-col">
       <NavbarManage navItems={navItems} />
       <div className="flex flex-col sm:gap-4 sm:pl-14 min-h-screen">
         <HeaderManage navItems={navItems} />

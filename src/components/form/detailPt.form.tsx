@@ -12,17 +12,17 @@ import { Input } from "../ui/input";
 import { z } from "zod";
 import { ptRule, registerRule } from "@/formSchema/formSchema";
 import { useCreateForm } from "@/hooks/useCreateForm.hook";
-import { PhoneInput } from "../ui/phoneInputCustom";
+import { PhoneInput } from "../custom/phoneInput.custom";
 import { typePT } from "@/types/pt.type";
 import { Divide, Plus } from "lucide-react";
 import Image from "next/image";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "@/firebases/firebase";
-import ButtonCustom from "../ui/buttonCustom";
+import ButtonCustom from "../custom/button.custom";
 import { ScrollArea } from "../ui/scroll-area";
 import { PTApis } from "@/services/pt.service";
 import { toast } from "sonner";
-import WaitingLayout from "../layouts/waiting.layout";
+import WaitingLayout from "../layout/waiting.layout";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -185,7 +185,11 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
               </DialogContent>
             </Dialog>
           )}
-          <ButtonCustom onClick={form.handleSubmit(onSubmit)} className="py-1">
+          <ButtonCustom
+            variant="custom"
+            onClick={form.handleSubmit(onSubmit)}
+            className="py-1"
+          >
             Save all
           </ButtonCustom>
         </div>

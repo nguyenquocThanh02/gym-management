@@ -37,14 +37,14 @@ const Interactive: React.FC = () => {
 
       <div
         className={cn(
-          "z-20 fixed bottom-0 right-0 w-full h-1/2 md:w-1/3 bg-white",
+          "z-20 fixed bottom-0 right-0 w-full h-1/2 md:w-1/3 bg-BgLight",
           {
             "animate-accordion-up": openChat,
             "animate-accordion-down hidden": !openChat,
           }
         )}
       >
-        <div className="w-full bg-Background/20">
+        <div className="w-full bg-Dark/20">
           <Button
             variant="ghost"
             className="hover:bg-transparent"

@@ -1,12 +1,12 @@
 import { CircleCheck } from "lucide-react";
 import React from "react";
-import ButtonCustom from "./buttonCustom";
-import { ScrollArea } from "./scroll-area";
+import ButtonCustom from "../custom/button.custom";
+import { ScrollArea } from "../ui/scroll-area";
 
 const CardPackage = () => {
   return (
     <div>
-      <div className="flex flex-col rounded-2xl bg-transparent transition-all duration-500 hover:bg-Background/60 p-6 border border-white hover:shadow-xl hover:shadow-white">
+      <div className="flex flex-col rounded-2xl bg-transparent transition-all duration-500 hover:bg-BgDark/60 p-6 border border-Light hover:shadow-xl hover:shadow-Light">
         <h3 className="font-manrope text-2xl font-bold mb-3">Service daily</h3>
         <div className="flex items-center mb-6">
           <span className="font-manrope mr-2 text-6xl font-semibold">$22</span>

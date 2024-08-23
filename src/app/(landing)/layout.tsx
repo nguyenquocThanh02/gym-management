@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
-import Header from "@/components/layouts/header.component";
-import Interactive from "@/components/layouts/interactive.component";
-import Footer from "@/components/layouts/footer.component";
+import Header from "@/components/layout/header.layout";
+import Interactive from "@/components/layout/interactive.layout";
+import Footer from "@/components/layout/footer.layout";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,7 +15,7 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={cn("w-full")}>
+    <div className={cn("w-full pt-[86px] bg-BgDark text-Light")}>
       <Header />
       <Interactive />
       {children}

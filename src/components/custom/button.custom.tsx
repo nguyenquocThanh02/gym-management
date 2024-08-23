@@ -25,7 +25,7 @@ const ButtonCustom: React.FC<ButtonCustomProps> = ({
     className,
     isCustomVariant
       ? "border border-Primary"
-      : "from-Secondary to-Primary bg-gradient-to-r text-Text hover:border hover:border-Primary"
+      : "from-Secondary to-Primary bg-gradient-to-r text-Light hover:border hover:border-Primary"
   );
 
   return (
@@ -46,7 +46,7 @@ const ButtonCustom: React.FC<ButtonCustomProps> = ({
         className={cn(
           "absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200",
           !isCustomVariant
-            ? "bg-white"
+            ? "bg-BgLight"
             : "from-Secondary to-Primary bg-gradient-to-r",
           "group-hover:h-full ease"
         )}
@@ -55,7 +55,7 @@ const ButtonCustom: React.FC<ButtonCustomProps> = ({
         className={cn(
           "absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200",
           !isCustomVariant
-            ? "bg-white"
+            ? "bg-BgLight"
             : "from-Secondary to-Primary bg-gradient-to-r",
           "group-hover:h-full ease"
         )}
@@ -64,7 +64,7 @@ const ButtonCustom: React.FC<ButtonCustomProps> = ({
         className={cn(
           "absolute inset-0 w-full h-full duration-300 delay-300",
           !isCustomVariant
-            ? "bg-white"
+            ? "bg-BgLight"
             : "from-Secondary to-Primary bg-gradient-to-r",
           "opacity-0 group-hover:opacity-100"
         )}
@@ -72,7 +72,7 @@ const ButtonCustom: React.FC<ButtonCustomProps> = ({
 
       <span
         className={cn(
-          "relative font-semibold transition-colors duration-300 delay-200 group-hover:text-Text ease",
+          "relative font-semibold transition-colors duration-300 delay-200 group-hover:text-Light ease",
           isCustomVariant ? "" : "group-hover:text-Primary"
         )}
       >

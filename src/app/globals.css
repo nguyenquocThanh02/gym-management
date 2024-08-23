@@ -108,7 +108,7 @@
     border-bottom-left-radius: 46px;
     border-bottom-right-radius: 46px;
     /* animation: fade-in-down 1s ease-in 0s 1; */
-    @apply shadow-md shadow-sm shadow-white bg-black;
+    @apply shadow-md shadow-sm shadow-Light bg-Dark;
   }
 
   .bg-attachment {

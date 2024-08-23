@@ -38,13 +38,13 @@ const HeaderDetail = () => {
           <li className="" key={index}>
             <Link
               href={item.path}
-              className="px-3 py-5 transition-all duration-500 hover:bg-white/20 hover:rounded-xl flex items-center "
+              className="px-3 py-5 transition-all duration-500 hover:bg-BgLight/20 hover:rounded-xl flex items-center "
             >
-              <div className="bg-white/80 rounded-lg w-12 h-12 flex items-center justify-center">
+              <div className="bg-BgLight/80 rounded-lg w-12 h-12 flex items-center justify-center">
                 {item.icon}
               </div>
               <div className="ml-4 w-4/5">
-                <h5 className="text-Text text-base mb-1.5 font-semibold">
+                <h5 className="text-Light text-base mb-1.5 font-semibold">
                   {item.name}
                 </h5>
                 <p className="text-xs font-medium text-gray-400">

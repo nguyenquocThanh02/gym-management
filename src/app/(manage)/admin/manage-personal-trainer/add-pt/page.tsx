@@ -1,7 +1,6 @@
-import AddPtForm from "@/components/logic/addPtForm.component";
-import DetailsPtForm from "@/components/logic/detailPtForm.component";
-import { BreadcrumbCustom } from "@/components/ui/breadscrumbCustom";
-import ButtonCustom from "@/components/ui/buttonCustom";
+import DetailsPtForm from "@/components/form/detailPt.form";
+import { BreadcrumbCustom } from "@/components/custom/breadscrumb.custom";
+import ButtonCustom from "@/components/custom/button.custom";
 import React from "react";
 
 const AddPT = () => {

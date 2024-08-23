@@ -12,8 +12,8 @@ import { Input } from "../ui/input";
 import { z } from "zod";
 import { registerRule } from "@/formSchema/formSchema";
 import { useCreateForm } from "@/hooks/useCreateForm.hook";
-import ButtonCustom from "../ui/buttonCustom";
-import { PhoneInput } from "../ui/phoneInputCustom";
+import ButtonCustom from "../custom/button.custom";
+import { PhoneInput } from "../custom/phoneInput.custom";
 import { AuthenApis } from "@/services/auth.service";
 import { typeRegister } from "@/types/auth.type";
 
@@ -61,7 +61,11 @@ const RegisterForm = () => {
                   <FormItem className="text-shadow">
                     <FormLabel>Full Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Nguyen Van A" {...field} />
+                      <Input
+                        className="text-Dark"
+                        placeholder="Nguyen Van A"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -74,7 +78,11 @@ const RegisterForm = () => {
                   <FormItem className="text-shadow">
                     <FormLabel>Email *</FormLabel>
                     <FormControl>
-                      <Input placeholder="abc@gmail.com" {...field} />
+                      <Input
+                        className="text-Dark"
+                        placeholder="abc@gmail.com"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -87,7 +95,11 @@ const RegisterForm = () => {
                   <FormItem className="text-shadow">
                     <FormLabel>Phone *</FormLabel>
                     <FormControl className="">
-                      <PhoneInput className="" placeholder="XXXX" {...field} />
+                      <PhoneInput
+                        className="text-Dark"
+                        placeholder="XXXX"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -100,7 +112,11 @@ const RegisterForm = () => {
                   <FormItem className="text-shadow">
                     <FormLabel>Date Of Birth</FormLabel>
                     <FormControl>
-                      <Input placeholder="01/01/1999" {...field} />
+                      <Input
+                        className="text-Dark"
+                        placeholder="01/01/1999"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -117,7 +133,11 @@ const RegisterForm = () => {
                   <FormItem className="text-shadow">
                     <FormLabel>Account Name *</FormLabel>
                     <FormControl>
-                      <Input placeholder="Account name or email" {...field} />
+                      <Input
+                        className="text-Dark"
+                        placeholder="Account name or email"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -130,7 +150,12 @@ const RegisterForm = () => {
                   <FormItem className="text-shadow">
                     <FormLabel>Password *</FormLabel>
                     <FormControl>
-                      <Input type="password" placeholder="******" {...field} />
+                      <Input
+                        className="text-Dark"
+                        type="password"
+                        placeholder="******"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -143,7 +168,12 @@ const RegisterForm = () => {
                   <FormItem className="text-shadow">
                     <FormLabel>Confirm Password *</FormLabel>
                     <FormControl>
-                      <Input type="password" placeholder="******" {...field} />
+                      <Input
+                        className="text-Dark"
+                        type="password"
+                        placeholder="******"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

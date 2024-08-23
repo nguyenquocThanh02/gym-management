@@ -14,7 +14,7 @@ const LinkArrow: React.FC<LinkArrowProps> = ({ children, className, href }) => {
       <a
         href={href}
         className={cn(
-          "relative inline-flex rounded-full border items-center justify-start py-1 pl-4 pr-12 overflow-hidden font-semibold transition-all duration-150 ease-in-out hover:pl-10 hover:pr-6 group"
+          "relative inline-flex rounded-full border items-center justify-start py-1 pl-4 pr-12 overflow-hidden font-semibold transition-all duration-150 ease-in-out hover:pl-10 hover:pr-6 group hover:opacity-90"
         )}
       >
         <span className="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
