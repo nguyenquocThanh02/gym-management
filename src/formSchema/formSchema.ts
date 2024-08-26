@@ -122,3 +122,25 @@ export const ptRule = z.object({
   profileImage: z.string().optional(),
   bio: z.string().max(500, "Bio must be less than 500 characters").optional(),
 });
+
+export const deviceRule = z.object({
+  name: z.string().min(1).max(100),
+  type: z.string().min(1).max(50),
+  lastMaintenance: z.union([z.date().optional(), z.string().optional()]),
+  purchaseDate: z.union([z.date().optional(), z.string().optional()]),
+  maintenanceInterval: z.union([
+    z
+      .number()
+      .min(0, "Experience years must be a positive number")
+      .max(50, "Experience years must be less than 50"),
+    z
+      .string()
+      .regex(/^\d+$/, "Experience years must be a valid number")
+      .transform((value) => parseInt(value, 10))
+      .refine((value) => value >= 0 && value <= 50, {
+        message: "Experience years must be between 0 and 50",
+      }),
+  ]),
+  description: z.string().max(500),
+  serialNumber: z.string().optional(),
+});

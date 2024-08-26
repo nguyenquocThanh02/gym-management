@@ -1,11 +1,11 @@
 "use client";
-import DetailsPtForm from "@/components/form/detailPt.form";
 import { BreadcrumbCustom } from "@/components/custom/breadscrumb.custom";
 import ButtonCustom from "@/components/custom/button.custom";
 import React from "react";
 import { useRouter } from "next/navigation";
+import DetailsDeviceForm from "@/components/form/detailDevice.form";
 
-const AddPT = () => {
+const AddDevice = () => {
   const route = useRouter();
   const breadcrumbs = [
     {
@@ -13,12 +13,12 @@ const AddPT = () => {
       name: "Home",
     },
     {
-      link: "/admin/manage-personal-trainer",
-      name: "PT management",
+      link: "/admin/manage-device",
+      name: "Device management",
     },
     {
-      link: "/admin/manage-personal-trainer/add-pt",
-      name: "Add PT",
+      link: "#",
+      name: "Add device",
     },
   ];
 
@@ -31,9 +31,9 @@ const AddPT = () => {
         <BreadcrumbCustom links={breadcrumbs} />
         <ButtonCustom onClick={handleBack}>Back</ButtonCustom>
       </div>
-      <DetailsPtForm data={null} id="" />
+      <DetailsDeviceForm data={null} id="" />
     </section>
   );
 };
 
-export default AddPT;
+export default AddDevice;

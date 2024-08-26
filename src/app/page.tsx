@@ -10,6 +10,7 @@ import AboutGymMax from "@/components/normal/aboutGymMax.component";
 import CarouselTrainer from "@/components/normal/carouselCardTrainer.component";
 import CardPackage from "@/components/normal/cardPackage.component";
 import HeroSection from "@/components/normal/heroSection.component";
+import { Check } from "lucide-react";
 export default function Home() {
   return (
     <section className="overflow-hidden bg-BgDark text-Light">
@@ -18,6 +19,22 @@ export default function Home() {
       <div className="relative">
         <Video />
         <div className="absolute bottom-0 right-0 top-0 left-0 bg-Dark opacity-20 transition-opacity duration-300"></div>
+        <div className="hidden lg:flex absolute top-[100px] left-10 w-fit h-fit p-2 border border-Light rounded bg-Light/10 text-shadow">
+          <div>
+            🌟 Discover GymMax – Your Destination for a Better Body 🌟
+            <ul className="text-left ml-3 leading-relaxed">
+              <li>
+                🗸 State-of-the-art equipment and a comfortable workout space
+              </li>
+              <li>🗸 Expert trainers ready to guide and support you</li>
+              <li>🗸 Exciting group classes tailored to all fitness levels</li>
+              <li>
+                Special Offer: Sign up today to enjoy up to 30% off on
+                membership packages and receive exclusive gifts! 🎁
+              </li>
+            </ul>
+          </div>
+        </div>
         <div className="absolute w-full bottom-3 xl:bottom-[108px] left-8 text-shadow opacity-90 transition-opacity duration-300">
           <h1 className="xl:text-[260px] text-4xl font-extrabold">
             Gym

@@ -10,17 +10,14 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { z } from "zod";
-import { ptRule, registerRule } from "@/formSchema/formSchema";
+import { deviceRule } from "@/formSchema/formSchema";
 import { useCreateForm } from "@/hooks/useCreateForm.hook";
-import { PhoneInput } from "../custom/phoneInput.custom";
-import { typePT } from "@/types/pt.type";
-import { Divide, Plus } from "lucide-react";
+import { CalendarIcon, Divide, Plus } from "lucide-react";
 import Image from "next/image";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "@/firebases/firebase";
 import ButtonCustom from "../custom/button.custom";
 import { ScrollArea } from "../ui/scroll-area";
-import { PTApis } from "@/services/pt.service";
 import { toast } from "sonner";
 import WaitingLayout from "../layout/waiting.layout";
 import { Button } from "../ui/button";
@@ -37,15 +34,19 @@ import {
 import { Badge } from "../ui/badge";
 import { Textarea } from "../ui/textarea";
 import FileInputCustom from "../custom/fileInput.custom";
+import { typeDevice } from "@/types";
+import { DeviceApis } from "@/services";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { cn } from "@/lib/utils";
+import { format } from "date-fns";
+import { CalendarCustom } from "../custom/calendar.custom";
 
-const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
-  data,
-  id = "",
-}) => {
+const DetailsDeviceForm: React.FC<{
+  data: typeDevice | null;
+  id: string | null;
+}> = ({ data, id = "" }) => {
   const [status, setStatus] = React.useState<string>(data?.status || "");
-  const [urlImage, setUrlImage] = React.useState<string>(
-    data?.profileImage || ""
-  );
+  const [urlImage, setUrlImage] = React.useState<string>(data?.image || "");
   const [file, setFile] = React.useState("");
 
   const [isLoading1, setIsLoading] = useState<boolean>(false);
@@ -56,18 +57,17 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
     setUrlImage(URL.createObjectURL(value));
   };
 
-  const form = useCreateForm(ptRule, {
+  const form = useCreateForm(deviceRule, {
     name: data?.name || "",
-    email: data?.contactInfor?.email || "",
-    phone: data?.contactInfor?.phone || "",
-    specialty: data?.specialty || "",
-    experienceYears: data?.experienceYears || "",
-    address: data?.address || "",
-    bio: data?.bio || "",
-    profileImage: "",
+    type: data?.type || "",
+    lastMaintenance: data?.lastMaintenance || "",
+    purchaseDate: data?.purchaseDate || "",
+    maintenanceInterval: data?.maintenanceInterval || 0,
+    description: data?.description || "",
+    serialNumber: data?.serialNumber || "",
   });
 
-  async function onSubmit(values: z.infer<typeof ptRule>) {
+  async function onSubmit(values: z.infer<typeof deviceRule>) {
     setIsLoading(true);
     let linkImg: string = "";
     if (file) {
@@ -75,30 +75,33 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
       await uploadBytes(storageRef, file);
       linkImg = await getDownloadURL(storageRef);
     }
-    const dataAddPT: typePT = {
-      name: values?.name,
-      specialty: values?.specialty,
-      experienceYears: Number(values?.experienceYears),
-      address: values?.address,
-      bio: values?.bio,
-      profileImage: linkImg || urlImage || "",
-      contactInfor: {
-        phone: values?.phone,
-        email: values?.email || "",
-      },
+    const dataAddDevice: typeDevice = {
+      name: values?.name || "",
+      type: values?.type || "",
+      lastMaintenance: values?.lastMaintenance
+        ? new Date(values.lastMaintenance)
+        : undefined,
+      purchaseDate: values?.purchaseDate
+        ? new Date(values.purchaseDate)
+        : undefined,
+      maintenanceInterval: values?.maintenanceInterval
+        ? Number(values.maintenanceInterval)
+        : undefined,
+      image: linkImg || urlImage || "",
+      description: values?.description || "",
+      serialNumber: values?.serialNumber || undefined,
     };
 
-    console.log(dataAddPT);
+    console.log(dataAddDevice);
 
     if (!id) {
       try {
-        const result = await PTApis.addPT(dataAddPT);
-        console.log("test: ", result);
-        console.log("test>>>: ", result?.status);
+        const result = await DeviceApis.addDevice(dataAddDevice);
         if (result?.status === "201") {
-          console.log("thanh cong");
-          toast.success("Add new PT successfully");
+          toast.success("Add new device successfully");
           form.reset();
+          setFile("");
+          setUrlImage("");
         } else {
           toast.error(result?.message);
         }
@@ -107,9 +110,9 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
       }
     } else {
       try {
-        const result = await PTApis.updatePT(dataAddPT, id);
+        const result = await DeviceApis.updateDevice(dataAddDevice, id);
         if (result?.status === "200") {
-          toast.success("Update PT successfully");
+          toast.success("Update device successfully");
         } else {
           toast.error(result?.message);
         }
@@ -122,9 +125,12 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
 
   const handleChangeStatus = async () => {
     try {
-      const idPt = id || "";
-      const statusChange = status === "active" ? "block" : "active";
-      const result = await PTApis.changeStatusPT(idPt, statusChange);
+      const idDevice = id || "";
+      const statusChange = status === "available" ? "maintenance" : "available";
+      const result = await DeviceApis.changeStatusDevice(
+        idDevice,
+        statusChange
+      );
       if (result?.status === "200") {
         setStatus(statusChange);
         toast.success("Update status successfully");
@@ -141,7 +147,7 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
     <>
       {isLoading1 && <WaitingLayout />}
       <h4 className="text-center text-2xl font-semibold text-shadow">
-        {id ? "Update PT" : "Add PT"}
+        {id ? "Update Device" : "Add Device"}
       </h4>
       <div className="flex justify-between mb-2 items-center">
         <div>
@@ -150,7 +156,7 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
               Status:{" "}
               <Badge
                 className={`${
-                  status === "active" ? "bg-green-800" : "bg-Primary"
+                  status === "available" ? "bg-green-800" : "bg-yellow-500"
                 }`}
               >
                 {status}
@@ -168,10 +174,13 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
               </DialogTrigger>
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                  <DialogTitle className="text-black">Edit profile</DialogTitle>
+                  <DialogTitle className="text-black">
+                    Change Status
+                  </DialogTitle>
                   <DialogDescription>
                     Are you sure you want to{" "}
-                    {status === "active" ? "block" : "unblock"} the PT
+                    {status === "available" ? "maintainence" : "available"} the
+                    device
                   </DialogDescription>
                 </DialogHeader>
                 <DialogFooter>
@@ -198,7 +207,7 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
       </div>
       <Form {...form}>
         <form className="flex gap-5 flex-wrap justify-center">
-          <div className="w-96 min-h-[70vh] shadow-lg p-5 border rounded-lg flex flex-col items-center">
+          <div className="w-full md:w-[600px] min-h-[70vh] shadow-lg p-5 border rounded-lg flex flex-col items-center">
             <div className="relative w-full mx-auto h-full rounded-lg overflow-hidden flex justify-center items-center border-dashed border-2 border-slate-400">
               {urlImage && (
                 <Image
@@ -216,15 +225,15 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
           </div>
           <div className="flex-1 min-w-80 shadow-lg p-1 border rounded-lg">
             <ScrollArea className="h-[70vh] w-full">
-              <div className="p-4">
+              <div className="p-4 flex flex-col gap-3">
                 <FormField
                   control={form.control}
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Full Name</FormLabel>
+                      <FormLabel>Device name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Nguyen Van A" {...field} />
+                        <Input placeholder="Dumbell" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -232,12 +241,12 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
                 />
                 <FormField
                   control={form.control}
-                  name="email"
+                  name="type"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel>Type</FormLabel>
                       <FormControl>
-                        <Input placeholder="abc@gmail.com" {...field} />
+                        <Input placeholder="Cardio" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -245,66 +254,121 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
                 />
                 <FormField
                   control={form.control}
-                  name="phone"
+                  name="purchaseDate"
                   render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Phone *</FormLabel>
-                      <FormControl className="">
-                        <PhoneInput
-                          className=""
-                          placeholder="XXXX"
-                          {...field}
-                        />
-                      </FormControl>
+                    <FormItem className="flex flex-col">
+                      <FormLabel>Purchase Date</FormLabel>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant={"outline"}
+                              className={cn(
+                                "w-full pl-3 text-left font-normal",
+                                !field.value && "text-muted-foreground"
+                              )}
+                            >
+                              {field.value ? (
+                                format(field.value, "PPP")
+                              ) : (
+                                <span>Pick a date</span>
+                              )}
+                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                          <CalendarCustom
+                            mode="single"
+                            captionLayout="dropdown-buttons"
+                            selected={field.value}
+                            onSelect={field.onChange}
+                            fromYear={1960}
+                            toYear={2030}
+                            initialFocus
+                          />
+                        </PopoverContent>
+                      </Popover>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="lastMaintenance"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col">
+                      <FormLabel>Last maintenance</FormLabel>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant={"outline"}
+                              className={cn(
+                                "w-full pl-3 text-left font-normal",
+                                !field.value && "text-muted-foreground"
+                              )}
+                            >
+                              {field.value ? (
+                                format(field.value, "PPP")
+                              ) : (
+                                <span>Pick a date</span>
+                              )}
+                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                          <CalendarCustom
+                            mode="single"
+                            captionLayout="dropdown-buttons"
+                            selected={field.value}
+                            onSelect={field.onChange}
+                            fromYear={2000}
+                            toYear={2030}
+                            initialFocus
+                          />
+                        </PopoverContent>
+                      </Popover>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
                 <FormField
                   control={form.control}
-                  name="experienceYears"
+                  name="maintenanceInterval"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Experience Years</FormLabel>
+                      <FormLabel>Maintenance interval</FormLabel>
                       <FormControl>
-                        <Input type="number" placeholder="2" {...field} />
+                        <Input type="number" placeholder="months" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+
                 <FormField
                   control={form.control}
-                  name="address"
+                  name="serialNumber"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Address</FormLabel>
+                      <FormLabel>Serial number </FormLabel>
                       <FormControl>
-                        <Input placeholder="123/..." {...field} />
+                        <Input placeholder="s2000d3" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+
                 <FormField
                   control={form.control}
-                  name="specialty"
+                  name="description"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Specialty *</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Fitness or Yoga ..." {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="bio"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Bio *</FormLabel>
+                      <FormLabel>Description *</FormLabel>
                       <FormControl>
                         <Textarea
                           placeholder="Experience training for artist ..."
@@ -324,4 +388,4 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
   );
 };
 
-export default DetailsPtForm;
+export default DetailsDeviceForm;

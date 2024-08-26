@@ -29,7 +29,7 @@ type NavbarManageProps = {
 const HeaderManage: React.FC<NavbarManageProps> = ({ navItems }) => {
   return (
     <>
-      <header className="sticky top-0 z-20 flex h-14 items-center gap-4 border-b px-4 sm:static sm:h-auto sm:border-0 sm:px-6 sm:pt-2">
+      <header className="sticky top-0 flex h-14 items-center gap-4 border-b px-4 sm:static sm:h-auto sm:border-0 sm:px-6 sm:pt-2">
         <Sheet>
           <SheetTrigger asChild>
             <Button size="icon" variant="outline" className="sm:hidden">

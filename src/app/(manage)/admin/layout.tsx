@@ -40,12 +40,12 @@ export default function Layout({
       icon: <Package className="h-5 w-5" />,
     },
     {
-      href: "/admin/user",
-      name: "User Management",
+      href: "/admin/manage-account",
+      name: "Account Management",
       icon: <Users2 className="h-5 w-5" />,
     },
     {
-      href: "/admin/device",
+      href: "/admin/manage-device",
       name: "Device Management",
       icon: <Dumbbell className="h-5 w-5" />,
     },

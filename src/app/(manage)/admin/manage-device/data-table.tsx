@@ -32,7 +32,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ChevronDown, ChevronsDownIcon } from "lucide-react";
-import ButtonCustom from "@/components/custom/button.custom";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 interface DataTableProps<TData, TValue> {

@@ -17,23 +17,12 @@ import {
 
 import { ArrowDownUp, EllipsisVertical } from "lucide-react";
 import Link from "next/link";
-import { typePT } from "@/types/pt.type";
 import { Badge } from "@/components/ui/badge";
+import { typeDevice } from "@/types";
+import Image from "next/image";
+import { formatDate } from "@/utils";
 
-// export type typePT = {
-//   _id: string;
-//   address: string;
-//   createdAt: Date;
-//   updatedAt: Date;
-//   experienceYears: number;
-//   name: string;
-//   specialty: string;
-//   status: "block" | "active";
-//   certifications: [];
-//   contactInfor: [{ phone: string }];
-// };
-
-export const columns: ColumnDef<typePT>[] = [
+export const columns: ColumnDef<typeDevice>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -57,17 +46,23 @@ export const columns: ColumnDef<typePT>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "status",
-    header: "Status",
-    cell: ({ row }) => (
-      <Badge
-        className={`capitalize ${
-          row.getValue("status") === "active" ? "bg-green-800" : "bg-Primary"
-        }`}
-      >
-        {row.getValue("status")}
-      </Badge>
-    ),
+    accessorKey: "image",
+    header: "Image",
+    cell: ({ row }) => {
+      const imageUrl = row.getValue("image") as string;
+
+      return (
+        <div className="relative w-32 h-32">
+          <Image
+            src={imageUrl}
+            alt="Device image"
+            layout="fill"
+            objectFit="contain"
+            quality={100}
+          />
+        </div>
+      );
+    },
   },
   {
     accessorKey: "name",
@@ -86,18 +81,31 @@ export const columns: ColumnDef<typePT>[] = [
     cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
   },
   {
-    accessorKey: "specialty",
-    header: "Specialty",
+    accessorKey: "status",
+    header: "Status",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("specialty")}</div>
+      <Badge
+        className={`capitalize ${
+          row.getValue("status") === "available"
+            ? "bg-green-800"
+            : "bg-yellow-500"
+        }`}
+      >
+        {row.getValue("status")}
+      </Badge>
     ),
+  },
+  {
+    accessorKey: "type",
+    header: "Type",
+    cell: ({ row }) => <div className="capitalize">{row.getValue("type")}</div>,
   },
 
   {
-    accessorKey: "experienceYears",
-    header: () => <div className="text-right">Experience year</div>,
+    accessorKey: "maintenanceInterval",
+    header: () => <div className="text-right">Maintenance interval</div>,
     cell: ({ row }) => {
-      // const amount = parseFloat(row.getValue("experienceYears"));
+      // const amount = parseFloat(row.getValue("maintenanceInterval"));
 
       // Format the amount as a dollar amount
       // const formatted = new Intl.NumberFormat("en-US", {
@@ -107,9 +115,19 @@ export const columns: ColumnDef<typePT>[] = [
 
       return (
         <div className="text-right font-medium">
-          {row.getValue("experienceYears")}
+          {row.getValue("maintenanceInterval")}
         </div>
       );
+    },
+  },
+  {
+    accessorKey: "lastMaintenance",
+    header: () => <div className="text-right">Last maintenance</div>,
+    cell: ({ row }: { row: any }) => {
+      const dateValue: string | undefined = row.getValue("lastMaintenance");
+
+      const formattedDate = formatDate(dateValue);
+      return <div className="text-right font-medium">{formattedDate}</div>;
     },
   },
   {
@@ -137,9 +155,7 @@ export const columns: ColumnDef<typePT>[] = [
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <Link
-                  href={`/admin/manage-personal-trainer/details/${payment._id}`}
-                >
+                <Link href={`/admin/manage-device/details/${payment._id}`}>
                   View details
                 </Link>
               </DropdownMenuItem>
