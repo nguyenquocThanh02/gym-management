@@ -62,6 +62,18 @@ export const loginRule = z.object({
   password: z.string().min(8).max(50),
 });
 
+export const emailRule = z.object({
+  email: z
+    .string()
+    .trim()
+    .min(1, {
+      message: "Email is required.",
+    })
+    .email({
+      message: "Invalid email format.",
+    }),
+});
+
 export const registerPackageRule = z.object({
   fullname: z.optional(z.string()),
   timestart: z.optional(z.string()),
