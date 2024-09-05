@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   Card,
@@ -7,8 +8,20 @@ import {
   CardHeader,
   CardTitle,
 } from "../../../../../components/ui/card";
+import { DataTable } from "../data-table";
+import { columns } from "../columns";
+import { useQuery } from "@tanstack/react-query";
+import { UserApis } from "@/services";
+import { typeAccount } from "@/types";
 
 const ManageUser = () => {
+  const { data, isLoading } = useQuery<any>({
+    queryKey: ["users"],
+    queryFn: UserApis.getAllRoleUser,
+    staleTime: 5 * 60 * 1000,
+  });
+
+  const arrs: typeAccount[] = data?.data || [];
   return (
     <div>
       {/* <div className="ml-auto flex items-center gap-2">
@@ -44,12 +57,9 @@ const ManageUser = () => {
           <CardTitle>Users</CardTitle>
           <CardDescription>Manage your users.</CardDescription>
         </CardHeader>
-        <CardContent>User</CardContent>
-        <CardFooter>
-          <div className="text-xs text-muted-foreground">
-            Showing <strong>1-10</strong> of <strong>32</strong> products
-          </div>
-        </CardFooter>
+        <CardContent>
+          <DataTable columns={columns} data={arrs} />{" "}
+        </CardContent>
       </Card>
     </div>
   );

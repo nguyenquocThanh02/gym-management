@@ -16,8 +16,9 @@ import ButtonCustom from "../custom/button.custom";
 import { PhoneInput } from "../custom/phoneInput.custom";
 import { AuthenApis } from "@/services/auth.service";
 import { typeRegister } from "@/types/auth.type";
+import { toast } from "sonner";
 
-const RegisterForm = () => {
+const RegisterForm: React.FC<{ invite: string }> = ({ invite = "" }) => {
   const form = useCreateForm(registerRule, {
     fullname: "",
     email: "",
@@ -36,11 +37,16 @@ const RegisterForm = () => {
       password: values.password,
       fullName: values.fullname || "",
       dateOfBirth: values.dateOfBirth || "",
+      inviteToken: invite || undefined,
     };
+
     try {
       const result = await AuthenApis.register(dataRegister);
-      console.log("test: ", result);
-      console.log("test: ", result?.message);
+      if (result?.status === "201") {
+        toast.success("Register successfully!");
+      } else {
+        toast.error(result?.message);
+      }
     } catch (err) {
       console.log("err: ", err);
     }

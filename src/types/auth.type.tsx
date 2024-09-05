@@ -9,6 +9,7 @@ export type typeRegister = {
   password: string;
   accountName: string;
   dateOfBirth: string | "";
+  inviteToken: string | undefined;
 };
 
 export type typeLogin = {
