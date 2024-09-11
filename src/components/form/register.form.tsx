@@ -56,9 +56,14 @@ const RegisterForm: React.FC<{ invite: string }> = ({ invite = "" }) => {
           const roomChatsRef = collection(db, "rooms");
           const newRoomChatRef = doc(roomChatsRef);
 
+          console.log(result?.data);
           try {
             await setDoc(newRoomChatRef, {
               createdAt: serverTimestamp(),
+              user: result?.data?._id,
+              lastMessage: "",
+              // timeLastMessage: undefined,
+              isSeen: false,
             });
 
             const newChatRef = doc(db, "messages", newRoomChatRef.id);

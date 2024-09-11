@@ -6,7 +6,12 @@ import {
   TooltipTrigger,
   TooltipProvider,
 } from "@/components/ui/tooltip";
-import { Package2, Settings } from "lucide-react";
+import {
+  MessageCircle,
+  MessageSquareText,
+  Package2,
+  Settings,
+} from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
@@ -61,6 +66,30 @@ const NavbarManage: React.FC<NavbarManageProps> = ({ navItems }) => {
               </TooltipContent>
             </Tooltip>
           ))}
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                href="/admin/manage-chat"
+                className={cn(
+                  "flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:animate-tada md:h-8 md:w-8",
+                  {
+                    "bg-Light text-Dark/80": paramPath === "/admin/manage-chat",
+                    "bg-BgLight/20 text-Light/80":
+                      paramPath !== "/admin/manage-chat",
+                  }
+                )}
+              >
+                <MessageSquareText />
+                <span className="sr-only">Chat</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent
+              side="right"
+              className="bg-BgDark text-Light border border-none ml-2"
+            >
+              Chat
+            </TooltipContent>
+          </Tooltip>
         </TooltipProvider>
       </nav>
 

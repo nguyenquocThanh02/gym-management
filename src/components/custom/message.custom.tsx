@@ -29,6 +29,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
         <Image
           src={image}
           alt={name}
+          quality={100}
           className="w-10 h-10 rounded-full"
           width={10}
           height={10}
@@ -56,6 +57,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
       {align === "right" && image && (
         <Image
           src={image}
+          quality={100}
           alt={name}
           className="w-10 h-10 rounded-full"
           width={10}
