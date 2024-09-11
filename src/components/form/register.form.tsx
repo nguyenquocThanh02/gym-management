@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Form,
   FormControl,
@@ -17,8 +17,15 @@ import { PhoneInput } from "../custom/phoneInput.custom";
 import { AuthenApis } from "@/services/auth.service";
 import { typeRegister } from "@/types/auth.type";
 import { toast } from "sonner";
+import { collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { db } from "@/firebases/firebase";
+import WaitingLayout from "../layout/waiting.layout";
+import { useRouter } from "next/navigation";
 
 const RegisterForm: React.FC<{ invite: string }> = ({ invite = "" }) => {
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const router = useRouter();
   const form = useCreateForm(registerRule, {
     fullname: "",
     email: "",
@@ -30,6 +37,7 @@ const RegisterForm: React.FC<{ invite: string }> = ({ invite = "" }) => {
   });
 
   async function onSubmit(values: z.infer<typeof registerRule>) {
+    setLoading(true);
     const dataRegister: typeRegister = {
       email: values.email,
       accountName: values.account,
@@ -43,16 +51,45 @@ const RegisterForm: React.FC<{ invite: string }> = ({ invite = "" }) => {
     try {
       const result = await AuthenApis.register(dataRegister);
       if (result?.status === "201") {
-        toast.success("Register successfully!");
+        if (!invite) {
+          // handle chat: create new room and message
+          const roomChatsRef = collection(db, "rooms");
+          const newRoomChatRef = doc(roomChatsRef);
+
+          console.log(result?.data);
+          try {
+            await setDoc(newRoomChatRef, {
+              createdAt: serverTimestamp(),
+              user: result?.data?._id,
+              lastMessage: "",
+              // timeLastMessage: undefined,
+              isSeen: false,
+            });
+
+            const newChatRef = doc(db, "messages", newRoomChatRef.id);
+
+            await setDoc(newChatRef, {
+              createdAt: serverTimestamp(),
+              messages: [],
+            });
+          } catch (error) {
+            toast.warning("Error when creating chats message");
+          }
+          toast.success("Register successfully!");
+          router.push("/login");
+        }
       } else {
         toast.error(result?.message);
       }
     } catch (err) {
-      console.log("err: ", err);
+      toast.error(err?.message);
     }
+    setLoading(false);
   }
+
   return (
     <div>
+      {loading && <WaitingLayout />}
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}

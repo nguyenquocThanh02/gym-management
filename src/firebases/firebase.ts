@@ -1,5 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getMessaging, onMessage } from "firebase/messaging";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCnTta1rmPehUw7-g9NgnAxcnG3dxLpILI",
@@ -14,4 +17,14 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const storage = getStorage();
-export { storage };
+const auth = getAuth(app);
+const db = getFirestore();
+
+const messaging = getMessaging(app);
+// const onMessageListener = () =>
+//   new Promise((resolve) => {
+//     onMessage(messaging, (payload) => {
+//       resolve(payload);
+//     });
+//   });
+export { auth, db, messaging, storage };

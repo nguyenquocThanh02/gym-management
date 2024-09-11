@@ -1,20 +1,61 @@
 "use client";
 import {
-  CircleX,
-  Ghost,
+  CircleUserRound,
   MessageSquareMore,
   PanelRightClose,
+  Paperclip,
   PhoneCall,
+  Send,
 } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import mainStore from "@/store/main.store";
+import MessageBubble from "../custom/message.custom";
+import { ScrollArea } from "../ui/scroll-area";
+import { collection, doc, onSnapshot } from "firebase/firestore";
+import { db } from "@/firebases/firebase";
+import { localStorageKey } from "@/constants/localStorage";
+import InputChat from "../normal/inputChat.component";
+import { toast } from "sonner";
 
 const Interactive: React.FC = () => {
   const openChat = mainStore((state) => state.chatOpen);
   const setOpenChat = mainStore((state) => state.setChatOpen);
-  console.log("tesst", openChat);
+  const roomId = localStorage.getItem(localStorageKey.roomId) || "";
+  const endRef = useRef<HTMLDivElement>(null);
+
+  const { chats } = mainStore();
+  const setChats = mainStore((state) => state.setChats);
+  const setFriendInfo = mainStore((state) => state?.setFriendInfo);
+  const friendInfo = mainStore((state) => state?.friendInfo);
+
+  useEffect(() => {
+    endRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [chats, openChat]);
+  useEffect(() => {
+    if (!roomId) {
+      console.warn("roomId is not defined");
+      return;
+    }
+
+    const unSub = onSnapshot(doc(db, "messages", roomId), (res) => {
+      console.log(res?.data().messages);
+      setChats({ [roomId]: res.data()?.messages });
+      setFriendInfo({ name: "thanh" });
+      console.log("firend:  ", friendInfo?.name);
+      console.log("cagat:  ", chats[roomId]);
+    });
+    return () => {
+      unSub();
+    };
+  }, [roomId]);
+
+  const handleToggleChat = () => {
+    if (!roomId) {
+      toast.warning("You need login before chatting!");
+    } else setOpenChat();
+  };
 
   return (
     <>
@@ -24,7 +65,7 @@ const Interactive: React.FC = () => {
             <Button
               variant="ghost"
               className="hover:bg-transparent"
-              onClick={setOpenChat}
+              onClick={handleToggleChat}
             >
               <MessageSquareMore size={32} color="red" />
             </Button>
@@ -37,7 +78,7 @@ const Interactive: React.FC = () => {
 
       <div
         className={cn(
-          "z-20 fixed bottom-0 right-0 w-full h-1/2 md:w-1/3 bg-BgLight",
+          "z-20 fixed bottom-0 right-0 w-full h-3/4 md:w-1/3 bg-BgLight",
           {
             "animate-accordion-up": openChat,
             "animate-accordion-down hidden": !openChat,
@@ -52,6 +93,33 @@ const Interactive: React.FC = () => {
           >
             <PanelRightClose color="black" />
           </Button>
+        </div>
+        <div className="px-4 overflow-hidden">
+          <ScrollArea className="h-[420px]">
+            <div className="py-4">
+              {roomId &&
+                chats[roomId] &&
+                chats[roomId]?.map((item: any, index: number) => (
+                  <MessageBubble
+                    key={index}
+                    align={item?.senderByUser === true ? "right" : "left"}
+                    message={item?.text}
+                    timestamp={new Date(
+                      item?.createdAt?.toMillis()
+                    ).toLocaleString()}
+                    image={
+                      item?.senderByUser === true
+                        ? ""
+                        : "https://firebasestorage.googleapis.com/v0/b/videocallapp-4fbc2.appspot.com/o/images%2Flogo.png?alt=media&token=641d8dec-f390-4810-91e1-ef833ce3d99d"
+                    }
+                    name={item?.senderByUser === true ? "You" : "GymMax"}
+                  />
+                ))}
+            </div>
+
+            <div ref={endRef}></div>
+          </ScrollArea>
+          <InputChat from="user" roomId={roomId} />
         </div>
       </div>
     </>

@@ -20,6 +20,8 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import HeroSection from "../normal/heroSection.component";
 import WaitingLayout from "../layout/waiting.layout";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "@/firebases/firebase";
 
 type typeResult = {
   status?: number | string;
@@ -49,9 +51,35 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
           result?.refresh_token
         );
         localStorage.setItem(localStorageKey.userId, result?.id);
+
+        const userRef = collection(db, "rooms");
+
+        const q = query(userRef, where("user", "==", result?.id));
+        // console.log("userLocal>>>", userLocal);
+        // const querySnapshot = getDocs(q);
+        // console.log("arr>>>", querySnapshot);
+        // const theUser = querySnapshot?.docs[0].data() || null;
+        // console.log(theUser);
+        getDocs(q)
+          .then((querySnapshot) => {
+            const rooms = querySnapshot.docs.map((doc) => ({
+              id: doc.id,
+              data: doc.data(),
+            }));
+
+            localStorage.setItem(
+              localStorageKey.roomId,
+              rooms.length > 0 ? rooms[0].id : ""
+            );
+          })
+          .catch((err) => {
+            console.error("Error fetching room data:", err);
+          });
         toast.success("Login successfully");
+        setIsLoading(false);
       } else {
         toast.error(result?.message);
+        setIsLoading(false);
       }
 
       if (role === "admin") {
@@ -62,7 +90,6 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
     } catch (e) {
       toast.error(result?.message);
     }
-    setIsLoading(false);
   }
 
   return (
