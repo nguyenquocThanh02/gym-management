@@ -156,3 +156,20 @@ export const deviceRule = z.object({
   description: z.string().max(500),
   serialNumber: z.string().optional(),
 });
+
+export const packageRule = z.object({
+  name: z.string().min(1).max(100),
+  type: z.string().optional(),
+  sessionWithPT: z.union([z.number().optional(), z.string().optional()]),
+  description: z.string().optional(),
+  suitableFor: z.string().optional(),
+  price: z.union([
+    z.number().min(0, "Price must be a non-negative number"),
+    z.string().regex(/^\d+(\.\d{1,2})?$/, "Price must be a valid number"),
+  ]),
+  duration: z.union([
+    z.number().min(0, "Duration must be a non-negative number"),
+    z.string().regex(/^\d+$/, "Duration must be a valid number"),
+  ]),
+  stock: z.union([z.number().optional(), z.string().optional()]),
+});
