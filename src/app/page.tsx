@@ -11,6 +11,7 @@ import CarouselTrainer from "@/components/normal/carouselCardTrainer.component";
 import CardPackage from "@/components/normal/cardPackage.component";
 import HeroSection from "@/components/normal/heroSection.component";
 import { Check } from "lucide-react";
+import PopularPackages from "@/components/normal/popularPackage.component";
 export default function Home() {
   return (
     <section className="overflow-hidden bg-BgDark text-Light">
@@ -56,11 +57,7 @@ export default function Home() {
           you are new to the gym; choose a service that includes guidance from a
           trainer.
         </p>
-        <div className="flex flex-col lg:flex-row justify-center items-center gap-5 py-10">
-          <CardPackage />
-          <CardPackage />
-          <CardPackage />
-        </div>
+        <PopularPackages />
         <LinkArrow href="/package">See more</LinkArrow>
       </div>
       <HeroSection>

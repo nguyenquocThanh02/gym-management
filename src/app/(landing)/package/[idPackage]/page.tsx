@@ -6,8 +6,20 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { CircleCheck } from "lucide-react";
 import React from "react";
 import { Switch } from "@/components/ui/switch";
+import { useQuery } from "@tanstack/react-query";
+import { PackageApis } from "@/services";
+import WaitingLayout from "@/components/layout/waiting.layout";
+import { typePackage } from "@/types";
 
-const ArticalPage = () => {
+const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
+  const { data, isLoading } = useQuery({
+    queryKey: ["package"],
+    queryFn: () => PackageApis.getDetailsPackage(params.idPackage),
+  });
+  const thePackage: typePackage = data?.data || null;
+  if (isLoading) {
+    return <WaitingLayout />;
+  }
   return (
     <div className="l-container pb-10">
       <h1 className="text-center font-bold text-2xl md:text-4xl my-6">
@@ -20,22 +32,21 @@ const ArticalPage = () => {
             <hr />
             <ScrollArea className="h-[90%] mb-3">
               <h3 className="font-manrope text-2xl font-bold mb-3">
-                Service daily
+                {thePackage?.name}
               </h3>
               <div className="flex items-center mb-6">
                 <span className="font-manrope mr-2 text-6xl font-semibold">
-                  $22
+                  ${thePackage?.price}
                 </span>
-                <span className="text-xl ">/ day</span>
               </div>
               <ul className="mb-12 space-y-6 text-left text-lg">
                 <li className="flex items-center space-x-4">
                   <CircleCheck className="text-Primary" />
-                  <span>2 auto tracking</span>
+                  <span>{thePackage?.sessionWithPT} sessions with PT</span>
                 </li>
                 <li className="flex items-center space-x-4">
                   <CircleCheck className="text-Primary" />
-                  <span>7 Day transaction clearing </span>
+                  <span>{thePackage?.duration} days membership</span>
                 </li>
                 <li className="flex items-center space-x-4">
                   <CircleCheck className="text-Primary" />
@@ -46,11 +57,16 @@ const ArticalPage = () => {
                   <span>All widget access</span>
                 </li>
                 <li className="flex items-center space-x-4">
-                  <span>
-                    This package is really suitable for anyone want to practive
-                    in long time, so it can help you lose weight and make a
-                    beauty body with perpect rate.
-                  </span>
+                  <div>
+                    <h4>Object: </h4>
+                    <span>{thePackage?.suitableFor}</span>
+                  </div>
+                </li>
+                <li className="flex items-center space-x-4">
+                  <div>
+                    <h4>Description: </h4>
+                    <span>{thePackage?.description}</span>
+                  </div>
                 </li>
               </ul>
             </ScrollArea>
@@ -64,7 +80,7 @@ const ArticalPage = () => {
         <div className="border h-fit md:w-[26%] p-3">
           <div className="flex flex-col gap-3">
             <div>
-              Price: <strong>899000đ</strong>
+              Price: <strong>{thePackage?.price}$</strong>
             </div>
             <div>
               Discound: <strong>100000đ</strong>
@@ -88,4 +104,4 @@ const ArticalPage = () => {
   );
 };
 
-export default ArticalPage;
+export default PackageDetail;

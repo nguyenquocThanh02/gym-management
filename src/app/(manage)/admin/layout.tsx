@@ -35,7 +35,7 @@ export default function Layout({
       icon: <ShoppingCart className="h-5 w-5" />,
     },
     {
-      href: "/admin/package",
+      href: "/admin/manage-package",
       name: "Package Management",
       icon: <Package className="h-5 w-5" />,
     },
