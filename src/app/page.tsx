@@ -12,6 +12,7 @@ import CardPackage from "@/components/normal/cardPackage.component";
 import HeroSection from "@/components/normal/heroSection.component";
 import { Check } from "lucide-react";
 import PopularPackages from "@/components/normal/popularPackage.component";
+import ActiveDiscount from "@/components/normal/activeDiscount.component";
 export default function Home() {
   return (
     <section className="overflow-hidden bg-BgDark text-Light">
@@ -30,12 +31,12 @@ export default function Home() {
               <li>🗸 Expert trainers ready to guide and support you</li>
               <li>🗸 Exciting group classes tailored to all fitness levels</li>
               <li>
-                Special Offer: Sign up today to enjoy up to 30% off on
-                membership packages and receive exclusive gifts! 🎁
+                Special Offer: Sign up today to receive exclusive gifts! 🎁
               </li>
             </ul>
           </div>
         </div>
+        <ActiveDiscount />
         <div className="absolute w-full bottom-3 xl:bottom-[108px] left-8 text-shadow opacity-90 transition-opacity duration-300">
           <h1 className="xl:text-[260px] text-4xl font-extrabold">
             Gym
@@ -58,6 +59,7 @@ export default function Home() {
           trainer.
         </p>
         <PopularPackages />
+
         <LinkArrow href="/package">See more</LinkArrow>
       </div>
       <HeroSection>

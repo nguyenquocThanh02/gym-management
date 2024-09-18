@@ -1,3 +1,5 @@
+import { typeDiscount } from "./discount.type";
+
 export type typePackage = {
   _id?: string;
   name: string;
@@ -7,10 +9,19 @@ export type typePackage = {
   suitableFor?: string;
   price: number | string;
   duration: number | string;
-  discount?: string;
   stock?: number | string;
   register?: number | string;
   status?: "active" | "block";
   createdAt?: Date;
   updatedAt?: Date;
+};
+
+export type typeResponsePackage = {
+  packages: typePackage;
+  discount?: typeDiscount;
+};
+
+export type typePackageName = {
+  id: string;
+  name: string;
 };

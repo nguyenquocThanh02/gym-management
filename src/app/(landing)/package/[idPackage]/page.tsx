@@ -9,17 +9,27 @@ import { Switch } from "@/components/ui/switch";
 import { useQuery } from "@tanstack/react-query";
 import { PackageApis } from "@/services";
 import WaitingLayout from "@/components/layout/waiting.layout";
-import { typePackage } from "@/types";
+import { typePackage, typeResponsePackage } from "@/types";
+import { calculatePrice } from "@/utils";
 
 const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
   const { data, isLoading } = useQuery({
     queryKey: ["package"],
     queryFn: () => PackageApis.getDetailsPackage(params.idPackage),
   });
-  const thePackage: typePackage = data?.data || null;
+  const thePackage: typeResponsePackage = data?.data || null;
   if (isLoading) {
     return <WaitingLayout />;
   }
+
+  const sumDiscount = (arrs): number => {
+    let sum = 0;
+    arrs?.map((item) => {
+      sum += item?.percent;
+    });
+    return sum;
+  };
+
   return (
     <div className="l-container pb-10">
       <h1 className="text-center font-bold text-2xl md:text-4xl my-6">
@@ -32,21 +42,28 @@ const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
             <hr />
             <ScrollArea className="h-[90%] mb-3">
               <h3 className="font-manrope text-2xl font-bold mb-3">
-                {thePackage?.name}
+                {thePackage?.packages?.name}
               </h3>
-              <div className="flex items-center mb-6">
+              <div className="flex items-end mb-6">
                 <span className="font-manrope mr-2 text-6xl font-semibold">
-                  ${thePackage?.price}
+                  $
+                  {calculatePrice(
+                    thePackage?.packages?.price,
+                    sumDiscount(thePackage?.discount)
+                  )}
                 </span>
+                <s>${thePackage?.packages?.price}</s>
               </div>
               <ul className="mb-12 space-y-6 text-left text-lg">
                 <li className="flex items-center space-x-4">
                   <CircleCheck className="text-Primary" />
-                  <span>{thePackage?.sessionWithPT} sessions with PT</span>
+                  <span>
+                    {thePackage?.packages?.sessionWithPT} sessions with PT
+                  </span>
                 </li>
                 <li className="flex items-center space-x-4">
                   <CircleCheck className="text-Primary" />
-                  <span>{thePackage?.duration} days membership</span>
+                  <span>{thePackage?.packages?.duration} days membership</span>
                 </li>
                 <li className="flex items-center space-x-4">
                   <CircleCheck className="text-Primary" />
@@ -59,13 +76,13 @@ const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
                 <li className="flex items-center space-x-4">
                   <div>
                     <h4>Object: </h4>
-                    <span>{thePackage?.suitableFor}</span>
+                    <span>{thePackage?.packages?.suitableFor}</span>
                   </div>
                 </li>
                 <li className="flex items-center space-x-4">
                   <div>
                     <h4>Description: </h4>
-                    <span>{thePackage?.description}</span>
+                    <span>{thePackage?.packages?.description}</span>
                   </div>
                 </li>
               </ul>
@@ -80,7 +97,14 @@ const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
         <div className="border h-fit md:w-[26%] p-3">
           <div className="flex flex-col gap-3">
             <div>
-              Price: <strong>{thePackage?.price}$</strong>
+              Price:{" "}
+              <strong>
+                {calculatePrice(
+                  thePackage?.packages?.price,
+                  sumDiscount(thePackage?.discount)
+                )}
+                $
+              </strong>
             </div>
             <div>
               Discound: <strong>100000đ</strong>

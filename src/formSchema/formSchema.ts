@@ -173,3 +173,21 @@ export const packageRule = z.object({
   ]),
   stock: z.union([z.number().optional(), z.string().optional()]),
 });
+
+export const discountRule = z.object({
+  name: z
+    .string()
+    .min(1, "Name is required")
+    .max(30, "Name must be less than 120 characters"),
+  percent: z.union([
+    z.number().min(0, "Percent must be a non-negative number"),
+    z.number().max(100, "Percent must be a smaller than 100"),
+    z.string().regex(/^\d+$/, "Percent must be a valid number"),
+  ]),
+  validFrom: z.union([z.date(), z.string()]),
+  validTo: z.union([z.date(), z.string()]),
+  description: z.string().optional(),
+  packages: z.array(z.string()).refine((value) => value.some((item) => item), {
+    message: "You have to select at least one item.",
+  }),
+});

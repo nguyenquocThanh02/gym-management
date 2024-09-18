@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import NavbarManage from "@/components/layout/navbarManage.layout";
 import HeaderManage from "@/components/layout/headerManage.layout";
 import {
+  BadgeDollarSign,
   ChartLine,
   Dumbbell,
+  FileQuestion,
   Home,
   Package,
   PersonStanding,
@@ -53,6 +55,16 @@ export default function Layout({
       href: "/admin/manage-personal-trainer",
       name: "Personal Trainer Management",
       icon: <PersonStanding className="h-5 w-5" />,
+    },
+    {
+      href: "/admin/manage-discount",
+      name: "Discount Management",
+      icon: <BadgeDollarSign className="h-5 w-5" />,
+    },
+    {
+      href: "/admin/manage-q&a",
+      name: "Q&A Management",
+      icon: <FileQuestion className="h-5 w-5" />,
     },
   ];
 
