@@ -19,6 +19,14 @@ export const PackageApis = {
       return error;
     }
   },
+  getAllPackageName: async () => {
+    try {
+      const response = await noAuthInstance.get("/package/get-all-name");
+      return response;
+    } catch (error) {
+      return error;
+    }
+  },
   getPopularPackage: async () => {
     try {
       const response = await noAuthInstance.get("/package/get-popular");

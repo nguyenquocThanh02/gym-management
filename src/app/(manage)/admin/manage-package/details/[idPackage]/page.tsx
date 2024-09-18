@@ -50,7 +50,7 @@ export default function DetailPackage({
       </div>
       <DetailsPackageForm
         key={Date.now()}
-        data={data?.data}
+        data={data?.data?.packages}
         id={params.idPackage}
       />
     </section>

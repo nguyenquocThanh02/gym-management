@@ -3,7 +3,7 @@ import React from "react";
 import CardPackage from "./cardPackage.component";
 import { PackageApis } from "@/services";
 import { useQuery } from "@tanstack/react-query";
-import { typePackage } from "@/types";
+import { typePackage, typeResponsePackage } from "@/types";
 
 const PopularPackages = () => {
   const { data, isLoading } = useQuery<any>({
@@ -11,7 +11,7 @@ const PopularPackages = () => {
     queryFn: PackageApis.getPopularPackage,
   });
 
-  const arrs: typePackage[] = data?.data || [];
+  const arrs: typeResponsePackage[] = data?.data || [];
 
   return (
     <div className="flex flex-col lg:flex-row justify-center items-center gap-5 py-10">

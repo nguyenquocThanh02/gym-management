@@ -34,7 +34,7 @@ import {
 import { Badge } from "../ui/badge";
 import { Textarea } from "../ui/textarea";
 import FileInputCustom from "../custom/fileInput.custom";
-import { typeDevice, typePackage } from "@/types";
+import { typeDevice, typePackage, typeResponsePackage } from "@/types";
 import { DeviceApis, PackageApis } from "@/services";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { cn } from "@/lib/utils";
