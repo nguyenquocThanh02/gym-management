@@ -1,7 +1,6 @@
 import mainInstance from "@/axios/main.axios";
 import noAuthInstance from "@/axios/no-auth.axios";
 import { typePT } from "@/types/pt.type";
-import { error } from "console";
 
 export const PTApis = {
   getDetailsUser: async (ptId: string) => {

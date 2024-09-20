@@ -10,3 +10,11 @@ export type typeAccount = {
   status?: "active" | "block";
   createdAt?: string;
 };
+
+export type typeInforUser = {
+  _id?: string;
+  fullName?: string;
+  email: string;
+  phone?: string;
+  timeStart?: Date | string;
+};

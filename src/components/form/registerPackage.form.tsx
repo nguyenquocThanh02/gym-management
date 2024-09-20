@@ -20,25 +20,23 @@ import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { Calendar } from "../ui/calendar";
 import { ScrollArea } from "../ui/scroll-area";
+import mainStore from "@/store/main.store";
 
 const RegisterPackage = () => {
+  const { setConformInfor } = mainStore();
+  const { inforUser, setInforUser } = mainStore();
+
   const form = useCreateForm(registerPackageRule, {
-    fullname: "",
-    email: "",
-    phone: "",
-    timestart: "",
+    fullName: inforUser?.fullName || "",
+    email: inforUser?.email || "",
+    phone: String(inforUser?.phone) || "",
+    timeStart: inforUser?.timeStart,
   });
 
   async function onSubmit(values: z.infer<typeof registerPackageRule>) {
-    // try {
-    //   const result = await AuthenApis.login({
-    //     email: "thanh@gmail.com",
-    //     password: "123456",
-    //   });
-    //   console.log("thanh", result);
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    console.log(values);
+    setInforUser(values);
+    setConformInfor();
   }
   return (
     <div>
@@ -48,7 +46,7 @@ const RegisterPackage = () => {
             <div className="flex flex-col gap-3">
               <FormField
                 control={form.control}
-                name="fullname"
+                name="fullName"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Fullname</FormLabel>
@@ -100,7 +98,7 @@ const RegisterPackage = () => {
 
               <FormField
                 control={form.control}
-                name="timestart"
+                name="timeStart"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
                     <FormLabel>Date Start</FormLabel>

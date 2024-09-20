@@ -1,3 +1,4 @@
+import { typeInforUser, typePackage, typeResponsePackage } from "@/types";
 import { create } from "zustand";
 
 interface Room {
@@ -7,33 +8,55 @@ interface Room {
 
 interface StoreState {
   chatOpen: boolean;
+  conformInfor: boolean;
   chats: { [key: string]: any };
   friendInfo: { [key: string]: any };
+  inforUser: typeInforUser;
+  inforPackage: typeResponsePackage;
   listRooms: Room[];
 }
 
 interface StoreActions extends StoreState {
   setChatOpen: () => void;
+  setConformInfor: () => void;
   setChats: (newChats: { [key: string]: any }) => void;
   setFriendInfo: (newFriend: { [key: string]: any }) => void;
   addRoomIntoList: (newRoom: Room) => void;
   updateRoomInList: (updatedRoom: Room) => void;
+  setInforUser: (inforUser: typeInforUser) => void;
+  setInforPackage: (newPackage: typeResponsePackage) => void;
   removeRoomFromList: (roomId: string) => void;
 }
 
 const mainStore = create<StoreActions>((set) => ({
   chats: {},
   chatOpen: false,
+  conformInfor: true,
   friendInfo: {},
+  inforUser: {
+    email: "",
+    phone: "",
+  },
+  inforPackage: {
+    packages: {
+      _id: "",
+      name: "",
+      price: "",
+      duration: "",
+    },
+  },
   listRooms: [],
 
   setFriendInfo: (newFriend) => set({ friendInfo: { ...newFriend } }),
 
   setChatOpen: () => set((state) => ({ chatOpen: !state.chatOpen })),
+  setConformInfor: () => set((state) => ({ conformInfor: false })),
 
   setChats: (newChats) =>
     set((state) => ({ chats: { ...state.chats, ...newChats } })),
 
+  setInforUser: (infor) => set(() => ({ inforUser: infor })),
+  setInforPackage: (newPackage) => set(() => ({ inforPackage: newPackage })),
   addRoomIntoList: (newRoom) =>
     set((state) => {
       // Kiểm tra nếu phòng đã tồn tại trong danh sách

@@ -75,8 +75,8 @@ export const emailRule = z.object({
 });
 
 export const registerPackageRule = z.object({
-  fullname: z.optional(z.string()),
-  timestart: z.optional(z.string()),
+  fullName: z.optional(z.string()),
+  timeStart: z.union([z.date(), z.string(), z.number()]),
   email: z
     .string()
     .trim()
