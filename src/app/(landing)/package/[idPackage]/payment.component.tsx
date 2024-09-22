@@ -2,6 +2,7 @@ import ButtonCustom from "@/components/custom/button.custom";
 import WaitingLayout from "@/components/layout/waiting.layout";
 import { Button } from "@/components/ui/button";
 import {
+  Dialog,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -12,18 +13,17 @@ import {
 import { localStorageKey } from "@/constants/localStorage";
 import { RegisterTrackingApis } from "@/services";
 import mainStore from "@/store/main.store";
-import { typeRegisterTracking } from "@/types";
-import { Dialog } from "@radix-ui/react-dialog";
-import { Switch } from "@radix-ui/react-switch";
+import { typePayment, typeRegisterTracking } from "@/types";
 import React, { useState } from "react";
-import { toast } from "sonner";
+import { toast, Toaster } from "sonner";
+import { PayPalButton } from "react-paypal-button-v2";
+import { Switch } from "@/components/ui/switch";
 
 const PaymentRegister = () => {
-  const { inforUser, inforPackage } = mainStore();
+  const { inforUser, inforPackage, confirmInforRegister } = mainStore();
   const [open, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
-  const [isPaid, setIsPaid] = useState<boolean>(false);
-  const [paymentMethod, setPaymentMethod] = useState<string>("offline");
+  const [paypal, setPaypal] = useState<boolean>(false);
 
   const sumDiscount = (arrs): number => {
     let sum = 0;
@@ -37,17 +37,14 @@ const PaymentRegister = () => {
     return Number((price * (100 - discount)) / 100);
   };
 
-  const handleTimeDate = (
-    timeStart: any,
-    duration: number | string
-  ): string => {
+  const handleTimeDate = (timeStart: any, duration: number | string) => {
     const timeEnd = new Date(
       new Date(timeStart).getTime() + Number(duration) * 24 * 60 * 60 * 1000
     );
     return timeEnd;
   };
 
-  const handleRegisterTracking = async () => {
+  const handleRegisterTracking = async (paypal: typePayment = {}) => {
     setLoading(true);
     const dataRegisterTracking: typeRegisterTracking = {
       package: {
@@ -69,16 +66,25 @@ const PaymentRegister = () => {
         idDiscount:
           inforPackage?.discount?.map((discount) => discount._id) || undefined,
       },
-      paymentMethod: paymentMethod,
+      payment: {
+        payerName: paypal?.payerName || undefined,
+        payerEmail: paypal?.payerEmail || undefined,
+        payerId: paypal?.payerId || undefined,
+        orderId: paypal?.orderId || undefined,
+      },
+      paymentMethod: paypal?.isPaid ? "paypal" : "offline",
       totalPrice: totalPrice(
         inforPackage?.packages?.price,
         sumDiscount(inforPackage?.discount)
       ),
-      isPaid: isPaid,
-      paidAt: isPaid ? Date.now() : undefined,
-      timeStart: inforUser?.timeStart,
+      isPaid: paypal?.isPaid || false,
+      paidAt: paypal?.paidAt || undefined,
+      timeStart: inforUser?.timeStart || new Date(Date.now()),
       timeEnd: new Date(
-        handleTimeDate(inforUser?.timeStart, inforPackage?.packages?.duration)
+        handleTimeDate(
+          inforUser?.timeStart || new Date(Date.now()),
+          inforPackage?.packages?.duration
+        )
       ),
     };
 
@@ -99,61 +105,101 @@ const PaymentRegister = () => {
     return <WaitingLayout />;
   }
   return (
-    <div>
+    <div className={confirmInforRegister ? "" : "hidden"}>
       <div className="mt-3 flex gap-3">
         Payment with paypal
-        <Switch className="" />
+        <Switch
+          className="bg-Primary"
+          checked={paypal}
+          onCheckedChange={() => setPaypal((a) => !a)}
+        />
       </div>
-      {/* <div className="">
-        {!true ? (
-          <Button className="w-full mt-4">Register</Button>
-        ) : (
-          <Button variant="ghost" className="w-full mt-4 border" disabled>
-            Register
-          </Button>
-        )}
-      </div> */}
+      {paypal ? (
+        <div className="relative">
+          <div className="absolute z-10 h-[104px] top-0 right-0 left-0 bg-Dark font-light flex items-center text-Light">
+            <i className="border border-Light p-1 text-sm opacity-80">
+              By using <strong>Paypal</strong>, you can make your payments more
+              easily. Click button to use payment with paypal.
+            </i>
+          </div>
+          <div className="relative !z-0">
+            <PayPalButton
+              amount={totalPrice(
+                inforPackage?.packages?.price,
+                sumDiscount(inforPackage?.discount)
+              )}
+              onSuccess={(details, data) => {
+                console.log("order Id: ", data, details);
 
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <ButtonCustom className="w-full mt-4">Register</ButtonCustom>
-        </DialogTrigger>
-        <DialogContent className="">
-          <DialogHeader>
-            <DialogTitle className="text-center">Card infor</DialogTitle>
-            <DialogDescription className="text-center">
-              This is your package. Click <strong>confirm</strong> to complete.
-            </DialogDescription>
-          </DialogHeader>
-          <hr />
-          <div className="flex justify-evenly gap-4">
-            <ul className="list-inside">
-              <h3 className="text-center font-semibold">Package: </h3>
-              <li>Name: {inforPackage?.packages?.name}</li>
-              <li>Price: {inforPackage?.packages?.price}</li>
-            </ul>
-            <ul>
-              <h3 className="text-center font-semibold">User: </h3>
-              <li>Name: {inforUser?.fullName}</li>
-              <li>Email: {inforUser?.email}</li>
-              <li>Phone: {inforUser?.phone}</li>
-            </ul>
+                return handleRegisterTracking({
+                  payerName: details?.payer?.name?.given_name,
+                  payerEmail: details?.payer?.email_address,
+                  payerId: details?.payer?.payer_id,
+                  orderId: data?.orderID,
+                  isPaid: true,
+                  paidAt: details?.create_time,
+                });
+              }}
+              onError={(error) => {
+                toast.error("Error: ", error);
+              }}
+              options={{
+                clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
+              }}
+            />
           </div>
-          <hr />
-          <div className="flex justify-center gap-3">
-            <Button
-              variant={"outline"}
-              className="border border-Dark/70"
-              onClick={() => setOpen(false)}
-            >
-              Cancel
-            </Button>
-            <Button onClick={handleRegisterTracking} type="submit">
-              Confirm
-            </Button>
+        </div>
+      ) : (
+        <div>
+          <div className="border border-Light p-1 font-light text-sm opacity-80 mt-4 mb-3">
+            <i className="">
+              By clicking <strong>Register</strong>, you will register tracking
+              with this information. You need to payment at Gymmax.
+            </i>
           </div>
-        </DialogContent>
-      </Dialog>
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild>
+              <ButtonCustom className="w-full mt-4">Register</ButtonCustom>
+            </DialogTrigger>
+            <DialogContent className="">
+              <DialogHeader>
+                <DialogTitle className="text-center">Card infor</DialogTitle>
+                <DialogDescription className="text-center">
+                  This is your package. Click <strong>confirm</strong> to
+                  complete.
+                </DialogDescription>
+              </DialogHeader>
+              <hr />
+              <div className="flex justify-evenly gap-4">
+                <ul className="list-inside">
+                  <h3 className="text-center font-semibold">Package: </h3>
+                  <li>Name: {inforPackage?.packages?.name}</li>
+                  <li>Price: {inforPackage?.packages?.price}</li>
+                </ul>
+                <ul>
+                  <h3 className="text-center font-semibold">User: </h3>
+                  <li>Name: {inforUser?.fullName}</li>
+                  <li>Email: {inforUser?.email}</li>
+                  <li>Phone: {inforUser?.phone}</li>
+                </ul>
+              </div>
+              <hr />
+              <div className="flex justify-center gap-3">
+                <Button
+                  variant={"outline"}
+                  className="border border-Dark/70"
+                  onClick={() => setOpen(false)}
+                >
+                  Cancel
+                </Button>
+                <Button onClick={() => handleRegisterTracking()} type="submit">
+                  Confirm
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div>
+      )}
     </div>
   );
 };

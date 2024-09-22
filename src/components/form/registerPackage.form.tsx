@@ -23,26 +23,29 @@ import { ScrollArea } from "../ui/scroll-area";
 import mainStore from "@/store/main.store";
 
 const RegisterPackage = () => {
-  const { setConformInfor } = mainStore();
-  const { inforUser, setInforUser } = mainStore();
+  const {
+    inforUser,
+    setInforUser,
+    confirmInforRegister,
+    setConfirmInforRegister,
+  } = mainStore();
 
   const form = useCreateForm(registerPackageRule, {
     fullName: inforUser?.fullName || "",
     email: inforUser?.email || "",
     phone: String(inforUser?.phone) || "",
-    timeStart: inforUser?.timeStart,
+    timeStart: inforUser?.timeStart || new Date(Date.now()),
   });
 
   async function onSubmit(values: z.infer<typeof registerPackageRule>) {
-    console.log(values);
     setInforUser(values);
-    setConformInfor();
+    setConfirmInforRegister(true);
   }
   return (
     <div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <ScrollArea className="h-[340px]">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 mt-5">
+          <ScrollArea className="h-[320px]">
             <div className="flex flex-col gap-3">
               <FormField
                 control={form.control}
@@ -136,7 +139,12 @@ const RegisterPackage = () => {
               />
             </div>
           </ScrollArea>
-          <ButtonCustom variant="custom" type="submit" className="w-full">
+
+          <ButtonCustom
+            variant="custom"
+            type="submit"
+            className={`w-full ${!confirmInforRegister ? "animate-pulse" : ""}`}
+          >
             Confirm
           </ButtonCustom>
         </form>

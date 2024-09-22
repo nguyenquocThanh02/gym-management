@@ -8,7 +8,7 @@ interface Room {
 
 interface StoreState {
   chatOpen: boolean;
-  conformInfor: boolean;
+  confirmInforRegister: boolean;
   chats: { [key: string]: any };
   friendInfo: { [key: string]: any };
   inforUser: typeInforUser;
@@ -18,7 +18,7 @@ interface StoreState {
 
 interface StoreActions extends StoreState {
   setChatOpen: () => void;
-  setConformInfor: () => void;
+  setConfirmInforRegister: (value: boolean) => void;
   setChats: (newChats: { [key: string]: any }) => void;
   setFriendInfo: (newFriend: { [key: string]: any }) => void;
   addRoomIntoList: (newRoom: Room) => void;
@@ -31,7 +31,7 @@ interface StoreActions extends StoreState {
 const mainStore = create<StoreActions>((set) => ({
   chats: {},
   chatOpen: false,
-  conformInfor: true,
+  confirmInforRegister: false,
   friendInfo: {},
   inforUser: {
     email: "",
@@ -50,7 +50,8 @@ const mainStore = create<StoreActions>((set) => ({
   setFriendInfo: (newFriend) => set({ friendInfo: { ...newFriend } }),
 
   setChatOpen: () => set((state) => ({ chatOpen: !state.chatOpen })),
-  setConformInfor: () => set((state) => ({ conformInfor: false })),
+  setConfirmInforRegister: (value) =>
+    set(() => ({ confirmInforRegister: value })),
 
   setChats: (newChats) =>
     set((state) => ({ chats: { ...state.chats, ...newChats } })),
