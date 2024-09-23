@@ -1,4 +1,5 @@
 export type typeRegisterTracking = {
+  _id?: string;
   package: {
     price: number | string;
     name: string;
@@ -13,6 +14,12 @@ export type typeRegisterTracking = {
   discount?: {
     priceDescrease?: number | string | 0;
     idDiscount?: string[];
+  };
+  payment?: {
+    payerName?: string;
+    payerEmail?: string;
+    payerId?: string;
+    orderId?: string;
   };
   paymentMethod: string;
   totalPrice: number | string;

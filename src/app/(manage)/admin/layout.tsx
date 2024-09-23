@@ -32,7 +32,7 @@ export default function Layout({
       icon: <ChartLine className="h-5 w-5" />,
     },
     {
-      href: "/admin/subscription-tracking",
+      href: "/admin/manage-register-tracking",
       name: "Subscription Tracking",
       icon: <ShoppingCart className="h-5 w-5" />,
     },
