@@ -16,6 +16,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import DetailsRegisterTrackingComponent from "./detailsRegisterTracking.component";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 const DetailsRegisterPackage = ({ params }: { params: { idRT: string } }) => {
   const route = useRouter();
@@ -45,13 +46,11 @@ const DetailsRegisterPackage = ({ params }: { params: { idRT: string } }) => {
       RegisterTrackingApis.getDetailsRegisterTracking(params?.idRT),
   });
 
-  console.log(params.idRT);
-  console.log(data);
   const registerTracking: typeRegisterTracking = data?.data || null;
 
   return (
     <section>
-      <div className="flex justify-between items-center w-full">
+      <div className="flex justify-between items-center w-full mb-2">
         <BreadcrumbCustom links={breadcrumbs} />
         <ButtonCustom onClick={handleBack}>Back</ButtonCustom>
       </div>
@@ -59,7 +58,9 @@ const DetailsRegisterPackage = ({ params }: { params: { idRT: string } }) => {
         <CardHeader>
           <CardTitle>
             Register tracking ID:{" "}
-            <span className="font-light">{registerTracking?._id}</span>
+            <Badge className="font-light text-base bg-slate-600">
+              {registerTracking?._id}
+            </Badge>
           </CardTitle>
           <CardDescription>
             You can view and start to payment for register tracking at here.

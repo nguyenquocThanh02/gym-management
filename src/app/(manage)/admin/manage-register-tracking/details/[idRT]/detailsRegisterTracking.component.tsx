@@ -149,7 +149,7 @@ const DetailsRegisterTrackingComponent: React.FC<{
               ID package:{" "}
               <Link
                 href={`/admin/manage-package/details/${data?.package?.idPackage}`}
-                className="border p-1 bg-slate-300 rounded-md"
+                className="border p-1 bg-slate-50 text-blue-500 rounded-md"
               >
                 {data?.package?.idPackage}
               </Link>
@@ -183,7 +183,7 @@ const DetailsRegisterTrackingComponent: React.FC<{
               ID user:{" "}
               <Link
                 href={`/admin/manage-user/details/${data?.user?.idUser}`}
-                className="border p-1 bg-slate-300 rounded-md"
+                className="border p-1 bg-slate-50 text-blue-500 rounded-md"
               >
                 {data?.user?.idUser}
               </Link>

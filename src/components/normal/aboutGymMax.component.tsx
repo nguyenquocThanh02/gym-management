@@ -13,7 +13,10 @@ const AboutGymMax = () => {
           Summary GymMax
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 my-10 bg-BgLight/30 items-center px-8">
-          <div className="flex lg:items-end flex-col justify-center">
+          <div
+            data-aos="fade-right"
+            className="flex lg:items-end flex-col justify-center"
+          >
             <Image
               src={gymView2}
               alt="view gym"
@@ -25,7 +28,7 @@ const AboutGymMax = () => {
               className="w-full lg:w-[200px] border lg:-translate-y-16 lg:translate-x-6"
             />
           </div>
-          <div className="col-span-2">
+          <div data-aos="fade-left" className="col-span-2">
             <h3 className="text-bold text-2xl mb-5">About GymMax</h3>
             <p className="text-justify italic leading-relaxed">
               GymMax was established in early 2024, with two branches located in

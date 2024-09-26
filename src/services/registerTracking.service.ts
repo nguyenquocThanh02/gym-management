@@ -11,6 +11,16 @@ export const RegisterTrackingApis = {
       return e;
     }
   },
+  cancelRegisterTracking: async (id: string) => {
+    try {
+      const response = await mainInstance.put(
+        `/register-tracking/cancel/${id}`
+      );
+      return response;
+    } catch (e) {
+      return e;
+    }
+  },
   paymentRegisterTracking: async (id: string) => {
     try {
       const response = await mainInstance.put(
