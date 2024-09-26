@@ -18,7 +18,7 @@ export type typePackage = {
 
 export type typeResponsePackage = {
   packages: typePackage;
-  discount?: typeDiscount;
+  discount?: typeDiscount[];
 };
 
 export type typePackageName = {

@@ -26,7 +26,7 @@ export default function CarouselTrainer() {
   const arrs: typePT[] = data?.data || [];
 
   return (
-    <div className="w-full flex justify-center py-5">
+    <div data-aos="fade-up" className="w-full flex justify-center py-5">
       <Carousel className="w-full max-w-5xl" plugins={[plugin.current]}>
         <CarouselContent className="-ml-1">
           {arrs.map((item, index) => (

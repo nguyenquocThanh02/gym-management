@@ -21,7 +21,10 @@ export default function Home() {
       <div className="relative">
         <Video />
         <div className="absolute bottom-0 right-0 top-0 left-0 bg-Dark opacity-20 transition-opacity duration-300"></div>
-        <div className="hidden lg:flex absolute top-[100px] left-10 w-fit h-fit p-2 border border-Light rounded bg-Light/10 text-shadow">
+        <div
+          data-aos="fade-up"
+          className="hidden lg:flex  absolute top-[100px] left-10 w-fit h-fit p-2 border border-Light rounded bg-Light/10 text-shadow"
+        >
           <div>
             🌟 Discover GymMax – Your Destination for a Better Body 🌟
             <ul className="text-left ml-3 leading-relaxed">
@@ -37,7 +40,10 @@ export default function Home() {
           </div>
         </div>
         <ActiveDiscount />
-        <div className="absolute w-full bottom-3 xl:bottom-[108px] left-8 text-shadow opacity-90 transition-opacity duration-300">
+        <div
+          data-aos="fade-right"
+          className="absolute w-full bottom-3 xl:bottom-[108px] left-8 text-shadow opacity-90 transition-opacity duration-300"
+        >
           <h1 className="xl:text-[260px] text-4xl font-extrabold">
             Gym
             <span className="text-Primary ">Max</span>

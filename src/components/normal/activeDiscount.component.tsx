@@ -19,6 +19,7 @@ const ActiveDiscount = () => {
         {activeDiscount.length > 0 &&
           activeDiscount?.map((item, index) => (
             <ul
+              data-aos="fade-right"
               key={index}
               className="text-left leading-relaxed space-y-1 border border-Light rounded bg-Light/10 w-[160px] p-3"
             >

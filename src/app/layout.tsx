@@ -4,6 +4,7 @@ import "./globals.css";
 import ReactQueryProvider from "@/react-query.provider";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
+import AOSProvider from "./aos.provider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -28,7 +29,7 @@ export default function RootLayout({
         <body
           className={cn("min-h-screen font-sans antialiased", poppins.variable)}
         >
-          {children}
+          <AOSProvider>{children}</AOSProvider>
           <Toaster position="bottom-center" expand={true} richColors />
         </body>
       </ReactQueryProvider>

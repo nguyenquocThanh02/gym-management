@@ -40,11 +40,8 @@ const Interactive: React.FC = () => {
     }
 
     const unSub = onSnapshot(doc(db, "messages", roomId), (res) => {
-      console.log(res?.data().messages);
       setChats({ [roomId]: res.data()?.messages });
       setFriendInfo({ name: "thanh" });
-      console.log("firend:  ", friendInfo?.name);
-      console.log("cagat:  ", chats[roomId]);
     });
     return () => {
       unSub();
