@@ -1,6 +1,7 @@
 import mainInstance from "@/axios/main.axios";
 import noAuthInstance from "@/axios/no-auth.axios";
 import { typeRegisterTracking } from "@/types";
+import { Month } from "date-fns";
 
 export const RegisterTrackingApis = {
   addRegisterTracking: async (data: typeRegisterTracking) => {
@@ -53,6 +54,26 @@ export const RegisterTrackingApis = {
     try {
       const response = await mainInstance.get(
         `/register-tracking/get-all-of-user/${idUser}`
+      );
+      return response;
+    } catch (e) {
+      return e;
+    }
+  },
+  getChartDate: async (data: string | Date) => {
+    try {
+      const response = await mainInstance.get(
+        `/register-tracking/get-chart-date/${data}`
+      );
+      return response;
+    } catch (e) {
+      return e;
+    }
+  },
+  getChartMonth: async (data: string | Month) => {
+    try {
+      const response = await mainInstance.get(
+        `/register-tracking/get-chart-month/${data}`
       );
       return response;
     } catch (e) {
