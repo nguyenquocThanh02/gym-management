@@ -3,9 +3,16 @@ import React, { RefObject, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import logo from "@/assets/img/logo.png";
 import Image from "next/image";
-import { AlignJustify, ChevronDown } from "lucide-react";
+import {
+  AlignJustify,
+  ChevronDown,
+  LogOut,
+  Package,
+  ScrollText,
+  UserPen,
+} from "lucide-react";
 import HeaderDetail from "./headerDetail.layout";
-import { typeNavBar } from "@/types/navbar.type";
+import { typeFunctionNav, typeNavBar } from "@/types/navbar.type";
 import ButtonCustom from "../custom/button.custom";
 
 import {
@@ -14,11 +21,25 @@ import {
   HoverCardTrigger,
 } from "../ui/hover-card";
 import { Button } from "../ui/button";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { localStorageKey } from "@/constants/localStorage";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { useQuery } from "@tanstack/react-query";
+import { UserApis } from "@/services";
+import { typeAccount } from "@/types";
 
 const Header = () => {
   const headerRef: RefObject<HTMLDivElement> = useRef(null);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+
+  const idUser = localStorage.getItem(localStorageKey?.userId) || "";
+  const route = useRouter();
+
+  const { data: userData } = useQuery({
+    queryKey: ["user"],
+    queryFn: () => UserApis?.getDetailsUser(idUser),
+  });
+  const theUser: typeAccount = userData?.data || null;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,7 +86,33 @@ const Header = () => {
     },
   ];
 
+  const functionNavs: typeFunctionNav[] = [
+    {
+      name: "My register tracking",
+      path: "/register-tracking",
+      icon: <Package size={18} />,
+    },
+    {
+      name: "My artical",
+      path: "/artical/of-user",
+      icon: <ScrollText size={18} />,
+    },
+    {
+      name: "Profile",
+      path: "/profile",
+      icon: <UserPen size={18} />,
+    },
+  ];
+
   const paramPath = usePathname();
+
+  const handleLogout = () => {
+    localStorage.removeItem(localStorageKey?.accessToken);
+    localStorage.removeItem(localStorageKey?.refreshToken);
+    localStorage.removeItem(localStorageKey?.userId);
+    localStorage.removeItem(localStorageKey?.roomId);
+    window.location.reload();
+  };
 
   return (
     <>
@@ -131,15 +178,54 @@ const Header = () => {
                   )
                 )}
               </div>
-
-              <div className="flex flex-col lg:gap-2 lg:flex-row gap-y-4 lg:items-center ml-auto justify-center">
-                <ButtonCustom className="" variant="custom">
-                  <Link href={"/login"}>Login</Link>
-                </ButtonCustom>
-                <ButtonCustom className="" variant="custom">
-                  <Link href={"/register"}>Register</Link>
-                </ButtonCustom>
-              </div>
+              {theUser ? (
+                <div className="ml-auto flex items-center">
+                  <HoverCard openDelay={0}>
+                    <HoverCardTrigger asChild>
+                      <Button
+                        variant={"ghost"}
+                        className="flex gap-2 hover:bg-inherit hover:text-Light hover:opacity-85"
+                      >
+                        <Avatar className="border">
+                          <AvatarImage src={theUser?.avatar} />
+                          <AvatarFallback className="text-Dark/80">
+                            Avatar
+                          </AvatarFallback>
+                        </Avatar>
+                        <h4 className="border rounded-lg p-0.5">
+                          {theUser?.accountName}
+                        </h4>
+                      </Button>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="mt-4 bg-BgDark/95">
+                      <ul className="text-Light flex flex-col gap-2">
+                        {functionNavs?.map((item, index) => (
+                          <Link href={item?.path} key={index}>
+                            <li className="flex items-center gap-2 hover:opacity-80">
+                              {item?.icon}
+                              {item?.name}
+                            </li>
+                          </Link>
+                        ))}
+                        <hr />
+                        <li className="flex items-center gap-2 hover:opacity-80">
+                          <LogOut size={18} />
+                          <button onClick={handleLogout}>Log out</button>
+                        </li>
+                      </ul>
+                    </HoverCardContent>
+                  </HoverCard>
+                </div>
+              ) : (
+                <div className="flex flex-col lg:gap-2 lg:flex-row gap-y-4 lg:items-center ml-auto justify-center">
+                  <ButtonCustom className="" variant="custom">
+                    <Link href={"/login"}>Login</Link>
+                  </ButtonCustom>
+                  <ButtonCustom className="" variant="custom">
+                    <Link href={"/register"}>Register</Link>
+                  </ButtonCustom>
+                </div>
+              )}
             </div>
           </div>
         </div>

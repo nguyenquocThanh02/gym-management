@@ -5,6 +5,10 @@ import ReactQueryProvider from "@/react-query.provider";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
 import AOSProvider from "./aos.provider";
+import Script from "next/script";
+import "@/styles/index.css";
+import "ckeditor5/ckeditor5.css";
+import "ckeditor5-premium-features/ckeditor5-premium-features.css";
 
 const poppins = Poppins({
   subsets: ["latin"],

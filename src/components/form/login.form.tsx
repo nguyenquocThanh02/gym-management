@@ -18,7 +18,6 @@ import { AuthenApis } from "@/services/auth.service";
 import { localStorageKey } from "@/constants/localStorage";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import HeroSection from "../normal/heroSection.component";
 import WaitingLayout from "../layout/waiting.layout";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/firebases/firebase";
@@ -42,9 +41,7 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
     setIsLoading(true);
     try {
       const result = await AuthenApis.login(values, role);
-      console.log("result>>", result);
       if (result?.status === "200") {
-        console.log("success");
         localStorage.setItem(localStorageKey.accessToken, result?.access_token);
         localStorage.setItem(
           localStorageKey.refreshToken,
@@ -60,7 +57,7 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
         // console.log("arr>>>", querySnapshot);
         // const theUser = querySnapshot?.docs[0].data() || null;
         // console.log(theUser);
-        getDocs(q)
+        await getDocs(q)
           .then((querySnapshot) => {
             const rooms = querySnapshot.docs.map((doc) => ({
               id: doc.id,
@@ -76,16 +73,20 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
             console.error("Error fetching room data:", err);
           });
         toast.success("Login successfully");
+
+        if (role === "admin") {
+          setTimeout(() => {
+            router.push("/admin");
+          }, 500);
+        } else if (role === "user") {
+          setTimeout(() => {
+            router.push("/");
+          }, 500);
+        }
         setIsLoading(false);
       } else {
         toast.error(result?.message);
         setIsLoading(false);
-      }
-
-      if (role === "admin") {
-        setTimeout(() => {
-          router.push("/admin");
-        }, 1000);
       }
     } catch (e) {
       toast.error(result?.message);
