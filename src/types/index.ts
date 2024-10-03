@@ -7,3 +7,4 @@ export * from "./package.type";
 export * from "./account.type";
 export * from "./questionAnswer.type";
 export * from "./registerTracking.type";
+export * from "./artical.type";

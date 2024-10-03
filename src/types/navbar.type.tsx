@@ -10,3 +10,9 @@ export type typeNavInfor = {
   path: string;
   detail: string;
 };
+
+export type typeFunctionNav = {
+  name: string;
+  path: string;
+  icon: React.ReactElement;
+};

@@ -8,11 +8,10 @@ import Video from "@/components/custom/video.custom";
 import LinkArrow from "@/components/custom/linkArrow.custom";
 import AboutGymMax from "@/components/normal/aboutGymMax.component";
 import CarouselTrainer from "@/components/normal/carouselCardTrainer.component";
-import CardPackage from "@/components/normal/cardPackage.component";
 import HeroSection from "@/components/normal/heroSection.component";
-import { Check } from "lucide-react";
 import PopularPackages from "@/components/normal/popularPackage.component";
 import ActiveDiscount from "@/components/normal/activeDiscount.component";
+import NewArticals from "@/components/normal/newArtical.component";
 export default function Home() {
   return (
     <section className="overflow-hidden bg-BgDark text-Light">
@@ -116,6 +115,23 @@ export default function Home() {
         <GalleryDevice />
         <LinkArrow href="/devices">See more</LinkArrow>
       </div>
+      <div className="l-container my-10">
+        <h2 className="text-Primary text-shadow text-center text-3xl font-bold mb-5">
+          New articals
+        </h2>
+        <p className="text-center italic text-lg bg-BgLight/30 p-3">
+          Welcome to our health and fitness section, where we provide valuable
+          insights on gym workouts and nutrition. Discover effective exercise
+          routines to boost your performance and expert tips on maintaining a
+          balanced diet. Join us on your journey to a healthier lifestyle!
+        </p>
+        <div className="my-6">
+          <NewArticals />
+        </div>
+
+        <LinkArrow href="/artical">See more</LinkArrow>
+      </div>
+
       <Footer />
     </section>
   );

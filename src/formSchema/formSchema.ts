@@ -191,3 +191,18 @@ export const discountRule = z.object({
     message: "You have to select at least one item.",
   }),
 });
+
+export const articalRule = z.object({
+  title: z.string().min(1).max(100),
+  description: z.string().max(500),
+  coverImage: z.any().refine(
+    (files) => {
+      return Array.from(files).every((file) => file instanceof File);
+    },
+    { message: "Expected a file" }
+  ),
+});
+
+export const statusChangeArticalRule = z.object({
+  statusChange: z.string(),
+});

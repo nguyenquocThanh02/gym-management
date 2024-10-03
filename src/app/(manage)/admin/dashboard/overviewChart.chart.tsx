@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/chart";
 import { useQuery } from "@tanstack/react-query";
 import { RegisterTrackingApis } from "@/services";
+import MyEditor from "@/components/custom/MyEditor.custom";
 
 const chartConfig = {
   views: {
@@ -67,6 +68,7 @@ export default function OverviewChart() {
         onChange={(e) => setTheMonth(e.target.value)}
         className="p-1 my-2 border rounded-md"
       />
+
       <Card>
         <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
           <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">

@@ -27,8 +27,6 @@ const Interactive: React.FC = () => {
 
   const { chats } = mainStore();
   const setChats = mainStore((state) => state.setChats);
-  const setFriendInfo = mainStore((state) => state?.setFriendInfo);
-  const friendInfo = mainStore((state) => state?.friendInfo);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -41,7 +39,6 @@ const Interactive: React.FC = () => {
 
     const unSub = onSnapshot(doc(db, "messages", roomId), (res) => {
       setChats({ [roomId]: res.data()?.messages });
-      setFriendInfo({ name: "thanh" });
     });
     return () => {
       unSub();

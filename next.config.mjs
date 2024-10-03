@@ -32,6 +32,11 @@ const nextConfig = {
         hostname: "images.unsplash.com",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.ckbox.io",
+        pathname: "/ckbox/latest/**",
+      },
     ],
   },
 };

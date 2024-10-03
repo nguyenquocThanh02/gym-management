@@ -9,6 +9,7 @@ import {
   Home,
   Package,
   PersonStanding,
+  ScrollText,
   ShoppingCart,
   Users2,
 } from "lucide-react";
@@ -65,6 +66,11 @@ export default function Layout({
       href: "/admin/manage-q&a",
       name: "Q&A Management",
       icon: <FileQuestion className="h-5 w-5" />,
+    },
+    {
+      href: "/admin/manage-artical",
+      name: "Artical Management",
+      icon: <ScrollText className="h-5 w-5" />,
     },
   ];
 

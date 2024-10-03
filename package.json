@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^43.1.1",
+    "@ckeditor/ckeditor5-react": "^9.3.0",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-avatar": "^1.1.0",
@@ -29,6 +31,9 @@
     "@tanstack/react-table": "^8.20.1",
     "aos": "^2.3.4",
     "axios": "^1.7.2",
+    "ckeditor5": "^43.1.1",
+    "ckeditor5-build-classic": "^1.0.0",
+    "ckeditor5-premium-features": "^43.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^0.2.1",
