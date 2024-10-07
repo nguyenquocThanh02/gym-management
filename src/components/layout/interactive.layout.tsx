@@ -18,6 +18,9 @@ import { db } from "@/firebases/firebase";
 import { localStorageKey } from "@/constants/localStorage";
 import InputChat from "../normal/inputChat.component";
 import { toast } from "sonner";
+import { Tooltip, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
+import { TooltipContent } from "@radix-ui/react-tooltip";
+import { Badge } from "../ui/badge";
 
 const Interactive: React.FC = () => {
   const openChat = mainStore((state) => state.chatOpen);
@@ -65,7 +68,18 @@ const Interactive: React.FC = () => {
             </Button>
           </li>
           <li className="flex justify-center animate-tada items-center rounded-full border border-Primary w-14 h-14 mt-3">
-            <PhoneCall size={32} color="red" />
+            <TooltipProvider delayDuration={0}>
+              <Tooltip>
+                <TooltipTrigger>
+                  <PhoneCall size={32} color="red" />
+                </TooltipTrigger>
+                <TooltipContent side="left" className="mr-4">
+                  <Badge variant={"secondary"} className="text-xl">
+                    0779228856
+                  </Badge>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </li>
         </ul>
       </div>
@@ -74,8 +88,8 @@ const Interactive: React.FC = () => {
         className={cn(
           "z-20 fixed bottom-0 right-0 w-full h-3/4 md:w-1/3 bg-BgLight",
           {
-            "animate-accordion-up": openChat,
-            "animate-accordion-down hidden": !openChat,
+            "transition-all duration-500": openChat,
+            "transition-all duration-500 hidden": !openChat,
           }
         )}
       >

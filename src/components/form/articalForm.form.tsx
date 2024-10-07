@@ -20,10 +20,12 @@ import { typeArtical } from "@/types";
 import { localStorageKey } from "@/constants/localStorage";
 import { toast } from "sonner";
 import WaitingLayout from "../layout/waiting.layout";
+import { useRouter } from "next/navigation";
 
 const ArticalForm: React.FC<{
   editorData: String;
 }> = ({ editorData }) => {
+  const route = useRouter();
   const userId = localStorage.getItem(localStorageKey?.userId) || "";
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -39,7 +41,6 @@ const ArticalForm: React.FC<{
       const storageRef = ref(storage, "images/" + values?.coverImage?.name);
       await uploadBytes(storageRef, values?.coverImage);
       linkImage = await getDownloadURL(storageRef);
-      console.log(linkImage);
     }
 
     const dataAddArtical: typeArtical = {
@@ -55,6 +56,7 @@ const ArticalForm: React.FC<{
     if (result?.status === 201) {
       toast.success("Create a new artical successfuly");
       form.reset();
+      route.push("/artical/of-user");
     } else {
       toast.error("Error: ", result?.message);
     }

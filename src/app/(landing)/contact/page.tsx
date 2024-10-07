@@ -1,13 +1,25 @@
+import { BreadcrumbCustom } from "@/components/custom/breadscrumb.custom";
 import { Mail, MapPin, Phone } from "lucide-react";
 import React from "react";
 
 const Contact = () => {
+  const breadcrumbs = [
+    {
+      link: "/",
+      name: "Home",
+    },
+    {
+      link: "/contact",
+      name: "Contact",
+    },
+  ];
   return (
-    <div className="l-container">
+    <div className="l-container mb-10">
+      <BreadcrumbCustom links={breadcrumbs} />
       <h1 className="text-center font-bold text-2xl md:text-4xl">Contact</h1>
 
       <div className="w-full flex flex-col  justify-center items-center gap-8 pt-8">
-        <ul className="flex flex-col gap-4">
+        <ul className="w-full flex flex-col gap-4 border rounded-lg p-5 text-center">
           <li className="flex gap-3">
             <Phone />
             0779123499

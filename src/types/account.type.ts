@@ -4,7 +4,7 @@ export type typeAccount = {
   accountName?: string;
   email: string;
   role?: "admin" | "user" | "trainee";
-  phone?: number;
+  phone?: number | string;
   dateOfBirth?: string;
   avatar?: string;
   status?: "active" | "block";
@@ -17,4 +17,10 @@ export type typeInforUser = {
   email: string;
   phone?: string;
   timeStart?: Date | string;
+};
+
+export type typeChangePassword = {
+  password: string;
+  newPassword: string;
+  confirmNewPassword: string;
 };

@@ -81,13 +81,14 @@ export function DataTable<TData, TValue>({
           }
           className="max-w-sm"
         />
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
               variant="outline"
               className="ml-auto border-Primary border text-Primary hover:text-Primary"
             >
-              Columns <ChevronDown className="ml-2 mt-[3px] h-4 w-4" />
+              Views <ChevronDown className="ml-2 mt-[3px] h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">

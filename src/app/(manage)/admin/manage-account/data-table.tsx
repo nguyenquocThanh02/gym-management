@@ -31,7 +31,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ChevronDown, ChevronsDownIcon } from "lucide-react";
+import { ChevronDown, ChevronsDownIcon, Filter } from "lucide-react";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 interface DataTableProps<TData, TValue> {
@@ -70,6 +70,10 @@ export function DataTable<TData, TValue>({
     },
   });
 
+  const myState = Array.from(
+    new Map(data.map((item) => [item?.status, item])).keys()
+  );
+
   return (
     <div className="w-full overflow-hidden">
       <div className="flex items-center py-4">
@@ -83,35 +87,67 @@ export function DataTable<TData, TValue>({
           }
           className="max-w-sm"
         />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="outline"
-              className="ml-auto border-Primary border text-Primary hover:text-Primary"
-            >
-              Columns <ChevronDown className="ml-2 mt-[3px] h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
+        <div className="ml-auto">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="outline"
+                className="mr-2 border-Primary border text-Primary hover:text-Primary"
+              >
+                State <Filter className="ml-2 mt-[3px] h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {myState?.map((value, index) => {
                 return (
                   <DropdownMenuCheckboxItem
-                    key={column.id}
+                    key={index}
                     className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
+                    checked={
+                      table.getColumn("status")?.getFilterValue() === value
                     }
+                    onCheckedChange={(checked) => {
+                      table
+                        .getColumn("status")
+                        ?.setFilterValue(checked ? value : undefined);
+                    }}
                   >
-                    {column.id}
+                    {value}
                   </DropdownMenuCheckboxItem>
                 );
               })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="outline"
+                className="ml-auto border-Primary border text-Primary hover:text-Primary"
+              >
+                Views <ChevronDown className="ml-2 mt-[3px] h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {table
+                .getAllColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => {
+                  return (
+                    <DropdownMenuCheckboxItem
+                      key={column.id}
+                      className="capitalize"
+                      checked={column.getIsVisible()}
+                      onCheckedChange={(value) =>
+                        column.toggleVisibility(!!value)
+                      }
+                    >
+                      {column.id}
+                    </DropdownMenuCheckboxItem>
+                  );
+                })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
       <div className="rounded-md border shadow">
         <ScrollArea className="w-80 p-2 sm:w-full whitespace-nowrap rounded-md border">

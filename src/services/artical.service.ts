@@ -19,6 +19,16 @@ export const ArticalApis = {
       return error;
     }
   },
+  getArticalsOfUser: async (id: string, status: string) => {
+    try {
+      const response = await mainInstance.get(
+        `/artical/get-of-user/${id}/${status}`
+      );
+      return response;
+    } catch (error) {
+      return error;
+    }
+  },
   getNewArticals: async () => {
     try {
       const response = await noAuthInstance.get(`/artical/get-new`);

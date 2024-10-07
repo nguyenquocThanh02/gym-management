@@ -84,7 +84,9 @@ export const columns: ColumnDef<typeArtical>[] = [
     accessorKey: "description",
     header: "description",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("description")}</div>
+      <div className="capitalize truncate max-w-sm">
+        {row.getValue("description")}
+      </div>
     ),
   },
 

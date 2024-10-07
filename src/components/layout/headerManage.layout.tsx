@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, Search } from "lucide-react";
@@ -11,11 +12,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import React from "react";
 
 import logo from "@/assets/img/logo.png";
+import { localStorageKey } from "@/constants/localStorage";
+import { useQuery } from "@tanstack/react-query";
+import { UserApis } from "@/services";
+import { typeAccount, typeInforUser } from "@/types";
+import { useRouter } from "next/navigation";
 type NavItem = {
   href: string;
   name: string;
@@ -27,6 +32,23 @@ type NavbarManageProps = {
 };
 
 const HeaderManage: React.FC<NavbarManageProps> = ({ navItems }) => {
+  const route = useRouter();
+  const idUser = localStorage.getItem(localStorageKey.userId) || "";
+  const role = localStorage.getItem(localStorageKey.role) || "";
+  const { data } = useQuery({
+    queryKey: ["admin"],
+    queryFn: () => UserApis.getDetailsUser(idUser),
+  });
+  const theUser: typeAccount = data?.data || null;
+
+  const handleLogout = () => {
+    localStorage.removeItem(localStorageKey.accessToken);
+    localStorage.removeItem(localStorageKey.refreshToken);
+    localStorage.removeItem(localStorageKey.userId);
+    localStorage.removeItem(localStorageKey.role);
+    route.push(`/login-${role}`);
+  };
+
   return (
     <>
       <header className="sticky top-0 flex h-14 items-center gap-4 border-b px-4 sm:static sm:h-auto sm:border-0 sm:px-6 sm:pt-2">
@@ -65,13 +87,8 @@ const HeaderManage: React.FC<NavbarManageProps> = ({ navItems }) => {
             Gym<strong className="text-Primary">Max</strong>
           </h3>
         </div>
-        <div className="relative ml-auto flex-1 md:grow-0">
-          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Search..."
-            className="w-full rounded-lg pl-8 md:w-[200px] lg:w-[320px]"
-          />
+        <div className="ml-auto flex-1 md:grow-0 text-shadow text-Light font-semibold text-lg">
+          {theUser?.accountName}
         </div>
         {/* accout admin or trainee */}
         <DropdownMenu>
@@ -82,7 +99,7 @@ const HeaderManage: React.FC<NavbarManageProps> = ({ navItems }) => {
               className="overflow-hidden rounded-full"
             >
               <Image
-                src="/placeholder-user.jpg"
+                src={theUser?.avatar}
                 width={36}
                 height={36}
                 alt="Avatar"
@@ -96,7 +113,7 @@ const HeaderManage: React.FC<NavbarManageProps> = ({ navItems }) => {
             <DropdownMenuItem>Settings</DropdownMenuItem>
             <DropdownMenuItem>Support</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Logout</DropdownMenuItem>
+            <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </header>

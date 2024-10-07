@@ -1,4 +1,5 @@
 "use client";
+import { BreadcrumbCustom } from "@/components/custom/breadscrumb.custom";
 import NewArticals from "@/components/normal/newArtical.component";
 import { Badge } from "@/components/ui/badge";
 import { ArticalApis } from "@/services";
@@ -13,10 +14,25 @@ const DetailsArtical = ({ params }: { params: { idArtical: string } }) => {
     queryFn: () => ArticalApis?.getDetailsArtical(params?.idArtical),
   });
 
+  const breadcrumbs = [
+    {
+      link: "/",
+      name: "Home",
+    },
+    {
+      link: "/artical",
+      name: "Articals",
+    },
+    {
+      link: "/#",
+      name: "Details",
+    },
+  ];
   return (
-    <div className="">
+    <div className="l-container">
+      <BreadcrumbCustom links={breadcrumbs} />
       {data?.data ? (
-        <div className="l-container bg-Light/10 py-3">
+        <div className="bg-Light/10 p-5">
           <h2 className="text-lg font-bold">{data?.data?.title}</h2>
           <div className="flex gap-3 mt-3">
             <Badge className="text-sm" variant={"secondary"}>
@@ -39,7 +55,7 @@ const DetailsArtical = ({ params }: { params: { idArtical: string } }) => {
           <h2>Have error when loading artical ${params?.idArtical}</h2>
         </div>
       )}
-      <div data-aos={"fade-up"} className="l-container my-10">
+      <div data-aos={"fade-up"} className="my-10">
         <h2 className="text-Primary text-shadow  text-3xl font-bold mb-2">
           New articals
         </h2>

@@ -1,5 +1,10 @@
 import noAuthInstance from "@/axios/no-auth.axios";
-import { typeLogin, typeRefresh, typeRegister } from "@/types/auth.type";
+import {
+  typeCreatePassword,
+  typeLogin,
+  typeRefresh,
+  typeRegister,
+} from "@/types/auth.type";
 
 export const AuthenApis = {
   register: async (data: typeRegister) => {
@@ -25,6 +30,22 @@ export const AuthenApis = {
   handleRefreshToken: async (data: typeRefresh) => {
     try {
       const response = await noAuthInstance.post("/refreshToken", data);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  },
+  resetPassword: async (email: string) => {
+    try {
+      const response = await noAuthInstance.post(`/user/reset/${email}`);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  },
+  createPassword: async (data: typeCreatePassword) => {
+    try {
+      const response = await noAuthInstance.post(`/user/create-password`, data);
       return response;
     } catch (error) {
       return error;

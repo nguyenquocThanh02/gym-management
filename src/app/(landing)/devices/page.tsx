@@ -11,6 +11,7 @@ import { typeDevice } from "@/types";
 import { DeviceApis } from "@/services";
 import { useQuery } from "@tanstack/react-query";
 import ImageCustom from "@/components/custom/imageCustom.custom";
+import { BreadcrumbCustom } from "@/components/custom/breadscrumb.custom";
 
 const Devices: React.FC = () => {
   const { scrollYProgress } = useScroll();
@@ -31,14 +32,16 @@ const Devices: React.FC = () => {
   const arrs: typeDevice[] = data?.data || [];
 
   return (
-    <div className="l-container -mt-[86px] bg-BgLight/30 rounded-full">
-      <h1 className="text-center font-bold text-4xl fixed top-28 left-0 right-0 mx-auto z-10 text-shadow">
-        Devices
-      </h1>
-      {arrs.map((item, index) => (
-        <ImageCustom data={item} key={index} />
-      ))}
-      <motion.div className="progress" style={{ scaleX }} />
+    <div className="l-container -mt-[96px] bg-BgLight/30 rounded-full">
+      <div>
+        <h1 className="text-center font-bold text-4xl fixed top-28 left-0 right-0 mx-auto z-10 text-shadow">
+          Devices
+        </h1>
+        {arrs.map((item, index) => (
+          <ImageCustom data={item} key={index} />
+        ))}
+        <motion.div className="progress" style={{ scaleX }} />
+      </div>
     </div>
   );
 };

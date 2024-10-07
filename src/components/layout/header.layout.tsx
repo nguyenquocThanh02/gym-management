@@ -21,7 +21,7 @@ import {
   HoverCardTrigger,
 } from "../ui/hover-card";
 import { Button } from "../ui/button";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { localStorageKey } from "@/constants/localStorage";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { useQuery } from "@tanstack/react-query";
@@ -33,7 +33,6 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   const idUser = localStorage.getItem(localStorageKey?.userId) || "";
-  const route = useRouter();
 
   const { data: userData } = useQuery({
     queryKey: ["user"],
@@ -186,15 +185,13 @@ const Header = () => {
                         variant={"ghost"}
                         className="flex gap-2 hover:bg-inherit hover:text-Light hover:opacity-85"
                       >
-                        <Avatar className="border">
+                        <Avatar className="shadow-md">
                           <AvatarImage src={theUser?.avatar} />
                           <AvatarFallback className="text-Dark/80">
                             Avatar
                           </AvatarFallback>
                         </Avatar>
-                        <h4 className="border rounded-lg p-0.5">
-                          {theUser?.accountName}
-                        </h4>
+                        <h4 className="text-shadow">{theUser?.accountName}</h4>
                       </Button>
                     </HoverCardTrigger>
                     <HoverCardContent className="mt-4 bg-BgDark/95">

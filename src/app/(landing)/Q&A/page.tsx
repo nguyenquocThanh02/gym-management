@@ -1,3 +1,4 @@
+import { BreadcrumbCustom } from "@/components/custom/breadscrumb.custom";
 import {
   Accordion,
   AccordionContent,
@@ -89,8 +90,19 @@ const QuestionAnswer = () => {
     },
   ];
 
+  const breadcrumbs = [
+    {
+      link: "/",
+      name: "Home",
+    },
+    {
+      link: "/Q&A",
+      name: "Q&A",
+    },
+  ];
   return (
-    <div className="l-container bg-BgLight/30 rounded-ss-full py-10">
+    <div className="l-container bg-BgLight/30 rounded-ss-full pb-10">
+      <BreadcrumbCustom links={breadcrumbs} />
       <h1 className="text-center font-bold text-4xl">Q&A</h1>
       <Accordion type="single" collapsible className="w-full py-4">
         {questionAnswers?.map((item, index) => (

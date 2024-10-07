@@ -16,3 +16,8 @@ export type typeLogin = {
   account: string;
   password: string;
 };
+
+export type typeCreatePassword = {
+  password: string;
+  resetToken: string;
+};

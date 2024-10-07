@@ -1,4 +1,5 @@
 "use client";
+import { BreadcrumbCustom } from "@/components/custom/breadscrumb.custom";
 import CardTrainer from "@/components/normal/cardTrainer.component";
 import { PTApis } from "@/services/pt.service";
 import { typePT } from "@/types/pt.type";
@@ -13,8 +14,19 @@ const PersonalTrainer = () => {
 
   const arrs: typePT[] = data?.data || [];
 
+  const breadcrumbs = [
+    {
+      link: "/",
+      name: "Home",
+    },
+    {
+      link: "/personal-trainer",
+      name: "Personal Trainer",
+    },
+  ];
   return (
     <div className="l-container bg-BgLight/30 rounded-ss-full pb-8">
+      <BreadcrumbCustom links={breadcrumbs} />
       <h1 className="text-center font-bold text-2xl md:text-4xl my-5">
         Personal Trainers
       </h1>

@@ -22,9 +22,9 @@ export default function Home() {
         <div className="absolute bottom-0 right-0 top-0 left-0 bg-Dark opacity-20 transition-opacity duration-300"></div>
         <div
           data-aos="fade-up"
-          className="hidden lg:flex  absolute top-[100px] left-10 w-fit h-fit p-2 border border-Light rounded bg-Light/10 text-shadow"
+          className="hidden animate-pulse lg:flex  absolute top-[100px] left-10 w-fit h-fit p-2 border border-Light rounded bg-Light/10 text-shadow"
         >
-          <div>
+          <div className="">
             🌟 Discover GymMax – Your Destination for a Better Body 🌟
             <ul className="text-left ml-3 leading-relaxed">
               <li>

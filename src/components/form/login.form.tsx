@@ -10,10 +10,9 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { z } from "zod";
-import { loginRule } from "@/formSchema/formSchema";
+import { emailRule, loginRule } from "@/formSchema/formSchema";
 import { useCreateForm } from "@/hooks/useCreateForm.hook";
 import ButtonCustom from "../custom/button.custom";
-import LinkCustom from "../custom/link.custom";
 import { AuthenApis } from "@/services/auth.service";
 import { localStorageKey } from "@/constants/localStorage";
 import { toast } from "sonner";
@@ -21,6 +20,17 @@ import { useRouter } from "next/navigation";
 import WaitingLayout from "../layout/waiting.layout";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/firebases/firebase";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
+import { Button } from "../ui/button";
 
 type typeResult = {
   status?: number | string;
@@ -37,6 +47,22 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
     password: "",
   });
 
+  const formPassword = useCreateForm(emailRule, {
+    email: "",
+  });
+
+  async function onSubmitPassword(values: z.infer<typeof emailRule>) {
+    setIsLoading(true);
+
+    const resultReset = await AuthenApis.resetPassword(values.email);
+    if (resultReset?.status === 200) {
+      console.log("success");
+    } else {
+      console.log("faild");
+    }
+    setIsLoading(false);
+  }
+
   async function onSubmit(values: z.infer<typeof loginRule>) {
     setIsLoading(true);
     try {
@@ -47,6 +73,7 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
           localStorageKey.refreshToken,
           result?.refresh_token
         );
+        localStorage.setItem(localStorageKey.role, role);
         localStorage.setItem(localStorageKey.userId, result?.id);
 
         const userRef = collection(db, "rooms");
@@ -74,16 +101,11 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
           });
         toast.success("Login successfully");
 
-        if (role === "admin") {
-          setTimeout(() => {
-            router.push("/admin");
-          }, 500);
+        if (role === "admin" || role === "trainee") {
+          router.push("/admin");
         } else if (role === "user") {
-          setTimeout(() => {
-            router.push("/");
-          }, 500);
+          router.push("/");
         }
-        setIsLoading(false);
       } else {
         toast.error(result?.message);
         setIsLoading(false);
@@ -93,9 +115,12 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
     }
   }
 
+  if (isLoading) {
+    return <WaitingLayout />;
+  }
+
   return (
     <div>
-      {isLoading && <WaitingLayout />}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <div className="flex flex-col gap-3">
@@ -140,16 +165,56 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
           <ButtonCustom type="submit" className="w-full">
             Login
           </ButtonCustom>
-
-          <div className="w-full text-center">
-            <LinkCustom
-              href="/forgot-password"
-              className="text-shadow"
-              text="Forgot password"
-            />
-          </div>
         </form>
       </Form>
+      <div className="w-full my-3 text-center">
+        <Dialog>
+          <DialogTrigger>
+            <Button variant={"ghost"}>Forgot password</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Forgot & reset password</DialogTitle>
+              <DialogDescription>
+                Lets enter your email to receive a email and reset password
+              </DialogDescription>
+            </DialogHeader>
+            <Form {...formPassword}>
+              <form
+                onSubmit={formPassword.handleSubmit(onSubmitPassword)}
+                className="space-y-8"
+              >
+                <FormField
+                  control={formPassword.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="email"
+                          placeholder="Your email"
+                          {...field}
+                        />
+                      </FormControl>
+
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <div className="text-right">
+                  <DialogClose>
+                    <Button variant={"secondary"} className="mr-2">
+                      Cancel
+                    </Button>
+                  </DialogClose>
+                  <Button type="submit">Submit</Button>
+                </div>
+              </form>
+            </Form>
+          </DialogContent>
+        </Dialog>
+      </div>
     </div>
   );
 };

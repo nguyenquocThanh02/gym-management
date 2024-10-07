@@ -1,7 +1,8 @@
 "use client";
+import { BreadcrumbCustom } from "@/components/custom/breadscrumb.custom";
 import CardPackage from "@/components/normal/cardPackage.component";
 import { PackageApis } from "@/services";
-import { typePackage, typeResponsePackage } from "@/types";
+import { typeResponsePackage } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
@@ -11,9 +12,22 @@ const PackagePage = () => {
     queryFn: PackageApis.getAllPackage,
   });
 
+  const breadcrumbs = [
+    {
+      link: "/",
+      name: "Home",
+    },
+    {
+      link: "/package",
+      name: "Packages",
+    },
+  ];
+
   const arrs: typeResponsePackage[] = data?.data || [];
   return (
     <div className="l-container bg-BgLight/30 rounded-ss-full pb-10">
+      <BreadcrumbCustom links={breadcrumbs} />
+
       <h1 className="text-center font-bold text-2xl md:text-4xl my-5">
         Packages
       </h1>

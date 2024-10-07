@@ -15,6 +15,7 @@ import { localStorageKey } from "@/constants/localStorage";
 import mainStore from "@/store/main.store";
 import { Button } from "@/components/ui/button";
 import PaymentRegister from "./payment.component";
+import { BreadcrumbCustom } from "@/components/custom/breadscrumb.custom";
 
 const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
   const idUser = localStorage.getItem(localStorageKey?.userId) || "";
@@ -55,12 +56,24 @@ const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
     return sum;
   };
 
+  const breadcrumbs = [
+    {
+      link: "/",
+      name: "Home",
+    },
+    {
+      link: "#",
+      name: "Detail Package",
+    },
+  ];
+
   if (isLoading || isLoadingInfor) {
     return <WaitingLayout />;
   }
 
   return (
     <div className="l-container pb-10">
+      <BreadcrumbCustom links={breadcrumbs} />
       <h1 className="text-center font-bold text-2xl md:text-4xl my-6">
         Book Package
       </h1>
