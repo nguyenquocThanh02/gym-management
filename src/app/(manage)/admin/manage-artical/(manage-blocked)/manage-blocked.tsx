@@ -28,8 +28,8 @@ const ManageBlocked = () => {
         <CardHeader>
           <div className="flex justify-between">
             <div>
-              <CardTitle>Blocked articals</CardTitle>
-              <CardDescription>Manage your blocked articals.</CardDescription>
+              <CardTitle>Khoá bài báo</CardTitle>
+              <CardDescription>Quản lý bài báo bị khoá.</CardDescription>
             </div>
           </div>
         </CardHeader>

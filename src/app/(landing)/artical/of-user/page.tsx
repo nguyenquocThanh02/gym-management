@@ -3,26 +3,29 @@ import ArticalOfUserComponent from "./articalOfUser.component";
 import { BreadcrumbCustom } from "@/components/custom/breadscrumb.custom";
 
 export default function ArticalOfUserPage() {
-  const stateArticals = ["Reviewing", "Published", "Blocked"];
+  const stateArticals = ["Đang xem xét", "Công khai", "Khoá"];
 
   const breadcrumbs = [
     {
       link: "/",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/artical",
-      name: "Articals",
+      name: "Bài viết",
     },
     {
       link: "/artical/of-user",
-      name: "My artical",
+      name: "Bài viết của tôi",
     },
   ];
+
   return (
     <div className="l-container">
       <BreadcrumbCustom links={breadcrumbs} />
-      <h1 className="text-center font-bold text-3xl mb-4 mt-2">My articals</h1>
+      <h1 className="text-center font-bold text-3xl mb-4 mt-2">
+        Bài báo của tôi
+      </h1>
       <Tabs defaultValue="Reviewing" className="my-3">
         <div className="flex items-center">
           <TabsList>

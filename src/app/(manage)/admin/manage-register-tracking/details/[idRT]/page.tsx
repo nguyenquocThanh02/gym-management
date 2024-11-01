@@ -57,13 +57,14 @@ const DetailsRegisterPackage = ({ params }: { params: { idRT: string } }) => {
       <Card x-chunk="dashboard-06-chunk-0">
         <CardHeader>
           <CardTitle>
-            Register tracking ID:{" "}
+            Mã các đăng ký:{" "}
             <Badge className="font-light text-base bg-slate-600">
               {registerTracking?._id}
             </Badge>
           </CardTitle>
           <CardDescription>
-            You can view and start to payment for register tracking at here.
+            Bạn có thể xem và bắt đầu thanh toán cho việc đăng ký theo dõi tại
+            đây.
           </CardDescription>
         </CardHeader>
         <CardContent className="">

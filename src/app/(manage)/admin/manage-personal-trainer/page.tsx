@@ -33,7 +33,7 @@ export default function PTManagePage() {
       <div className="flex justify-between items-center">
         <BreadcrumbCustom links={breadcrumbs} />
         <Link href={"/admin/manage-personal-trainer/add-pt"}>
-          <ButtonCustom>Add new PT</ButtonCustom>
+          <ButtonCustom>Thêm PT mới</ButtonCustom>
         </Link>
       </div>
       <DataTable columns={columns} data={arrs} />{" "}

@@ -9,13 +9,13 @@ export default function TabArticalManage() {
       <div className="flex items-center">
         <TabsList>
           <TabsTrigger value="Reviewing" className="px-5">
-            Reviewing
+            Đang xem xét
           </TabsTrigger>
           <TabsTrigger value="Published" className="px-5">
-            Published
+            Công khai 
           </TabsTrigger>
           <TabsTrigger value="Blocked" className="px-5">
-            Blocked
+            Khoá
           </TabsTrigger>
         </TabsList>
       </div>

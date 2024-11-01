@@ -77,7 +77,7 @@ export const columns: ColumnDef<typePT>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Name
+          Tên
           <ArrowDownUp className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -95,7 +95,7 @@ export const columns: ColumnDef<typePT>[] = [
 
   {
     accessorKey: "experienceYears",
-    header: () => <div className="text-right">Experience year</div>,
+    header: () => <div className="text-right">Số năm kinh nghiệm</div>,
     cell: ({ row }) => {
       // const amount = parseFloat(row.getValue("experienceYears"));
 
@@ -115,7 +115,7 @@ export const columns: ColumnDef<typePT>[] = [
   {
     id: "actions",
     enableHiding: false,
-    header: () => <div className="text-right">Action</div>,
+    header: () => <div className="text-right">Hành động</div>,
     cell: ({ row }) => {
       const payment = row.original;
 
@@ -124,7 +124,7 @@ export const columns: ColumnDef<typePT>[] = [
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
+                <span className="sr-only">Mở menu</span>
                 <EllipsisVertical className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
@@ -133,14 +133,14 @@ export const columns: ColumnDef<typePT>[] = [
               <DropdownMenuItem
                 onClick={() => navigator.clipboard.writeText(payment._id || "")}
               >
-                Copy payment ID
+                Sao chép ID
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <Link
                   href={`/admin/manage-personal-trainer/details/${payment._id}`}
                 >
-                  View details
+                  Xem chi tiết
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>

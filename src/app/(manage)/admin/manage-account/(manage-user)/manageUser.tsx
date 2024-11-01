@@ -54,8 +54,8 @@ const ManageUser = () => {
         </div> */}
       <Card x-chunk="dashboard-06-chunk-0">
         <CardHeader>
-          <CardTitle>Users</CardTitle>
-          <CardDescription>Manage your users.</CardDescription>
+          <CardTitle>Người dùng</CardTitle>
+          <CardDescription>Quản lý người dùng.</CardDescription>
         </CardHeader>
         <CardContent>
           <DataTable columns={columns} data={arrs} />{" "}

@@ -22,18 +22,19 @@ export default function Home() {
         <div className="absolute bottom-0 right-0 top-0 left-0 bg-Dark opacity-20 transition-opacity duration-300"></div>
         <div
           data-aos="fade-up"
-          className="hidden animate-pulse lg:flex  absolute top-[100px] left-10 w-fit h-fit p-2 border border-Light rounded bg-Light/10 text-shadow"
+          className="hidden  lg:flex  absolute top-[100px] left-10 w-fit h-fit p-2 blur-shadow rounded"
         >
           <div className="">
-            🌟 Discover GymMax – Your Destination for a Better Body 🌟
+            🌟 Khám Phá GymMax – Điểm Đến Cho Một Cơ Thể Khỏe Mạnh 🌟
             <ul className="text-left ml-3 leading-relaxed">
+              <li>🗸 Thiết bị hiện đại và không gian tập luyện thoải mái</li>
               <li>
-                🗸 State-of-the-art equipment and a comfortable workout space
+                🗸 Huấn luyện viên chuyên nghiệp sẵn sàng hướng dẫn và hỗ trợ bạn
               </li>
-              <li>🗸 Expert trainers ready to guide and support you</li>
-              <li>🗸 Exciting group classes tailored to all fitness levels</li>
+              <li>🗸 Các lớp học nhóm thú vị phù hợp với mọi cấp độ thể lực</li>
               <li>
-                Special Offer: Sign up today to receive exclusive gifts! 🎁
+                Ưu đãi đặc biệt: Đăng ký ngay hôm nay để nhận quà tặng độc
+                quyền! 🎁
               </li>
             </ul>
           </div>
@@ -48,88 +49,95 @@ export default function Home() {
             <span className="text-Primary ">Max</span>
           </h1>
           <p className="text-xl lg:text-4xl xl:mt-16 max-w-[80%] xl:hidden">
-            Welcomes you and let us help you become the best version of yourself
+            Chào mừng bạn, hãy để chúng tôi giúp bạn trở thành phiên bản tốt
+            nhất của chính mình.
           </p>
         </div>
       </div>
-      <div className="l-container my-10">
+      <div className="l-container mt-16 mb-10">
         <h2 className="text-Primary text-shadow text-center text-3xl font-bold mb-5">
-          Popular memberships
+          Các gói hội viên phổ biến
         </h2>
         <p className="text-center italic text-lg bg-BgLight/30 p-3">
-          With a variety of service packages tailored to your needs, you can
-          choose monthly, quarterly, or to save costs, opt for longer-term
-          packages such as yearly with many additional options. Do not worry if
-          you are new to the gym; choose a service that includes guidance from a
-          trainer.
+          Với nhiều gói dịch vụ được tùy chỉnh theo nhu cầu của bạn, bạn có thể
+          chọn gói hàng tháng, hàng quý, hoặc để tiết kiệm chi phí, hãy chọn các
+          gói dài hạn như gói hàng năm với nhiều tùy chọn bổ sung. Đừng lo lắng
+          nếu bạn là người mới đến phòng tập; hãy chọn dịch vụ bao gồm hướng dẫn
+          từ huấn luyện viên.
         </p>
+
         <PopularPackages />
 
-        <LinkArrow href="/package">See more</LinkArrow>
+        <LinkArrow href="/package">Xem thêm</LinkArrow>
       </div>
       <HeroSection>
-        The only bad workout is the one that did not happen. Lets start right
-        now
+        Bài tập tồi tệ duy nhất là bài tập không diễn ra. Hãy bắt đầu ngay bây
+        giờ!
       </HeroSection>
+
       <AboutGymMax />
 
       <HeroSection>
-        Fitness is not about being better than someone else. It is about being
-        better than you used to be.
+        Thể hình không phải là việc trở nên tốt hơn người khác. Mà là việc trở
+        nên tốt hơn chính bạn của ngày trước.
       </HeroSection>
 
       <div className="l-container my-8">
         <h2 className="text-Primary text-shadow text-center text-3xl font-bold mb-3">
-          Personal Trainers
+          Huấn Luyện Viên Cá Nhân
         </h2>
         <p className="text-center italic text-lg bg-BgLight/30 p-3">
-          We have a team of professional personal trainers with many years of
-          experience, ready to support you with expertise in various areas such
-          as weight loss, muscle building, competitive training, cardio, and
-          more. They are equipped to meet any of your needs with dedication and
-          attentiveness, and will be by your side throughout your fitness
-          journey.
+          Chúng tôi có một đội ngũ huấn luyện viên cá nhân chuyên nghiệp với
+          nhiều năm kinh nghiệm, sẵn sàng hỗ trợ bạn với chuyên môn trong nhiều
+          lĩnh vực như giảm cân, xây dựng cơ bắp, huấn luyện cạnh tranh, cardio,
+          và nhiều hơn nữa. Họ được trang bị đầy đủ để đáp ứng mọi nhu cầu của
+          bạn với sự tận tâm và chú ý, và sẽ luôn bên bạn trong suốt hành trình
+          thể hình của bạn.
         </p>
+
         <CarouselTrainer />
-        <LinkArrow href="/personal-trainer">See more</LinkArrow>
+        <LinkArrow href="/personal-trainer">Xem thêm</LinkArrow>
       </div>
 
       <HeroSection>
-        Believe in yourself and all that you are. Know that there is something
-        inside you that is greater than any obstacle.
+        Hãy tin vào chính mình và tất cả những gì bạn có. Hãy biết rằng bên
+        trong bạn có điều gì đó vĩ đại hơn bất kỳ trở ngại nào.
       </HeroSection>
 
       <div className="my-16 l-container flex flex-col items-center gap-5">
         <h2 className="text-Primary text-shadow text-center text-3xl font-bold">
-          Devices of GymMax
+          Thiết Bị Của GymMax
         </h2>
         <p className="italic text-lg text-center bg-BgLight/30 px-3">
-          Our gym is equipped with state-of-the-art fitness machines and
-          equipment to support all your workout needs. From advanced cardio
-          machines and strength training equipment to free weights and
-          functional training tools, we provide a comprehensive range of options
-          to help you achieve your fitness goals. Our modern facility ensures
-          you have access to high-quality gear and innovative technology for a
-          productive and enjoyable workout experience.
+          Phòng tập của chúng tôi được trang bị các máy móc và thiết bị thể hình
+          hiện đại nhất để hỗ trợ mọi nhu cầu tập luyện của bạn. Từ các máy
+          cardio tiên tiến và thiết bị tập sức mạnh đến tạ tự do và công cụ tập
+          luyện chức năng, chúng tôi cung cấp một loạt các tùy chọn toàn diện để
+          giúp bạn đạt được mục tiêu thể hình của mình. Cơ sở hiện đại của chúng
+          tôi đảm bảo bạn có quyền truy cập vào thiết bị chất lượng cao và công
+          nghệ đổi mới để có một trải nghiệm tập luyện hiệu quả và thú vị.
         </p>
+
         <GalleryDevice />
-        <LinkArrow href="/devices">See more</LinkArrow>
+        <LinkArrow href="/devices">Xem thêm</LinkArrow>
       </div>
       <div className="l-container my-10">
         <h2 className="text-Primary text-shadow text-center text-3xl font-bold mb-5">
-          New articals
+          Bài Viết Mới
         </h2>
         <p className="text-center italic text-lg bg-BgLight/30 p-3">
-          Welcome to our health and fitness section, where we provide valuable
-          insights on gym workouts and nutrition. Discover effective exercise
-          routines to boost your performance and expert tips on maintaining a
-          balanced diet. Join us on your journey to a healthier lifestyle!
+          Chào mừng bạn đến với chuyên mục sức khỏe và thể hình của chúng tôi,
+          nơi cung cấp những thông tin quý giá về bài tập tại gym và dinh dưỡng.
+          Khám phá các thói quen tập luyện hiệu quả để nâng cao hiệu suất và
+          những mẹo chuyên gia về việc duy trì một chế độ ăn cân bằng. Hãy đồng
+          hành cùng chúng tôi trên hành trình đến với lối sống khỏe mạnh hơn!
         </p>
+
         <div className="my-6">
           <NewArticals />
         </div>
 
-        <LinkArrow href="/artical">See more</LinkArrow>
+        <LinkArrow href="/artical">Xem thêm</LinkArrow>
       </div>
 
       <Footer />

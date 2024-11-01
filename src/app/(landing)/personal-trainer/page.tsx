@@ -13,22 +13,22 @@ const PersonalTrainer = () => {
   });
 
   const arrs: typePT[] = data?.data || [];
-
   const breadcrumbs = [
     {
       link: "/",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/personal-trainer",
-      name: "Personal Trainer",
+      name: "Huấn luyện viên cá nhân",
     },
   ];
+
   return (
     <div className="l-container bg-BgLight/30 rounded-ss-full pb-8">
       <BreadcrumbCustom links={breadcrumbs} />
       <h1 className="text-center font-bold text-2xl md:text-4xl my-5">
-        Personal Trainers
+        Quản lý huấn luyện viên
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {arrs.map((item, index) => (

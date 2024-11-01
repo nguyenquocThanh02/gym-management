@@ -72,8 +72,10 @@ export default function OverviewChart() {
       <Card>
         <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
           <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
-            <CardTitle>Bar Chart - total price</CardTitle>
-            <CardDescription>Showing total price at {theMonth}</CardDescription>
+            <CardTitle>Biểu đồ cột - Tổng giá</CardTitle>
+            <CardDescription>
+              Hiển thị tổng giá trong tháng {theMonth}
+            </CardDescription>
           </div>
           <div className="flex">
             {["paypal", "offline"].map((key) => {

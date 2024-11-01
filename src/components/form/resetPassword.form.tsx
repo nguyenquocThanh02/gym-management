@@ -35,10 +35,10 @@ const ResetPasswordForm: React.FC<{ token: string }> = ({ token }) => {
       password: values?.password,
       resetToken: token,
     };
-    console.log(dataCreatePassword);
     const result = await AuthenApis.createPassword(dataCreatePassword);
     if (result?.status === 200) {
-      toast.success("Reset password successfully");
+      toast.success("Đặt lại mật khẩu thành công!");
+
       if (result?.data?.role === "admin") {
         router.push("/login-admin");
       } else if (result?.data?.role === "trainee") {
@@ -66,7 +66,7 @@ const ResetPasswordForm: React.FC<{ token: string }> = ({ token }) => {
               name="password"
               render={({ field }) => (
                 <FormItem className="text-shadow">
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>Mật khẩu</FormLabel>
                   <FormControl>
                     <Input
                       className="text-Dark"
@@ -85,7 +85,7 @@ const ResetPasswordForm: React.FC<{ token: string }> = ({ token }) => {
               name="confirmPassword"
               render={({ field }) => (
                 <FormItem className="text-shadow">
-                  <FormLabel>Confirm Password</FormLabel>
+                  <FormLabel>Xác nhận mật khẩu</FormLabel>
                   <FormControl>
                     <Input
                       className="text-Dark"
@@ -101,7 +101,7 @@ const ResetPasswordForm: React.FC<{ token: string }> = ({ token }) => {
           </div>
 
           <ButtonCustom type="submit" className="w-full">
-            Reset Password
+            Đặt lại mật khẩu
           </ButtonCustom>
         </form>
       </Form>

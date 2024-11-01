@@ -35,29 +35,29 @@ const CardPackage: React.FC<{ data: typeResponsePackage }> = ({ data }) => {
           <ul className="mb-12 space-y-6 text-left text-lg ">
             <li className="flex items-center space-x-4">
               <CircleCheck className="text-Primary" />
-              <span>{data?.packages?.sessionWithPT} sessions with PT</span>
+              <span>{data?.packages?.sessionWithPT} buổi tập với PT</span>
             </li>
             <li className="flex items-center space-x-4">
               <CircleCheck className="text-Primary" />
-              <span>{data?.packages?.duration} days membership </span>
+              <span>{data?.packages?.duration} ngày thẻ hội viên</span>
             </li>
             <li className="flex items-center space-x-4">
               <CircleCheck className="text-Primary" />
-              <span>24/7 Customer support </span>
+              <span>Hỗ trợ khách hàng 24/7</span>
             </li>
             <li className="flex items-center space-x-4">
               <CircleCheck className="text-Primary" />
-              <span>All widget access</span>
+              <span>Truy cập tất cả tiện ích</span>
             </li>
             <li className="flex items-center space-x-4">
               <div>
-                <h4>Object: </h4>
+                <h4>Đối tượng: </h4>
                 <span>{data?.packages?.suitableFor}</span>
               </div>
             </li>
             <li className="flex items-center space-x-4">
               <div>
-                <h4>Description: </h4>
+                <h4>Mô tả: </h4>
                 <span>{data?.packages?.description}</span>
               </div>
             </li>
@@ -66,7 +66,7 @@ const CardPackage: React.FC<{ data: typeResponsePackage }> = ({ data }) => {
 
         <Link href={`/package/${data?.packages?._id}`} className="mx-auto">
           <ButtonCustom className="py-3 px-8 w-fit shadow-sm rounded-full text-lg">
-            Register
+            Đăng ký
           </ButtonCustom>
         </Link>
       </div>

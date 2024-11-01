@@ -8,7 +8,7 @@ const ResetPasswordPage = ({ params }: { params: { tokenReset: string } }) => {
         <div className="w-[80%] sm:w-[35%] bg-BgDark/30 rounded-2xl p-4">
           <div className="text-center">
             <h4 className="t-1 text-3xl font-semibold text-shadow">
-              RESET PASSWORD
+              TẠO LẠI MẬT KHẨU
             </h4>
           </div>
           <ResetPasswordForm token={params.tokenReset} />

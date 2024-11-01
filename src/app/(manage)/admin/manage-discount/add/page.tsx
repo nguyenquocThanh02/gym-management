@@ -47,12 +47,12 @@ const AddDiscount = () => {
     <section>
       <div className="flex justify-between items-center w-full">
         <BreadcrumbCustom links={breadcrumbs} />
-        <ButtonCustom onClick={handleBack}>Back</ButtonCustom>
+        <ButtonCustom onClick={handleBack}>Trở lại</ButtonCustom>
       </div>
       <Card x-chunk="dashboard-06-chunk-0">
         <CardHeader>
-          <CardTitle>Discounts</CardTitle>
-          <CardDescription>Manage your discounts.</CardDescription>
+          <CardTitle>Khuyến mãi</CardTitle>
+          <CardDescription>Quản lý khuyến mãi.</CardDescription>
         </CardHeader>
         <CardContent>
           <DetailsDiscountForm data={null} id="" packages={packages} />

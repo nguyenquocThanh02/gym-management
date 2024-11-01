@@ -11,15 +11,14 @@ const PackagePage = () => {
     queryKey: ["packages"],
     queryFn: PackageApis.getAllPackage,
   });
-
   const breadcrumbs = [
     {
       link: "/",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/package",
-      name: "Packages",
+      name: "Gói tập",
     },
   ];
 
@@ -29,7 +28,7 @@ const PackagePage = () => {
       <BreadcrumbCustom links={breadcrumbs} />
 
       <h1 className="text-center font-bold text-2xl md:text-4xl my-5">
-        Packages
+        Gói tập
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {arrs?.map((item, index) => (

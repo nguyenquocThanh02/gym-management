@@ -39,14 +39,14 @@ export default function DetailPackage({
   });
 
   if (isLoading) {
-    return <div>Skelonton</div>;
+    return <div>Loading</div>;
   }
 
   return (
     <section>
       <div className="flex justify-between items-center w-full">
         <BreadcrumbCustom links={breadcrumbs} />
-        <ButtonCustom onClick={handleBack}>Back</ButtonCustom>
+        <ButtonCustom onClick={handleBack}>Trở lại</ButtonCustom>
       </div>
       <DetailsPackageForm
         key={Date.now()}

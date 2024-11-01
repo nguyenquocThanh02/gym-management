@@ -37,6 +37,7 @@ import { useCreateForm } from "@/hooks/useCreateForm.hook";
 import { emailRule } from "@/formSchema/formSchema";
 import { z } from "zod";
 import { toast } from "sonner";
+import WaitingLayout from "@/components/layout/waiting.layout";
 
 const ManageTrainee = () => {
   const [open, setOpen] = React.useState<boolean>(false);
@@ -60,7 +61,7 @@ const ManageTrainee = () => {
     try {
       const result = await UserApis.inviteAccount(values?.email);
       console.log("result>>", result);
-      if (result?.status === "200") {
+      if (result?.status === 200) {
         toast.success("Invite successfully");
         form.reset();
         setOpen(false);
@@ -74,54 +75,56 @@ const ManageTrainee = () => {
   }
   return (
     <div>
+      {isLoadingInvite && <WaitingLayout />}
       <Card x-chunk="dashboard-06-chunk-0">
         <CardHeader>
           <div className="flex justify-between">
             <div>
-              <CardTitle>Trainees</CardTitle>
-              <CardDescription>Manage your trainees.</CardDescription>
+              <CardTitle>Nhân viên</CardTitle>
+              <CardDescription>Quản lý tất cả nhân viên.</CardDescription>
             </div>
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
                 <Button className="text-Primary bg-Light border-Primary border hover:bg-Tertiary/20">
-                  Invite account
+                  Gửi lời mời cho nhân viên
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                  <DialogTitle>Change Status</DialogTitle>
+                  <DialogTitle>Mời nhân viên</DialogTitle>
                   <DialogDescription>
-                    <Form {...form}>
-                      <form className="space-y-8">
-                        <FormField
-                          control={form.control}
-                          name="email"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormControl>
-                                <Input
-                                  type="email"
-                                  placeholder="abc@gmail.com"
-                                  {...field}
-                                />
-                              </FormControl>
-
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </form>
-                    </Form>
+                    Nhập email mà bạn muốn mời.
                   </DialogDescription>
                 </DialogHeader>
+                <Form {...form}>
+                  <form className="space-y-8">
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input
+                              type="email"
+                              placeholder="abc@gmail.com"
+                              {...field}
+                            />
+                          </FormControl>
+
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </form>
+                </Form>
                 <DialogFooter>
                   <DialogClose asChild>
                     <Button type="button" variant="secondary">
-                      Close
+                      Đóng
                     </Button>
                   </DialogClose>
                   <Button type="submit" onClick={form.handleSubmit(onSubmit)}>
-                    Invite
+                    Mời
                   </Button>
                 </DialogFooter>
               </DialogContent>

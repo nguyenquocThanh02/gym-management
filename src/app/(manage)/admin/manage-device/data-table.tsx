@@ -31,7 +31,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ChevronDown, ChevronsDownIcon } from "lucide-react";
+import { ChevronDown, ChevronsDownIcon, Filter } from "lucide-react";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 interface DataTableProps<TData, TValue> {
@@ -69,6 +69,9 @@ export function DataTable<TData, TValue>({
       rowSelection,
     },
   });
+  const myState = Array.from(
+    new Map(data.map((item) => [item?.status, item])).keys()
+  );
 
   return (
     <div className="w-full overflow-hidden">
@@ -81,35 +84,67 @@ export function DataTable<TData, TValue>({
           }
           className="max-w-sm"
         />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="outline"
-              className="ml-auto border-Primary border text-Primary hover:text-Primary"
-            >
-              Columns <ChevronDown className="ml-2 mt-[3px] h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
+        <div className="ml-auto">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="outline"
+                className="mr-2 border-Primary border text-Primary hover:text-Primary"
+              >
+                Trạng thái <Filter className="ml-2 mt-[3px] h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {myState?.map((value, index) => {
                 return (
                   <DropdownMenuCheckboxItem
-                    key={column.id}
+                    key={index}
                     className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
+                    checked={
+                      table.getColumn("status")?.getFilterValue() === value
                     }
+                    onCheckedChange={(checked) => {
+                      table
+                        .getColumn("status")
+                        ?.setFilterValue(checked ? value : undefined);
+                    }}
                   >
-                    {column.id}
+                    {value}
                   </DropdownMenuCheckboxItem>
                 );
               })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="outline"
+                className="ml-auto border-Primary border text-Primary hover:text-Primary"
+              >
+                Xem <ChevronDown className="ml-2 mt-[3px] h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {table
+                .getAllColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => {
+                  return (
+                    <DropdownMenuCheckboxItem
+                      key={column.id}
+                      className="capitalize"
+                      checked={column.getIsVisible()}
+                      onCheckedChange={(value) =>
+                        column.toggleVisibility(!!value)
+                      }
+                    >
+                      {column.id}
+                    </DropdownMenuCheckboxItem>
+                  );
+                })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
       <div className="rounded-md border shadow">
         <ScrollArea className="w-80 p-2 sm:w-full whitespace-nowrap rounded-md border">
@@ -155,7 +190,7 @@ export function DataTable<TData, TValue>({
                     colSpan={columns.length}
                     className="h-24 text-center"
                   >
-                    No results.
+                    Không có kết quả.
                   </TableCell>
                 </TableRow>
               )}
@@ -167,7 +202,7 @@ export function DataTable<TData, TValue>({
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="flex-1 text-sm text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
+          {table.getFilteredRowModel().rows.length} dòng đã chọn.
         </div>
         <div className="space-x-2">
           <Button
@@ -176,7 +211,7 @@ export function DataTable<TData, TValue>({
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
-            Previous
+            Trước
           </Button>
           <Button
             variant="outline"
@@ -184,7 +219,7 @@ export function DataTable<TData, TValue>({
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
-            Next
+            Tiếp
           </Button>
         </div>
       </div>

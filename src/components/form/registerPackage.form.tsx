@@ -52,11 +52,11 @@ const RegisterPackage = () => {
                 name="fullName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Fullname</FormLabel>
+                    <FormLabel>Họ và tên</FormLabel>
                     <FormControl>
                       <Input
                         className="bg-BgDark"
-                        placeholder="fullname"
+                        placeholder="Họ và tên"
                         {...field}
                       />
                     </FormControl>
@@ -69,11 +69,11 @@ const RegisterPackage = () => {
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Phone</FormLabel>
+                    <FormLabel>Số điện thoại</FormLabel>
                     <FormControl>
                       <Input
                         className="bg-BgDark"
-                        placeholder="phone"
+                        placeholder="Số điện thoại"
                         {...field}
                       />
                     </FormControl>
@@ -104,7 +104,7 @@ const RegisterPackage = () => {
                 name="timeStart"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel>Date Start</FormLabel>
+                    <FormLabel>Ngày bắt đầu</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
@@ -118,7 +118,7 @@ const RegisterPackage = () => {
                             {field.value ? (
                               format(field.value, "PPP")
                             ) : (
-                              <span>Pick a date</span>
+                              <span>Chọn ngày</span>
                             )}
                             <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                           </Button>
@@ -145,7 +145,7 @@ const RegisterPackage = () => {
             type="submit"
             className={`w-full ${!confirmInforRegister ? "animate-pulse" : ""}`}
           >
-            Confirm
+            Xác nhận
           </ButtonCustom>
         </form>
       </Form>

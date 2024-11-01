@@ -29,12 +29,14 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function DetailAccount({
   params,
 }: {
   params: { idAccount: string };
 }) {
+  const route = useRouter();
   const breadcrumbs = [
     {
       link: "/admin",
@@ -102,39 +104,39 @@ export default function DetailAccount({
     <section>
       <div className="flex justify-between items-center w-full">
         <BreadcrumbCustom links={breadcrumbs} />
-        <ButtonCustom>Back</ButtonCustom>
+        <ButtonCustom onClick={() => route.back()}>Trở lại</ButtonCustom>
       </div>
       <Card x-chunk="dashboard-06-chunk-0 mt-3">
         <CardHeader>
           <div className="flex justify-between">
             <div>
-              <CardTitle>Trainees</CardTitle>
-              <CardDescription>Manage your trainees.</CardDescription>
+              <CardTitle>Nhân viên</CardTitle>
+              <CardDescription>Quản lý nhân viên.</CardDescription>
             </div>
             <div className="flex gap-2">
               <Dialog open={openPermiss} onOpenChange={setOpenPermiss}>
                 <DialogTrigger asChild>
                   <Button className="text-Primary bg-Light border-Primary border hover:bg-Tertiary/20">
-                    Change Role
+                    Thay đổi quyền
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                   <DialogHeader>
-                    <DialogTitle>Change Role Account</DialogTitle>
+                    <DialogTitle>Thay đổi quyền tài khoản</DialogTitle>
                     <DialogDescription>
-                      Are you sure you want to{" "}
-                      {account?.role === "user" ? "permiss " : "revoke "}
-                      trainee role for account
+                      Bạn có chắc chắn muốn{" "}
+                      {account?.role === "user" ? "cấp phép " : "thu hồi "}
+                      quyền nhân viên của tài khoản
                     </DialogDescription>
                   </DialogHeader>
                   <DialogFooter>
                     <DialogClose asChild>
                       <Button type="button" variant="secondary">
-                        Close
+                        Đóng
                       </Button>
                     </DialogClose>
                     <Button type="submit" onClick={handleChangeRole}>
-                      Confirm
+                      Xác nhận
                     </Button>
                   </DialogFooter>
                 </DialogContent>
@@ -142,26 +144,26 @@ export default function DetailAccount({
               <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
                   <Button className="text-Primary bg-Light border-Primary border hover:bg-Tertiary/20">
-                    Change Status
+                    Thay đổi trạng thái
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                   <DialogHeader>
                     <DialogTitle>Change Status</DialogTitle>
                     <DialogDescription>
-                      Are you sure you want to{" "}
-                      {account?.status === "active" ? "block " : "un-block "}{" "}
-                      the account?
+                      Bạn có chắc chắn muốn{" "}
+                      {account?.status === "active" ? "khoá " : "mở khoá "} tài
+                      khoản?
                     </DialogDescription>
                   </DialogHeader>
                   <DialogFooter>
                     <DialogClose asChild>
                       <Button type="button" variant="secondary">
-                        Close
+                        Đóng
                       </Button>
                     </DialogClose>
                     <Button type="submit" onClick={handleChangeStatus}>
-                      Confirm
+                      Xác nhận
                     </Button>
                   </DialogFooter>
                 </DialogContent>
@@ -191,14 +193,14 @@ export default function DetailAccount({
                 <thead>
                   <tr>
                     <th colSpan={2} className="pb-3 text-lg">
-                      Information
+                      Thông tin
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td className="border border-slate-300 p-2">
-                      <strong>Account Name:</strong>
+                      <strong>Tên tài khoản:</strong>
                     </td>
                     <td className="border border-slate-300 p-2">
                       {account?.accountName}
@@ -206,7 +208,7 @@ export default function DetailAccount({
                   </tr>
                   <tr>
                     <td className="border border-slate-300 p-2">
-                      <strong>Role:</strong>
+                      <strong>Quyền:</strong>
                     </td>
                     <td className="border border-slate-300 p-2">
                       {account?.role}
@@ -214,7 +216,7 @@ export default function DetailAccount({
                   </tr>
                   <tr>
                     <td className="border border-slate-300 p-2">
-                      <strong>Phone:</strong>
+                      <strong>Điện thoại:</strong>
                     </td>
                     <td className="border border-slate-300 p-2">
                       {account?.phone}
@@ -222,7 +224,7 @@ export default function DetailAccount({
                   </tr>
                   <tr>
                     <td className="border border-slate-300 p-2">
-                      <strong>Date of Birth:</strong>
+                      <strong>Ngày sinh:</strong>
                     </td>
                     <td className="border border-slate-300 p-2">
                       {formatDate(account?.dateOfBirth)}
@@ -230,7 +232,7 @@ export default function DetailAccount({
                   </tr>
                   <tr>
                     <td className="border border-slate-300 p-2">
-                      <strong>Status:</strong>
+                      <strong>Trạng thái:</strong>
                     </td>
                     <td className="border border-slate-300 p-2">
                       <Badge
@@ -246,7 +248,7 @@ export default function DetailAccount({
                   </tr>
                   <tr>
                     <td className="border border-slate-300 p-2">
-                      <strong>Created At:</strong>
+                      <strong>Ngày tạo:</strong>
                     </td>
                     <td className="border border-slate-300 p-2">
                       {formatDate(account?.createdAt)}

@@ -33,7 +33,7 @@ export default function DeviceManagePage() {
       <div className="flex justify-between items-center">
         <BreadcrumbCustom links={breadcrumbs} />
         <Link href={"/admin/manage-device/add"}>
-          <ButtonCustom>Add new Device</ButtonCustom>
+          <ButtonCustom>Thêm thiết bị mới</ButtonCustom>
         </Link>
       </div>
       <DataTable columns={columns} data={arrs} />{" "}

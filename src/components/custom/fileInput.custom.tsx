@@ -23,11 +23,12 @@ const FileInputCustom: React.FC<FileInputCustomProps> = ({ onFileSelect }) => {
           <CloudDownload color="#000" size={32} />
         </div>
         <h2 className="text-center text-gray-900 text-xs font-normal leading-4 mb-1">
-          PNG, JPG or PDF, smaller than 15MB
+          PNG, JPG hoặc PDF, nhỏ hơn 15MB
         </h2>
         <h4 className="text-center text-gray-900 text-sm font-medium leading-snug">
-          Click here to select image
+          Nhấn vào đây để chọn hình ảnh
         </h4>
+
         <input
           id="dropzone-file"
           type="file"

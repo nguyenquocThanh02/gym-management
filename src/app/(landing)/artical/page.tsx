@@ -22,11 +22,11 @@ const ArticalPage = () => {
   const breadcrumbs = [
     {
       link: "/",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/artical",
-      name: "Articals",
+      name: "Bài viết",
     },
   ];
 
@@ -69,12 +69,12 @@ const ArticalPage = () => {
           className="flex items-center gap-2 border p-2 rounded-md hover:opacity-80"
         >
           <Plus size={28} />
-          <span className="text-xl">New artical</span>
+          <span className="text-xl">Bài báo mới</span>
         </Link>
       </div>
       <div className="l-container py-8">
         <h2 className="text-Primary text-shadow  text-3xl font-bold mb-3">
-          New articals
+          Bài báo mới
         </h2>
         <NewArticals />
         <hr className="mt-8" />

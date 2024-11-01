@@ -1,4 +1,4 @@
-"use client"; // Đánh dấu đây là Client Component
+"use client";
 
 import { useEffect, useState } from "react";
 import NavbarManage from "@/components/layout/navbarManage.layout";
@@ -17,18 +17,18 @@ import {
 } from "lucide-react";
 import FooterManage from "@/components/layout/footerManage.layout";
 import { localStorageKey } from "@/constants/localStorage";
+import { onMessageListener, requestFCMToken } from "@/firebases/firebase";
+import { toast } from "sonner";
+import { redirect } from "next/navigation";
 
 export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [role, setRole] = useState<string>("");
-
-  useEffect(() => {
-    const savedRole = localStorage?.getItem(localStorageKey?.role) || "";
-    setRole(savedRole);
-  }, []);
+  const [fcmToken, setFcmToken] = useState<string>("");
+  const idUser = localStorage.getItem(localStorageKey.userId);
+  const role = localStorage.getItem(localStorageKey.role);
 
   const navItems = [
     { href: "/admin", name: "Home", icon: <Home className="h-5 w-5" /> },
@@ -91,6 +91,29 @@ export default function Layout({
         )
       : navItems;
 
+  useEffect(() => {
+    const fetchFCMToken = async () => {
+      try {
+        const token = await requestFCMToken();
+        setFcmToken(token);
+      } catch (err) {
+        console.log("Error getting fcm token: ", err);
+      }
+    };
+    fetchFCMToken();
+  }, []);
+
+  onMessageListener()
+    .then((payload) => {
+      toast.info("New message received");
+    })
+    .catch((err) => {
+      toast.warning("Faild to receive message");
+    });
+
+  if (!idUser || !role) {
+    redirect("/login-trainee");
+  }
   return (
     <div className="flex min-h-screen w-full flex-col">
       <NavbarManage navItems={theNavItems} />

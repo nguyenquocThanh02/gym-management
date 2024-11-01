@@ -9,29 +9,28 @@ export const registerRule = z
       .string()
       .trim()
       .min(1, {
-        message: "Email is required.",
+        message: "Email là bắt buộc.",
       })
       .email({
-        message: "Invalid email format.",
+        message: "Định dạng email không hợp lệ.",
       }),
     password: z
       .string()
       .trim()
       .min(8, {
-        message: "Password has at least 8 characters.",
+        message: "Mật khẩu phải có ít nhất 8 ký tự.",
       })
       .regex(/^(?=.*[a-z])/, {
-        message: "Password must contain at least one lowercase letter.",
+        message: "Mật khẩu phải chứa ít nhất một ký tự chữ thường.",
       })
       .regex(/^(?=.*[A-Z])/, {
-        message: "Password must contain at least one uppercase letter.",
+        message: "Mật khẩu phải chứa ít nhất một ký tự chữ hoa.",
       })
       .regex(/^(?=.*\d)/, {
-        message: "Password must contain at least one digit.",
+        message: "Mật khẩu phải chứa ít nhất một chữ số.",
       })
       .regex(/^(?=.*[@$!%*?&])/, {
-        message:
-          "Password must contain at least one special character (@$!%*?&).",
+        message: "Mật khẩu phải chứa ít nhất một ký tự đặc biệt (@$!%*?&).",
       }),
     confirmPassword: z.string().trim(),
     phone: z
@@ -43,7 +42,7 @@ export const registerRule = z
             value
           ),
         {
-          message: "Phone number is invalid.",
+          message: "Số điện thoại không hợp lệ.",
         }
       ),
   })
@@ -51,7 +50,7 @@ export const registerRule = z
     if (confirmPassword !== password) {
       ctx.addIssue({
         code: "custom",
-        message: "The passwords did not match.",
+        message: "Mật khẩu không khớp.",
         path: ["confirmPassword"],
       });
     }
@@ -67,10 +66,10 @@ export const emailRule = z.object({
     .string()
     .trim()
     .min(1, {
-      message: "Email is required.",
+      message: "Email là bắt buộc.",
     })
     .email({
-      message: "Invalid email format.",
+      message: "Định dạng email không hợp lệ.",
     }),
 });
 
@@ -81,10 +80,10 @@ export const registerPackageRule = z.object({
     .string()
     .trim()
     .min(1, {
-      message: "Email is required.",
+      message: "Email là bắt buộc.",
     })
     .email({
-      message: "Invalid email format.",
+      message: "Định dạng email không hợp lệ.",
     }),
   phone: z
     .string()
@@ -95,7 +94,7 @@ export const registerPackageRule = z.object({
           value
         ),
       {
-        message: "Phone number is invalid.",
+        message: "Số điện thoại không hợp lệ.",
       }
     ),
 });
@@ -143,14 +142,14 @@ export const deviceRule = z.object({
   maintenanceInterval: z.union([
     z
       .number()
-      .min(0, "Experience years must be a positive number")
-      .max(50, "Experience years must be less than 50"),
+      .min(0, "Số năm kinh nghiệm phải là một số dương")
+      .max(50, "Số năm kinh nghiệm phải nhỏ hơn 50"),
     z
       .string()
-      .regex(/^\d+$/, "Experience years must be a valid number")
+      .regex(/^\d+$/, "Số năm kinh nghiệm phải là một số hợp lệ")
       .transform((value) => parseInt(value, 10))
       .refine((value) => value >= 0 && value <= 50, {
-        message: "Experience years must be between 0 and 50",
+        message: "Số năm kinh nghiệm phải nằm trong khoảng từ 0 đến 50",
       }),
   ]),
   description: z.string().max(500),
@@ -164,12 +163,12 @@ export const packageRule = z.object({
   description: z.string().optional(),
   suitableFor: z.string().optional(),
   price: z.union([
-    z.number().min(0, "Price must be a non-negative number"),
-    z.string().regex(/^\d+(\.\d{1,2})?$/, "Price must be a valid number"),
+    z.number().min(0, "Giá phải là một số không âm"),
+    z.string().regex(/^\d+(\.\d{1,2})?$/, "Giá phải là một số hợp lệ"),
   ]),
   duration: z.union([
-    z.number().min(0, "Duration must be a non-negative number"),
-    z.string().regex(/^\d+$/, "Duration must be a valid number"),
+    z.number().min(0, "Thời gian phải là một số không âm"),
+    z.string().regex(/^\d+$/, "Thời gian phải là một số hợp lệ"),
   ]),
   stock: z.union([z.number().optional(), z.string().optional()]),
 });
@@ -199,7 +198,7 @@ export const articalRule = z.object({
     (files) => {
       return Array.from(files).every((file) => file instanceof File);
     },
-    { message: "Expected a file" }
+    { message: "Mong đợi là 1 tệp ảnh" }
   ),
 });
 
@@ -215,10 +214,10 @@ export const profileRule = z.object({
     .string()
     .trim()
     .min(1, {
-      message: "Email is required.",
+      message: "Email là bắt buộc.",
     })
     .email({
-      message: "Invalid email format.",
+      message: "Định dạng email không hợp lệ.",
     }),
   phone: z
     .string()
@@ -229,7 +228,7 @@ export const profileRule = z.object({
           value
         ),
       {
-        message: "Phone number is invalid.",
+        message: "Số điện thoại không hợp lệ.",
       }
     ),
 });
@@ -241,20 +240,19 @@ export const changePasswordRule = z
       .string()
       .trim()
       .min(8, {
-        message: "Password has at least 8 characters.",
+        message: "Mật khẩu phải có ít nhất 8 ký tự.",
       })
       .regex(/^(?=.*[a-z])/, {
-        message: "Password must contain at least one lowercase letter.",
+        message: "Mật khẩu phải chứa ít nhất một ký tự chữ thường.",
       })
       .regex(/^(?=.*[A-Z])/, {
-        message: "Password must contain at least one uppercase letter.",
+        message: "Mật khẩu phải chứa ít nhất một ký tự chữ hoa.",
       })
       .regex(/^(?=.*\d)/, {
-        message: "Password must contain at least one digit.",
+        message: "Mật khẩu phải chứa ít nhất một chữ số.",
       })
       .regex(/^(?=.*[@$!%*?&])/, {
-        message:
-          "Password must contain at least one special character (@$!%*?&).",
+        message: "Mật khẩu phải chứa ít nhất một ký tự đặc biệt (@$!%*?&).",
       }),
     confirmNewPassword: z.string().trim(),
   })
@@ -262,31 +260,31 @@ export const changePasswordRule = z
     if (confirmNewPassword !== newPassword) {
       ctx.addIssue({
         code: "custom",
-        message: "The password did not match.",
+        message: "Mật khẩu không khớp.",
         path: ["confirmNewPassword"],
       });
     }
   });
+
 export const resetPasswordRule = z
   .object({
     password: z
       .string()
       .trim()
       .min(8, {
-        message: "Password has at least 8 characters.",
+        message: "Mật khẩu phải có ít nhất 8 ký tự.",
       })
       .regex(/^(?=.*[a-z])/, {
-        message: "Password must contain at least one lowercase letter.",
+        message: "Mật khẩu phải chứa ít nhất một ký tự chữ thường.",
       })
       .regex(/^(?=.*[A-Z])/, {
-        message: "Password must contain at least one uppercase letter.",
+        message: "Mật khẩu phải chứa ít nhất một ký tự chữ hoa.",
       })
       .regex(/^(?=.*\d)/, {
-        message: "Password must contain at least one digit.",
+        message: "Mật khẩu phải chứa ít nhất một chữ số.",
       })
       .regex(/^(?=.*[@$!%*?&])/, {
-        message:
-          "Password must contain at least one special character (@$!%*?&).",
+        message: "Mật khẩu phải chứa ít nhất một ký tự đặc biệt (@$!%*?&).",
       }),
     confirmPassword: z.string().trim(),
   })
@@ -294,7 +292,7 @@ export const resetPasswordRule = z
     if (confirmPassword !== password) {
       ctx.addIssue({
         code: "custom",
-        message: "The password did not match.",
+        message: "Mật khẩu không khớp.",
         path: ["confirmPassword"],
       });
     }

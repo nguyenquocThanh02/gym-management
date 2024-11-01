@@ -5,8 +5,10 @@ import ButtonCustom from "@/components/custom/button.custom";
 import { PTApis } from "@/services/pt.service";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 export default function DetailPT({ params }: { params: { idPT: string } }) {
+  const route = useRouter();
   const breadcrumbs = [
     {
       link: "/admin",
@@ -27,14 +29,14 @@ export default function DetailPT({ params }: { params: { idPT: string } }) {
   });
 
   if (isLoading) {
-    return <div>Skelonton</div>;
+    return <div>Loading</div>;
   }
 
   return (
     <section>
       <div className="flex justify-between items-center w-full">
         <BreadcrumbCustom links={breadcrumbs} />
-        <ButtonCustom>Back</ButtonCustom>
+        <ButtonCustom onClick={() => route.back()}>Trở lại</ButtonCustom>
       </div>
       <DetailsPtForm data={data?.data} id={params.idPT} key={Date.now()} />
     </section>

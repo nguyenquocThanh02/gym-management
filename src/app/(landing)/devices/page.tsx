@@ -35,7 +35,7 @@ const Devices: React.FC = () => {
     <div className="l-container -mt-[96px] bg-BgLight/30 rounded-full">
       <div>
         <h1 className="text-center font-bold text-4xl fixed top-28 left-0 right-0 mx-auto z-10 text-shadow">
-          Devices
+          Thiết bị
         </h1>
         {arrs.map((item, index) => (
           <ImageCustom data={item} key={index} />

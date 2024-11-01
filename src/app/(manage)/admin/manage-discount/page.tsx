@@ -41,13 +41,13 @@ export default function DiscountManagePage() {
       <div className="flex justify-between items-center">
         <BreadcrumbCustom links={breadcrumbs} />
         <Link href={"/admin/manage-discount/add"}>
-          <ButtonCustom>Add new Discount</ButtonCustom>
+          <ButtonCustom>Thêm khuyến mãi mới</ButtonCustom>
         </Link>
       </div>
       <Card x-chunk="dashboard-06-chunk-0">
         <CardHeader>
-          <CardTitle>Discounts</CardTitle>
-          <CardDescription>Manage your discounts.</CardDescription>
+          <CardTitle>Khuyến mãi</CardTitle>
+          <CardDescription>Quản lý khuyến mãi.</CardDescription>
         </CardHeader>
         <CardContent>
           <DataTable columns={columns} data={arrs} />{" "}

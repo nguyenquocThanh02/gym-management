@@ -8,7 +8,7 @@ const LoginTrainee = () => {
         <div className="w-[80%] sm:w-[35%] bg-BgDark/30 rounded-2xl p-4">
           <div className="text-center">
             <h4 className="t-1 text-3xl font-semibold text-shadow">
-              LOGIN ACCOUNT TRAINEE
+              ĐĂNG NHẬP TÀI KHOẢN NHÂN VIÊN
             </h4>
           </div>
           <LoginForm role="trainee" />

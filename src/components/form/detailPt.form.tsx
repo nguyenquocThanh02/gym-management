@@ -96,7 +96,6 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
         console.log("test: ", result);
         console.log("test>>>: ", result?.status);
         if (result?.status === "201") {
-          console.log("thanh cong");
           toast.success("Add new PT successfully");
           form.reset();
         } else {
@@ -147,7 +146,7 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
         <div>
           {id ? (
             <h3>
-              Status:{" "}
+              Trạng thái:{" "}
               <Badge
                 className={`${
                   status === "active" ? "bg-green-800" : "bg-Primary"
@@ -164,24 +163,27 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
           {id && (
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
-                <Button variant="outline">Change Status</Button>
+                <Button variant="outline">Thay đổi trạng thái</Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                  <DialogTitle className="text-black">Edit profile</DialogTitle>
+                  <DialogTitle className="text-black">
+                    Chỉnh sửa thông tin cá nhân
+                  </DialogTitle>
                   <DialogDescription>
-                    Are you sure you want to{" "}
-                    {status === "active" ? "block" : "unblock"} the PT
+                    Bạn có chắc chắn muốn{" "}
+                    {status === "active" ? "chặn" : "bỏ chặn"} huấn luyện viên
+                    cá nhân này không?
                   </DialogDescription>
                 </DialogHeader>
                 <DialogFooter>
                   <DialogClose asChild>
                     <Button type="button" variant="secondary">
-                      Close
+                      Đóng
                     </Button>
                   </DialogClose>
                   <Button type="submit" onClick={handleChangeStatus}>
-                    Confirm
+                    Xác nhận
                   </Button>
                 </DialogFooter>
               </DialogContent>
@@ -192,7 +194,7 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
             onClick={form.handleSubmit(onSubmit)}
             className="py-1"
           >
-            Save all
+            Lưu tất cả
           </ButtonCustom>
         </div>
       </div>
@@ -222,7 +224,7 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Full Name</FormLabel>
+                      <FormLabel>Họ và tên</FormLabel>
                       <FormControl>
                         <Input placeholder="Nguyen Van A" {...field} />
                       </FormControl>
@@ -248,7 +250,7 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
                   name="phone"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Phone *</FormLabel>
+                      <FormLabel>Số điện thoại *</FormLabel>
                       <FormControl className="">
                         <PhoneInput
                           className=""
@@ -265,7 +267,7 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
                   name="experienceYears"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Experience Years</FormLabel>
+                      <FormLabel>Số năm kinh nghiệm</FormLabel>
                       <FormControl>
                         <Input type="number" placeholder="2" {...field} />
                       </FormControl>
@@ -278,7 +280,7 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
                   name="address"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Address</FormLabel>
+                      <FormLabel>Địa chỉ</FormLabel>
                       <FormControl>
                         <Input placeholder="123/..." {...field} />
                       </FormControl>
@@ -291,7 +293,7 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
                   name="specialty"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Specialty *</FormLabel>
+                      <FormLabel>Chuyên môn *</FormLabel>
                       <FormControl>
                         <Input placeholder="Fitness or Yoga ..." {...field} />
                       </FormControl>
@@ -304,10 +306,10 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
                   name="bio"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Bio *</FormLabel>
+                      <FormLabel>Giới thiệu *</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Experience training for artist ..."
+                          placeholder="Kinh nghiệm chuyên môn về ..."
                           {...field}
                         />
                       </FormControl>

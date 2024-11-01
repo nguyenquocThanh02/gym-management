@@ -193,7 +193,7 @@ export function DataTable<TData, TValue>({
                     colSpan={columns.length}
                     className="h-24 text-center"
                   >
-                    No results.
+                    Không có kết quả.
                   </TableCell>
                 </TableRow>
               )}
@@ -214,7 +214,7 @@ export function DataTable<TData, TValue>({
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
-            Previous
+            Trước
           </Button>
           <Button
             variant="outline"
@@ -222,7 +222,7 @@ export function DataTable<TData, TValue>({
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
-            Next
+            Tiếp
           </Button>
         </div>
       </div>

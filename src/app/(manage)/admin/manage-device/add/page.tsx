@@ -29,7 +29,7 @@ const AddDevice = () => {
     <section>
       <div className="flex justify-between items-center w-full">
         <BreadcrumbCustom links={breadcrumbs} />
-        <ButtonCustom onClick={handleBack}>Back</ButtonCustom>
+        <ButtonCustom onClick={handleBack}>Trở về</ButtonCustom>
       </div>
       <DetailsDeviceForm data={null} id="" />
     </section>

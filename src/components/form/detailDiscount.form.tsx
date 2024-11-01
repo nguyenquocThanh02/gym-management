@@ -65,9 +65,6 @@ const DetailsDiscountForm: React.FC<{
   async function onSubmit(values: z.infer<typeof discountRule>) {
     setIsLoading(true);
 
-    console.log("ngày: ", values.validFrom);
-    console.log("format: ", new Date(values.validFrom));
-
     const dataAddDiscount: typeDiscount = {
       name: values?.name,
       validFrom: new Date(values.validFrom),
@@ -134,7 +131,7 @@ const DetailsDiscountForm: React.FC<{
         <div>
           {id ? (
             <h3>
-              Status:{" "}
+              Trạng thái:{" "}
               <Badge
                 className={`${
                   status === "active" ? "bg-green-800" : "bg-Primary"
@@ -151,26 +148,27 @@ const DetailsDiscountForm: React.FC<{
           {id && (
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
-                <Button variant="outline">Change Status</Button>
+                <Button variant="outline">Thay đổi trạng thái</Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
                   <DialogTitle className="text-black">
-                    Change Status
+                    Thay đổi trạng thái
                   </DialogTitle>
                   <DialogDescription>
-                    Are you sure you want to{" "}
-                    {status === "active" ? "stopped" : "run"} the discount?
+                    Bạn có chắc chắn muốn{" "}
+                    {status === "active" ? "dừng" : "tiếp tục"} chương trình
+                    giảm giá không?
                   </DialogDescription>
                 </DialogHeader>
                 <DialogFooter>
                   <DialogClose asChild>
                     <Button type="button" variant="secondary">
-                      Close
+                      Đóng
                     </Button>
                   </DialogClose>
                   <Button type="submit" onClick={handleChangeStatus}>
-                    Confirm
+                    Xác nhận
                   </Button>
                 </DialogFooter>
               </DialogContent>
@@ -181,7 +179,7 @@ const DetailsDiscountForm: React.FC<{
             onClick={form.handleSubmit(onSubmit)}
             className="py-1"
           >
-            Save all
+            Lưu tất cả
           </ButtonCustom>
         </div>
       </div>
@@ -195,7 +193,7 @@ const DetailsDiscountForm: React.FC<{
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Name</FormLabel>
+                      <FormLabel>Tên</FormLabel>
                       <FormControl>
                         <Input placeholder="Discount middle month" {...field} />
                       </FormControl>
@@ -209,7 +207,7 @@ const DetailsDiscountForm: React.FC<{
                   name="validFrom"
                   render={({ field }) => (
                     <FormItem className="flex flex-col">
-                      <FormLabel>Valid From</FormLabel>
+                      <FormLabel>Bắt đầu từ</FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
@@ -223,7 +221,7 @@ const DetailsDiscountForm: React.FC<{
                               {field.value ? (
                                 format(field.value, "PPP")
                               ) : (
-                                <span>Pick a date</span>
+                                <span>Chọn ngày</span>
                               )}
                               <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                             </Button>
@@ -265,7 +263,7 @@ const DetailsDiscountForm: React.FC<{
                               {field.value ? (
                                 format(field.value, "PPP")
                               ) : (
-                                <span>Pick a date</span>
+                                <span>Chọn ngày</span>
                               )}
                               <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                             </Button>
@@ -292,7 +290,7 @@ const DetailsDiscountForm: React.FC<{
                   name="percent"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Percent (%)</FormLabel>
+                      <FormLabel>Phần trăm (%)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -310,7 +308,7 @@ const DetailsDiscountForm: React.FC<{
                   name="description"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Description </FormLabel>
+                      <FormLabel>Mô tả </FormLabel>
                       <FormControl>
                         <Textarea
                           placeholder="Sale middle month ..."
@@ -331,9 +329,9 @@ const DetailsDiscountForm: React.FC<{
               render={() => (
                 <FormItem>
                   <div className="mb-4">
-                    <FormLabel className="text-base">Apply for:</FormLabel>
+                    <FormLabel className="text-base">Áp dụng cho:</FormLabel>
                     <FormDescription>
-                      Select the packages you want to apply this discount.
+                      Chọn các gói bạn muốn áp dụng giảm giá này.{" "}
                     </FormDescription>
                   </div>
                   {packages &&

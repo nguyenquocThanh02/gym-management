@@ -15,18 +15,18 @@ const ActiveDiscount = () => {
 
   return (
     <>
-      <div className="hidden lg:flex lg:gap-2 absolute top-[270px] left-8 w-fit h-fit p-2  text-shadow">
+      <div className="hidden lg:flex lg:gap-2 absolute top-[270px] left-8 w-fit h-fit p-2">
         {activeDiscount.length > 0 &&
           activeDiscount?.map((item, index) => (
             <ul
               data-aos="fade-right"
               key={index}
-              className="text-left leading-relaxed space-y-1 border border-Light rounded bg-Light/10 w-[160px] p-3"
+              className="text-left leading-relaxed space-y-1 rounded blur-shadow w-[200px] p-3"
             >
               <h3 className="font-medium">{item?.name} 🔥</h3>
-              <li>From {formatDate(item?.validFrom)}</li>
-              <li>To {formatDate(item?.validTo)}</li>
-              <li>- {item?.percent}% off</li>
+              <li>Từ {formatDate(item?.validFrom)}</li>
+              <li>Đến {formatDate(item?.validTo)}</li>
+              <li>- {item?.percent}% giảm</li>
               <li>{item?.description}</li>
             </ul>
           ))}

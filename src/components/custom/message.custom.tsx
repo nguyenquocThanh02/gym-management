@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import { Avatar, AvatarImage } from "../ui/avatar";
 
 interface MessageBubbleProps {
   align: "left" | "right";
@@ -26,14 +27,9 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
   return (
     <div className={`flex gap-2.5 ${alignmentClass} mb-4`}>
       {align === "left" && image && (
-        <Image
-          src={image}
-          alt={name}
-          quality={100}
-          className="w-10 h-10 rounded-full"
-          width={10}
-          height={10}
-        />
+        <Avatar>
+          <AvatarImage src={image} alt={name} />
+        </Avatar>
       )}
       <div className={`grid ${align === "right" ? "ml-auto" : ""}`}>
         <h5
@@ -55,14 +51,9 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
         </div>
       </div>
       {align === "right" && image && (
-        <Image
-          src={image}
-          quality={100}
-          alt={name}
-          className="w-10 h-10 rounded-full"
-          width={10}
-          height={10}
-        />
+        <Avatar>
+          <AvatarImage src={image} alt={name} />
+        </Avatar>
       )}
     </div>
   );

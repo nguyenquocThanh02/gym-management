@@ -8,10 +8,10 @@ export default function TabsDemo() {
       <div className="flex items-center">
         <TabsList>
           <TabsTrigger value="trainee" className="px-5">
-            Trainee
+            Nhân viên
           </TabsTrigger>
           <TabsTrigger value="user" className="px-5">
-            User
+            Người dùng
           </TabsTrigger>
         </TabsList>
       </div>

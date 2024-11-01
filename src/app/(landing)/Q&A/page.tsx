@@ -9,91 +9,91 @@ import {
 const QuestionAnswer = () => {
   const questionAnswers: { question: string; answer: string }[] = [
     {
-      question: "Các gói tập tại gym thường bao gồm những gì?",
+      question: "Gói tập gym thường bao gồm những gì?",
       answer:
-        "Các gói tập thường bao gồm các lớp tập thể dục, truy cập thiết bị, và dịch vụ tư vấn dinh dưỡng. Một số gói cũng có các buổi tập cá nhân hoặc nhóm với huấn luyện viên.",
+        "Gói tập gym thường bao gồm các lớp học thể dục, quyền truy cập vào thiết bị, và dịch vụ tư vấn dinh dưỡng. Một số gói cũng bao gồm các buổi huấn luyện cá nhân hoặc nhóm với huấn luyện viên.",
     },
     {
-      question: "Làm thế nào để chọn gói tập phù hợp với tôi?",
+      question: "Tôi nên chọn gói nào cho mình?",
       answer:
-        "Chọn gói tập phù hợp dựa trên mục tiêu cá nhân của bạn, như giảm cân, tăng cơ, hoặc cải thiện sức bền. Hãy tham khảo ý kiến từ nhân viên gym để chọn gói phù hợp.",
+        "Chọn gói phù hợp dựa trên mục tiêu cá nhân của bạn, chẳng hạn như giảm cân, tăng cơ, hoặc cải thiện sức bền. Hãy tham khảo nhân viên gym để chọn gói phù hợp.",
     },
     {
-      question: "Tôi có thể thay đổi gói tập khi cần không?",
+      question: "Tôi có thể thay đổi gói của mình khi cần không?",
       answer:
-        "Nhiều gym cho phép thay đổi gói tập, nhưng điều này phụ thuộc vào chính sách của từng cơ sở. Hãy liên hệ với nhân viên để biết thêm chi tiết.",
+        "Nhiều phòng gym cho phép bạn thay đổi gói, nhưng điều này phụ thuộc vào chính sách của từng cơ sở. Hãy liên hệ với nhân viên để biết thêm chi tiết.",
     },
     {
       question: "Huấn luyện viên cá nhân là gì?",
       answer:
-        "Huấn luyện viên cá nhân là người giúp bạn đạt được mục tiêu tập luyện bằng cách tạo kế hoạch tập luyện cá nhân hóa, hướng dẫn kỹ thuật, và cung cấp động lực.",
+        "Huấn luyện viên cá nhân giúp bạn đạt được mục tiêu tập luyện bằng cách tạo ra một kế hoạch tập luyện cá nhân hóa, hướng dẫn kỹ thuật và cung cấp động lực.",
     },
     {
       question: "Tôi nên chọn huấn luyện viên cá nhân như thế nào?",
       answer:
-        "Lựa chọn huấn luyện viên dựa trên kinh nghiệm, chuyên môn, và các chứng chỉ liên quan. Hãy gặp gỡ và trao đổi để chắc chắn rằng bạn có thể làm việc hiệu quả với họ.",
+        "Chọn huấn luyện viên dựa trên kinh nghiệm, chuyên môn, và chứng chỉ liên quan. Hãy gặp gỡ và thảo luận để đảm bảo bạn có thể làm việc hiệu quả cùng nhau.",
     },
     {
-      question: "Có cần phải có một huấn luyện viên cá nhân không?",
+      question: "Có cần thiết phải có huấn luyện viên cá nhân không?",
       answer:
-        "Huấn luyện viên cá nhân không bắt buộc, nhưng có thể giúp bạn đạt kết quả nhanh hơn và an toàn hơn, đặc biệt nếu bạn mới bắt đầu hoặc có mục tiêu cụ thể.",
+        "Huấn luyện viên cá nhân không bắt buộc, nhưng có thể giúp bạn đạt được kết quả nhanh hơn và an toàn hơn, đặc biệt nếu bạn là người mới bắt đầu hoặc có mục tiêu cụ thể.",
     },
     {
-      question: "Các bài tập giảm cân hiệu quả là gì?",
+      question: "Những bài tập giảm cân hiệu quả là gì?",
       answer:
-        "Các bài tập giảm cân hiệu quả bao gồm cardio (như chạy, bơi), tập cường độ cao (HIIT), và các bài tập sức mạnh. Kết hợp các bài tập này với chế độ ăn uống hợp lý sẽ giúp bạn giảm cân.",
+        "Những bài tập giảm cân hiệu quả bao gồm cardio (như chạy, bơi), tập luyện cường độ cao (HIIT), và tập sức mạnh. Kết hợp chúng với chế độ ăn hợp lý sẽ giúp bạn giảm cân.",
     },
     {
-      question: "Tôi có thể tập luyện mỗi ngày không?",
+      question: "Tôi có thể tập mỗi ngày không?",
       answer:
-        "Tập luyện mỗi ngày có thể được thực hiện, nhưng cần thay đổi cường độ và loại bài tập để tránh chấn thương và phục hồi cơ bắp. Đảm bảo có thời gian nghỉ ngơi hợp lý.",
+        "Tập mỗi ngày là khả thi, nhưng bạn cần thay đổi cường độ và loại bài tập để tránh chấn thương và cho cơ bắp phục hồi. Đảm bảo có thời gian nghỉ ngơi đầy đủ.",
     },
     {
-      question: "Tôi nên ăn gì trước và sau khi tập luyện?",
+      question: "Tôi nên ăn gì trước và sau khi tập?",
       answer:
-        "Trước khi tập, nên ăn một bữa nhẹ chứa carbohydrate và protein. Sau khi tập, tiêu thụ protein và carbohydrate để phục hồi cơ bắp và năng lượng.",
+        "Trước khi tập, hãy ăn một bữa nhẹ có chứa carbohydrate và protein. Sau khi tập, tiêu thụ protein và carbohydrate để phục hồi cơ bắp và năng lượng.",
     },
     {
       question: "Cân nặng có ảnh hưởng đến hiệu quả tập luyện không?",
       answer:
-        "Cân nặng có thể ảnh hưởng đến hiệu quả tập luyện. Người nặng hơn có thể gặp khó khăn hơn khi tập, nhưng tập luyện đều đặn và chế độ ăn uống hợp lý sẽ giúp cải thiện tình trạng này.",
+        "Cân nặng có thể ảnh hưởng đến hiệu quả tập luyện. Những người nặng hơn có thể gặp khó khăn hơn khi tập, nhưng việc tập luyện đều đặn và chế độ ăn hợp lý sẽ giúp cải thiện tình trạng này.",
     },
     {
-      question: "Làm thế nào để theo dõi tiến độ tập luyện của tôi?",
+      question: "Tôi có thể theo dõi tiến độ tập luyện của mình như thế nào?",
       answer:
-        "Bạn có thể theo dõi tiến độ bằng cách ghi chép các bài tập, theo dõi trọng lượng và số lần lặp lại, và sử dụng các ứng dụng theo dõi thể dục. Thực hiện các kiểm tra định kỳ cũng là một cách tốt.",
+        "Bạn có thể theo dõi tiến độ bằng cách ghi chép các bài tập, theo dõi trọng lượng và số lần lặp lại, và sử dụng các ứng dụng theo dõi thể dục. Đánh giá định kỳ cũng là một cách tốt.",
     },
     {
-      question: "Có những lợi ích gì khi tập luyện với nhóm?",
+      question: "Lợi ích của việc tập luyện nhóm là gì?",
       answer:
-        "Tập luyện với nhóm có thể tăng động lực, tạo cảm giác cộng đồng và hỗ trợ từ các thành viên khác. Nó cũng giúp duy trì cam kết và làm cho buổi tập trở nên thú vị hơn.",
+        "Tập luyện trong nhóm có thể tăng cường động lực, tạo cảm giác cộng đồng, và cung cấp hỗ trợ từ các thành viên khác. Nó cũng giúp duy trì cam kết và làm cho việc tập luyện thú vị hơn.",
     },
     {
-      question: "Tập luyện vào thời điểm nào trong ngày là tốt nhất?",
+      question: "Thời điểm nào trong ngày là tốt nhất để tập luyện?",
       answer:
-        "Thời điểm tập luyện tốt nhất là khi bạn cảm thấy thoải mái và có năng lượng. Một số người thích tập vào buổi sáng, trong khi những người khác thấy hiệu quả hơn vào buổi chiều hoặc tối.",
+        "Thời điểm tốt nhất để tập luyện là khi bạn cảm thấy thoải mái và tràn đầy năng lượng. Một số người thích tập vào buổi sáng, trong khi những người khác thấy hiệu quả hơn vào buổi chiều hoặc tối.",
     },
     {
-      question: "Làm thế nào để phòng ngừa chấn thương khi tập luyện?",
+      question: "Làm thế nào tôi có thể ngăn ngừa chấn thương khi tập luyện?",
       answer:
-        "Để phòng ngừa chấn thương, hãy khởi động kỹ trước khi tập, sử dụng kỹ thuật đúng, và không quá tải trọng lượng. Cũng quan trọng là nghe theo cơ thể và nghỉ ngơi khi cần thiết.",
+        "Để ngăn ngừa chấn thương, hãy khởi động kỹ lưỡng trước khi tập, sử dụng kỹ thuật đúng, và tránh nâng quá tải. Cũng quan trọng là lắng nghe cơ thể và nghỉ ngơi khi cần thiết.",
     },
     {
-      question: "Có thể tập luyện hiệu quả mà không cần thiết bị không?",
+      question: "Tôi có thể tập hiệu quả mà không cần thiết bị không?",
       answer:
-        "Có, bạn hoàn toàn có thể tập luyện hiệu quả mà không cần thiết bị bằng cách sử dụng trọng lượng cơ thể, bài tập cardio, và các bài tập thể lực như hít đất, squats, và lunges.",
+        "Có, bạn có thể tập hiệu quả mà không cần thiết bị bằng cách sử dụng trọng lượng cơ thể, các bài tập cardio, và các bài tập sức mạnh như chống đẩy, ngồi xổm, và lunge.",
     },
     {
-      question: "Tôi có cần phải uống thực phẩm chức năng không?",
+      question: "Tôi có cần bổ sung không?",
       answer:
-        "Thực phẩm chức năng không phải là bắt buộc, nhưng có thể hỗ trợ cho chế độ ăn uống và mục tiêu tập luyện của bạn. Hãy tham khảo ý kiến bác sĩ hoặc chuyên gia dinh dưỡng trước khi sử dụng.",
+        "Bổ sung không bắt buộc, nhưng có thể hỗ trợ chế độ ăn và mục tiêu tập luyện của bạn. Hãy tham khảo ý kiến bác sĩ hoặc chuyên gia dinh dưỡng trước khi sử dụng.",
     },
   ];
 
   const breadcrumbs = [
     {
       link: "/",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/Q&A",

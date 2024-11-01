@@ -75,7 +75,8 @@ const RegisterForm: React.FC<{ invite: string }> = ({ invite = "" }) => {
           } catch (error) {
             toast.warning("Error when creating chats message");
           }
-          toast.success("Register successfully!");
+          toast.success("Đăng ký thành công!");
+
           router.push("/login");
         }
       } else {
@@ -102,7 +103,7 @@ const RegisterForm: React.FC<{ invite: string }> = ({ invite = "" }) => {
                 name="fullname"
                 render={({ field }) => (
                   <FormItem className="text-shadow">
-                    <FormLabel>Full Name</FormLabel>
+                    <FormLabel>Họ và tên</FormLabel>
                     <FormControl>
                       <Input
                         className="text-Dark"
@@ -136,7 +137,7 @@ const RegisterForm: React.FC<{ invite: string }> = ({ invite = "" }) => {
                 name="phone"
                 render={({ field }) => (
                   <FormItem className="text-shadow">
-                    <FormLabel>Phone *</FormLabel>
+                    <FormLabel>Số điện thoại *</FormLabel>
                     <FormControl className="">
                       <PhoneInput
                         className="text-Dark"
@@ -153,7 +154,7 @@ const RegisterForm: React.FC<{ invite: string }> = ({ invite = "" }) => {
                 name="dateOfBirth"
                 render={({ field }) => (
                   <FormItem className="text-shadow">
-                    <FormLabel>Date Of Birth</FormLabel>
+                    <FormLabel>Ngày sinh</FormLabel>
                     <FormControl>
                       <Input
                         className="text-Dark"
@@ -174,7 +175,7 @@ const RegisterForm: React.FC<{ invite: string }> = ({ invite = "" }) => {
                 name="account"
                 render={({ field }) => (
                   <FormItem className="text-shadow">
-                    <FormLabel>Account Name *</FormLabel>
+                    <FormLabel>Tên tài khoản *</FormLabel>
                     <FormControl>
                       <Input
                         className="text-Dark"
@@ -191,7 +192,7 @@ const RegisterForm: React.FC<{ invite: string }> = ({ invite = "" }) => {
                 name="password"
                 render={({ field }) => (
                   <FormItem className="text-shadow">
-                    <FormLabel>Password *</FormLabel>
+                    <FormLabel>Mật khẩu *</FormLabel>
                     <FormControl>
                       <Input
                         className="text-Dark"
@@ -209,7 +210,7 @@ const RegisterForm: React.FC<{ invite: string }> = ({ invite = "" }) => {
                 name="confirmPassword"
                 render={({ field }) => (
                   <FormItem className="text-shadow">
-                    <FormLabel>Confirm Password *</FormLabel>
+                    <FormLabel>Xác nhận mật khẩu *</FormLabel>
                     <FormControl>
                       <Input
                         className="text-Dark"
@@ -227,7 +228,7 @@ const RegisterForm: React.FC<{ invite: string }> = ({ invite = "" }) => {
                 type="submit"
                 className="w-full mt-4"
               >
-                Register
+                Đăng ký
               </ButtonCustom>
             </div>
           </div>

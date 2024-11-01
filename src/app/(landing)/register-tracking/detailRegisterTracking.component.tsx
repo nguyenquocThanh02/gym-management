@@ -63,12 +63,13 @@ const DetailRegisterTrackingOfUser = () => {
 
   const handleCancel = async (id: string | undefined) => {
     const resultCancel = await RegisterTrackingApis.cancelRegisterTracking(id);
-    if (resultCancel?.status === "200") {
+    if (resultCancel?.status === 200) {
       setOpenCancel(false);
       refetch();
       toast.success("Cancel successfully");
     } else {
-      toast.error("Error: ", resultCancel?.message);
+      toast.error(resultCancel?.message);
+      setOpenCancel(false);
     }
   };
   return (
@@ -77,39 +78,45 @@ const DetailRegisterTrackingOfUser = () => {
         {theRT?.length < 1 ? (
           <>
             <caption className="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-              You have not registered for any workout package.{" "}
+              Bạn chưa đăng ký gói tập luyện nào.{" "}
               <p className="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
-                Click the star button to go to the package page and start your
-                registration today. Sign up online to receive exciting
-                promotions!
+                Nhấn vào nút sao để đến trang gói và bắt đầu đăng ký ngay hôm
+                nay. Đăng ký trực tuyến để nhận những khuyến mãi hấp dẫn!
               </p>
             </caption>
 
             <caption className="border border-Light">
               <LinkArrow className="my-3" href="/package">
-                Package page
+                Chi tiết gói tập
               </LinkArrow>
             </caption>
           </>
         ) : (
           <>
             <caption className="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-              Your package information.
+              Thông tin gói tập.
               <p className="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
-                Select <strong>Package</strong> and <strong>Payment</strong> to
-                view its details. The package can only be canceled if you have
-                not made a payment and within 2 days after it becomes effective.
+                Chọn <strong>Gói</strong> và{" "}
+                <strong>Phương thức thanh toán</strong> để xem chi tiết. Gói chỉ
+                có thể được hủy nếu bạn chưa thực hiện thanh toán và trong vòng
+                2 ngày sau khi nó có hiệu lực.
               </p>
             </caption>
             <thead>
               <tr className="bg-Light/20">
-                <th className="border border-slate-300 py-5">Package ID</th>
-                <th className="border border-slate-300 py-5">Payment method</th>
-                <th className="border border-slate-300 py-5">Time Start</th>
-                <th className="border border-slate-300 py-5">Paid at</th>
-                <th className="border border-slate-300 py-5">Discount</th>
-                <th className="border border-slate-300 py-5">Total Price</th>
-                <th className="border border-slate-300 py-5">Action</th>
+                <th className="border border-slate-300 py-5">ID Gói</th>
+                <th className="border border-slate-300 py-5">
+                  Phương thức thanh toán
+                </th>
+                <th className="border border-slate-300 py-5">
+                  Thời gian bắt đầu
+                </th>
+                <th className="border border-slate-300 py-5">
+                  Ngày thanh toán
+                </th>
+                <th className="border border-slate-300 py-5">Giảm giá</th>
+                <th className="border border-slate-300 py-5">Tổng giá</th>
+                <th className="border border-slate-300 py-5">Hành động</th>
               </tr>
             </thead>
             <tbody>
@@ -128,36 +135,33 @@ const DetailRegisterTrackingOfUser = () => {
                         <DrawerContent>
                           <DrawerDescription>
                             <h3 className="text-center mb-3 mt-5 font-bold text-base">
-                              Information this Package
+                              Thông tin gói tập
                             </h3>
                             {thePackage ? (
                               <div className="flex justify-center">
                                 <ul className="flex flex-col gap-3">
-                                  <li>Name: {thePackage?.packages?.name}</li>
-                                  <li>Type: {thePackage?.packages?.type}</li>
+                                  <li>Tên: {thePackage?.packages?.name}</li>
+                                  <li>Loại: {thePackage?.packages?.type}</li>
+                                  <li>Giá: {thePackage?.packages?.price} $</li>
                                   <li>
-                                    Price: {thePackage?.packages?.price} $
-                                  </li>
-                                  <li>
-                                    Sessions with PT:{" "}
+                                    Số buổi có người hướng dẫn:{" "}
                                     {thePackage?.packages?.sessionWithPT}
                                   </li>
                                   <li>
-                                    Duration: {thePackage?.packages?.duration}{" "}
-                                    days
+                                    Thời gian: {thePackage?.packages?.duration}{" "}
+                                    ngày
                                   </li>
                                   <li>
-                                    Descriptions:{" "}
-                                    {thePackage?.packages?.description}
+                                    Mô tả: {thePackage?.packages?.description}
                                   </li>
                                   <li>
-                                    Suitable for:{" "}
+                                    Phù hợp cho:{" "}
                                     {thePackage?.packages?.suitableFor}
                                   </li>
                                 </ul>
                               </div>
                             ) : (
-                              <div>skeleton</div>
+                              <div>Loading</div>
                             )}
                           </DrawerDescription>
                           <DrawerFooter>
@@ -179,48 +183,47 @@ const DetailRegisterTrackingOfUser = () => {
                         <DrawerContent>
                           <DrawerDescription>
                             <h3 className="text-center mb-3 mt-5 font-bold text-base">
-                              Information this payment
+                              Thông tin thanh toán
                             </h3>
                             <div className="flex justify-center">
                               <ul className="flex flex-col gap-3">
                                 <li>
-                                  Payment ID:{" "}
+                                  ID thanh toán:{" "}
                                   {theInforRT?.payment?.orderId
                                     ? theInforRT?.payment?.orderId
                                     : "//"}
                                 </li>
                                 <li>
-                                  Payer ID:{" "}
+                                  ID thanh toán:{" "}
                                   {theInforRT?.payment?.payerId
                                     ? theInforRT?.payment?.payerId
                                     : "//"}
                                 </li>
                                 <li>
-                                  Payer name:{" "}
+                                  Tên người thanh toán:{" "}
                                   {theInforRT?.payment?.payerName
                                     ? theInforRT?.payment?.payerName
                                     : "//"}
                                 </li>
                                 <li>
-                                  Payer email:{" "}
+                                  Email thanh toán:{" "}
                                   {theInforRT?.payment?.payerEmail
                                     ? theInforRT?.payment?.payerEmail
                                     : "//"}
                                 </li>
                                 <li>
-                                  Paid at: {formatDate(theInforRT?.paidAt)}
+                                  Thanh toán lúc:{" "}
+                                  {formatDate(theInforRT?.paidAt)}
                                 </li>
                                 <li>
                                   Status:{" "}
                                   {theInforRT?.isPaid ? (
-                                    <Badge>Payment</Badge>
+                                    <Badge>Đã thanh toán</Badge>
                                   ) : (
-                                    <Badge>None</Badge>
+                                    <Badge>Chưa thanh toán</Badge>
                                   )}
                                 </li>
-                                <li>
-                                  Total price: {theInforRT?.package?.price}
-                                </li>
+                                <li>Tổng tiền: {theInforRT?.package?.price}</li>
                               </ul>
                             </div>
                           </DrawerDescription>
@@ -229,7 +232,7 @@ const DetailRegisterTrackingOfUser = () => {
                               onClick={() => setOpenPayment(false)}
                               variant={"ghost"}
                             >
-                              Close
+                              Đóng
                             </Button>
                           </DrawerFooter>
                         </DrawerContent>
@@ -253,18 +256,16 @@ const DetailRegisterTrackingOfUser = () => {
                           asChild
                           onClick={() => setRegisterTrackingId(item?._id || "")}
                         >
-                          <Button variant="destructive">Cancel</Button>
+                          <Button variant="destructive">Huỷ</Button>
                         </DialogTrigger>
                         {registerTrackingId && (
                           <DialogContent className="">
                             <DialogHeader>
-                              <DialogTitle>
-                                Cancel Register Tracking
-                              </DialogTitle>
+                              <DialogTitle>Huỷ đăng ký</DialogTitle>
                               <DialogDescription>
-                                You can only cancel your subscription within 3
-                                days from the start date and if you have not
-                                made a payment.
+                                Bạn chỉ có thể hủy đăng ký của mình trong vòng 3
+                                ngày kể từ ngày bắt đầu và nếu bạn chưa thực
+                                hiện thanh toán.
                               </DialogDescription>
                             </DialogHeader>
                             <DialogFooter>
@@ -273,13 +274,13 @@ const DetailRegisterTrackingOfUser = () => {
                                 className=""
                                 variant={"outline"}
                               >
-                                Cancel
+                                Huỷ
                               </Button>
                               <Button
                                 type="submit"
                                 onClick={() => handleCancel(registerTrackingId)}
                               >
-                                Confirm
+                                Xác nhận
                               </Button>
                             </DialogFooter>
                           </DialogContent>

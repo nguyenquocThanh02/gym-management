@@ -109,21 +109,21 @@ const ProfileForm: React.FC<{ data: typeAccount }> = ({ data }) => {
       <div className="flex justify-end mb-3 mt-2">
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger>
-            <ButtonCustom variant="custom">Change Password</ButtonCustom>
+            <ButtonCustom variant="custom">Đổi Mật Khẩu</ButtonCustom>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle className="text-center">Change Password</DialogTitle>
+              <DialogTitle className="text-center">Đổi Mật Khẩu</DialogTitle>
               <DialogDescription className="text-center">
-                Enter your recent password, then enter a new password and
-                confirm the new password to change your password.
+                Nhập mật khẩu hiện tại của bạn, sau đó nhập mật khẩu mới và xác
+                nhận mật khẩu mới để đổi mật khẩu.
               </DialogDescription>
             </DialogHeader>
             <ChangePasswordForm setOpen={setOpen} />
           </DialogContent>
         </Dialog>
         <ButtonCustom className="ml-3" onClick={form.handleSubmit(onSubmit)}>
-          Update
+          Cập nhật
         </ButtonCustom>
       </div>
       <Form {...form}>
@@ -144,10 +144,10 @@ const ProfileForm: React.FC<{ data: typeAccount }> = ({ data }) => {
           </div>
           <div className="text-center w-1/2 text-shadow font-light">
             <i>
-              To update your avatar, click on the avatar and select a new
-              picture. After changing your avatar or updating your information,
-              you must click the <strong>Update</strong> button to save all
-              changes.
+              Để cập nhật ảnh đại diện của bạn, hãy nhấp vào ảnh đại diện và
+              chọn một bức hình mới. Sau khi thay đổi ảnh đại diện hoặc cập nhật
+              thông tin của bạn, bạn phải nhấp vào nút
+              <strong>Cập nhật</strong> để lưu tất cả các thay đổi.
             </i>
           </div>
           <div className="w-full shadow-lg p-1 rounded-lg flex justify-center gap-12 text-Dark">
@@ -157,7 +157,7 @@ const ProfileForm: React.FC<{ data: typeAccount }> = ({ data }) => {
                 name="fullName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-Light">FullName</FormLabel>
+                    <FormLabel className="text-Light">Họ và tên</FormLabel>
                     <FormControl>
                       <Input placeholder="Your full name" {...field} />
                     </FormControl>
@@ -170,7 +170,7 @@ const ProfileForm: React.FC<{ data: typeAccount }> = ({ data }) => {
                 name="accountName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-Light">Account name</FormLabel>
+                    <FormLabel className="text-Light">Tên tài khoản</FormLabel>
                     <FormControl>
                       <Input placeholder="Your account name" {...field} />
                     </FormControl>
@@ -216,7 +216,7 @@ const ProfileForm: React.FC<{ data: typeAccount }> = ({ data }) => {
                 name="dateOfBirth"
                 render={({ field }) => (
                   <FormItem className="">
-                    <FormLabel className="text-Light">Date Of Birth</FormLabel>
+                    <FormLabel className="text-Light">Ngày sinh</FormLabel>
                     <FormControl>
                       <Input
                         className="text-Dark"

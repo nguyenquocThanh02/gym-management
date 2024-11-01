@@ -6,13 +6,14 @@ const Contact = () => {
   const breadcrumbs = [
     {
       link: "/",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/contact",
-      name: "Contact",
+      name: "Liên hệ",
     },
   ];
+
   return (
     <div className="l-container mb-10">
       <BreadcrumbCustom links={breadcrumbs} />
@@ -26,7 +27,7 @@ const Contact = () => {
           </li>
           <li className="flex gap-3">
             <MapPin />
-            3/2 streets, Ninh Kieu, Can Tho
+            Đường 3/2, Ninh Kiều, Cần Thơ
           </li>
           <li className="flex gap-3">
             <Mail />

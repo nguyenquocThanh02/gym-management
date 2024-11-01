@@ -64,22 +64,22 @@ const Header = () => {
 
   const navbars: typeNavBar[] = [
     {
-      name: "Packages",
+      name: "Gói tập",
       path: "/package",
       dropdown: null,
     },
     {
-      name: "Information",
+      name: "Thông tin",
       path: "#",
       dropdown: <HeaderDetail />,
     },
     {
-      name: "Artical",
+      name: "Bài viết",
       path: "/artical",
       dropdown: null,
     },
     {
-      name: "Contact",
+      name: "Liên hệ",
       path: "/contact",
       dropdown: null,
     },
@@ -87,17 +87,17 @@ const Header = () => {
 
   const functionNavs: typeFunctionNav[] = [
     {
-      name: "My register tracking",
+      name: "Theo dõi đăng ký của tôi",
       path: "/register-tracking",
       icon: <Package size={18} />,
     },
     {
-      name: "My artical",
+      name: "Bài viết của tôi",
       path: "/artical/of-user",
       icon: <ScrollText size={18} />,
     },
     {
-      name: "Profile",
+      name: "Hồ sơ",
       path: "/profile",
       icon: <UserPen size={18} />,
     },
@@ -188,7 +188,7 @@ const Header = () => {
                         <Avatar className="shadow-md">
                           <AvatarImage src={theUser?.avatar} />
                           <AvatarFallback className="text-Dark/80">
-                            Avatar
+                            Ảnh đại diện
                           </AvatarFallback>
                         </Avatar>
                         <h4 className="text-shadow">{theUser?.accountName}</h4>
@@ -207,7 +207,7 @@ const Header = () => {
                         <hr />
                         <li className="flex items-center gap-2 hover:opacity-80">
                           <LogOut size={18} />
-                          <button onClick={handleLogout}>Log out</button>
+                          <button onClick={handleLogout}>Đăng xuất</button>
                         </li>
                       </ul>
                     </HoverCardContent>
@@ -216,10 +216,10 @@ const Header = () => {
               ) : (
                 <div className="flex flex-col lg:gap-2 lg:flex-row gap-y-4 lg:items-center ml-auto justify-center">
                   <ButtonCustom className="" variant="custom">
-                    <Link href={"/login"}>Login</Link>
+                    <Link href={"/login"}>Đăng nhập</Link>
                   </ButtonCustom>
                   <ButtonCustom className="" variant="custom">
-                    <Link href={"/register"}>Register</Link>
+                    <Link href={"/register"}>Đăng ký</Link>
                   </ButtonCustom>
                 </div>
               )}

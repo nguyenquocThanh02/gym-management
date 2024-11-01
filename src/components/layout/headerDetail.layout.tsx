@@ -6,28 +6,31 @@ import React from "react";
 const HeaderDetail = () => {
   const navInfors: typeNavInfor[] = [
     {
-      name: "About us",
+      name: "Giới thiệu về chúng tôi",
       path: "/about-us",
       icon: <Users />,
-      detail: "Find out more about our mission, values, and team here.",
+      detail:
+        "Tìm hiểu thêm về sứ mệnh, giá trị và đội ngũ của chúng tôi tại đây.",
     },
     {
-      name: "Devices",
+      name: "Thiết bị",
       path: "/devices",
       icon: <Dumbbell />,
-      detail: "Explore the range of fitness devices and equipment we offer.",
+      detail: "Khám phá dải thiết bị và dụng cụ thể dục mà chúng tôi cung cấp.",
     },
     {
-      name: "Personal Trainers",
+      name: "Huấn luyện viên cá nhân",
       path: "/personal-trainer",
       icon: <PersonStanding />,
-      detail: "Meet our certified personal trainers and their specialties.",
+      detail:
+        "Gặp gỡ các huấn luyện viên cá nhân chứng nhận của chúng tôi và các chuyên môn của họ.",
     },
     {
-      name: "Q&A",
+      name: "Câu hỏi & Đáp",
       path: "/Q&A",
       icon: <FileQuestion />,
-      detail: "Get answers to frequently asked questions about our services.",
+      detail:
+        "Nhận câu trả lời cho các câu hỏi thường gặp về dịch vụ của chúng tôi.",
     },
   ];
 

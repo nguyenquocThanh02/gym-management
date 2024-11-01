@@ -1,7 +1,13 @@
 "use client";
 
 import * as React from "react";
-import { TrendingUp } from "lucide-react";
+import {
+  DollarSign,
+  ScrollText,
+  TrendingUp,
+  TrendingUpIcon,
+  UserRoundPlus,
+} from "lucide-react";
 import { Label, Pie, PieChart } from "recharts";
 
 import {
@@ -47,6 +53,7 @@ export default function DateChart() {
     queryFn: () => RegisterTrackingApis.getChartDate(theDate),
     enabled: !!theDate,
   });
+  console.log(data?.data);
 
   const totalPrice = React.useMemo(() => {
     return data?.data?.paypal + data?.data?.offline || 0;
@@ -77,6 +84,50 @@ export default function DateChart() {
         onChange={(e) => setTheDate(e.target.value)}
         className="border mb-3 p-1 rounded-md"
       />
+      <div className="flex flex-col md:flex-row items-center justify-start gap-5 mb-3">
+        <Card className="bg-slate-300 w-[280px] h-[160px] rounded-lg  text-Light">
+          <CardContent className="h-full w-full flex justify-between items-center">
+            <div className="">
+              <h3 className="font-semibold text-lg">Tổng người dùng</h3>
+              <div className="flex gap-3 items-center mt-2 text-4xl">
+                <p>{data?.data?.amountUser}</p>
+                <TrendingUpIcon />
+              </div>
+            </div>
+            <div className="border rounded-full p-3">
+              <UserRoundPlus size={40} />
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="bg-slate-300 w-[280px] h-[160px] rounded-lg  text-Light">
+          <CardContent className="h-full w-full flex justify-between items-center">
+            <div className="">
+              <h3 className="font-semibold text-lg">Tổng bài báo</h3>
+              <div className="flex gap-3 items-center mt-2 text-4xl">
+                <p>{data?.data?.amountArtical}</p>
+                <TrendingUpIcon />
+              </div>
+            </div>
+            <div className="border rounded-full p-3">
+              <ScrollText size={40} />
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="bg-slate-300 w-[280px] h-[160px] rounded-lg  text-Light">
+          <CardContent className="h-full w-full flex justify-between items-center">
+            <div className="">
+              <h3 className="font-semibold text-lg">Total revenue</h3>
+              <div className="flex gap-3 items-center mt-2 text-4xl">
+                <p>{data?.data?.paypal + data?.data?.offline}</p>
+                <TrendingUpIcon />
+              </div>
+            </div>
+            <div className="border rounded-full p-3">
+              <DollarSign size={40} />
+            </div>
+          </CardContent>
+        </Card>
+      </div>
       <Card className="flex flex-col">
         <CardHeader className="items-center pb-0">
           <CardTitle>Total price of paypal - offline method</CardTitle>
@@ -86,7 +137,7 @@ export default function DateChart() {
           {totalPrice === 0 && (
             <div className="absolute flex justify-center items-center w-full h-full">
               <Badge className="text-lg">
-                No service packages have been registered on this date.
+                Không có gói tập nào được đăng ký trong ngày.
               </Badge>
             </div>
           )}
@@ -142,11 +193,11 @@ export default function DateChart() {
         </CardContent>
         <CardFooter className="flex-col gap-2 text-sm">
           <div className="flex items-center gap-2 font-medium leading-none">
-            Leverage promotions to increase registrations.{" "}
+            Tận dụng các chương trình khuyến mãi để tăng cường đăng ký.{" "}
             <TrendingUp className="h-4 w-4" />
           </div>
           <div className="leading-none text-muted-foreground">
-            Use the chart below to view the monthly overview statistics.
+            Sử dụng biểu đồ dưới đây để xem thống kê tổng quan hàng tháng.
           </div>
         </CardFooter>
       </Card>

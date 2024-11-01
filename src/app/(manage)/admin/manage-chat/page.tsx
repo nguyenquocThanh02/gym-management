@@ -2,7 +2,7 @@
 
 import MessageBubble from "@/components/custom/message.custom";
 import InputChat from "@/components/normal/inputChat.component";
-import { Avatar } from "@/components/ui/avatar";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { db } from "@/firebases/firebase";
@@ -10,7 +10,6 @@ import { useDebounce } from "@/hooks/useDebounce.hook";
 import { UserApis } from "@/services";
 import mainStore from "@/store/main.store";
 import { formatDate } from "@/utils";
-import { AvatarImage } from "@radix-ui/react-avatar";
 import { collection, doc, onSnapshot } from "firebase/firestore";
 import { Search } from "lucide-react";
 import Image from "next/image";
@@ -88,7 +87,7 @@ export default function DeviceManagePage() {
       }
     });
 
-    return () => unSub(); // Clean up the subscription on unmount
+    return () => unSub();
   }, []);
 
   const handleClickRoom = (item: any) => {
@@ -115,7 +114,7 @@ export default function DeviceManagePage() {
 
   return (
     <div className="h-[600px] border flex justify-between flex-col md:flex-row">
-      <div className="w-full md:w-1/4 border">
+      <div className="w-full md:w-1/4 border bg-slate-100">
         <form>
           <div className="relative ml-auto flex-1 md:grow-0 p-4">
             <Search className="absolute left-[26px] top-[26px] h-4 w-4 text-muted-foreground" />
@@ -129,7 +128,7 @@ export default function DeviceManagePage() {
           </div>
         </form>
         <div className="px-4">
-          <h4 className="font-light">List all user</h4>
+          <h4 className="font-light">Xem tất cả người dùng</h4>
           <ScrollArea className="h-[468px]">
             <ul>
               {listRooms &&
@@ -147,13 +146,10 @@ export default function DeviceManagePage() {
                       key={index}
                       onClick={() => handleClickRoom(item)}
                     >
-                      <Image
-                        className="rounded-full border border-slate-300 "
-                        src={item?.avatar || ""}
-                        width={48}
-                        height={48}
-                        alt="Avatar"
-                      />
+                      <Avatar className="border border-slate-300">
+                        <AvatarImage src={item?.avatar} alt="Avatar" />
+                      </Avatar>
+
                       <div>
                         <h5>{item?.accountName}</h5>
                         <p className="font-light text-sm">{item?.fullName}</p>
@@ -165,48 +161,52 @@ export default function DeviceManagePage() {
         </div>
       </div>
       <div className="w-full md:w-1/2 border">
-        <div className="p-4 relative overflow-hidden">
-          <ScrollArea className="h-[530px]">
-            <div className="py-4">
-              {roomId &&
-                chats[roomId] &&
-                chats[roomId]?.map((item: any, index: number) => (
-                  <MessageBubble
-                    key={index}
-                    align={item?.senderByUser === true ? "left" : "right"}
-                    message={item?.text}
-                    timestamp={new Date(
-                      item?.createdAt?.toMillis()
-                    ).toLocaleString()}
-                    image={
-                      item?.senderByUser === true
-                        ? infoUser?.avatar
-                        : "https://firebasestorage.googleapis.com/v0/b/videocallapp-4fbc2.appspot.com/o/images%2Flogo.png?alt=media&token=641d8dec-f390-4810-91e1-ef833ce3d99d"
-                    }
-                    name={
-                      item?.senderByUser === true
-                        ? infoUser?.accountName
-                        : "GymMax"
-                    }
-                  />
-                ))}
-            </div>
+        {infoUser ? (
+          <div className="p-4 relative overflow-hidden">
+            <ScrollArea className="h-[530px]">
+              <div className="py-4">
+                {roomId &&
+                  chats[roomId] &&
+                  chats[roomId]?.map((item: any, index: number) => (
+                    <MessageBubble
+                      key={index}
+                      align={item?.senderByUser === true ? "left" : "right"}
+                      message={item?.text}
+                      timestamp={new Date(
+                        item?.createdAt?.toMillis()
+                      ).toLocaleString()}
+                      image={
+                        item?.senderByUser === true
+                          ? infoUser?.avatar
+                          : "https://firebasestorage.googleapis.com/v0/b/videocallapp-4fbc2.appspot.com/o/images%2Flogo.png?alt=media&token=641d8dec-f390-4810-91e1-ef833ce3d99d"
+                      }
+                      name={
+                        item?.senderByUser === true
+                          ? infoUser?.accountName
+                          : "GymMax"
+                      }
+                    />
+                  ))}
+              </div>
 
-            <div ref={endRef}></div>
-          </ScrollArea>
-          <InputChat from="admin" roomId={roomId} />
-        </div>
+              <div ref={endRef}></div>
+            </ScrollArea>
+            <InputChat from="admin" roomId={roomId} />
+          </div>
+        ) : (
+          <div className="flex justify-center items-center h-full ">
+            <p className="text-xl text-center">
+              Chọn người dùng để bắt đầu nhắn tin
+            </p>
+          </div>
+        )}
       </div>
-      <div className="w-full md:w-1/4 border">
-        {infoUser && (
+      <div className="w-full md:w-1/4 border bg-slate-100">
+        {infoUser ? (
           <div className="flex justify-center items-center flex-col mt-5">
-            <Image
-              className="rounded-full border border-slate-300"
-              src={infoUser?.avatar || ""}
-              width={160}
-              height={160}
-              alt="Avata"
-            />
+            <Avatar className="w-48 h-48 border border-slate-300">
+              <AvatarImage className="" src={infoUser?.avatar} alt="Avatar" />
+            </Avatar>
             <div className="font-medium text-center">
               <h5 className="text-xl font-semibold text-gray-900">
                 {infoUser?.accountName}
@@ -216,11 +216,17 @@ export default function DeviceManagePage() {
               </span>
             </div>
             <div className="mt-3">
-              <h4 className="font-bold">Details</h4>
-              <p>Phone: {infoUser?.phone}</p>
+              <h4 className="font-bold">Chi tiết</h4>
+              <p>Điện thoại: {infoUser?.phone}</p>
               <p>Email: {infoUser?.email}</p>
-              <p>Date of birth: {formatDate(infoUser?.dateOfBirth)}</p>
+              <p>Ngày sinh: {formatDate(infoUser?.dateOfBirth)}</p>
             </div>
+          </div>
+        ) : (
+          <div className="flex justify-center items-center h-full ">
+            <p className="text-xl text-center">
+              Chọn người dùng để bắt đầu nhắn tin
+            </p>
           </div>
         )}
       </div>

@@ -71,7 +71,7 @@ export const columns: ColumnDef<typeArtical>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Title
+          Tiêu đề
           <ArrowDownUp className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -103,7 +103,7 @@ export const columns: ColumnDef<typeArtical>[] = [
   {
     id: "actions",
     enableHiding: false,
-    header: () => <div className="text-right">Action</div>,
+    header: () => <div className="text-right">Hành động</div>,
     cell: ({ row }) => {
       const item = row.original;
 
@@ -112,21 +112,21 @@ export const columns: ColumnDef<typeArtical>[] = [
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
+                <span className="sr-only">Mở menu</span>
                 <EllipsisVertical className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuLabel>Hành động</DropdownMenuLabel>
               <DropdownMenuItem
                 onClick={() => navigator.clipboard.writeText(item._id || "")}
               >
-                Copy item ID
+                Sao chép ID
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <Link href={`/admin/manage-artical/details/${item._id}`}>
-                  View details
+                  Xem chi tiết
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>

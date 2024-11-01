@@ -36,7 +36,8 @@ const Interactive: React.FC = () => {
   }, [chats, openChat]);
   useEffect(() => {
     if (!roomId) {
-      console.warn("roomId is not defined");
+      console.warn("roomId chưa được định nghĩa");
+
       return;
     }
 
@@ -50,7 +51,7 @@ const Interactive: React.FC = () => {
 
   const handleToggleChat = () => {
     if (!roomId) {
-      toast.warning("You need login before chatting!");
+      toast.warning("Bạn cần đăng nhập trước khi trò chuyện!");
     } else setOpenChat();
   };
 
@@ -93,7 +94,7 @@ const Interactive: React.FC = () => {
           }
         )}
       >
-        <div className="w-full bg-Dark/20">
+        <div className="w-full bg-Dark/30 flex items-center py-1">
           <Button
             variant="ghost"
             className="hover:bg-transparent"
@@ -101,6 +102,7 @@ const Interactive: React.FC = () => {
           >
             <PanelRightClose color="black" />
           </Button>
+          <h2 className="text-center uppercase">Nhắn tin với Gymmax</h2>
         </div>
         <div className="px-4 overflow-hidden">
           <ScrollArea className="h-[420px]">

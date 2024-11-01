@@ -52,7 +52,7 @@ export const columns: ColumnDef<typeDiscount>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Name
+          Tên
           <ArrowDownUp className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -82,7 +82,7 @@ export const columns: ColumnDef<typeDiscount>[] = [
   },
   {
     accessorKey: "validFrom",
-    header: () => <div className="text-right">Valid from</div>,
+    header: () => <div className="text-right">Từ ngày</div>,
     cell: ({ row }: { row: any }) => {
       const dateValue: string | undefined = row.getValue("validFrom");
 
@@ -92,7 +92,7 @@ export const columns: ColumnDef<typeDiscount>[] = [
   },
   {
     accessorKey: "validTo",
-    header: () => <div className="text-right">Valid to</div>,
+    header: () => <div className="text-right">Đến ngày</div>,
     cell: ({ row }: { row: any }) => {
       const dateValue: string | undefined = row.getValue("validTo");
 
@@ -103,7 +103,7 @@ export const columns: ColumnDef<typeDiscount>[] = [
   {
     id: "actions",
     enableHiding: false,
-    header: () => <div className="text-right">Action</div>,
+    header: () => <div className="text-right">Hành động</div>,
     cell: ({ row }) => {
       const item = row.original;
 
@@ -112,21 +112,21 @@ export const columns: ColumnDef<typeDiscount>[] = [
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
+                <span className="sr-only">Mở menu</span>
                 <EllipsisVertical className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuLabel>Hành động</DropdownMenuLabel>
               <DropdownMenuItem
                 onClick={() => navigator.clipboard.writeText(item._id || "")}
               >
-                Copy discount ID
+                Sao chép ID
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <Link href={`/admin/manage-discount/details/${item._id}`}>
-                  View details
+                  Xem chi tiết
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>

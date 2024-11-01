@@ -105,9 +105,10 @@ import ArticalForm from "../form/articalForm.form";
  * Instructions on how to obtain them: https://ckeditor.com/docs/trial/latest/guides/real-time/quick-start.html
  */
 const LICENSE_KEY =
-  "ZllWYXIvalpqczJVMUI0NzJDaXpPWlQ4NnRoQXQ4cGlYUVcyOEpkMVMzYm1kU1plWWYvcUxEYkhSdEt2alE9PS1NakF5TkRFd01qZz0=";
+  "T2ozUzI2alZLaFZmSHQ0Q1BHYjNyQXJhd0lQS3ZNejNVMlAwY3BYdHE4bGxGMHVFdGRlSDQ1L1ZyZ1VQamc9PS1NakF5TkRFeE1qaz0=";
+
 const CKBOX_TOKEN_URL =
-  "https://119555.cke-cs.com/token/dev/144b71fccc65ac239f52874f1551b1c0bed94ebee9ce842d47a644b85d84?limit=10";
+  "https://121943.cke-cs.com/token/dev/a3381ad82466f7abed148267568b2da88f7387069f1b7a6b645b191a5721?limit=10";
 
 export default function App() {
   const editorContainerRef = useRef(null);

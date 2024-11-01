@@ -7,21 +7,22 @@ const AddArtical = () => {
   const breadcrumbs = [
     {
       link: "/",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/artical",
-      name: "Articals",
+      name: "Bài viết",
     },
     {
       link: "/artical/add",
-      name: "Create artical",
+      name: "Tạo bài viết",
     },
   ];
+
   return (
     <div className="l-container">
       <BreadcrumbCustom links={breadcrumbs} />
-      <h1 className="font-bold text-4xl text-center">New artical</h1>
+      <h1 className="font-bold text-4xl text-center">Bài báo mới</h1>
       <div className="my-4 text-Dark">
         <MyEditor />
       </div>

@@ -10,7 +10,7 @@ const AboutGymMax = () => {
     <div>
       <div className="mt-8 l-container">
         <h2 className="text-Primary text-center text-3xl font-bold mb-4">
-          Summary GymMax
+          Tổng quan về GymMax
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 my-10 bg-BgLight/30 items-center px-8">
           <div
@@ -29,23 +29,25 @@ const AboutGymMax = () => {
             />
           </div>
           <div data-aos="fade-left" className="col-span-2">
-            <h3 className="text-bold text-2xl mb-5">About GymMax</h3>
+            <h3 className="text-bold text-2xl mb-5">Giới thiệu về GymMax</h3>
             <p className="text-justify italic leading-relaxed">
-              GymMax was established in early 2024, with two branches located in
-              Can Tho and Soc Trang. Our gyms feature spacious facilities and
-              modern design, aiming to provide excellent health and an
-              attractive physique for everyone. At GymMax, we offer an
-              exceptional workout experience with state-of-the-art equipment,
-              supportive customer services, and personalized training from
-              professional coaches. Visit us at 123 3/2 Street, Ninh Kieu, Can
-              Tho, to experience the best of fitness with us.
+              GymMax được thành lập vào đầu năm 2024, với hai chi nhánh nằm ở
+              Cần Thơ và Sóc Trăng. Các phòng tập của chúng tôi có cơ sở vật
+              chất rộng rãi và thiết kế hiện đại, nhằm cung cấp sức khỏe tốt
+              nhất và một vóc dáng thu hút cho mọi người. Tại GymMax, chúng tôi
+              mang đến trải nghiệm tập luyện vượt trội với trang thiết bị hiện
+              đại, dịch vụ khách hàng hỗ trợ và đào tạo cá nhân từ các huấn
+              luyện viên chuyên nghiệp. Hãy đến thăm chúng tôi tại 123 Đường
+              3/2, Ninh Kiều, Cần Thơ, để trải nghiệm những điều tốt nhất về thể
+              hình cùng chúng tôi.
             </p>
             <div className="bg-Footer p-4 w-full mt-5 text-lg italic">
-              GymMax is always a trusted choice for your health and fitness
-              goals.
+              GymMax luôn là sự lựa chọn đáng tin cậy cho sức khỏe và mục tiêu
+              thể hình của bạn.
             </div>
+
             <LinkArrow href="/about-us" className="mt-3">
-              See more
+              Xem thêm
             </LinkArrow>
           </div>
         </div>

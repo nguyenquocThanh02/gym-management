@@ -32,7 +32,7 @@ export default function DeviceManagePage() {
       <div className="flex justify-between items-center">
         <BreadcrumbCustom links={breadcrumbs} />
         <Link href={"/admin/manage-package/add"}>
-          <ButtonCustom>Add new Package</ButtonCustom>
+          <ButtonCustom>Thêm mới gói</ButtonCustom>
         </Link>
       </div>
 

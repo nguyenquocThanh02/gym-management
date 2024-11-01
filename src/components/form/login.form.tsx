@@ -56,9 +56,11 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
 
     const resultReset = await AuthenApis.resetPassword(values.email);
     if (resultReset?.status === 200) {
-      console.log("success");
+      toast.info(
+        "Email confirmed successfully! Please check your inbox for further instructions to complete the process."
+      );
     } else {
-      console.log("faild");
+      toast.error(resultReset?.message);
     }
     setIsLoading(false);
   }
@@ -99,7 +101,7 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
           .catch((err) => {
             console.error("Error fetching room data:", err);
           });
-        toast.success("Login successfully");
+        toast.success("Đăng nhập thành công! Chào mừng bạn trở lại!");
 
         if (role === "admin" || role === "trainee") {
           router.push("/admin");
@@ -115,12 +117,10 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
     }
   }
 
-  if (isLoading) {
-    return <WaitingLayout />;
-  }
-
   return (
     <div>
+      {isLoading && <WaitingLayout />}
+
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <div className="flex flex-col gap-3">
@@ -129,11 +129,11 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
               name="account"
               render={({ field }) => (
                 <FormItem className="text-shadow">
-                  <FormLabel>Account</FormLabel>
+                  <FormLabel>Tài khoản</FormLabel>
                   <FormControl>
                     <Input
                       className="text-Dark"
-                      placeholder="Account name or email"
+                      placeholder="Tên tài khoản hoặc email"
                       {...field}
                     />
                   </FormControl>
@@ -147,7 +147,7 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
               name="password"
               render={({ field }) => (
                 <FormItem className="text-shadow">
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>Mật khẩu</FormLabel>
                   <FormControl>
                     <Input
                       className="text-Dark"
@@ -163,20 +163,21 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
           </div>
 
           <ButtonCustom type="submit" className="w-full">
-            Login
+            Đăng nhập
           </ButtonCustom>
         </form>
       </Form>
       <div className="w-full my-3 text-center">
         <Dialog>
           <DialogTrigger>
-            <Button variant={"ghost"}>Forgot password</Button>
+            <Button variant={"ghost"}>Quên mật khẩu</Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Forgot & reset password</DialogTitle>
+              <DialogTitle>Quên mật khẩu? Đặt lại mật khẩu</DialogTitle>
               <DialogDescription>
-                Lets enter your email to receive a email and reset password
+                Vui lòng nhập email của bạn để nhận một email và đặt lại mật
+                khẩu
               </DialogDescription>
             </DialogHeader>
             <Form {...formPassword}>
@@ -205,10 +206,10 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
                 <div className="text-right">
                   <DialogClose>
                     <Button variant={"secondary"} className="mr-2">
-                      Cancel
+                      Huỷ
                     </Button>
                   </DialogClose>
-                  <Button type="submit">Submit</Button>
+                  <Button type="submit">Xác nhận</Button>
                 </div>
               </form>
             </Form>

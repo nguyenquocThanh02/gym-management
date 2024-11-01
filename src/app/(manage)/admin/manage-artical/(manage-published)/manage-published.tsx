@@ -28,8 +28,10 @@ const ManagePublished = () => {
         <CardHeader>
           <div className="flex justify-between">
             <div>
-              <CardTitle>Published articals</CardTitle>
-              <CardDescription>Manage your published articals.</CardDescription>
+              <CardTitle>Các bài viết đã xuất bản</CardTitle>
+              <CardDescription>
+                Quản lý các bài viết đã xuất bản của bạn.
+              </CardDescription>
             </div>
           </div>
         </CardHeader>

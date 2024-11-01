@@ -146,7 +146,7 @@ const DetailsDeviceForm: React.FC<{
   return (
     <>
       {isLoading1 && <WaitingLayout />}
-      <h4 className="text-center text-2xl font-semibold text-shadow">
+      <h4 className="text-center text-2xl font-semibold">
         {id ? "Update Device" : "Add Device"}
       </h4>
       <div className="flex justify-between mb-2 items-center">
@@ -175,22 +175,22 @@ const DetailsDeviceForm: React.FC<{
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
                   <DialogTitle className="text-black">
-                    Change Status
+                    Thay đổi trạng thái
                   </DialogTitle>
                   <DialogDescription>
-                    Are you sure you want to{" "}
-                    {status === "available" ? "maintainence" : "available"} the
-                    device
+                    Bạn có chắc chắn muốn thay đổi thành trạng thái{" "}
+                    {status === "available" ? "bảo trì" : "đang hoạt động"} the
+                    cho thiết bị?
                   </DialogDescription>
                 </DialogHeader>
                 <DialogFooter>
                   <DialogClose asChild>
                     <Button type="button" variant="secondary">
-                      Close
+                      Đóng
                     </Button>
                   </DialogClose>
                   <Button type="submit" onClick={handleChangeStatus}>
-                    Confirm
+                    Xác nhận
                   </Button>
                 </DialogFooter>
               </DialogContent>
@@ -201,7 +201,7 @@ const DetailsDeviceForm: React.FC<{
             onClick={form.handleSubmit(onSubmit)}
             className="py-1"
           >
-            Save all
+            Lưu tất cả
           </ButtonCustom>
         </div>
       </div>
@@ -231,7 +231,7 @@ const DetailsDeviceForm: React.FC<{
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Device name</FormLabel>
+                      <FormLabel>Tên thiết bị</FormLabel>
                       <FormControl>
                         <Input placeholder="Dumbell" {...field} />
                       </FormControl>
@@ -244,7 +244,7 @@ const DetailsDeviceForm: React.FC<{
                   name="type"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Type</FormLabel>
+                      <FormLabel>Loại</FormLabel>
                       <FormControl>
                         <Input placeholder="Cardio" {...field} />
                       </FormControl>
@@ -257,7 +257,7 @@ const DetailsDeviceForm: React.FC<{
                   name="purchaseDate"
                   render={({ field }) => (
                     <FormItem className="flex flex-col">
-                      <FormLabel>Purchase Date</FormLabel>
+                      <FormLabel>Ngày mua</FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
@@ -271,7 +271,7 @@ const DetailsDeviceForm: React.FC<{
                               {field.value ? (
                                 format(field.value, "PPP")
                               ) : (
-                                <span>Pick a date</span>
+                                <span>Chọn ngày</span>
                               )}
                               <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                             </Button>
@@ -299,7 +299,7 @@ const DetailsDeviceForm: React.FC<{
                   name="lastMaintenance"
                   render={({ field }) => (
                     <FormItem className="flex flex-col">
-                      <FormLabel>Last maintenance</FormLabel>
+                      <FormLabel>Lần bảo trì gần nhất</FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
@@ -313,7 +313,7 @@ const DetailsDeviceForm: React.FC<{
                               {field.value ? (
                                 format(field.value, "PPP")
                               ) : (
-                                <span>Pick a date</span>
+                                <span>Chọn ngày</span>
                               )}
                               <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                             </Button>
@@ -340,7 +340,7 @@ const DetailsDeviceForm: React.FC<{
                   name="maintenanceInterval"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Maintenance interval</FormLabel>
+                      <FormLabel>Số lần bảo trì</FormLabel>
                       <FormControl>
                         <Input type="number" placeholder="months" {...field} />
                       </FormControl>
@@ -354,7 +354,7 @@ const DetailsDeviceForm: React.FC<{
                   name="serialNumber"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Serial number </FormLabel>
+                      <FormLabel>Số thiết bị </FormLabel>
                       <FormControl>
                         <Input placeholder="s2000d3" {...field} />
                       </FormControl>
@@ -368,7 +368,7 @@ const DetailsDeviceForm: React.FC<{
                   name="description"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Description *</FormLabel>
+                      <FormLabel>Mô tả *</FormLabel>
                       <FormControl>
                         <Textarea
                           placeholder="Experience training for artist ..."

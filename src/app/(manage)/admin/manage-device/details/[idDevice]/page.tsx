@@ -5,12 +5,14 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { DeviceApis } from "@/services";
 import DetailsDeviceForm from "@/components/form/detailDevice.form";
+import { useRouter } from "next/navigation";
 
 export default function DetailDevice({
   params,
 }: {
   params: { idDevice: string };
 }) {
+  const route = useRouter();
   const breadcrumbs = [
     {
       link: "/admin",
@@ -31,14 +33,14 @@ export default function DetailDevice({
   });
 
   if (isLoading) {
-    return <div>Skelonton</div>;
+    return <div>Loading</div>;
   }
 
   return (
     <section>
       <div className="flex justify-between items-center w-full">
         <BreadcrumbCustom links={breadcrumbs} />
-        <ButtonCustom>Back</ButtonCustom>
+        <ButtonCustom onClick={() => route.back()}>Trở lại</ButtonCustom>
       </div>
       <DetailsDeviceForm
         data={data?.data}

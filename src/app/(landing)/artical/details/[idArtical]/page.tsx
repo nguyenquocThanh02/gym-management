@@ -17,17 +17,18 @@ const DetailsArtical = ({ params }: { params: { idArtical: string } }) => {
   const breadcrumbs = [
     {
       link: "/",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/artical",
-      name: "Articals",
+      name: "Bài viết",
     },
     {
       link: "/#",
-      name: "Details",
+      name: "Chi tiết",
     },
   ];
+
   return (
     <div className="l-container">
       <BreadcrumbCustom links={breadcrumbs} />
@@ -52,12 +53,12 @@ const DetailsArtical = ({ params }: { params: { idArtical: string } }) => {
         </div>
       ) : (
         <div>
-          <h2>Have error when loading artical ${params?.idArtical}</h2>
+          <h2>Có lỗi xảy ra khi đăng bài ${params?.idArtical}</h2>
         </div>
       )}
       <div data-aos={"fade-up"} className="my-10">
         <h2 className="text-Primary text-shadow  text-3xl font-bold mb-2">
-          New articals
+          Bài báo mới
         </h2>
         <NewArticals />
       </div>

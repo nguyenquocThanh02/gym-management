@@ -43,25 +43,25 @@ const DetailsRegisterTrackingComponent: React.FC<{
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
                 <Button className="text-Primary bg-Light border-Primary border hover:bg-Tertiary/20">
-                  Payment
+                  Thanh toán
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                  <DialogTitle>Payment service</DialogTitle>
+                  <DialogTitle>Dịch vụ thanh toán</DialogTitle>
                   <DialogDescription>
-                    By confirm payment service you will complete payment for
-                    this register tracking. Click <strong>confirm</strong> to
-                    complete.
+                    Bằng cách xác nhận dịch vụ thanh toán, bạn sẽ hoàn tất thanh
+                    toán cho việc đăng ký này. Nhấn <strong>xác nhận</strong> để
+                    hoàn tất.
                   </DialogDescription>
                 </DialogHeader>
                 <DialogFooter>
                   <DialogClose asChild>
                     <Button type="button" variant="secondary">
-                      Close
+                      Đóng
                     </Button>
                   </DialogClose>
-                  <Button onClick={handlePayment}>Confirm</Button>
+                  <Button onClick={handlePayment}>Xác nhận</Button>
                 </DialogFooter>
               </DialogContent>
             </Dialog>
@@ -118,35 +118,35 @@ const DetailsRegisterTrackingComponent: React.FC<{
       <div className="flex justify-around gap-8 mt-4">
         <div>
           <h3 className="text-center p-1 font-semibold  shadow-sm border-Dark/50">
-            Package
+            Gói tập
           </h3>
           <ul className="shadow-sm p-2">
             <li className="flex gap-3 my-5 items-center">
-              Name:{" "}
+              Tên:{" "}
               <p className="border p-1 bg-slate-50 rounded-md">
                 {data?.package?.name}
               </p>
             </li>
             <li className="flex gap-3 my-5 items-center">
-              Price:{" "}
+              Giá:{" "}
               <p className="border p-1 bg-slate-50 rounded-md">
                 ${data?.package?.price}
               </p>
             </li>
             <li className="flex gap-3 my-5 items-center">
-              Time start:{" "}
+              Thời gian bắt đầu:{" "}
               <p className="border p-1 bg-slate-50 rounded-md">
                 {formatDate(data?.timeStart)}
               </p>
             </li>
             <li className="flex gap-3 my-5 items-center">
-              Time end:{" "}
+              Thời gian kết thúc:{" "}
               <p className="border p-1 bg-slate-50 rounded-md">
                 {formatDate(data?.timeEnd)}
               </p>
             </li>
             <li className="flex gap-3 my-5 items-center">
-              ID package:{" "}
+              ID gói tập:{" "}
               <Link
                 href={`/admin/manage-package/details/${data?.package?.idPackage}`}
                 className="border p-1 bg-slate-50 text-blue-500 rounded-md"
@@ -158,11 +158,11 @@ const DetailsRegisterTrackingComponent: React.FC<{
         </div>
         <div>
           <h3 className="text-center p-1 font-semibold  shadow-sm border-Dark/50">
-            User
+            Người dùng
           </h3>
           <ul className="shadow-sm p-2">
             <li className="flex gap-3 my-5 items-center">
-              Full name:{" "}
+              Họ và tên:{" "}
               <p className="border p-1 bg-slate-50 rounded-md">
                 {data?.user?.fullName}
               </p>
@@ -174,13 +174,13 @@ const DetailsRegisterTrackingComponent: React.FC<{
               </p>
             </li>
             <li className="flex gap-3 my-5 items-center">
-              Phone:{" "}
+              Số điện thoại:{" "}
               <p className="border p-1 bg-slate-50 rounded-md">
                 {data?.user?.phone}
               </p>
             </li>
             <li className="flex gap-3 my-5 items-center">
-              ID user:{" "}
+              ID người dùng:{" "}
               <Link
                 href={`/admin/manage-user/details/${data?.user?.idUser}`}
                 className="border p-1 bg-slate-50 text-blue-500 rounded-md"
@@ -192,29 +192,29 @@ const DetailsRegisterTrackingComponent: React.FC<{
         </div>
         <div>
           <h3 className="text-center p-1 font-semibold  shadow-sm border-Dark/50">
-            Overall
+            Tổng quan
           </h3>
           <ul className="shadow-sm p-2">
             <li className="flex gap-3 my-5 items-center">
-              Discount:{" "}
+              Khuyến mãi:{" "}
               <p className="border p-1 bg-slate-50 rounded-md">
                 ${data?.discount?.priceDescrease}
               </p>
             </li>
             <li className="flex gap-3 my-5 items-center">
-              Total price:{" "}
+              Tổng tiền:{" "}
               <p className="border p-1 bg-slate-50 rounded-md">
                 ${data?.totalPrice}
               </p>
             </li>
             <li className="flex gap-3 my-5 items-center">
-              Payment method:{" "}
+              Phương thức thanh toán:{" "}
               <p className="border p-1 bg-slate-50 rounded-md">
                 {data?.paymentMethod}
               </p>
             </li>
             <li className="flex gap-3 my-5 items-center">
-              Is paid?:{" "}
+              Đã thanh toán?:{" "}
               <p className="border p-1 bg-slate-50 rounded-md">
                 {data?.isPaid ? "Yes" : "No"}
               </p>
@@ -224,35 +224,35 @@ const DetailsRegisterTrackingComponent: React.FC<{
         {data?.isPaid && (
           <div>
             <h3 className="text-center p-1 font-semibold  shadow-sm border-Dark/50">
-              Payment
+              Thanh toán
             </h3>
             <ul className="shadow-sm p-2">
               <li className="flex gap-3 my-5 items-center">
-                Payment ID:{" "}
+                Mã thanh toán:{" "}
                 <p className="border p-1 bg-slate-50 rounded-md">
                   {data?.payment?.orderId || "//"}
                 </p>
               </li>
               <li className="flex gap-3 my-5 items-center">
-                Payer ID:{" "}
+                Mã người dùng:{" "}
                 <p className="border p-1 bg-slate-50 rounded-md">
                   {data?.payment?.payerId || "//"}
                 </p>
               </li>
               <li className="flex gap-3 my-5 items-center">
-                Payer name:{" "}
+                Tên tài khoả:{" "}
                 <p className="border p-1 bg-slate-50 rounded-md">
                   {data?.payment?.payerName || "//"}
                 </p>
               </li>
               <li className="flex gap-3 my-5 items-center">
-                Payer email:{" "}
+                Email thanh toán:{" "}
                 <p className="border p-1 bg-slate-50 rounded-md">
                   {data?.payment?.payerEmail || "//"}
                 </p>
               </li>
               <li className="flex gap-3 my-5 items-center">
-                Payment at:{" "}
+                Thời gian thanh toán:{" "}
                 <p className="border p-1 bg-slate-50 rounded-md">
                   {formatDate(data?.paidAt)}
                 </p>

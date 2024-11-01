@@ -36,20 +36,20 @@ const RegisterTrackingManagePage = () => {
   const arrs: typeRegisterTracking[] = data?.data || [];
 
   if (isLoading) {
-    <div>Skeleton page</div>;
+    <div>Loading</div>;
   }
   return (
     <div>
       <div className="flex justify-between items-center">
         <BreadcrumbCustom links={breadcrumbs} />
         <Link href={"/package"}>
-          <ButtonCustom>Register tracking</ButtonCustom>
+          <ButtonCustom>Đăng ký gói tập</ButtonCustom>
         </Link>
       </div>
       <Card x-chunk="dashboard-06-chunk-0">
         <CardHeader>
-          <CardTitle>Register tracking</CardTitle>
-          <CardDescription>Manage all register trackings.</CardDescription>
+          <CardTitle>Các đăng ký</CardTitle>
+          <CardDescription>Quản lý tất cả đăng ký.</CardDescription>
         </CardHeader>
         <CardContent>
           <DataTable columns={columns} data={arrs} />{" "}

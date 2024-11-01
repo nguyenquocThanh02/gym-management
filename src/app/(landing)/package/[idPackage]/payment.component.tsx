@@ -18,6 +18,7 @@ import React, { useState } from "react";
 import { toast, Toaster } from "sonner";
 import { PayPalButton } from "react-paypal-button-v2";
 import { Switch } from "@/components/ui/switch";
+import { useRouter } from "next/navigation";
 
 const PaymentRegister = () => {
   const { inforUser, inforPackage, confirmInforRegister } = mainStore();
@@ -25,6 +26,7 @@ const PaymentRegister = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [paypal, setPaypal] = useState<boolean>(false);
 
+  const route = useRouter();
   const sumDiscount = (arrs): number => {
     let sum = 0;
     arrs?.map((item) => {
@@ -94,6 +96,7 @@ const PaymentRegister = () => {
     if (result?.status === "201") {
       setOpen(false);
       toast.success("Successfully to register package");
+      route.push("/register-tracking");
     } else {
       setOpen(true);
       toast.error(result?.message);
@@ -118,8 +121,8 @@ const PaymentRegister = () => {
         <div className="relative">
           <div className="absolute z-10 h-[104px] top-0 right-0 left-0 bg-Dark font-light flex items-center text-Light">
             <i className="border border-Light p-1 text-sm opacity-80">
-              By using <strong>Paypal</strong>, you can make your payments more
-              easily. Click button to use payment with paypal.
+              Bằng cách dùng <strong>Paypal</strong>, bạn có thể thanh toán cách
+              đăng ký dễ dàng hơn. Chọn thanh toán để tiếp tục
             </i>
           </div>
           <div className="relative !z-0">
@@ -153,34 +156,34 @@ const PaymentRegister = () => {
         <div>
           <div className="border border-Light p-1 font-light text-sm opacity-80 mt-4 mb-3">
             <i className="">
-              By clicking <strong>Register</strong>, you will register tracking
-              with this information. You need to payment at Gymmax.
+              Bằng cách chọn <strong>Register</strong>, bạn có thể đăng ký các
+              tập với các thông tin trên. Bạn cần thanh toán tại phòng tập.
             </i>
           </div>
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-              <ButtonCustom className="w-full mt-4">Register</ButtonCustom>
+              <ButtonCustom className="w-full mt-4">Đăng ký</ButtonCustom>
             </DialogTrigger>
             <DialogContent className="">
               <DialogHeader>
-                <DialogTitle className="text-center">Card infor</DialogTitle>
+                <DialogTitle className="text-center">Thông tin thẻ</DialogTitle>
                 <DialogDescription className="text-center">
-                  This is your package. Click <strong>confirm</strong> to
-                  complete.
+                  Đây là thông tin gói tập. Chọn <strong>xác nhận</strong> để
+                  hoàn thành.
                 </DialogDescription>
               </DialogHeader>
               <hr />
               <div className="flex justify-evenly gap-4">
                 <ul className="list-inside">
                   <h3 className="text-center font-semibold">Package: </h3>
-                  <li>Name: {inforPackage?.packages?.name}</li>
-                  <li>Price: {inforPackage?.packages?.price}</li>
+                  <li>Tên: {inforPackage?.packages?.name}</li>
+                  <li>Giá: {inforPackage?.packages?.price}</li>
                 </ul>
                 <ul>
                   <h3 className="text-center font-semibold">User: </h3>
-                  <li>Name: {inforUser?.fullName}</li>
+                  <li>Tên: {inforUser?.fullName}</li>
                   <li>Email: {inforUser?.email}</li>
-                  <li>Phone: {inforUser?.phone}</li>
+                  <li>Điện thoại: {inforUser?.phone}</li>
                 </ul>
               </div>
               <hr />
@@ -190,10 +193,10 @@ const PaymentRegister = () => {
                   className="border border-Dark/70"
                   onClick={() => setOpen(false)}
                 >
-                  Cancel
+                  Huỷ
                 </Button>
                 <Button onClick={() => handleRegisterTracking()} type="submit">
-                  Confirm
+                  Xác nhận
                 </Button>
               </div>
             </DialogContent>

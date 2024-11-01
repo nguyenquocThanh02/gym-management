@@ -80,14 +80,14 @@ const NavbarManage: React.FC<NavbarManageProps> = ({ navItems }) => {
                 )}
               >
                 <MessageSquareText />
-                <span className="sr-only">Chat</span>
+                <span className="sr-only">Nhắn tin</span>
               </Link>
             </TooltipTrigger>
             <TooltipContent
               side="right"
               className="bg-BgDark text-Light border border-none ml-2"
             >
-              Chat
+              Nhắn tin
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
@@ -102,10 +102,10 @@ const NavbarManage: React.FC<NavbarManageProps> = ({ navItems }) => {
                 className="flex h-9 w-9 items-center justify-center rounded-lg text-Light/80 transition-colors hover:animate-tada md:h-8 md:w-8"
               >
                 <Settings className="h-5 w-5" />
-                <span className="sr-only">Settings</span>
+                <span className="sr-only">Cài đặt</span>
               </Link>
             </TooltipTrigger>
-            <TooltipContent side="right">Settings</TooltipContent>
+            <TooltipContent side="right">Cài đặt</TooltipContent>
           </Tooltip>
         </TooltipProvider>
       </nav>

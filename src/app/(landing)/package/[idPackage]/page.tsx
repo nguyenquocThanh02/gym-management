@@ -75,12 +75,12 @@ const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
     <div className="l-container pb-10">
       <BreadcrumbCustom links={breadcrumbs} />
       <h1 className="text-center font-bold text-2xl md:text-4xl my-6">
-        Book Package
+        Đăng ký gói tập
       </h1>
       <div className="flex flex-col md:flex-row gap-3">
         <div className="border h-[480px] flex-1 flex">
           <div className="w-1/2 p-3">
-            <h3 className="mb-1">Package</h3>
+            <h3 className="mb-1">Gói tập</h3>
             <hr />
             <ScrollArea className="h-[90%] mb-3">
               <h3 className="font-manrope text-2xl font-bold mb-3">
@@ -100,18 +100,18 @@ const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
                 <li className="flex items-center space-x-4">
                   <CircleCheck className="text-Primary" />
                   <span>
-                    {inforPackage?.packages?.sessionWithPT} sessions with PT
+                    {inforPackage?.packages?.sessionWithPT} buổi tập với PT
                   </span>
                 </li>
                 <li className="flex items-center space-x-4">
                   <CircleCheck className="text-Primary" />
                   <span>
-                    {inforPackage?.packages?.duration} days membership
+                    {inforPackage?.packages?.duration} ngày thẻ thành viên
                   </span>
                 </li>
                 <li className="flex items-center space-x-4">
                   <CircleCheck className="text-Primary" />
-                  <span>24/7 Customer support </span>
+                  <span>Hỗ trợ khách hàng 24/7</span>
                 </li>
                 <li className="flex items-center space-x-4">
                   <CircleCheck className="text-Primary" />
@@ -119,13 +119,13 @@ const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
                 </li>
                 <li className="flex items-center space-x-4">
                   <div>
-                    <h4>Object: </h4>
+                    <h4>Đối tượng: </h4>
                     <span>{inforPackage?.packages?.suitableFor}</span>
                   </div>
                 </li>
                 <li className="flex items-center space-x-4">
                   <div>
-                    <h4>Description: </h4>
+                    <h4>Mô tả: </h4>
                     <span>{inforPackage?.packages?.description}</span>
                   </div>
                 </li>
@@ -133,7 +133,7 @@ const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
             </ScrollArea>
           </div>
           <div className="w-1/2 border p-3">
-            <h3 className="mb-1">Information</h3>
+            <h3 className="mb-1">Thông tin</h3>
             <hr className="mb-2" />
             <RegisterPackage key={Date.now()} />
           </div>
@@ -141,10 +141,10 @@ const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
         <div className="border h-fit md:w-[26%] p-3">
           <div className="flex flex-col gap-3">
             <div>
-              Price: <strong>{inforPackage?.packages?.price} $</strong>
+              Giá: <strong>{inforPackage?.packages?.price} $</strong>
             </div>
             <div>
-              Discound:{" "}
+              Khuyến mãi:{" "}
               <strong>
                 {calculatePrice(
                   inforPackage?.packages?.price,
@@ -155,7 +155,7 @@ const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
             </div>
             <hr />
             <div>
-              Total:{" "}
+              Tổng cộng:{" "}
               <strong className="text-bold text-Primary text-2xl">
                 {calculatePrice(
                   inforPackage?.packages?.price,

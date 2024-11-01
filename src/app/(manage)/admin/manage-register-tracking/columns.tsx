@@ -44,24 +44,7 @@ export const columns: ColumnDef<typeRegisterTracking>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-  {
-    accessorKey: "packageName",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Package name
-          <ArrowDownUp className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
 
-    cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("packageName")}</div>
-    ),
-  },
   {
     accessorKey: "packageId",
     header: ({ column }) => {
@@ -70,7 +53,7 @@ export const columns: ColumnDef<typeRegisterTracking>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Package ID
+          Mã gói tập
           <ArrowDownUp className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -86,7 +69,7 @@ export const columns: ColumnDef<typeRegisterTracking>[] = [
           {packageId}
         </Link>
       ) : (
-        <div>None</div>
+        <div>Không có</div>
       );
     },
   },
@@ -98,7 +81,7 @@ export const columns: ColumnDef<typeRegisterTracking>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          User ID
+          Mã người dùng
           <ArrowDownUp className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -114,7 +97,7 @@ export const columns: ColumnDef<typeRegisterTracking>[] = [
           {userId}
         </Link>
       ) : (
-        <div>None</div>
+        <div>Không có</div>
       );
     },
   },
@@ -126,7 +109,7 @@ export const columns: ColumnDef<typeRegisterTracking>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          User Name
+          Tên người dùng
           <ArrowDownUp className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -144,7 +127,7 @@ export const columns: ColumnDef<typeRegisterTracking>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Total Price
+          Tổng tiền
           <ArrowDownUp className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -178,7 +161,7 @@ export const columns: ColumnDef<typeRegisterTracking>[] = [
   {
     id: "actions",
     enableHiding: false,
-    header: () => <div className="text-right">Action</div>,
+    header: () => <div className="text-right">Hành động</div>,
     cell: ({ row }) => {
       const item = row.original;
 
@@ -187,23 +170,23 @@ export const columns: ColumnDef<typeRegisterTracking>[] = [
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
+                <span className="sr-only">Mở menu</span>
                 <EllipsisVertical className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuLabel>Hành dộng</DropdownMenuLabel>
               <DropdownMenuItem
                 onClick={() => navigator.clipboard.writeText(item._id || "")}
               >
-                Copy discount ID
+                Sao chép ID
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <Link
                   href={`/admin/manage-register-tracking/details/${item._id}`}
                 >
-                  View details
+                  Xem chi tiết
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>

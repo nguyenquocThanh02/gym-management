@@ -72,7 +72,7 @@ export const columns: ColumnDef<typeDevice>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Name
+          Tên
           <ArrowDownUp className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -103,7 +103,7 @@ export const columns: ColumnDef<typeDevice>[] = [
 
   {
     accessorKey: "maintenanceInterval",
-    header: () => <div className="text-right">Maintenance interval</div>,
+    header: () => <div className="text-right">Số lần đã bảo trì</div>,
     cell: ({ row }) => {
       // const amount = parseFloat(row.getValue("maintenanceInterval"));
 
@@ -122,7 +122,7 @@ export const columns: ColumnDef<typeDevice>[] = [
   },
   {
     accessorKey: "lastMaintenance",
-    header: () => <div className="text-right">Last maintenance</div>,
+    header: () => <div className="text-right">Ngày bảo trì gần nhất</div>,
     cell: ({ row }: { row: any }) => {
       const dateValue: string | undefined = row.getValue("lastMaintenance");
 
@@ -133,7 +133,7 @@ export const columns: ColumnDef<typeDevice>[] = [
   {
     id: "actions",
     enableHiding: false,
-    header: () => <div className="text-right">Action</div>,
+    header: () => <div className="text-right">Hành động</div>,
     cell: ({ row }) => {
       const payment = row.original;
 
@@ -142,21 +142,21 @@ export const columns: ColumnDef<typeDevice>[] = [
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
+                <span className="sr-only">Mở menu</span>
                 <EllipsisVertical className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuLabel>Hành động</DropdownMenuLabel>
               <DropdownMenuItem
                 onClick={() => navigator.clipboard.writeText(payment._id || "")}
               >
-                Copy payment ID
+                Sao chép ID
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <Link href={`/admin/manage-device/details/${payment._id}`}>
-                  View details
+                  Xem chi tiết
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>

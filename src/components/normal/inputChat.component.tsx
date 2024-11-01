@@ -16,6 +16,8 @@ const InputChat: React.FC<{ from: string; roomId: string }> = ({
 
     if (text === "") return;
     try {
+      setText("");
+
       await updateDoc(doc(db, "messages", roomId), {
         messages: arrayUnion({
           senderByUser: from === "user" ? true : false,
@@ -23,7 +25,6 @@ const InputChat: React.FC<{ from: string; roomId: string }> = ({
           createdAt: new Date(),
         }),
       });
-      setText("");
 
       await updateDoc(doc(db, "rooms", roomId), {
         lastMessage: text,
@@ -44,7 +45,7 @@ const InputChat: React.FC<{ from: string; roomId: string }> = ({
             <input
               className="grow shrink basis-0 text-black text-xs font-medium leading-4 focus:outline-none"
               type="text"
-              placeholder="Enter text ..."
+              placeholder="Nhập ..."
               value={text}
               onChange={(e) => setText(e.target.value)}
             />
@@ -57,7 +58,7 @@ const InputChat: React.FC<{ from: string; roomId: string }> = ({
             >
               <Send size={12} color="white" />
               <h3 className="text-white text-xs font-semibold leading-4 px-2">
-                Send
+                Gửi
               </h3>
             </button>
           </div>

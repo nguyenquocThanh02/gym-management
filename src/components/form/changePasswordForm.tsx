@@ -46,7 +46,7 @@ const ChangePasswordForm: React.FC<{
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Present password</FormLabel>
+                  <FormLabel>Mật khẩu hiện tại</FormLabel>
                   <FormControl>
                     <Input type="password" placeholder="******" {...field} />
                   </FormControl>
@@ -60,7 +60,7 @@ const ChangePasswordForm: React.FC<{
               name="newPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>New password</FormLabel>
+                  <FormLabel>Mật khẩu mới</FormLabel>
                   <FormControl>
                     <Input type="password" placeholder="******" {...field} />
                   </FormControl>
@@ -74,7 +74,7 @@ const ChangePasswordForm: React.FC<{
               name="confirmNewPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Confirm New Password</FormLabel>
+                  <FormLabel>Xác nhận mật khẩu</FormLabel>
                   <FormControl>
                     <Input type="password" placeholder="******" {...field} />
                   </FormControl>
@@ -85,9 +85,9 @@ const ChangePasswordForm: React.FC<{
             />
             <div className="flex justify-center gap-3 mt-3">
               <Button onClick={() => setOpen(false)} variant={"secondary"}>
-                Cancel
+                Huỷ
               </Button>
-              <Button type="submit">Submit</Button>
+              <Button type="submit">Xác nhận</Button>
             </div>
           </div>
         </form>

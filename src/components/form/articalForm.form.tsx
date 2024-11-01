@@ -75,9 +75,9 @@ const ArticalForm: React.FC<{
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Title</FormLabel>
+                  <FormLabel>Tiêu đề</FormLabel>
                   <FormControl>
-                    <Input placeholder="Dumbell" {...field} />
+                    <Input placeholder="Bài báo" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -89,7 +89,7 @@ const ArticalForm: React.FC<{
               name="coverImage"
               render={({ field: { value, onChange, ...fieldProps } }) => (
                 <FormItem>
-                  <FormLabel>Picture</FormLabel>
+                  <FormLabel>Ảnh đại diện</FormLabel>
                   <FormControl>
                     <Input
                       {...fieldProps}
@@ -111,7 +111,7 @@ const ArticalForm: React.FC<{
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>Mô tả</FormLabel>
                   <FormControl>
                     <Textarea
                       placeholder="Experience training for artist ..."
@@ -125,7 +125,7 @@ const ArticalForm: React.FC<{
           </div>
           <div className="flex justify-center gap-3">
             <Button onClick={form.handleSubmit(onSubmit)} className="py-1">
-              Save all
+              Lưu tất cả
             </Button>
           </div>
         </form>

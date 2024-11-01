@@ -88,7 +88,7 @@ export function DataTable<TData, TValue>({
               variant="outline"
               className="ml-auto border-Primary border text-Primary hover:text-Primary"
             >
-              Views <ChevronDown className="ml-2 mt-[3px] h-4 w-4" />
+              Xem <ChevronDown className="ml-2 mt-[3px] h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -156,7 +156,7 @@ export function DataTable<TData, TValue>({
                     colSpan={columns.length}
                     className="h-24 text-center"
                   >
-                    No results.
+                    Không có kết quả.
                   </TableCell>
                 </TableRow>
               )}
@@ -168,7 +168,7 @@ export function DataTable<TData, TValue>({
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="flex-1 text-sm text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
+          {table.getFilteredRowModel().rows.length} dòng đã chọn.
         </div>
         <div className="space-x-2">
           <Button
@@ -177,7 +177,7 @@ export function DataTable<TData, TValue>({
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
-            Previous
+            Trước
           </Button>
           <Button
             variant="outline"
@@ -185,7 +185,7 @@ export function DataTable<TData, TValue>({
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
-            Next
+            Tiếp
           </Button>
         </div>
       </div>

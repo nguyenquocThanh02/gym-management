@@ -8,44 +8,44 @@ import { BreadcrumbCustom } from "@/components/custom/breadscrumb.custom";
 const AboutUs = () => {
   const features: typeFeature[] = [
     {
-      name: "Modern Equipment",
+      name: "Thiết bị Hiện đại",
       detail:
-        "State-of-the-art machines and tools designed for all fitness levels to ensure effective workouts.",
+        "Máy móc và công cụ tiên tiến dành cho mọi cấp độ thể lực, đảm bảo hiệu quả trong các buổi tập.",
       icon: "🏋️‍♂️",
       color: "bg-blue-700/50",
     },
     {
-      name: "Personal Training",
+      name: "Đào tạo Cá nhân",
       detail:
-        "Customized training programs created by certified trainers to help you achieve your personal fitness goals.",
+        "Chương trình tập luyện được cá nhân hóa do các huấn luyện viên chứng nhận thiết kế, giúp bạn đạt được mục tiêu thể dục của mình.",
       icon: "👟",
       color: "bg-green-700/50",
     },
     {
-      name: "Spacious Facilities",
+      name: "Cơ sở Vật chất Rộng rãi",
       detail:
-        "Ample space in our gyms allows for comfortable workouts and a variety of exercise options.",
+        "Không gian rộng rãi trong các phòng tập cho phép bạn thoải mái tập luyện và lựa chọn nhiều hình thức bài tập.",
       icon: "🛋️",
       color: "bg-yellow-700/50",
     },
     {
-      name: "Supportive Community",
+      name: "Cộng đồng Hỗ trợ",
       detail:
-        "A friendly and motivating environment where you can connect with fellow fitness enthusiasts and receive encouragement.",
+        "Một môi trường thân thiện và truyền cảm hứng, nơi bạn có thể kết nối với những người yêu thích thể thao và nhận sự động viên.",
       icon: "🤝",
       color: "bg-orange-700/50",
     },
     {
-      name: "Group Classes",
+      name: "Lớp Học Nhóm",
       detail:
-        "Diverse range of group fitness classes, including yoga, pilates, and high-intensity interval training (HIIT).",
+        "Nhiều loại lớp học thể dục nhóm đa dạng, bao gồm yoga, pilates và tập luyện cường độ cao (HIIT).",
       icon: "📅",
       color: "bg-red-700/50",
     },
     {
-      name: "Clean and Safe Environment",
+      name: "Môi trường Sạch sẽ và An toàn",
       detail:
-        "Regularly sanitized facilities and adherence to health protocols to ensure a safe and hygienic workout space.",
+        "Cơ sở thường xuyên được khử trùng và tuân thủ các quy định về sức khỏe để đảm bảo không gian tập luyện an toàn và vệ sinh.",
       icon: "🧼",
       color: "bg-purple-700/50",
     },
@@ -54,64 +54,67 @@ const AboutUs = () => {
   const breadcrumbs = [
     {
       link: "/",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/about-us",
-      name: "About us",
+      name: "Giới thiệu",
     },
   ];
 
   return (
     <div className="l-container bg-BgLight/30 rounded-ss-full">
       <BreadcrumbCustom links={breadcrumbs} />
-      <div className=" flex flex-col justify-center items-center gap-5 ">
-        <h1 className="text-center font-bold text-2xl md:text-4xl">About us</h1>
+      <div className="flex flex-col justify-center items-center gap-5">
+        <h1 className="text-center font-bold text-2xl md:text-4xl">
+          Giới thiệu về chúng tôi
+        </h1>
         <p data-aos="fade-up" className="text-justify italic leading-loose">
           <strong className="font-bold text-2xl md:text-8xl">
             Gym<span className="text-Primary">Max</span>
           </strong>
           <span>
-            was established in early 2024, marking our entry into the fitness
-            world with a commitment to excellence. We proudly operate two
-            branches, strategically located in the vibrant cities of Can Tho and
-            Soc Trang, each designed to offer a premium workout experience. Our
-            gyms are characterized by their spacious and meticulously designed
-            facilities, which blend modern aesthetics with functionality,
-            creating an environment that motivates and inspires. At GymMax, we
-            are dedicated to fostering not only physical health but also overall
-            well-being. Our state-of-the-art equipment ensures that every
-            workout is efficient and effective, whether you are aiming to build
-            strength, improve endurance, or enhance your overall fitness. Our
-            commitment extends beyond just providing equipment; we offer
-            exceptional customer service that includes personalized support and
-            guidance from our team of professional trainers. Our professional
-            coaches are not only highly qualified but also passionate about
-            helping you achieve your fitness goals. They work closely with each
-            member to create tailored training programs that address individual
-            needs and preferences, ensuring that every session is productive and
-            enjoyable. We believe that fitness should be an accessible and
-            enjoyable journey, which is why we prioritize creating a welcoming
-            atmosphere where everyone feels supported. Our modern facilities are
-            equipped with the latest technology to track progress and enhance
-            the workout experience, making it easier for you to see results and
-            stay motivated. Visit us at 123 3/2 Street, Ninh Kieu, Can Tho, and
-            immerse yourself in a fitness environment that combines top-tier
-            equipment, expert coaching, and a supportive community. At GymMax,
-            we are more than just a gym—we are your partner in achieving a
-            healthier, stronger, and more confident you. Join us today and
-            experience the best of fitness with a team that is dedicated to your
-            success.
+            được thành lập vào đầu năm 2024, đánh dấu sự ra mắt của chúng tôi
+            trong thế giới thể hình với cam kết về sự xuất sắc. Chúng tôi tự hào
+            vận hành hai chi nhánh, tọa lạc tại hai thành phố sôi động Cần Thơ
+            và Sóc Trăng, mỗi nơi đều được thiết kế để mang đến trải nghiệm tập
+            luyện cao cấp. Các phòng gym của chúng tôi nổi bật với không gian
+            rộng rãi và thiết kế tỉ mỉ, kết hợp giữa tính thẩm mỹ hiện đại và
+            chức năng, tạo ra môi trường khuyến khích và truyền cảm hứng. Tại
+            GymMax, chúng tôi không chỉ tập trung vào sức khỏe thể chất mà còn
+            cả sự an lành tổng thể. Trang thiết bị hiện đại của chúng tôi đảm
+            bảo mỗi buổi tập đều hiệu quả và năng suất, dù bạn đang muốn xây
+            dựng sức mạnh, cải thiện sức bền hay nâng cao thể chất tổng thể. Cam
+            kết của chúng tôi không chỉ dừng lại ở việc cung cấp trang thiết bị;
+            chúng tôi còn mang đến dịch vụ khách hàng xuất sắc bao gồm hỗ trợ cá
+            nhân và hướng dẫn từ đội ngũ huấn luyện viên chuyên nghiệp. Các huấn
+            luyện viên của chúng tôi không chỉ có trình độ cao mà còn đam mê
+            giúp bạn đạt được mục tiêu thể dục. Họ làm việc chặt chẽ với từng
+            thành viên để tạo ra các chương trình tập luyện phù hợp với nhu cầu
+            và sở thích cá nhân, đảm bảo mỗi buổi tập đều hiệu quả và thú vị.
+            Chúng tôi tin rằng thể dục nên là một hành trình dễ tiếp cận và thú
+            vị, đó là lý do tại sao chúng tôi ưu tiên tạo ra một bầu không khí
+            chào đón, nơi mọi người đều cảm thấy được hỗ trợ. Các cơ sở hiện đại
+            của chúng tôi được trang bị công nghệ mới nhất để theo dõi tiến độ
+            và nâng cao trải nghiệm tập luyện, giúp bạn dễ dàng nhìn thấy kết
+            quả và duy trì động lực. Hãy đến thăm chúng tôi tại 123 Đường 3/2,
+            Ninh Kiều, Cần Thơ, và đắm mình trong một môi trường thể dục kết hợp
+            giữa trang thiết bị hàng đầu, huấn luyện chuyên nghiệp và cộng đồng
+            hỗ trợ. Tại GymMax, chúng tôi không chỉ là một phòng gym—chúng tôi
+            là đối tác của bạn trong việc đạt được một cơ thể khỏe mạnh, mạnh mẽ
+            và tự tin hơn. Hãy gia nhập chúng tôi hôm nay và trải nghiệm những
+            điều tốt nhất của thể dục với một đội ngũ tận tâm cho sự thành công
+            của bạn.
           </span>
         </p>
         <div>
           <h2 className="text-center font-bold text-2xl md:text-3xl my-5">
-            Why choose GymMax?
+            Tại sao chọn GymMax?
           </h2>
           <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between">
             {features?.map((item, index) => (
               <li data-aos="fade-up" key={index} className="list-none">
-                <div className="px-3 py-5 transition-all duration-700 5over:bg-BgLight/20 hover:rounded-xl flex items-center">
+                <div className="px-3 py-5 transition-all duration-700 hover:bg-BgLight/20 hover:rounded-xl flex items-center">
                   <div
                     className={`rounded-lg text-3xl w-16 h-16 flex items-center justify-center ${item.color}`}
                   >
@@ -131,8 +134,16 @@ const AboutUs = () => {
           </ul>
         </div>
         <div className="my-5 flex flex-col w-full justify-center items-center">
-          <Image src={gymView2} alt="view gym" className="w-[100vw] border" />
-          <Image src={gymView1} alt="view gym" className="w-full border" />
+          <Image
+            src={gymView2}
+            alt="Hình ảnh phòng gym"
+            className="w-[100vw] border"
+          />
+          <Image
+            src={gymView1}
+            alt="Hình ảnh phòng gym"
+            className="w-full border"
+          />
         </div>
       </div>
     </div>

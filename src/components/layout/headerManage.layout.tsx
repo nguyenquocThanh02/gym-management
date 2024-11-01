@@ -56,7 +56,7 @@ const HeaderManage: React.FC<NavbarManageProps> = ({ navItems }) => {
           <SheetTrigger asChild>
             <Button size="icon" variant="outline" className="sm:hidden">
               <Menu className="h-5 w-5" />
-              <span className="sr-only">Toggle Menu</span>
+              <span className="sr-only">Chuyển đổi Menu</span>
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="sm:max-w-xs">
@@ -108,12 +108,14 @@ const HeaderManage: React.FC<NavbarManageProps> = ({ navItems }) => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuLabel>Tài khoản của tôi</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Support</DropdownMenuItem>
+            <DropdownMenuItem>Cài đặt</DropdownMenuItem>
+            <DropdownMenuItem>Hỗ trợ</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
+            <DropdownMenuItem onClick={handleLogout}>
+              Đăng xuất
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </header>

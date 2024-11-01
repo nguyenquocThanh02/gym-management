@@ -155,33 +155,36 @@ const DetailsPackageForm: React.FC<{
         <CardHeader>
           <div className="flex justify-between">
             <div>
-              <CardTitle>Details Package</CardTitle>
-              <CardDescription>Manage your packages.</CardDescription>
+              <CardTitle>{id ? "Chi tiết gói tập" : "Thêm gói tập"}</CardTitle>
+              <CardDescription>Thông tin gói tập.</CardDescription>
             </div>
             <div className="flex gap-3">
               {id && (
                 <Dialog open={open} onOpenChange={setOpen}>
                   <DialogTrigger asChild>
-                    <Button variant="outline">Change Status</Button>
+                    <Button variant="outline" className="h-[46px]">
+                      Thay đổi trạng thái
+                    </Button>
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
                       <DialogTitle className="text-black">
-                        Change Status
+                        Thay đổi trạng thái
                       </DialogTitle>
                       <DialogDescription>
-                        Are you sure you want to{" "}
-                        {status === "active" ? "block" : "active"} the package ?
+                        Bạn có chắc chắn muốn{" "}
+                        {status === "active" ? "chặn" : "kích hoạt"} gói này
+                        không?
                       </DialogDescription>
                     </DialogHeader>
                     <DialogFooter>
                       <DialogClose asChild>
                         <Button type="button" variant="secondary">
-                          Close
+                          Đóng
                         </Button>
                       </DialogClose>
                       <Button type="submit" onClick={handleChangeStatus}>
-                        Confirm
+                        Xác nhận
                       </Button>
                     </DialogFooter>
                   </DialogContent>
@@ -191,7 +194,7 @@ const DetailsPackageForm: React.FC<{
                 variant="custom"
                 onClick={form.handleSubmit(onSubmit)}
               >
-                Save all
+                Lưu tất cả
               </ButtonCustom>
             </div>
           </div>
@@ -206,7 +209,7 @@ const DetailsPackageForm: React.FC<{
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Package name *</FormLabel>
+                        <FormLabel>Tên gói *</FormLabel>
                         <FormControl>
                           <Input placeholder="Basic package" {...field} />
                         </FormControl>
@@ -219,7 +222,7 @@ const DetailsPackageForm: React.FC<{
                     name="type"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Type</FormLabel>
+                        <FormLabel>Loại</FormLabel>
                         <FormControl>
                           <Input placeholder="basic" {...field} />
                         </FormControl>
@@ -233,7 +236,7 @@ const DetailsPackageForm: React.FC<{
                     name="price"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Price</FormLabel>
+                        <FormLabel>Giá</FormLabel>
                         <FormControl>
                           <Input type="number" placeholder="$" {...field} />
                         </FormControl>
@@ -247,7 +250,7 @@ const DetailsPackageForm: React.FC<{
                     name="sessionWithPT"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Sessions with PT</FormLabel>
+                        <FormLabel>Số buổi với PT</FormLabel>
                         <FormControl>
                           <Input
                             type="number"
@@ -265,7 +268,7 @@ const DetailsPackageForm: React.FC<{
                     name="duration"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Time membership</FormLabel>
+                        <FormLabel>Thời lượng gói tập</FormLabel>
                         <FormControl>
                           <Input type="number" placeholder="days" {...field} />
                         </FormControl>
@@ -278,7 +281,7 @@ const DetailsPackageForm: React.FC<{
                     name="stock"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Limit</FormLabel>
+                        <FormLabel>Giới hạn</FormLabel>
                         <FormControl>
                           <Input type="number" placeholder="100" {...field} />
                         </FormControl>
@@ -292,7 +295,7 @@ const DetailsPackageForm: React.FC<{
                     name="description"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Description</FormLabel>
+                        <FormLabel>Mô tả</FormLabel>
                         <FormControl>
                           <Textarea
                             placeholder="Experience training for artist ..."
@@ -308,7 +311,7 @@ const DetailsPackageForm: React.FC<{
                     name="suitableFor"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Object</FormLabel>
+                        <FormLabel>Đối tượng</FormLabel>
                         <FormControl>
                           <Textarea placeholder="fat, fitness" {...field} />
                         </FormControl>

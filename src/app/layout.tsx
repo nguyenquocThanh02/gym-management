@@ -9,6 +9,7 @@ import Script from "next/script";
 import "@/styles/index.css";
 import "ckeditor5/ckeditor5.css";
 import "ckeditor5-premium-features/ckeditor5-premium-features.css";
+import ProgressBarProvider from "@/components/layout/ProgressBarProvider.layout";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -33,7 +34,9 @@ export default function RootLayout({
         <body
           className={cn("min-h-screen font-sans antialiased", poppins.variable)}
         >
-          <AOSProvider>{children}</AOSProvider>
+          <AOSProvider>
+            <ProgressBarProvider>{children}</ProgressBarProvider>
+          </AOSProvider>
           <Toaster position="bottom-center" expand={true} richColors />
         </body>
       </ReactQueryProvider>

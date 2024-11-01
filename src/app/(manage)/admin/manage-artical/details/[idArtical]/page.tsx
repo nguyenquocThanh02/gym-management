@@ -83,7 +83,7 @@ export default function DetailAccount({
   });
 
   if (isLoading) {
-    return <div>Skelonton</div>;
+    return <div>Loading</div>;
   }
 
   const handleDelete = async () => {
@@ -116,27 +116,27 @@ export default function DetailAccount({
     <section>
       <div className="flex justify-between items-center w-full">
         <BreadcrumbCustom links={breadcrumbs} />
-        <ButtonCustom onClick={() => route.back()}>Back</ButtonCustom>
+        <ButtonCustom onClick={() => route.back()}>Trở lại</ButtonCustom>
       </div>
       <Card x-chunk="dashboard-06-chunk-0 mt-3">
         <CardHeader>
           <div className="flex justify-between">
             <div>
-              <CardTitle>Articals</CardTitle>
-              <CardDescription>Manage your articals.</CardDescription>
+              <CardTitle>Bài báo</CardTitle>
+              <CardDescription>Quản lý bài báo.</CardDescription>
             </div>
             <div className="flex gap-2">
               <Dialog open={openPermiss} onOpenChange={setOpenPermiss}>
                 <DialogTrigger asChild>
                   <Button className="text-Primary bg-Light border-Primary border hover:bg-Tertiary/20">
-                    Change Status
+                    Thay đổi trạng thái
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="">
                   <DialogHeader>
-                    <DialogTitle>Change Status</DialogTitle>
+                    <DialogTitle>Thay đổi trạng thái</DialogTitle>
                     <DialogDescription>
-                      Select status behind to change status artical.
+                      Chọn trạng thái phía sau để thay đổi trạng thái bài viết.{" "}
                     </DialogDescription>
                   </DialogHeader>
                   <div>
@@ -157,14 +157,12 @@ export default function DetailAccount({
                                   </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
-                                  <SelectItem value="blocked">
-                                    blocked
-                                  </SelectItem>
+                                  <SelectItem value="blocked">Khoá</SelectItem>
                                   <SelectItem value="reviewing">
-                                    reviewing
+                                    Đang xem xét
                                   </SelectItem>
                                   <SelectItem value="published">
-                                    published
+                                    Công khai
                                   </SelectItem>
                                 </SelectContent>
                               </Select>
@@ -178,11 +176,11 @@ export default function DetailAccount({
                   <DialogFooter>
                     <DialogClose asChild>
                       <Button type="button" variant="secondary">
-                        Close
+                        Đóng
                       </Button>
                     </DialogClose>
                     <Button type="submit" onClick={form.handleSubmit(onSubmit)}>
-                      Confirm
+                      Xác nhận
                     </Button>
                   </DialogFooter>
                 </DialogContent>
@@ -190,24 +188,24 @@ export default function DetailAccount({
               <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
                   <Button className="text-Primary bg-Light border-Primary border hover:bg-Tertiary/20">
-                    Delete
+                    Xoá
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                   <DialogHeader>
-                    <DialogTitle>Delete artical</DialogTitle>
+                    <DialogTitle>Xoá bài báo</DialogTitle>
                     <DialogDescription>
-                      Are you sure you want to DELETE the artical?
+                      Bạn có chắc chắn muốn xoá bài báo?
                     </DialogDescription>
                   </DialogHeader>
                   <DialogFooter>
                     <DialogClose asChild>
                       <Button type="button" variant="secondary">
-                        Close
+                        Đóng
                       </Button>
                     </DialogClose>
                     <Button type="submit" onClick={handleDelete}>
-                      Confirm
+                      Xác nhận
                     </Button>
                   </DialogFooter>
                 </DialogContent>

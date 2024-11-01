@@ -20,19 +20,20 @@ const ProfilePage: React.FC<{}> = () => {
   const breadcrumbs = [
     {
       link: "/",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/profile",
-      name: "Profile",
+      name: "Hồ sơ",
     },
   ];
+
   return (
     <div className="l-container mb-10">
       {isLoading && <WaitingLayout />}
       <BreadcrumbCustom links={breadcrumbs} />
       <h1 className="text-center text-3xl font-semibold text-shadow">
-        My Account
+        Tài khoản của tôi
       </h1>
       <ProfileForm data={theUser} key={Date.now()} />
     </div>
