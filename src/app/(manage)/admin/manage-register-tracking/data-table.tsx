@@ -92,7 +92,7 @@ export function DataTable<TData, TValue>({
                 variant="outline"
                 className="mr-2 border-Primary border text-Primary hover:text-Primary"
               >
-                State <Filter className="ml-2 mt-[3px] h-4 w-4" />
+                Trạng thái <Filter className="ml-2 mt-[3px] h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">

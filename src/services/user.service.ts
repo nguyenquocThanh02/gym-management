@@ -10,6 +10,14 @@ export const UserApis = {
       return error;
     }
   },
+  getDetailsUserByName: async (name: string) => {
+    try {
+      const response = await instance.get(`/user/get-details/${name}`);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  },
   getAllRoleTrainee: async () => {
     try {
       const response = await instance.get("/user/get-all-trainee");

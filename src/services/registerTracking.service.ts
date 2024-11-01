@@ -35,13 +35,14 @@ export const RegisterTrackingApis = {
   getDetailsRegisterTracking: async (id: string) => {
     try {
       const response = await mainInstance.get(
-        `/register-tracking/get-details/${id}`
+        `/register-tracking/get-detailbyName/${id}`
       );
       return response;
     } catch (e) {
       return e;
     }
   },
+
   getAllRegisterTrackings: async () => {
     try {
       const response = await mainInstance.get("/register-tracking/get-all");

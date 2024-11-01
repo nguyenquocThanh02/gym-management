@@ -180,7 +180,7 @@ export default function DateChart() {
                             y={(viewBox.cy || 0) + 24}
                             className="fill-muted-foreground text-2xl"
                           >
-                            $
+                            VNĐ
                           </tspan>
                         </text>
                       );

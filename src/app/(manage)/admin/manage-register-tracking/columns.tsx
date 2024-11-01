@@ -18,7 +18,7 @@ import {
 import { ArrowDownUp, EllipsisVertical } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { formatDate } from "@/utils";
+import { formatDate, renderVND } from "@/utils";
 import { typeRegisterTracking } from "@/types";
 
 export const columns: ColumnDef<typeRegisterTracking>[] = [
@@ -134,12 +134,12 @@ export const columns: ColumnDef<typeRegisterTracking>[] = [
     },
 
     cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("totalPrice")}$</div>
+      <div className="lowercase">{renderVND(row.getValue("totalPrice"))}</div>
     ),
   },
   {
     accessorKey: "isPaid",
-    header: "Payment",
+    header: "Đã thanh toán?",
     cell: ({ row }) => (
       <div className="capitalize">
         {row.getValue("isPaid") ? "Completed" : "None"}{" "}
@@ -148,7 +148,7 @@ export const columns: ColumnDef<typeRegisterTracking>[] = [
   },
   {
     accessorKey: "paidAt",
-    header: () => <div className="text-right">Paid at</div>,
+    header: () => <div className="text-right">Thanh toán lúc:</div>,
     cell: ({ row }: { row: any }) => {
       const dateValue: string | undefined = row.getValue("paidAt");
 
