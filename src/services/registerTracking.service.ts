@@ -32,6 +32,7 @@ export const RegisterTrackingApis = {
       return e;
     }
   },
+
   getDetailsRegisterTracking: async (id: string) => {
     try {
       const response = await mainInstance.get(
