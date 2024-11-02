@@ -24,15 +24,15 @@ const DetailsRegisterPackage = ({ params }: { params: { idRT: string } }) => {
   const breadcrumbs = [
     {
       link: "/admin",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/admin/manage-register-tracking",
-      name: "Register tracking management",
+      name: "Quản lý theo dõi đăng ký",
     },
     {
       link: "#",
-      name: "Details register tracking",
+      name: "Chi tiết theo dõi đăng ký",
     },
   ];
 
@@ -52,7 +52,7 @@ const DetailsRegisterPackage = ({ params }: { params: { idRT: string } }) => {
     <section>
       <div className="flex justify-between items-center w-full mb-2">
         <BreadcrumbCustom links={breadcrumbs} />
-        <ButtonCustom onClick={handleBack}>Back</ButtonCustom>
+        <ButtonCustom onClick={handleBack}>Trở về</ButtonCustom>
       </div>
       <Card x-chunk="dashboard-06-chunk-0">
         <CardHeader>
@@ -62,10 +62,7 @@ const DetailsRegisterPackage = ({ params }: { params: { idRT: string } }) => {
               {registerTracking?._id}
             </Badge>
           </CardTitle>
-          <CardDescription>
-            Bạn có thể xem và bắt đầu thanh toán cho việc đăng ký theo dõi tại
-            đây.
-          </CardDescription>
+          <CardDescription>Quản lý tất cả đăng ký ở đây.</CardDescription>
         </CardHeader>
         <CardContent className="">
           <DetailsRegisterTrackingComponent data={registerTracking} />

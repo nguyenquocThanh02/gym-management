@@ -86,7 +86,7 @@ const DetailsPackageForm: React.FC<{
       try {
         const result = await PackageApis.addPackage(dataAddPackage);
         if (result?.status === "201") {
-          toast.success("Add new package successfully");
+          toast.success("Thêm gói tập thành công");
           form.reset();
         } else {
           toast.error(result?.message);
@@ -98,7 +98,7 @@ const DetailsPackageForm: React.FC<{
       try {
         const result = await PackageApis.updatePackage(dataAddPackage, id);
         if (result?.status === "200") {
-          toast.success("Update package successfully");
+          toast.success("Cập nhật gói tập thành công");
         } else {
           toast.error(result?.message);
         }
@@ -119,7 +119,7 @@ const DetailsPackageForm: React.FC<{
       );
       if (result?.status === "200") {
         setStatus(statusChange);
-        toast.success("Update status successfully");
+        toast.success("Cập nhật trạng thái thành công");
       } else {
         toast.error(result?.message);
       }
@@ -137,7 +137,7 @@ const DetailsPackageForm: React.FC<{
         <div>
           {id ? (
             <h3>
-              Status:{" "}
+              Trạng thái:{" "}
               <Badge
                 className={`${
                   status === "active" ? "bg-green-800" : "bg-Primary"
@@ -173,7 +173,7 @@ const DetailsPackageForm: React.FC<{
                       </DialogTitle>
                       <DialogDescription>
                         Bạn có chắc chắn muốn{" "}
-                        {status === "active" ? "chặn" : "kích hoạt"} gói này
+                        {status === "active" ? "khoá" : "kích hoạt"} gói này
                         không?
                       </DialogDescription>
                     </DialogHeader>
@@ -236,7 +236,7 @@ const DetailsPackageForm: React.FC<{
                     name="price"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Giá</FormLabel>
+                        <FormLabel>Giá (VNĐ)</FormLabel>
                         <FormControl>
                           <Input type="number" placeholder="$" {...field} />
                         </FormControl>
@@ -250,7 +250,7 @@ const DetailsPackageForm: React.FC<{
                     name="sessionWithPT"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Số buổi với PT</FormLabel>
+                        <FormLabel>Số buổi tập có huấn luyện viên</FormLabel>
                         <FormControl>
                           <Input
                             type="number"
@@ -268,7 +268,7 @@ const DetailsPackageForm: React.FC<{
                     name="duration"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Thời lượng gói tập</FormLabel>
+                        <FormLabel>Thời lượng gói tập (ngày)</FormLabel>
                         <FormControl>
                           <Input type="number" placeholder="days" {...field} />
                         </FormControl>
@@ -281,7 +281,7 @@ const DetailsPackageForm: React.FC<{
                     name="stock"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Giới hạn</FormLabel>
+                        <FormLabel>Giới hạn (số thẻ)</FormLabel>
                         <FormControl>
                           <Input type="number" placeholder="100" {...field} />
                         </FormControl>

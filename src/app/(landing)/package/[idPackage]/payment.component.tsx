@@ -19,20 +19,27 @@ import { toast, Toaster } from "sonner";
 import { PayPalButton } from "react-paypal-button-v2";
 import { Switch } from "@/components/ui/switch";
 import { useRouter } from "next/navigation";
+import { renderVND } from "@/utils";
 
-const PaymentRegister = () => {
-  const { inforUser, inforPackage, confirmInforRegister } = mainStore();
+const PaymentRegister: React.FC<{ inforPackage: any; inforUser: any }> = ({
+  inforPackage,
+  inforUser,
+}) => {
+  const { confirmInforRegister } = mainStore();
   const [open, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [paypal, setPaypal] = useState<boolean>(false);
 
   const route = useRouter();
+
   const sumDiscount = (arrs): number => {
+    console.log("infor: ", inforUser);
     let sum = 0;
     arrs?.map((item) => {
       sum += item?.percent;
     });
-    return sum;
+    const core = Number(inforUser?.core) || 0;
+    return sum + core;
   };
 
   const totalPrice = (price: any, discount: number) => {
@@ -95,11 +102,11 @@ const PaymentRegister = () => {
     );
     if (result?.status === "201") {
       setOpen(false);
-      toast.success("Successfully to register package");
+      toast.success("Đăng ký thành công");
       route.push("/register-tracking");
     } else {
       setOpen(true);
-      toast.error(result?.message);
+      toast.warning(result?.message);
     }
     setLoading(false);
   };
@@ -110,7 +117,7 @@ const PaymentRegister = () => {
   return (
     <div className={confirmInforRegister ? "" : "hidden"}>
       <div className="mt-3 flex gap-3">
-        Payment with paypal
+        Thanh toán với Paypal
         <Switch
           className="bg-Primary"
           checked={paypal}
@@ -132,8 +139,6 @@ const PaymentRegister = () => {
                 sumDiscount(inforPackage?.discount)
               )}
               onSuccess={(details, data) => {
-                console.log("order Id: ", data, details);
-
                 return handleRegisterTracking({
                   payerName: details?.payer?.name?.given_name,
                   payerEmail: details?.payer?.email_address,
@@ -175,12 +180,20 @@ const PaymentRegister = () => {
               <hr />
               <div className="flex justify-evenly gap-4">
                 <ul className="list-inside">
-                  <h3 className="text-center font-semibold">Package: </h3>
+                  <h3 className="text-center font-semibold">Gói tập: </h3>
                   <li>Tên: {inforPackage?.packages?.name}</li>
-                  <li>Giá: {inforPackage?.packages?.price}</li>
+                  <li>
+                    Giá:{" "}
+                    {renderVND(
+                      totalPrice(
+                        inforPackage?.packages?.price,
+                        sumDiscount(inforPackage?.discount)
+                      )
+                    )}
+                  </li>
                 </ul>
                 <ul>
-                  <h3 className="text-center font-semibold">User: </h3>
+                  <h3 className="text-center font-semibold">Người dùng: </h3>
                   <li>Tên: {inforUser?.fullName}</li>
                   <li>Email: {inforUser?.email}</li>
                   <li>Điện thoại: {inforUser?.phone}</li>

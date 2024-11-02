@@ -26,7 +26,7 @@ import {
   typeRegisterTracking,
   typeResponsePackage,
 } from "@/types";
-import { formatDate } from "@/utils";
+import { formatDate, renderVND } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { toast } from "sonner";
@@ -50,23 +50,24 @@ const DetailRegisterTrackingOfUser = () => {
     queryFn: () => RegisterTrackingApis.getAllRegisterTrackingsOfUser(userId),
   });
   const theRT: typeRegisterTracking[] = data?.data || [];
+  console.log(theRT);
 
   const getDetailPackage = async (idPackage: string) => {
     const resultPackage = await PackageApis.getDetailsPackage(idPackage);
     if (resultPackage?.status === "200") {
       setThePackage(resultPackage?.data);
     } else {
-      toast.error("Err: ", resultPackage?.message);
+      toast.error(resultPackage?.message);
       setOpenPackage(false);
     }
   };
 
-  const handleCancel = async (id: string | undefined) => {
+  const handleCancel = async (id: string) => {
     const resultCancel = await RegisterTrackingApis.cancelRegisterTracking(id);
     if (resultCancel?.status === 200) {
       setOpenCancel(false);
       refetch();
-      toast.success("Cancel successfully");
+      toast.success("Huỷ thành công");
     } else {
       toast.error(resultCancel?.message);
       setOpenCancel(false);
@@ -142,7 +143,10 @@ const DetailRegisterTrackingOfUser = () => {
                                 <ul className="flex flex-col gap-3">
                                   <li>Tên: {thePackage?.packages?.name}</li>
                                   <li>Loại: {thePackage?.packages?.type}</li>
-                                  <li>Giá: {thePackage?.packages?.price} $</li>
+                                  <li>
+                                    Giá:{" "}
+                                    {renderVND(thePackage?.packages?.price)}
+                                  </li>
                                   <li>
                                     Số buổi có người hướng dẫn:{" "}
                                     {thePackage?.packages?.sessionWithPT}
@@ -213,7 +217,9 @@ const DetailRegisterTrackingOfUser = () => {
                                 </li>
                                 <li>
                                   Thanh toán lúc:{" "}
-                                  {formatDate(theInforRT?.paidAt)}
+                                  {theInforRT?.paidAt
+                                    ? formatDate(theInforRT?.paidAt)
+                                    : "//"}
                                 </li>
                                 <li>
                                   Status:{" "}
@@ -223,7 +229,9 @@ const DetailRegisterTrackingOfUser = () => {
                                     <Badge>Chưa thanh toán</Badge>
                                   )}
                                 </li>
-                                <li>Tổng tiền: {theInforRT?.package?.price}</li>
+                                <li>
+                                  Tổng tiền: {renderVND(theInforRT?.totalPrice)}
+                                </li>
                               </ul>
                             </div>
                           </DrawerDescription>
@@ -245,10 +253,10 @@ const DetailRegisterTrackingOfUser = () => {
                       {item?.paidAt ? formatDate(item?.paidAt) : "None"}
                     </td>
                     <td className="text-center my-1 border border-slate-300 py-5">
-                      ${item?.discount?.priceDescrease}
+                      {renderVND(item?.discount?.priceDescrease)}
                     </td>
                     <td className="text-center my-1 border border-slate-300 py-5">
-                      ${item?.totalPrice}
+                      {renderVND(item?.totalPrice)}
                     </td>
                     <td className="text-center my-1 border border-slate-300 py-5">
                       <Dialog open={openCancel} onOpenChange={setOpenCancel}>

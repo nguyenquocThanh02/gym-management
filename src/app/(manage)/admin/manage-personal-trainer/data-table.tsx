@@ -76,10 +76,10 @@ export function DataTable<TData, TValue>({
   );
 
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-hidden px-4">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter name..."
+          placeholder="Tên..."
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("name")?.setFilterValue(event.target.value)

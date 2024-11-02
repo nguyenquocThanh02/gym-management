@@ -73,11 +73,14 @@ const RegisterForm: React.FC<{ invite: string }> = ({ invite = "" }) => {
               messages: [],
             });
           } catch (error) {
-            toast.warning("Error when creating chats message");
+            toast.warning("Lỗi xảy ra khi tạo tin nhắn");
           }
           toast.success("Đăng ký thành công!");
 
           router.push("/login");
+        } else {
+          console.log("thanh cong");
+          router.push("/login-trainee");
         }
       } else {
         toast.error(result?.message);

@@ -22,15 +22,15 @@ const DetailsDiscount = ({ params }: { params: { idDiscount: string } }) => {
   const breadcrumbs = [
     {
       link: "/admin",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/admin/manage-discount",
-      name: "Discount management",
+      name: "Quản lý giảm giá",
     },
     {
       link: "#",
-      name: "Details discount",
+      name: "Chi tiết giảm giá",
     },
   ];
 
@@ -54,7 +54,7 @@ const DetailsDiscount = ({ params }: { params: { idDiscount: string } }) => {
     <section>
       <div className="flex justify-between items-center w-full">
         <BreadcrumbCustom links={breadcrumbs} />
-        <ButtonCustom onClick={handleBack}>Back</ButtonCustom>
+        <ButtonCustom onClick={handleBack}>Trở lại</ButtonCustom>
       </div>
       <Card x-chunk="dashboard-06-chunk-0">
         <CardHeader>

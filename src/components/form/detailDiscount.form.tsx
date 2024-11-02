@@ -80,7 +80,7 @@ const DetailsDiscountForm: React.FC<{
       try {
         const result = await DiscountApis.addDiscount(dataAddDiscount);
         if (result?.status === "201") {
-          toast.success("Add new discount successfully");
+          toast.success("Thêm khuyến mãi mới thành công");
           form.reset();
         } else {
           toast.error(result?.message);
@@ -92,7 +92,7 @@ const DetailsDiscountForm: React.FC<{
       try {
         const result = await DiscountApis.updateDiscount(id, dataAddDiscount);
         if (result?.status === "200") {
-          toast.success("Update discount successfully");
+          toast.success("Cập nhật khuyến mãi thành công");
         } else {
           toast.error(result?.message);
         }
@@ -113,7 +113,7 @@ const DetailsDiscountForm: React.FC<{
       );
       if (result?.status === "200") {
         setStatus(statusChange);
-        toast.success("Update status successfully");
+        toast.success("Cập nhật trạng thái thành công");
       } else {
         toast.error(result?.message);
       }

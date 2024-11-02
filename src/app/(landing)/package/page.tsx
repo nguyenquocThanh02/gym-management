@@ -37,7 +37,7 @@ const PackagePage = () => {
             key={index}
             className="md:basis-1/2 lg:basis-1/3"
           >
-            <CardPackage data={item} />
+            <CardPackage data={item} key={Date.now()} />
           </div>
         ))}
       </div>

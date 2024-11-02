@@ -18,7 +18,6 @@ const ManageUser = () => {
   const { data, isLoading } = useQuery<any>({
     queryKey: ["users"],
     queryFn: UserApis.getAllRoleUser,
-    staleTime: 5 * 60 * 1000,
   });
 
   const arrs: typeAccount[] = data?.data || [];

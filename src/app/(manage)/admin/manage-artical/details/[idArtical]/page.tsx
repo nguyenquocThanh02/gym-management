@@ -55,17 +55,18 @@ export default function DetailAccount({
   const breadcrumbs = [
     {
       link: "/admin",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/admin/manage-artical",
-      name: "Artical management",
+      name: "Quản lý bài viết",
     },
     {
       link: "#",
-      name: "Details artical",
+      name: "Chi tiết bài viết",
     },
   ];
+
   const [open, setOpen] = React.useState<boolean>(false);
   const [openPermiss, setOpenPermiss] = React.useState<boolean>(false);
 
@@ -89,8 +90,9 @@ export default function DetailAccount({
   const handleDelete = async () => {
     const result = await ArticalApis.deleteArtical(params?.idArtical);
     if (result?.status === 200) {
-      toast.success("Delete artical successfully");
-      route.push("/admin/mange-artical");
+      toast.success("Xoá bài viết thành công");
+      route.refresh();
+      route.push("/admin/manage-artical");
     } else {
       toast.error(result?.message);
     }
@@ -104,10 +106,10 @@ export default function DetailAccount({
       data?.statusChange
     );
     if (resultChange?.status === 200) {
-      toast.success("Change status successfully");
+      toast.success("Thay đổi trạng thái bài viết thành công");
       refetch();
     } else {
-      toast.error("Error: ", resultChange?.message);
+      toast.error(resultChange?.message);
     }
     setOpenPermiss(false);
   }
@@ -136,7 +138,7 @@ export default function DetailAccount({
                   <DialogHeader>
                     <DialogTitle>Thay đổi trạng thái</DialogTitle>
                     <DialogDescription>
-                      Chọn trạng thái phía sau để thay đổi trạng thái bài viết.{" "}
+                      Chọn trạng thái để thay đổi trạng thái bài viết.{" "}
                     </DialogDescription>
                   </DialogHeader>
                   <div>
@@ -153,7 +155,7 @@ export default function DetailAccount({
                               >
                                 <FormControl>
                                   <SelectTrigger>
-                                    <SelectValue placeholder="Select a status to change" />
+                                    <SelectValue placeholder="Chọn trạng thái" />
                                   </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
@@ -193,9 +195,9 @@ export default function DetailAccount({
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                   <DialogHeader>
-                    <DialogTitle>Xoá bài báo</DialogTitle>
+                    <DialogTitle>Xoá bài viết</DialogTitle>
                     <DialogDescription>
-                      Bạn có chắc chắn muốn xoá bài báo?
+                      Bạn có chắc chắn muốn xoá bài viết?
                     </DialogDescription>
                   </DialogHeader>
                   <DialogFooter>

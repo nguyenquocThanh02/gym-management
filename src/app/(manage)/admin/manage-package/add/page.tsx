@@ -11,15 +11,15 @@ const AddPackage = () => {
   const breadcrumbs = [
     {
       link: "/admin",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/admin/manage-package",
-      name: "Package management",
+      name: "Quản lý gói tập",
     },
     {
       link: "#",
-      name: "Add Package",
+      name: "Thêm gói tập",
     },
   ];
 

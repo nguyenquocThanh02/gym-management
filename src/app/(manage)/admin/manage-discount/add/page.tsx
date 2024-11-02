@@ -22,15 +22,15 @@ const AddDiscount = () => {
   const breadcrumbs = [
     {
       link: "/admin",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/admin/manage-discount",
-      name: "Discount management",
+      name: "Quản lý giảm giá",
     },
     {
       link: "#",
-      name: "Add discount",
+      name: "Thêm giảm giá",
     },
   ];
 

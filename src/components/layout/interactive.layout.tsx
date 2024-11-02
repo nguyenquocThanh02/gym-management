@@ -36,7 +36,7 @@ const Interactive: React.FC = () => {
   }, [chats, openChat]);
   useEffect(() => {
     if (!roomId) {
-      console.warn("roomId chưa được định nghĩa");
+      console.warn("Room id chưa được định nghĩa");
 
       return;
     }

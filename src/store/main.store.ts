@@ -1,4 +1,4 @@
-import { typeInforUser, typePackage, typeResponsePackage } from "@/types";
+import { typeAccount, typePackage, typeResponsePackage } from "@/types";
 import { create } from "zustand";
 
 interface Room {
@@ -11,7 +11,7 @@ interface StoreState {
   confirmInforRegister: boolean;
   chats: { [key: string]: any };
   friendInfo: { [key: string]: any };
-  inforUser: typeInforUser;
+  inforUser: typeAccount;
   inforPackage: typeResponsePackage;
   listRooms: Room[];
 }
@@ -23,7 +23,7 @@ interface StoreActions extends StoreState {
   setFriendInfo: (newFriend: { [key: string]: any }) => void;
   addRoomIntoList: (newRoom: Room) => void;
   updateRoomInList: (updatedRoom: Room) => void;
-  setInforUser: (inforUser: typeInforUser) => void;
+  setInforUser: (inforUser: typeAccount) => void;
   setInforPackage: (newPackage: typeResponsePackage) => void;
   removeRoomFromList: (roomId: string) => void;
 }
@@ -36,6 +36,7 @@ const mainStore = create<StoreActions>((set) => ({
   inforUser: {
     email: "",
     phone: "",
+    core: 0,
   },
   inforPackage: {
     packages: {

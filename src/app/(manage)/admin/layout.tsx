@@ -31,50 +31,45 @@ export default function Layout({
   const role = localStorage.getItem(localStorageKey.role);
 
   const navItems = [
-    { href: "/admin", name: "Home", icon: <Home className="h-5 w-5" /> },
+    { href: "/admin", name: "Trang chủ", icon: <Home className="h-5 w-5" /> },
     {
       href: "/admin/dashboard",
-      name: "Dashboard",
+      name: "Thống kê",
       icon: <ChartLine className="h-5 w-5" />,
     },
     {
       href: "/admin/manage-register-tracking",
-      name: "Subscription Tracking",
+      name: "Theo dõi đăng ký",
       icon: <ShoppingCart className="h-5 w-5" />,
     },
     {
       href: "/admin/manage-package",
-      name: "Package Management",
+      name: "Quản lý gói",
       icon: <Package className="h-5 w-5" />,
     },
     {
       href: "/admin/manage-account",
-      name: "Account Management",
+      name: "Quản lý tài khoản",
       icon: <Users2 className="h-5 w-5" />,
     },
     {
       href: "/admin/manage-device",
-      name: "Device Management",
+      name: "Quản lý thiết bị",
       icon: <Dumbbell className="h-5 w-5" />,
     },
     {
       href: "/admin/manage-personal-trainer",
-      name: "Personal Trainer Management",
+      name: "Quản lý huấn luyện viên",
       icon: <PersonStanding className="h-5 w-5" />,
     },
     {
       href: "/admin/manage-discount",
-      name: "Discount Management",
+      name: "Quản lý giảm giá",
       icon: <BadgeDollarSign className="h-5 w-5" />,
     },
     {
-      href: "/admin/manage-q&a",
-      name: "Q&A Management",
-      icon: <FileQuestion className="h-5 w-5" />,
-    },
-    {
       href: "/admin/manage-artical",
-      name: "Artical Management",
+      name: "Quản lý bài viết",
       icon: <ScrollText className="h-5 w-5" />,
     },
   ];

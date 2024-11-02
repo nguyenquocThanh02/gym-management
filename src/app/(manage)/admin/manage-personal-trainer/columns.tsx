@@ -58,7 +58,7 @@ export const columns: ColumnDef<typePT>[] = [
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: "Trạng thái",
     cell: ({ row }) => (
       <Badge
         className={`capitalize ${
@@ -87,7 +87,7 @@ export const columns: ColumnDef<typePT>[] = [
   },
   {
     accessorKey: "specialty",
-    header: "Specialty",
+    header: "Chuyên môn",
     cell: ({ row }) => (
       <div className="capitalize">{row.getValue("specialty")}</div>
     ),
@@ -129,7 +129,7 @@ export const columns: ColumnDef<typePT>[] = [
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuLabel>Hành động</DropdownMenuLabel>
               <DropdownMenuItem
                 onClick={() => navigator.clipboard.writeText(payment._id || "")}
               >

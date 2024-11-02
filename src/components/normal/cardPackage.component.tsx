@@ -4,16 +4,22 @@ import ButtonCustom from "../custom/button.custom";
 import { ScrollArea } from "../ui/scroll-area";
 import { typePackage, typeResponsePackage } from "@/types";
 import Link from "next/link";
-import { calculatePrice } from "@/utils";
+import { calculatePrice, renderVND } from "@/utils";
 import { typeDiscount } from "@/types/discount.type";
+import { useRouter } from "next/navigation";
 
 const CardPackage: React.FC<{ data: typeResponsePackage }> = ({ data }) => {
+  const route = useRouter();
   const sumDiscount = (arrs): number => {
     let sum = 0;
     arrs?.map((item) => {
       sum += item?.percent;
     });
     return sum;
+  };
+  const handleRegister = () => {
+    route.refresh();
+    route.push(`/package/${data?.packages?._id}`);
   };
   return (
     <div>
@@ -25,17 +31,20 @@ const CardPackage: React.FC<{ data: typeResponsePackage }> = ({ data }) => {
           {data?.packages?.name}
         </h3>
         <div className="flex items-end mb-6">
-          <span className="font-manrope mr-2 text-6xl font-semibold">
-            $
-            {calculatePrice(data?.packages?.price, sumDiscount(data?.discount))}
+          <span className="font-manrope mr-2 text-4xl font-semibold">
+            {renderVND(
+              calculatePrice(data?.packages?.price, sumDiscount(data?.discount))
+            )}
           </span>
-          <s>${data?.packages?.price}</s>
+          <s>{renderVND(data?.packages?.price)}</s>
         </div>
         <ScrollArea className="h-[300px] mb-3">
           <ul className="mb-12 space-y-6 text-left text-lg ">
             <li className="flex items-center space-x-4">
               <CircleCheck className="text-Primary" />
-              <span>{data?.packages?.sessionWithPT} buổi tập với PT</span>
+              <span>
+                {data?.packages?.sessionWithPT} buổi tập với huấn luyện viên
+              </span>
             </li>
             <li className="flex items-center space-x-4">
               <CircleCheck className="text-Primary" />
@@ -64,11 +73,12 @@ const CardPackage: React.FC<{ data: typeResponsePackage }> = ({ data }) => {
           </ul>
         </ScrollArea>
 
-        <Link href={`/package/${data?.packages?._id}`} className="mx-auto">
-          <ButtonCustom className="py-3 px-8 w-fit shadow-sm rounded-full text-lg">
-            Đăng ký
-          </ButtonCustom>
-        </Link>
+        <ButtonCustom
+          onClick={handleRegister}
+          className="py-3 px-8 w-fit shadow-sm rounded-full text-lg mx-auto"
+        >
+          Đăng ký
+        </ButtonCustom>
       </div>
     </div>
   );

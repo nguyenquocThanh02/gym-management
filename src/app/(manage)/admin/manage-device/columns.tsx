@@ -103,7 +103,7 @@ export const columns: ColumnDef<typeDevice>[] = [
 
   {
     accessorKey: "maintenanceInterval",
-    header: () => <div className="text-right">Số lần đã bảo trì</div>,
+    header: () => <div className="text-right">Số lần bảo trì</div>,
     cell: ({ row }) => {
       // const amount = parseFloat(row.getValue("maintenanceInterval"));
 

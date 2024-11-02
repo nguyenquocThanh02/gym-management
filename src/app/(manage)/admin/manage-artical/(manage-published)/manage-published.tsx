@@ -17,7 +17,6 @@ const ManagePublished = () => {
   const { data, isLoading } = useQuery<any>({
     queryKey: ["articals-published"],
     queryFn: () => ArticalApis.getAllArticals("published"),
-    staleTime: 5 * 60 * 1000,
   });
 
   const arrs: typeArtical[] = data?.data || [];
@@ -28,9 +27,9 @@ const ManagePublished = () => {
         <CardHeader>
           <div className="flex justify-between">
             <div>
-              <CardTitle>Các bài viết đã xuất bản</CardTitle>
+              <CardTitle>Các bài viết đang công khai</CardTitle>
               <CardDescription>
-                Quản lý các bài viết đã xuất bản của bạn.
+                Quản lý các bài viết đang công khai.
               </CardDescription>
             </div>
           </div>

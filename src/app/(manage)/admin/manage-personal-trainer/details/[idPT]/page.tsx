@@ -12,17 +12,18 @@ export default function DetailPT({ params }: { params: { idPT: string } }) {
   const breadcrumbs = [
     {
       link: "/admin",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/admin/manage-personal-trainer",
-      name: "PT management",
+      name: "Quản lý huấn luyện viên",
     },
     {
       link: "#",
-      name: "Details PT",
+      name: "Chi tiết huấn luyện viên",
     },
   ];
+
   const { data, isLoading } = useQuery<any>({
     queryKey: ["personal-trainer"],
     queryFn: () => PTApis.getDetailsUser(params.idPT),

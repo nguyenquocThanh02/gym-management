@@ -75,13 +75,15 @@ export function DataTable<TData, TValue>({
   );
 
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-hidden px-4">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter name..."
-          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+          placeholder="Họ và tên người dùng..."
+          value={
+            (table.getColumn("userFullName")?.getFilterValue() as string) ?? ""
+          }
           onChange={(event) =>
-            table.getColumn("name")?.setFilterValue(event.target.value)
+            table.getColumn("userFullName")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />

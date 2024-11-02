@@ -54,7 +54,7 @@ const ArticalForm: React.FC<{
     const result = await ArticalApis.addArtical(dataAddArtical);
 
     if (result?.status === 201) {
-      toast.success("Create a new artical successfuly");
+      toast.success("Tạo bài viết thành công");
       form.reset();
       route.push("/artical/of-user");
     } else {

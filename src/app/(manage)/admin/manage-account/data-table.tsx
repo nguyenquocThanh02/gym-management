@@ -75,10 +75,10 @@ export function DataTable<TData, TValue>({
   );
 
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-hidden px-4">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter name ..."
+          placeholder="Tên ..."
           value={
             (table.getColumn("fullName")?.getFilterValue() as string) ?? ""
           }
@@ -94,7 +94,7 @@ export function DataTable<TData, TValue>({
                 variant="outline"
                 className="mr-2 border-Primary border text-Primary hover:text-Primary"
               >
-                State <Filter className="ml-2 mt-[3px] h-4 w-4" />
+                Trạng thái <Filter className="ml-2 mt-[3px] h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -124,7 +124,7 @@ export function DataTable<TData, TValue>({
                 variant="outline"
                 className="ml-auto border-Primary border text-Primary hover:text-Primary"
               >
-                Views <ChevronDown className="ml-2 mt-[3px] h-4 w-4" />
+                Xem <ChevronDown className="ml-2 mt-[3px] h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -205,7 +205,7 @@ export function DataTable<TData, TValue>({
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="flex-1 text-sm text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
+          {table.getFilteredRowModel().rows.length} dòng được chọn.
         </div>
         <div className="space-x-2">
           <Button

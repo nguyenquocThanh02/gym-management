@@ -17,7 +17,6 @@ const ManageBlocked = () => {
   const { data, isLoading } = useQuery<any>({
     queryKey: ["articals-blocked"],
     queryFn: () => ArticalApis.getAllArticals("blocked"),
-    staleTime: 5 * 60 * 1000,
   });
 
   const arrs: typeArtical[] = data?.data || [];
@@ -28,8 +27,8 @@ const ManageBlocked = () => {
         <CardHeader>
           <div className="flex justify-between">
             <div>
-              <CardTitle>Khoá bài báo</CardTitle>
-              <CardDescription>Quản lý bài báo bị khoá.</CardDescription>
+              <CardTitle>Bài viết đã khoá</CardTitle>
+              <CardDescription>Quản lý bài viết đã khoá.</CardDescription>
             </div>
           </div>
         </CardHeader>

@@ -12,11 +12,11 @@ export default function DeviceManagePage() {
   const breadcrumbs = [
     {
       link: "/admin",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/admin/manage-package",
-      name: "Package management",
+      name: "Quản lý gói tập",
     },
   ];
 

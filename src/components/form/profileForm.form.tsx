@@ -76,7 +76,7 @@ const ProfileForm: React.FC<{ data: typeAccount }> = ({ data }) => {
 
     const result = await UserApis.updateAccount(data?._id || "", dataUpdate);
     if (result?.status === "200") {
-      toast.success("Update account successfully");
+      toast.success("Cập nhật tài khoản thành công");
     } else {
       toast.error(result?.message);
     }
@@ -106,25 +106,36 @@ const ProfileForm: React.FC<{ data: typeAccount }> = ({ data }) => {
   return (
     <div className="">
       {isLoading1 && <WaitingLayout />}
-      <div className="flex justify-end mb-3 mt-2">
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogTrigger>
-            <ButtonCustom variant="custom">Đổi Mật Khẩu</ButtonCustom>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle className="text-center">Đổi Mật Khẩu</DialogTitle>
-              <DialogDescription className="text-center">
-                Nhập mật khẩu hiện tại của bạn, sau đó nhập mật khẩu mới và xác
-                nhận mật khẩu mới để đổi mật khẩu.
-              </DialogDescription>
-            </DialogHeader>
-            <ChangePasswordForm setOpen={setOpen} />
-          </DialogContent>
-        </Dialog>
-        <ButtonCustom className="ml-3" onClick={form.handleSubmit(onSubmit)}>
-          Cập nhật
-        </ButtonCustom>
+      <div className="flex justify-between mb-3 mt-2">
+        <div>
+          <div> Điểm thưởng: {data?.core | 0}🏅</div>
+          {data?.core > 0 && (
+            <p className="text-sm">
+              Bạn là khách hàng thân thiết sẽ nhận được giảm giá 4% cho lần đăng
+              ký kế tiếp
+            </p>
+          )}
+        </div>
+        <div>
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger>
+              <ButtonCustom variant="custom">Đổi Mật Khẩu</ButtonCustom>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle className="text-center">Đổi Mật Khẩu</DialogTitle>
+                <DialogDescription className="text-center">
+                  Nhập mật khẩu hiện tại của bạn, sau đó nhập mật khẩu mới và
+                  xác nhận mật khẩu mới để đổi mật khẩu.
+                </DialogDescription>
+              </DialogHeader>
+              <ChangePasswordForm setOpen={setOpen} />
+            </DialogContent>
+          </Dialog>
+          <ButtonCustom className="ml-3" onClick={form.handleSubmit(onSubmit)}>
+            Cập nhật
+          </ButtonCustom>
+        </div>
       </div>
       <Form {...form}>
         <form className="flex flex-col gap-5 justify-center items-center bg-BgLight/10  py-5 rounded-lg">
@@ -198,7 +209,7 @@ const ProfileForm: React.FC<{ data: typeAccount }> = ({ data }) => {
                 name="phone"
                 render={({ field }) => (
                   <FormItem className="">
-                    <FormLabel className="text-Light">Phone</FormLabel>
+                    <FormLabel className="text-Light">Số điện thoại</FormLabel>
                     <FormControl className="">
                       <Input
                         type="text"

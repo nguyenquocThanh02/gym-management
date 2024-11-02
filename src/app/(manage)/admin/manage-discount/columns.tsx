@@ -62,20 +62,20 @@ export const columns: ColumnDef<typeDiscount>[] = [
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: "Trạng thái",
     cell: ({ row }) => (
       <Badge
         className={`capitalize ${
           row.getValue("status") === "active" ? "bg-green-800" : "bg-Primary"
         }`}
       >
-        {row.getValue("status") === "active" ? "running" : "stopped"}
+        {row.getValue("status") === "active" ? "hoạt động" : "đã dừng"}
       </Badge>
     ),
   },
   {
     accessorKey: "percent",
-    header: "Percent",
+    header: "Phần trăm",
     cell: ({ row }) => (
       <div className="capitalize">{row.getValue("percent")} %</div>
     ),

@@ -98,7 +98,7 @@ const DetailsDeviceForm: React.FC<{
       try {
         const result = await DeviceApis.addDevice(dataAddDevice);
         if (result?.status === "201") {
-          toast.success("Add new device successfully");
+          toast.success("Thêm thiết bị mới thành công");
           form.reset();
           setFile("");
           setUrlImage("");
@@ -112,7 +112,7 @@ const DetailsDeviceForm: React.FC<{
       try {
         const result = await DeviceApis.updateDevice(dataAddDevice, id);
         if (result?.status === "200") {
-          toast.success("Update device successfully");
+          toast.success("Cập nhật thông tin thiết bị thành công");
         } else {
           toast.error(result?.message);
         }
@@ -133,7 +133,7 @@ const DetailsDeviceForm: React.FC<{
       );
       if (result?.status === "200") {
         setStatus(statusChange);
-        toast.success("Update status successfully");
+        toast.success("Cập nhật trạng thái thành công");
       } else {
         toast.error(result?.message);
       }
@@ -153,7 +153,7 @@ const DetailsDeviceForm: React.FC<{
         <div>
           {id ? (
             <h3>
-              Status:{" "}
+              Trạng thái:{" "}
               <Badge
                 className={`${
                   status === "available" ? "bg-green-800" : "bg-yellow-500"
@@ -170,7 +170,7 @@ const DetailsDeviceForm: React.FC<{
           {id && (
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
-                <Button variant="outline">Change Status</Button>
+                <Button variant="outline">Thay đổi trạng thái</Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>

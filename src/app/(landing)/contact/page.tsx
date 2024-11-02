@@ -17,7 +17,7 @@ const Contact = () => {
   return (
     <div className="l-container mb-10">
       <BreadcrumbCustom links={breadcrumbs} />
-      <h1 className="text-center font-bold text-2xl md:text-4xl">Contact</h1>
+      <h1 className="text-center font-bold text-2xl md:text-4xl">Liên hệ</h1>
 
       <div className="w-full flex flex-col  justify-center items-center gap-8 pt-8">
         <ul className="w-full flex flex-col gap-4 border rounded-lg p-5 text-center">

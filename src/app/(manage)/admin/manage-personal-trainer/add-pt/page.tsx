@@ -10,15 +10,15 @@ const AddPT = () => {
   const breadcrumbs = [
     {
       link: "/admin",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/admin/manage-personal-trainer",
-      name: "PT management",
+      name: "Quản lý huấn luyện viên",
     },
     {
       link: "/admin/manage-personal-trainer/add-pt",
-      name: "Add PT",
+      name: "Thêm huấn luyện viên",
     },
   ];
 

@@ -46,7 +46,6 @@ const ManageTrainee = () => {
   const { data, isLoading } = useQuery<any>({
     queryKey: ["trainees"],
     queryFn: UserApis.getAllRoleTrainee,
-    staleTime: 5 * 60 * 1000,
   });
 
   const arrs: typeAccount[] = data?.data || [];
@@ -62,7 +61,7 @@ const ManageTrainee = () => {
       const result = await UserApis.inviteAccount(values?.email);
       console.log("result>>", result);
       if (result?.status === 200) {
-        toast.success("Invite successfully");
+        toast.success("Đã mời thành công");
         form.reset();
         setOpen(false);
       } else {

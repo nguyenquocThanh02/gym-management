@@ -159,7 +159,7 @@ const Header = () => {
                           <ChevronDown className="mt-1" size={17} />
                         </Button>
                       </HoverCardTrigger>
-                      <HoverCardContent className="w-full ml-[7%] mt-4 bg-BgDark/95">
+                      <HoverCardContent className="w-[90vw] ml-16 mt-2 bg-BgDark">
                         {item.dropdown}
                       </HoverCardContent>
                     </HoverCard>

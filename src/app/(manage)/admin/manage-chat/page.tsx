@@ -31,11 +31,11 @@ export default function DeviceManagePage() {
   const breadcrumbs = [
     {
       link: "/admin",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "#",
-      name: "Chat management",
+      name: "Tin nhắn",
     },
   ];
 
@@ -71,17 +71,13 @@ export default function DeviceManagePage() {
           };
 
           if (type === "added") {
-            console.log(`Room added: ${roomId}`);
             addRoomIntoList(roomData);
           } else if (type === "modified") {
-            console.log(`Room modified: ${roomId}`);
             updateRoomInList(roomData);
           } else if (type === "removed") {
-            console.log(`Room removed: ${roomId}`);
             removeRoomFromList(roomId);
           }
         } catch (error) {
-          console.error("Error fetching user data:", error);
           toast.error(error?.message);
         }
       }
@@ -91,21 +87,17 @@ export default function DeviceManagePage() {
   }, []);
 
   const handleClickRoom = (item: any) => {
-    console.log("d:", item?.email);
     setInfoUser(item);
     setRoomId(item?.roomId);
   };
 
   useEffect(() => {
     if (!roomId) {
-      console.warn("roomId is not defined");
       return;
     }
 
     const unSub = onSnapshot(doc(db, "messages", roomId), (res) => {
-      console.log(res?.data().messages);
       setChats({ [roomId]: res.data()?.messages });
-      console.log("cagat:  ", chats[roomId]);
     });
     return () => {
       unSub();

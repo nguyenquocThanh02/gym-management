@@ -46,7 +46,7 @@ export const columns: ColumnDef<typeArtical>[] = [
   },
   {
     accessorKey: "coverImage",
-    header: "Cover image",
+    header: "Ảnh đại diện",
     cell: ({ row }) => {
       const imageUrl = row.getValue("coverImage") as string;
 
@@ -82,7 +82,7 @@ export const columns: ColumnDef<typeArtical>[] = [
 
   {
     accessorKey: "description",
-    header: "description",
+    header: "Mô tả",
     cell: ({ row }) => (
       <div className="capitalize truncate max-w-sm">
         {row.getValue("description")}
@@ -92,7 +92,7 @@ export const columns: ColumnDef<typeArtical>[] = [
 
   {
     accessorKey: "updatedAt",
-    header: () => <div className="text-right">Time</div>,
+    header: () => <div className="text-right">Thời gian</div>,
     cell: ({ row }: { row: any }) => {
       const dateValue: string | undefined = row.getValue("updatedAt");
 

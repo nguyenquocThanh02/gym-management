@@ -87,7 +87,7 @@ const HeaderManage: React.FC<NavbarManageProps> = ({ navItems }) => {
             Gym<strong className="text-Primary">Max</strong>
           </h3>
         </div>
-        <div className="ml-auto flex-1 md:grow-0 text-shadow text-Light font-semibold text-lg">
+        <div className="ml-auto flex-1 md:grow-0 w-20  text-shadow text-Light font-medium text-sm">
           {theUser?.accountName}
         </div>
         {/* accout admin or trainee */}

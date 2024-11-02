@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { RegisterTrackingApis } from "@/services";
 import { typeRegisterTracking } from "@/types";
-import { formatDate } from "@/utils";
+import { formatDate, renderVND } from "@/utils";
 import Link from "next/link";
 import React, { use, useState } from "react";
 import { toast } from "sonner";
@@ -130,7 +130,7 @@ const DetailsRegisterTrackingComponent: React.FC<{
             <li className="flex gap-3 my-5 items-center">
               Giá:{" "}
               <p className="border p-1 bg-slate-50 rounded-md">
-                ${data?.package?.price}
+                {renderVND(data?.package?.price)}
               </p>
             </li>
             <li className="flex gap-3 my-5 items-center">
@@ -198,13 +198,13 @@ const DetailsRegisterTrackingComponent: React.FC<{
             <li className="flex gap-3 my-5 items-center">
               Khuyến mãi:{" "}
               <p className="border p-1 bg-slate-50 rounded-md">
-                ${data?.discount?.priceDescrease}
+                {renderVND(data?.discount?.priceDescrease)}
               </p>
             </li>
             <li className="flex gap-3 my-5 items-center">
               Tổng tiền:{" "}
               <p className="border p-1 bg-slate-50 rounded-md">
-                ${data?.totalPrice}
+                {renderVND(data?.totalPrice)}
               </p>
             </li>
             <li className="flex gap-3 my-5 items-center">
@@ -240,7 +240,7 @@ const DetailsRegisterTrackingComponent: React.FC<{
                 </p>
               </li>
               <li className="flex gap-3 my-5 items-center">
-                Tên tài khoả:{" "}
+                Tên tài khoản:{" "}
                 <p className="border p-1 bg-slate-50 rounded-md">
                   {data?.payment?.payerName || "//"}
                 </p>

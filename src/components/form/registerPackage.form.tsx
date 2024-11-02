@@ -33,12 +33,16 @@ const RegisterPackage = () => {
   const form = useCreateForm(registerPackageRule, {
     fullName: inforUser?.fullName || "",
     email: inforUser?.email || "",
-    phone: String(inforUser?.phone) || "",
+    phone: inforUser?.phone || "",
     timeStart: inforUser?.timeStart || new Date(Date.now()),
   });
 
   async function onSubmit(values: z.infer<typeof registerPackageRule>) {
-    setInforUser(values);
+    if (inforUser?.email) {
+      setInforUser(inforUser);
+    } else {
+      setInforUser(values);
+    }
     setConfirmInforRegister(true);
   }
   return (

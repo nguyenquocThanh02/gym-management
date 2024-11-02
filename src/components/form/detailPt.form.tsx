@@ -93,10 +93,8 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
     if (!id) {
       try {
         const result = await PTApis.addPT(dataAddPT);
-        console.log("test: ", result);
-        console.log("test>>>: ", result?.status);
         if (result?.status === "201") {
-          toast.success("Add new PT successfully");
+          toast.success("Thêm huấn luyện viên mới");
           form.reset();
         } else {
           toast.error(result?.message);
@@ -108,7 +106,7 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
       try {
         const result = await PTApis.updatePT(dataAddPT, id);
         if (result?.status === "200") {
-          toast.success("Update PT successfully");
+          toast.success("Cập nhật huấn luyện viên");
         } else {
           toast.error(result?.message);
         }
@@ -126,7 +124,7 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
       const result = await PTApis.changeStatusPT(idPt, statusChange);
       if (result?.status === "200") {
         setStatus(statusChange);
-        toast.success("Update status successfully");
+        toast.success("Cập nhật trạng thái thành công");
       } else {
         toast.error(result?.message);
       }

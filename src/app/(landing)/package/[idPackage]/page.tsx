@@ -10,7 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import { PackageApis, UserApis } from "@/services";
 import WaitingLayout from "@/components/layout/waiting.layout";
 import { typePackage, typeResponsePackage } from "@/types";
-import { calculatePrice } from "@/utils";
+import { calculatePrice, renderVND } from "@/utils";
 import { localStorageKey } from "@/constants/localStorage";
 import mainStore from "@/store/main.store";
 import { Button } from "@/components/ui/button";
@@ -18,17 +18,20 @@ import PaymentRegister from "./payment.component";
 import { BreadcrumbCustom } from "@/components/custom/breadscrumb.custom";
 
 const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
-  const idUser = localStorage.getItem(localStorageKey?.userId) || "";
-  const { setInforUser, setInforPackage, inforPackage } = mainStore();
+  const { setInforUser, setInforPackage } = mainStore();
 
+  console.log(params.idPackage);
   const {
     data,
     isLoading,
     isSuccess: isSuccessGetPackage,
+    refetch,
   } = useQuery({
     queryKey: ["package"],
     queryFn: () => PackageApis.getDetailsPackage(params.idPackage),
   });
+
+  const idUser = localStorage.getItem(localStorageKey?.userId) || "";
 
   const {
     data: infor,
@@ -40,12 +43,8 @@ const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
   });
 
   useEffect(() => {
-    if (isSuccessGetInforUser) {
-      setInforUser(infor?.data);
-    }
-    if (isSuccessGetPackage) {
-      setInforPackage(data?.data);
-    }
+    setInforUser(infor?.data);
+    setInforPackage(data?.data);
   }, [isSuccessGetInforUser, isSuccessGetPackage]);
 
   const sumDiscount = (arrs): number => {
@@ -53,17 +52,18 @@ const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
     arrs?.map((item) => {
       sum += item?.percent;
     });
+
     return sum;
   };
 
   const breadcrumbs = [
     {
       link: "/",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "#",
-      name: "Detail Package",
+      name: "Chi tiết gói tập",
     },
   ];
 
@@ -84,29 +84,30 @@ const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
             <hr />
             <ScrollArea className="h-[90%] mb-3">
               <h3 className="font-manrope text-2xl font-bold mb-3">
-                {inforPackage?.packages?.name}
+                {data?.data?.packages?.name}
               </h3>
               <div className="flex items-end mb-6">
                 <span className="font-manrope mr-2 text-6xl font-semibold">
-                  $
-                  {calculatePrice(
-                    inforPackage?.packages?.price,
-                    sumDiscount(inforPackage?.discount)
+                  {renderVND(
+                    calculatePrice(
+                      data?.data?.packages?.price,
+                      sumDiscount(data?.data?.discount)
+                    )
                   )}
                 </span>
-                <s>${inforPackage?.packages?.price}</s>
+                <s>{renderVND(data?.data?.packages?.price)}</s>
               </div>
               <ul className="mb-12 space-y-6 text-left text-lg">
                 <li className="flex items-center space-x-4">
                   <CircleCheck className="text-Primary" />
                   <span>
-                    {inforPackage?.packages?.sessionWithPT} buổi tập với PT
+                    {data?.data?.packages?.sessionWithPT} buổi tập với PT
                   </span>
                 </li>
                 <li className="flex items-center space-x-4">
                   <CircleCheck className="text-Primary" />
                   <span>
-                    {inforPackage?.packages?.duration} ngày thẻ thành viên
+                    {data?.data?.packages?.duration} ngày thẻ thành viên
                   </span>
                 </li>
                 <li className="flex items-center space-x-4">
@@ -115,18 +116,18 @@ const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
                 </li>
                 <li className="flex items-center space-x-4">
                   <CircleCheck className="text-Primary" />
-                  <span>All widget access</span>
+                  <span>Tham gia tất cả dịch vụ</span>
                 </li>
                 <li className="flex items-center space-x-4">
                   <div>
                     <h4>Đối tượng: </h4>
-                    <span>{inforPackage?.packages?.suitableFor}</span>
+                    <span>{data?.data?.packages?.suitableFor}</span>
                   </div>
                 </li>
                 <li className="flex items-center space-x-4">
                   <div>
                     <h4>Mô tả: </h4>
-                    <span>{inforPackage?.packages?.description}</span>
+                    <span>{data?.data?.packages?.description}</span>
                   </div>
                 </li>
               </ul>
@@ -141,31 +142,50 @@ const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
         <div className="border h-fit md:w-[26%] p-3">
           <div className="flex flex-col gap-3">
             <div>
-              Giá: <strong>{inforPackage?.packages?.price} $</strong>
+              Giá: <strong>{renderVND(data?.data?.packages?.price)}</strong>
             </div>
             <div>
               Khuyến mãi:{" "}
               <strong>
-                {calculatePrice(
-                  inforPackage?.packages?.price,
-                  100 - sumDiscount(inforPackage?.discount)
+                -
+                {renderVND(
+                  calculatePrice(
+                    data?.data?.packages?.price,
+                    100 - sumDiscount(data?.data?.discount)
+                  )
                 )}
-                $
+              </strong>
+            </div>
+            <div className="flex gap-3">
+              Thưởng: ({infor?.data?.core}🏅)
+              <strong>
+                -
+                {renderVND(
+                  calculatePrice(
+                    data?.data?.packages?.price,
+                    100 - (infor?.data?.core | 0)
+                  )
+                )}
               </strong>
             </div>
             <hr />
             <div>
               Tổng cộng:{" "}
               <strong className="text-bold text-Primary text-2xl">
-                {calculatePrice(
-                  inforPackage?.packages?.price,
-                  sumDiscount(inforPackage?.discount)
+                {renderVND(
+                  calculatePrice(
+                    data?.data?.packages?.price,
+                    sumDiscount(data?.data?.discount) + (infor?.data?.core | 0)
+                  )
                 )}
-                $
               </strong>
             </div>
           </div>
-          <PaymentRegister />
+          <PaymentRegister
+            key={Date.now()}
+            inforPackage={data?.data}
+            inforUser={infor?.data}
+          />
         </div>
       </div>
     </div>

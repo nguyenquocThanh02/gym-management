@@ -40,7 +40,9 @@ const ListPackage: React.FC<{ data: typeResponsePackage[] }> = ({ data }) => {
                     <p className="text-xl font-semibold ">
                       {renderVND(item?.packages?.price)}
                     </p>
-                    <p>{item?.packages?.sessionWithPT} buổi với PT</p>
+                    <p>
+                      {item?.packages?.sessionWithPT} buổi với người hướng dẫn
+                    </p>
                     <p>{item?.packages?.duration} ngày thẻ thành viên</p>
                     <h3>
                       <Badge

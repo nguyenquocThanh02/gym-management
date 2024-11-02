@@ -40,17 +40,18 @@ export default function DetailAccount({
   const breadcrumbs = [
     {
       link: "/admin",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/admin/manage-account",
-      name: "Account management",
+      name: "Quản lý tài khoản",
     },
     {
       link: "#",
-      name: "Details account",
+      name: "Chi tiết tài khoản",
     },
   ];
+
   const [open, setOpen] = React.useState<boolean>(false);
   const [openPermiss, setOpenPermiss] = React.useState<boolean>(false);
 
@@ -62,7 +63,7 @@ export default function DetailAccount({
   const account: typeAccount = data?.data || null;
 
   if (isLoading) {
-    return <div>Skelonton</div>;
+    return <div>Loading</div>;
   }
 
   const handleChangeStatus = async () => {
@@ -89,7 +90,7 @@ export default function DetailAccount({
       const roleChange = account?.role === "user" ? "trainee" : "user";
       const result = await UserApis.changeRole(account._id || "", roleChange);
       if (result?.status === "200") {
-        toast.success("Update role successfully");
+        toast.success("Cập nhật quyền thành công");
         refetch();
       } else {
         toast.error(result?.message);

@@ -16,17 +16,18 @@ export default function DetailDevice({
   const breadcrumbs = [
     {
       link: "/admin",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/admin/manage-device",
-      name: "Device management",
+      name: "Quản lý thiết bị",
     },
     {
       link: "#",
-      name: "Details Device",
+      name: "Chi tiết thiết bị",
     },
   ];
+
   const { data, isLoading } = useQuery<any>({
     queryKey: ["device"],
     queryFn: () => DeviceApis.getDetailsDevice(params.idDevice),

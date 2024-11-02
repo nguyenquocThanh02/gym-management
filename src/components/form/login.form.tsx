@@ -57,7 +57,7 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
     const resultReset = await AuthenApis.resetPassword(values.email);
     if (resultReset?.status === 200) {
       toast.info(
-        "Email confirmed successfully! Please check your inbox for further instructions to complete the process."
+        "Xác nhận email thành công! Vui lòng kiểm tra hộp thư đến của bạn để biết thêm hướng dẫn hoàn tất quá trình."
       );
     } else {
       toast.error(resultReset?.message);
@@ -122,7 +122,7 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
       {isLoading && <WaitingLayout />}
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 mt-2">
           <div className="flex flex-col gap-3">
             <FormField
               control={form.control}

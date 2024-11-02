@@ -5,15 +5,14 @@ export const calculatePrice = (
   const thePrice = typeof price === "string" ? parseFloat(price) : price;
   const thePercent =
     typeof percent === "string" ? parseFloat(percent) : percent;
-  const discountedPrice = (thePrice * (100 - thePercent)) / 100;
-  return parseFloat(discountedPrice.toFixed(1));
+  return (thePrice * (100 - thePercent)) / 100;
 };
 
 export const renderVND = (price: string | number) => {
   const currencyConfig = {
     currency: "VND",
     minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
+    maximumFractionDigits: 2,
   };
 
   const { currency, minimumFractionDigits, maximumFractionDigits } =

@@ -21,11 +21,11 @@ const RegisterTrackingManagePage = () => {
   const breadcrumbs = [
     {
       link: "/admin",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/admin/manage-register-tracking",
-      name: "Register tracking management",
+      name: "Quản lý theo dõi đăng ký",
     },
   ];
 

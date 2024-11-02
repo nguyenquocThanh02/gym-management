@@ -7,6 +7,7 @@ export type typeAccount = {
   phone?: number | string;
   dateOfBirth?: string;
   avatar?: string;
+  core?: number | string;
   status?: "active" | "block";
   createdAt?: string;
 };
@@ -16,6 +17,7 @@ export type typeInforUser = {
   fullName?: string;
   email: string;
   phone?: string;
+  core?: number | string;
   timeStart?: Date | string;
 };
 

@@ -21,11 +21,11 @@ export default function DiscountManagePage() {
   const breadcrumbs = [
     {
       link: "/admin",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/admin/manage-discount",
-      name: "Discount management",
+      name: "Quản lý khuyến mãi",
     },
   ];
 

@@ -116,7 +116,7 @@ export default function DateChart() {
         <Card className="bg-slate-300 w-[280px] h-[160px] rounded-lg  text-Light">
           <CardContent className="h-full w-full flex justify-between items-center">
             <div className="">
-              <h3 className="font-semibold text-lg">Total revenue</h3>
+              <h3 className="font-semibold text-lg">Tổng doanh thu</h3>
               <div className="flex gap-3 items-center mt-2 text-4xl">
                 <p>{data?.data?.paypal + data?.data?.offline}</p>
                 <TrendingUpIcon />
@@ -130,7 +130,7 @@ export default function DateChart() {
       </div>
       <Card className="flex flex-col">
         <CardHeader className="items-center pb-0">
-          <CardTitle>Total price of paypal - offline method</CardTitle>
+          <CardTitle>Tổng thanh toán qua Paypal - Trực tiếp</CardTitle>
           <CardDescription>{formatDate(theDate)}</CardDescription>
         </CardHeader>
         <CardContent className="relative flex-1 pb-0">
@@ -178,9 +178,9 @@ export default function DateChart() {
                           <tspan
                             x={viewBox.cx}
                             y={(viewBox.cy || 0) + 24}
-                            className="fill-muted-foreground text-2xl"
+                            className="fill-muted-foreground text-lg"
                           >
-                            VNĐ
+                            đ
                           </tspan>
                         </text>
                       );

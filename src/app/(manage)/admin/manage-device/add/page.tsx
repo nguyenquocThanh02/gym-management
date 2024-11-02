@@ -10,15 +10,15 @@ const AddDevice = () => {
   const breadcrumbs = [
     {
       link: "/admin",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/admin/manage-device",
-      name: "Device management",
+      name: "Quản lý thiết bị",
     },
     {
       link: "#",
-      name: "Add device",
+      name: "Thêm thiết bị",
     },
   ];
 

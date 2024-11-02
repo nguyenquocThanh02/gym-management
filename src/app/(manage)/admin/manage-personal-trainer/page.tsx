@@ -13,11 +13,11 @@ export default function PTManagePage() {
   const breadcrumbs = [
     {
       link: "/admin",
-      name: "Home",
+      name: "Trang chủ",
     },
     {
       link: "/admin/manage-personal-trainer",
-      name: "PT management",
+      name: "Quản lý huấn luyện viên",
     },
   ];
 

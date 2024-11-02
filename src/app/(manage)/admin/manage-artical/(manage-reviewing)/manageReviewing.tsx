@@ -17,7 +17,6 @@ const ManageReviewing = () => {
   const { data, isLoading } = useQuery<any>({
     queryKey: ["articals-reviewing"],
     queryFn: () => ArticalApis.getAllArticals("reviewing"),
-    staleTime: 5 * 60 * 1000,
   });
 
   const arrs: typeArtical[] = data?.data || [];
@@ -28,8 +27,10 @@ const ManageReviewing = () => {
         <CardHeader>
           <div className="flex justify-between">
             <div>
-              <CardTitle>Reviewing articals</CardTitle>
-              <CardDescription>Manage your reviewing articals.</CardDescription>
+              <CardTitle>Bài viết đang xem xét</CardTitle>
+              <CardDescription>
+                Quản lý tất cả bài báo đang được xem xét.
+              </CardDescription>
             </div>
           </div>
         </CardHeader>

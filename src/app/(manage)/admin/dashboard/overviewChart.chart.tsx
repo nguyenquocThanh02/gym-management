@@ -22,7 +22,7 @@ import MyEditor from "@/components/custom/MyEditor.custom";
 
 const chartConfig = {
   views: {
-    label: "total price",
+    label: "Tổng tiền",
   },
   paypal: {
     label: "paypal",
@@ -72,10 +72,8 @@ export default function OverviewChart() {
       <Card>
         <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
           <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
-            <CardTitle>Biểu đồ cột - Tổng giá</CardTitle>
-            <CardDescription>
-              Hiển thị tổng giá trong tháng {theMonth}
-            </CardDescription>
+            <CardTitle>Biểu đồ cột - Tổng thu</CardTitle>
+            <CardDescription>Tổng thu trong tháng {theMonth}</CardDescription>
           </div>
           <div className="flex">
             {["paypal", "offline"].map((key) => {
@@ -90,8 +88,8 @@ export default function OverviewChart() {
                   <span className="text-xs text-muted-foreground">
                     {chartConfig[chart].label}
                   </span>
-                  <span className="text-lg font-bold leading-none sm:text-3xl">
-                    ${total[key as keyof typeof total]?.toLocaleString()}
+                  <span className="text-lg font-bold leading-none sm:text-xl">
+                    {total[key as keyof typeof total]?.toLocaleString()}đ
                   </span>
                 </button>
               );
@@ -120,7 +118,7 @@ export default function OverviewChart() {
                 minTickGap={32}
                 tickFormatter={(value) => {
                   const date = new Date(value);
-                  return date.toLocaleDateString("en-US", {
+                  return date.toLocaleDateString("vi-VN", {
                     month: "short",
                     day: "numeric",
                   });
@@ -132,7 +130,7 @@ export default function OverviewChart() {
                     className="w-[150px]"
                     nameKey="views"
                     labelFormatter={(value) => {
-                      return new Date(value).toLocaleDateString("en-US", {
+                      return new Date(value).toLocaleDateString("vi-VN", {
                         month: "short",
                         day: "numeric",
                         year: "numeric",
