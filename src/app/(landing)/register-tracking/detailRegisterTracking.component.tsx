@@ -148,8 +148,14 @@ const DetailRegisterTrackingOfUser = () => {
                                     {renderVND(thePackage?.packages?.price)}
                                   </li>
                                   <li>
-                                    Số buổi có người hướng dẫn:{" "}
-                                    {thePackage?.packages?.sessionWithPT}
+                                    Yêu cầu:{" "}
+                                    {thePackage?.packages?.sessionWithPT ===
+                                    "no"
+                                      ? "Không yêu cầu huấn luyện viên"
+                                      : thePackage?.packages?.sessionWithPT ===
+                                        "full"
+                                      ? "Huấn luyện viên cá nhân"
+                                      : "Hướng dẫn (hỗ trợ)"}
                                   </li>
                                   <li>
                                     Thời gian: {thePackage?.packages?.duration}{" "}
@@ -182,7 +188,9 @@ const DetailRegisterTrackingOfUser = () => {
                     <td className="text-center my-1 border border-slate-300 py-5">
                       <Drawer open={openPayment} onOpenChange={setOpenPayment}>
                         <DrawerTrigger onClick={() => setTheInforRT(item)}>
-                          {item?.paymentMethod}
+                          {item?.paymentMethod === "offline"
+                            ? "Trực tiếp"
+                            : "Paypal"}
                         </DrawerTrigger>
                         <DrawerContent>
                           <DrawerDescription>

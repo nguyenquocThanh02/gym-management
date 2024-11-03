@@ -41,7 +41,11 @@ const ListPackage: React.FC<{ data: typeResponsePackage[] }> = ({ data }) => {
                       {renderVND(item?.packages?.price)}
                     </p>
                     <p>
-                      {item?.packages?.sessionWithPT} buổi với người hướng dẫn
+                      {item?.packages?.sessionWithPT === "no"
+                        ? "Không có huấn luyện viên"
+                        : item?.packages?.sessionWithPT === "full"
+                        ? "Có huấn luyện viên cá nhân"
+                        : "Có hướng dẫn (hỗ trợ)"}
                     </p>
                     <p>{item?.packages?.duration} ngày thẻ thành viên</p>
                     <h3>

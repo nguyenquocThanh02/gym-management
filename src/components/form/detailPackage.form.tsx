@@ -47,6 +47,13 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 const DetailsPackageForm: React.FC<{
   data: typePackage | null;
@@ -60,7 +67,7 @@ const DetailsPackageForm: React.FC<{
   const form = useCreateForm(packageRule, {
     name: data?.name || "",
     type: data?.type || "",
-    sessionWithPT: data?.sessionWithPT || 0,
+    sessionWithPT: data?.sessionWithPT || "no",
     description: data?.description || "",
     suitableFor: data?.suitableFor || "",
     price: data?.price || 0,
@@ -74,7 +81,7 @@ const DetailsPackageForm: React.FC<{
     const dataAddPackage: typePackage = {
       name: values?.name || "",
       type: values?.type || "",
-      sessionWithPT: values?.sessionWithPT || 0,
+      sessionWithPT: values?.sessionWithPT || "no",
       duration: values?.duration || 0,
       price: values?.price || 0,
       stock: values?.stock || 0,
@@ -245,7 +252,7 @@ const DetailsPackageForm: React.FC<{
                     )}
                   />
 
-                  <FormField
+                  {/* <FormField
                     control={form.control}
                     name="sessionWithPT"
                     render={({ field }) => (
@@ -258,6 +265,33 @@ const DetailsPackageForm: React.FC<{
                             {...field}
                           />
                         </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  /> */}
+                  <FormField
+                    control={form.control}
+                    name="sessionWithPT"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Huấn luyên viên</FormLabel>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Chọn cấp độ" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="no">Không có</SelectItem>
+                            <SelectItem value="full">
+                              Có (huấn luyện viên cá nhân)
+                            </SelectItem>
+                            <SelectItem value="half">Có (hướng dẫn)</SelectItem>
+                          </SelectContent>
+                        </Select>
                         <FormMessage />
                       </FormItem>
                     )}

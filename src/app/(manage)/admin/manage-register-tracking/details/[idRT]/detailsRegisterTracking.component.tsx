@@ -210,7 +210,7 @@ const DetailsRegisterTrackingComponent: React.FC<{
             <li className="flex gap-3 my-5 items-center">
               Phương thức thanh toán:{" "}
               <p className="border p-1 bg-slate-50 rounded-md">
-                {data?.paymentMethod}
+                {data?.paymentMethod === "offline" ? "Trực tiếp" : "Paypal"}
               </p>
             </li>
             <li className="flex gap-3 my-5 items-center">

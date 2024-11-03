@@ -101,7 +101,11 @@ const PackageDetail = ({ params }: { params: { idPackage: string } }) => {
                 <li className="flex items-center space-x-4">
                   <CircleCheck className="text-Primary" />
                   <span>
-                    {data?.data?.packages?.sessionWithPT} buổi tập với PT
+                    {data?.packages?.sessionWithPT === "no"
+                      ? "Không có huấn luyện viên"
+                      : data?.packages?.sessionWithPT === "full"
+                      ? "Có huấn luyện viên cá nhân"
+                      : "Có hướng dẫn (hỗ trợ)"}
                   </span>
                 </li>
                 <li className="flex items-center space-x-4">

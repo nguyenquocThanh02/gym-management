@@ -35,8 +35,8 @@ const CalendarAll: React.FC<{ data: any; pt: any; justView?: boolean }> = ({
         Thông tin gói tập - huấn luyện viên
       </h1>
       <div className="mt-5">
-        <div className="flex shadow w-full h-8 items-center">
-          <div className="flex-1">STT</div>
+        <div className="flex shadow w-full h-8 items-center px-2">
+          <div className="w-20">STT</div>
           <div className="flex-1">Số buổi hướng dẫn</div>
           <div className="flex-1">Loại gói</div>
           <div className="flex-1">Ngày bắt đầu</div>
@@ -44,10 +44,17 @@ const CalendarAll: React.FC<{ data: any; pt: any; justView?: boolean }> = ({
           <div className="flex-1">Chọn PT</div>
         </div>
         {data?.map((item, index) => (
-          <div className="shadow w-full h-12 flex items-center" key={index}>
-            <div className="flex-1">{index + 1}</div>
+          <div
+            className="shadow w-full h-12 flex items-center px-2"
+            key={index}
+          >
+            <div className="w-20">{index + 1}</div>
             <div className="flex-1">
-              {item?.package?.idPackage?.sessionWithPT}
+              {item?.package?.idPackage?.sessionWithPT === "full"
+                ? "Huấn luyện viên cá nhân"
+                : item?.package?.idPackage?.sessionWithPT === "no"
+                ? "Không yêu cầu huấn luyện viên"
+                : "Hướng dẫn buổi đầu (hỗ trợ)"}
             </div>
             <div className="flex-1">{item?.package?.idPackage?.type}</div>
             <div className="flex-1">{formatDate(item?.timeStart)}</div>

@@ -27,7 +27,7 @@ const CardPackage: React.FC<{ data: typeResponsePackage }> = ({ data }) => {
         <div className="absolute top-0 right-0 font-bold text-Primary bg-Light/70 rounded-es-full text-xl flex w-14 h-14 justify-center items-center">
           {data?.packages?.register}
         </div>
-        <h3 className="font-manrope text-2xl font-bold mb-3">
+        <h3 className="font-manrope text-2xl font-bold mb-3 whitespace-nowrap text-ellipsis overflow-hidden w-60">
           {data?.packages?.name}
         </h3>
         <div className="flex items-end mb-6">
@@ -43,7 +43,11 @@ const CardPackage: React.FC<{ data: typeResponsePackage }> = ({ data }) => {
             <li className="flex items-center space-x-4">
               <CircleCheck className="text-Primary" />
               <span>
-                {data?.packages?.sessionWithPT} buổi tập với huấn luyện viên
+                {data?.packages?.sessionWithPT === "no"
+                  ? "Không có huấn luyện viên"
+                  : data?.packages?.sessionWithPT === "full"
+                  ? "Có huấn luyện viên cá nhân"
+                  : "Có hướng dẫn (hỗ trợ)"}
               </span>
             </li>
             <li className="flex items-center space-x-4">
