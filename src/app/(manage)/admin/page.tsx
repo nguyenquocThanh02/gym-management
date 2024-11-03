@@ -35,7 +35,7 @@ const HomePage = () => {
   };
 
   const handleSearch = async () => {
-    const results = await RegisterTrackingApis.getDetailsRegisterTracking(
+    const results = await RegisterTrackingApis.getDetailsRegisterTrackingByName(
       value
     );
     if (results?.status === 200) {

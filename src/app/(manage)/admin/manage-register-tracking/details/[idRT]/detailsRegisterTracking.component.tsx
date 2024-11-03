@@ -28,7 +28,7 @@ const DetailsRegisterTrackingComponent: React.FC<{
       data?._id || ""
     );
     if (paymentResult?.status === "200") {
-      toast.success("Payment successfully");
+      toast.success("Thanh toán thành công");
       location.reload();
     } else {
       setOpen(false);
@@ -216,7 +216,7 @@ const DetailsRegisterTrackingComponent: React.FC<{
             <li className="flex gap-3 my-5 items-center">
               Đã thanh toán?:{" "}
               <p className="border p-1 bg-slate-50 rounded-md">
-                {data?.isPaid ? "Yes" : "No"}
+                {data?.isPaid ? "Xong" : "Chưa"}
               </p>
             </li>
           </ul>
