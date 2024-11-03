@@ -12,6 +12,16 @@ export const RegisterTrackingApis = {
       return e;
     }
   },
+  addPTtoRT: async (idRT: string, idPT: string) => {
+    try {
+      const response = await mainInstance.put(
+        `/register-tracking/add-pt-to-rt/${idRT}/${idPT}`
+      );
+      return response;
+    } catch (e) {
+      return e;
+    }
+  },
   cancelRegisterTracking: async (id: string) => {
     try {
       const response = await mainInstance.put(
@@ -47,6 +57,16 @@ export const RegisterTrackingApis = {
   getAllRegisterTrackings: async () => {
     try {
       const response = await mainInstance.get("/register-tracking/get-all");
+      return response;
+    } catch (e) {
+      return e;
+    }
+  },
+  getRTforCalendar: async () => {
+    try {
+      const response = await mainInstance.get(
+        "/register-tracking/get-all-for-calendar"
+      );
       return response;
     } catch (e) {
       return e;

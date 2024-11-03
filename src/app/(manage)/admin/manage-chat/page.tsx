@@ -128,7 +128,7 @@ export default function DeviceManagePage() {
                   .slice()
                   .filter((room) =>
                     room.accountName
-                      .toLowerCase()
+                      ?.toLowerCase()
                       .includes(debounceSearchValue.toLowerCase())
                   )
                   .sort((a, b) => b.timeLastMessage - a.timeLastMessage)

@@ -5,6 +5,7 @@ import NavbarManage from "@/components/layout/navbarManage.layout";
 import HeaderManage from "@/components/layout/headerManage.layout";
 import {
   BadgeDollarSign,
+  CalendarDays,
   ChartLine,
   Dumbbell,
   FileQuestion,
@@ -66,6 +67,11 @@ export default function Layout({
       href: "/admin/manage-discount",
       name: "Quản lý giảm giá",
       icon: <BadgeDollarSign className="h-5 w-5" />,
+    },
+    {
+      href: "/admin/manage-calendar",
+      name: "Phân công - Sắp lịch",
+      icon: <CalendarDays className="h-5 w-5" />,
     },
     {
       href: "/admin/manage-artical",
