@@ -3,7 +3,14 @@ import ArticalOfUserComponent from "./articalOfUser.component";
 import { BreadcrumbCustom } from "@/components/custom/breadscrumb.custom";
 
 export default function ArticalOfUserPage() {
-  const stateArticals = ["Đang xem xét", "Công khai", "Khoá"];
+  const stateArticals = [
+    { name: "Đang xem xét", en: "reviewing" },
+    {
+      name: "Công khai",
+      en: "published",
+    },
+    { name: "Khoá", en: "draft" },
+  ];
 
   const breadcrumbs = [
     {
@@ -26,19 +33,19 @@ export default function ArticalOfUserPage() {
       <h1 className="text-center font-bold text-3xl mb-4 mt-2">
         Bài báo của tôi
       </h1>
-      <Tabs defaultValue="Reviewing" className="my-3">
+      <Tabs defaultValue="reviewing" className="my-3">
         <div className="flex items-center">
           <TabsList>
             {stateArticals?.map((item, index) => (
-              <TabsTrigger key={index} value={item} className="px-5">
-                {item}
+              <TabsTrigger key={index} value={item.en} className="px-5">
+                {item.name}
               </TabsTrigger>
             ))}
           </TabsList>
         </div>
         {stateArticals?.map((item, index) => (
-          <TabsContent key={index} value={item}>
-            <ArticalOfUserComponent status={item.toLowerCase()} />
+          <TabsContent key={index} value={item.en}>
+            <ArticalOfUserComponent status={item.en.toLowerCase()} />
           </TabsContent>
         ))}
       </Tabs>

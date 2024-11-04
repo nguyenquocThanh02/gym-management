@@ -147,7 +147,7 @@ const DetailsDeviceForm: React.FC<{
     <>
       {isLoading1 && <WaitingLayout />}
       <h4 className="text-center text-2xl font-semibold">
-        {id ? "Update Device" : "Add Device"}
+        {id ? "Cập nhật" : "Thêm mới"}
       </h4>
       <div className="flex justify-between mb-2 items-center">
         <div>

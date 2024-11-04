@@ -11,9 +11,9 @@ const ArticalOfUserComponent: React.FC<{ status: string }> = ({ status }) => {
   const { data, isLoading } = useQuery({
     queryKey: [`artical-${status}`],
     queryFn: () => ArticalApis.getArticalsOfUser(idUser, status),
-    staleTime: 5 * 60 * 1000,
   });
   const theArtical: typeArtical[] = data?.data || null;
+  console.log(theArtical);
   return (
     <div className="mb-8 mt-5">
       {theArtical?.length > 0 ? (

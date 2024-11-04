@@ -137,8 +137,8 @@ const DetailsPtForm: React.FC<{ data: typePT | null; id: string | null }> = ({
   return (
     <>
       {isLoading1 && <WaitingLayout />}
-      <h4 className="text-center text-2xl font-semibold text-shadow">
-        {id ? "Update PT" : "Add PT"}
+      <h4 className="text-center text-2xl font-semibold">
+        {id ? "Cập nhật PT" : "Thêm mới PT"}
       </h4>
       <div className="flex justify-between mb-2 items-center">
         <div>
