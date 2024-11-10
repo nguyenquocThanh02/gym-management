@@ -10,6 +10,7 @@ import "@/styles/index.css";
 import "ckeditor5/ckeditor5.css";
 import "ckeditor5-premium-features/ckeditor5-premium-features.css";
 import ProgressBarProvider from "@/components/layout/ProgressBarProvider.layout";
+import { QueryClient } from "@tanstack/react-query";
 
 const poppins = Poppins({
   subsets: ["latin"],

@@ -100,7 +100,8 @@ const PaymentRegister: React.FC<{ inforPackage: any; inforUser: any }> = ({
     const result = await RegisterTrackingApis.addRegisterTracking(
       dataRegisterTracking
     );
-    if (result?.status === "201") {
+
+    if (result?.status === 201) {
       setOpen(false);
       toast.success("Đăng ký thành công");
       route.push("/register-tracking");

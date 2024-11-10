@@ -34,6 +34,7 @@ import ChangePasswordForm from "./changePasswordForm";
 import { formatDate } from "@/utils";
 import { Calendar } from "lucide-react";
 import { Badge } from "../ui/badge";
+import { useRouter } from "next/navigation";
 
 const ProfileForm: React.FC<{ data: typeAccount }> = ({ data }) => {
   const [isLoading1, setIsLoading] = useState<boolean>(false);
@@ -77,6 +78,7 @@ const ProfileForm: React.FC<{ data: typeAccount }> = ({ data }) => {
     const result = await UserApis.updateAccount(data?._id || "", dataUpdate);
     if (result?.status === "200") {
       toast.success("Cập nhật tài khoản thành công");
+      window.location.reload();
     } else {
       toast.error(result?.message);
     }

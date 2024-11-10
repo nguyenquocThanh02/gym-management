@@ -87,7 +87,9 @@ const CalendarToday: React.FC<{ data: any; pt: any; justView?: boolean }> = ({
               <Select
                 defaultValue={item?.idPT}
                 onValueChange={(e) => handleAddPTtoRT(item?._id, e)}
-                disabled={justView}
+                disabled={
+                  justView || item?.package?.idPackage?.sessionWithPT === "no"
+                }
               >
                 <SelectTrigger>
                   <SelectValue />

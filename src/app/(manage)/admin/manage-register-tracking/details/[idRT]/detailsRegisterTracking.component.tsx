@@ -182,7 +182,7 @@ const DetailsRegisterTrackingComponent: React.FC<{
             <li className="flex gap-3 my-5 items-center">
               ID người dùng:{" "}
               <Link
-                href={`/admin/manage-user/details/${data?.user?.idUser}`}
+                href={`/admin/manage-account/details/${data?.user?.idUser}`}
                 className="border p-1 bg-slate-50 text-blue-500 rounded-md"
               >
                 {data?.user?.idUser}
@@ -198,7 +198,9 @@ const DetailsRegisterTrackingComponent: React.FC<{
             <li className="flex gap-3 my-5 items-center">
               Khuyến mãi:{" "}
               <p className="border p-1 bg-slate-50 rounded-md">
-                {renderVND(data?.discount?.priceDescrease)}
+                {data?.discount?.priceDescrease
+                  ? renderVND(data?.discount?.priceDescrease)
+                  : "0"}
               </p>
             </li>
             <li className="flex gap-3 my-5 items-center">

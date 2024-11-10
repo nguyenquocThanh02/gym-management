@@ -39,7 +39,6 @@ instance.interceptors.response.use(
     return response;
   },
   async (error) => {
-    console.log(">>>>");
     if (error.response && error.response.status === 401) {
       try {
         const refreshToken =

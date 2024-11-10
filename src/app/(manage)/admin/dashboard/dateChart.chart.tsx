@@ -26,8 +26,18 @@ import {
 } from "@/components/ui/chart";
 import { useQuery } from "@tanstack/react-query";
 import { RegisterTrackingApis } from "@/services";
-import { formatDate } from "@/utils";
+import { formatDate, renderVND } from "@/utils";
 import { Badge } from "@/components/ui/badge";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import Link from "next/link";
 
 const chartConfig = {
   price: {
@@ -53,7 +63,7 @@ export default function DateChart() {
     queryFn: () => RegisterTrackingApis.getChartDate(theDate),
     enabled: !!theDate,
   });
-  console.log(data?.data);
+  console.log("🚀 ~ DateChart ~ data:", data);
 
   const totalPrice = React.useMemo(() => {
     return data?.data?.paypal + data?.data?.offline || 0;
@@ -113,20 +123,63 @@ export default function DateChart() {
             </div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-300 w-[280px] h-[160px] rounded-lg  text-Light">
-          <CardContent className="h-full w-full flex justify-between items-center">
+        <Sheet>
+          <SheetTrigger>
+            <Card className="bg-slate-300 w-[280px] h-[160px] rounded-lg  text-Light">
+              <CardContent className="h-full w-full flex justify-between items-center">
+                <div className="">
+                  <h3 className="font-semibold text-lg">Tổng doanh thu</h3>
+                  <div className="flex gap-3 items-center mt-2 text-2xl">
+                    <p>{renderVND(data?.data?.paypal + data?.data?.offline)}</p>
+                    <TrendingUpIcon />
+                  </div>
+                </div>
+                <div className="border rounded-full p-3">
+                  <DollarSign size={40} />
+                </div>
+              </CardContent>
+            </Card>
+          </SheetTrigger>
+          <SheetContent side={"right"}>
+            <SheetHeader>
+              <SheetTitle className="text-2xl font-medium my-5">
+                Chi tiết doanh thu trong ngày
+              </SheetTitle>
+            </SheetHeader>
             <div className="">
-              <h3 className="font-semibold text-lg">Tổng doanh thu</h3>
-              <div className="flex gap-3 items-center mt-2 text-4xl">
-                <p>{data?.data?.paypal + data?.data?.offline}</p>
-                <TrendingUpIcon />
+              <div className="flex items-center font-semibold">
+                <div className="w-10">STT</div>
+                <div className="flex-1 ">Khách hàng</div>
+                <div className="flex-1">Giá gói</div>
+                <div className="flex-1">Chi tiết</div>
               </div>
+              {data?.data?.registerTrackings?.map((item, index) => (
+                <div key={index} className="mt-5">
+                  <div className="flex" key={index}>
+                    <div className="w-10">{index + 1}</div>
+                    <div className="flex-1">{item?.user?.fullName}</div>
+                    <div className="flex-1">{renderVND(item?.totalPrice)}</div>
+                    <div className="flex-1 flex flex-col gap-1">
+                      <Link
+                        className="w-fit bg-slate-400 rounded-2xl h-fit py-1 text-Light text-xs px-2"
+                        href={`/admin/manage-account/details/${item?.user?.idUser}`}
+                      >
+                        Xem tài khoản
+                      </Link>
+                      <Link
+                        className="w-fit bg-lime-100 rounded-2xl h-fit py-1 text-Dark text-xs px-2"
+                        href={`/admin/manage-register-tracking/details/${item?._id}`}
+                      >
+                        Xem đăng ký
+                      </Link>
+                    </div>
+                  </div>
+                  <hr className="mb-4 mt-2" />
+                </div>
+              ))}
             </div>
-            <div className="border rounded-full p-3">
-              <DollarSign size={40} />
-            </div>
-          </CardContent>
-        </Card>
+          </SheetContent>
+        </Sheet>
       </div>
       <Card className="flex flex-col">
         <CardHeader className="items-center pb-0">
@@ -171,7 +224,7 @@ export default function DateChart() {
                           <tspan
                             x={viewBox.cx}
                             y={viewBox.cy}
-                            className="fill-foreground text-3xl font-bold"
+                            className="fill-foreground text-xl font-bold"
                           >
                             {totalPrice.toLocaleString()}
                           </tspan>

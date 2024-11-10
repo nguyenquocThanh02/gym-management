@@ -206,7 +206,7 @@ const DetailRegisterTrackingOfUser = () => {
                                     : "//"}
                                 </li>
                                 <li>
-                                  ID thanh toán:{" "}
+                                  ID người thanh toán:{" "}
                                   {theInforRT?.payment?.payerId
                                     ? theInforRT?.payment?.payerId
                                     : "//"}
@@ -230,7 +230,7 @@ const DetailRegisterTrackingOfUser = () => {
                                     : "//"}
                                 </li>
                                 <li>
-                                  Status:{" "}
+                                  Trạng thái:{" "}
                                   {theInforRT?.isPaid ? (
                                     <Badge>Đã thanh toán</Badge>
                                   ) : (

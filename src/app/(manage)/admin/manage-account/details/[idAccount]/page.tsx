@@ -175,13 +175,14 @@ export default function DetailAccount({
         <CardContent>
           <div className="flex flex-col justify-center items-center gap-5">
             <div className="flex items-center justify-center space-x-4">
-              <Image
-                className="rounded-full border border-slate-300"
-                src={account?.avatar || ""}
-                width={180}
-                height={180}
-                alt="Avata"
-              />
+              <div className=" relative rounded-full border border-slate-300 w-[180px] h-[180px] overflow-hidden">
+                <Image
+                  src={account?.avatar || ""}
+                  fill
+                  objectFit="cover"
+                  alt="Avatar"
+                />
+              </div>
               <div className="font-medium">
                 <h5 className="text-3xl font-semibold text-gray-900 mb-3">
                   {account?.fullName}
@@ -228,7 +229,9 @@ export default function DetailAccount({
                       <strong>Ngày sinh:</strong>
                     </td>
                     <td className="border border-slate-300 p-2">
-                      {formatDate(account?.dateOfBirth)}
+                      {account?.dateOfBirth
+                        ? formatDate(account?.dateOfBirth)
+                        : "//"}
                     </td>
                   </tr>
                   <tr>
@@ -253,6 +256,14 @@ export default function DetailAccount({
                     </td>
                     <td className="border border-slate-300 p-2">
                       {formatDate(account?.createdAt)}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 p-2">
+                      <strong>Số lần đăng ký:</strong>
+                    </td>
+                    <td className="border border-slate-300 p-2">
+                      {account?.count ? account?.count : 0}
                     </td>
                   </tr>
                 </tbody>

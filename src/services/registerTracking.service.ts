@@ -6,7 +6,12 @@ import { Month } from "date-fns";
 export const RegisterTrackingApis = {
   addRegisterTracking: async (data: typeRegisterTracking) => {
     try {
-      const response = await mainInstance.post(`/register-tracking/add`, data);
+      const response = await noAuthInstance.post(
+        `/register-tracking/add`,
+        data
+      );
+
+      console.log("🚀 ~ addRegisterTracking: ~ responseApi:", response);
       return response;
     } catch (e) {
       return e;

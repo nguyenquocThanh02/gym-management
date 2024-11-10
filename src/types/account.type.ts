@@ -5,6 +5,7 @@ export type typeAccount = {
   email: string;
   role?: "admin" | "user" | "trainee";
   phone?: number | string;
+  count?: number | string;
   dateOfBirth?: string;
   avatar?: string;
   core?: number | string;
