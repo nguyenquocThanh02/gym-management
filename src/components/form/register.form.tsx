@@ -21,9 +21,19 @@ import { collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { db } from "@/firebases/firebase";
 import WaitingLayout from "../layout/waiting.layout";
 import { useRouter } from "next/navigation";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "../ui/dialog";
+import { Button } from "../ui/button";
 
 const RegisterForm: React.FC<{ invite: string }> = ({ invite = "" }) => {
   const [loading, setLoading] = useState<boolean>(false);
+  const [openDirect, setOpenDirect] = useState<boolean>(false);
 
   const router = useRouter();
   const form = useCreateForm(registerRule, {
@@ -80,7 +90,7 @@ const RegisterForm: React.FC<{ invite: string }> = ({ invite = "" }) => {
           router.push("/login");
         } else {
           console.log("thanh cong");
-          router.push("/login-trainee");
+          setOpenDirect(true);
         }
       } else {
         toast.error(result?.message);
@@ -237,6 +247,26 @@ const RegisterForm: React.FC<{ invite: string }> = ({ invite = "" }) => {
           </div>
         </form>
       </Form>
+      {openDirect && (
+        <Dialog open={openDirect} onOpenChange={setOpenDirect}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Đăng ký tài khoản thành công</DialogTitle>
+              <DialogDescription>
+                Bạn có muốn đăng nhập vào hệ thống?
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setOpenDirect(false)}>
+                Đóng
+              </Button>
+              <Button onClick={() => router.push("/login-trainee")}>
+                Đăng nhập
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   );
 };

@@ -22,7 +22,7 @@ const AddArtical = () => {
   return (
     <div className="l-container">
       <BreadcrumbCustom links={breadcrumbs} />
-      <h1 className="font-bold text-4xl text-center">Bài báo mới</h1>
+      <h1 className="font-bold text-4xl text-center">Bài viết mới</h1>
       <div className="my-4 text-Dark">
         <MyEditor />
       </div>

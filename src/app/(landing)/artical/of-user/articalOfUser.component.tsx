@@ -31,7 +31,7 @@ const ArticalOfUserComponent: React.FC<{ status: string }> = ({ status }) => {
       ) : (
         <div className="">
           <p className="text-center font-semibold text-2xl my-5">
-            Bạn vẫn chưa có bài báo nào. Hãy tạo bài báo của mình ngay bây giờ
+            Bạn vẫn chưa có bài viết nào. Hãy tạo bài viết của mình ngay bây giờ.
           </p>
         </div>
       )}

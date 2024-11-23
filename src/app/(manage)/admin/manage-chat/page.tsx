@@ -112,7 +112,7 @@ export default function DeviceManagePage() {
             <Search className="absolute left-[26px] top-[26px] h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
-              placeholder="Search..."
+              placeholder="Tìm kiếm..."
               className="w-full rounded-lg pl-8"
               value={valueSearch}
               onChange={(e) => setValueSearch(e?.target?.value)}
@@ -211,7 +211,12 @@ export default function DeviceManagePage() {
               <h4 className="font-bold">Chi tiết</h4>
               <p>Điện thoại: {infoUser?.phone}</p>
               <p>Email: {infoUser?.email}</p>
-              <p>Ngày sinh: {formatDate(infoUser?.dateOfBirth)}</p>
+              <p>
+                Ngày sinh:{" "}
+                {infoUser?.dateOfBirth
+                  ? formatDate(infoUser?.dateOfBirth)
+                  : "//"}
+              </p>
             </div>
           </div>
         ) : (

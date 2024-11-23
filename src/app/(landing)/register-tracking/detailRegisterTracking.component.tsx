@@ -258,7 +258,7 @@ const DetailRegisterTrackingOfUser = () => {
                       {formatDate(item?.timeStart)}
                     </td>
                     <td className="text-center my-1 border border-slate-300 py-5">
-                      {item?.paidAt ? formatDate(item?.paidAt) : "None"}
+                      {item?.paidAt ? formatDate(item?.paidAt) : "Chưa"}
                     </td>
                     <td className="text-center my-1 border border-slate-300 py-5">
                       {renderVND(item?.discount?.priceDescrease)}

@@ -31,7 +31,7 @@ export default function ArticalOfUserPage() {
     <div className="l-container">
       <BreadcrumbCustom links={breadcrumbs} />
       <h1 className="text-center font-bold text-3xl mb-4 mt-2">
-        Bài báo của tôi
+        Bài viết của tôi
       </h1>
       <Tabs defaultValue="reviewing" className="my-3">
         <div className="flex items-center">

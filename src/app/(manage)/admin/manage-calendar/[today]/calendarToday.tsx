@@ -28,6 +28,7 @@ const CalendarToday: React.FC<{ data: any; pt: any; justView?: boolean }> = ({
     const result = await RegisterTrackingApis.addPTtoRT(idRT, idPT);
     toast.info("Đã thêm huấn luyện viên thành công");
     console.log(result);
+    window.location.reload();
   };
   return (
     <div>

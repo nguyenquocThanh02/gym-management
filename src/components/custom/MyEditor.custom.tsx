@@ -402,7 +402,7 @@ export default function App() {
     menuBar: {
       isVisible: true,
     },
-    placeholder: "Type or paste your content here!",
+    placeholder: "Nhập hoặc chèn tập nội dung của bài viết tại đây!",
     style: {
       definitions: [
         {

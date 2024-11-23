@@ -77,14 +77,14 @@ export const columns: ColumnDef<typeArtical>[] = [
       );
     },
 
-    cell: ({ row }) => <div className="lowercase">{row.getValue("title")}</div>,
+    cell: ({ row }) => <div className="">{row.getValue("title")}</div>,
   },
 
   {
     accessorKey: "description",
     header: "Mô tả",
     cell: ({ row }) => (
-      <div className="capitalize truncate max-w-sm">
+      <div className="truncate max-w-sm">
         {row.getValue("description")}
       </div>
     ),

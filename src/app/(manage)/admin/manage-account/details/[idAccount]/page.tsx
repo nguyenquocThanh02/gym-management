@@ -74,7 +74,7 @@ export default function DetailAccount({
         statusChange
       );
       if (result?.status === "200") {
-        toast.success("Update status successfully");
+        toast.success("Cập nhật trạng thái thành công!");
         refetch();
       } else {
         toast.error(result?.message);
@@ -107,171 +107,183 @@ export default function DetailAccount({
         <BreadcrumbCustom links={breadcrumbs} />
         <ButtonCustom onClick={() => route.back()}>Trở lại</ButtonCustom>
       </div>
-      <Card x-chunk="dashboard-06-chunk-0 mt-3">
-        <CardHeader>
-          <div className="flex justify-between">
-            <div>
-              <CardTitle>Nhân viên</CardTitle>
-              <CardDescription>Quản lý nhân viên.</CardDescription>
-            </div>
-            <div className="flex gap-2">
-              <Dialog open={openPermiss} onOpenChange={setOpenPermiss}>
-                <DialogTrigger asChild>
-                  <Button className="text-Primary bg-Light border-Primary border hover:bg-Tertiary/20">
-                    Thay đổi quyền
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
-                  <DialogHeader>
-                    <DialogTitle>Thay đổi quyền tài khoản</DialogTitle>
-                    <DialogDescription>
-                      Bạn có chắc chắn muốn{" "}
-                      {account?.role === "user" ? "cấp phép " : "thu hồi "}
-                      quyền nhân viên của tài khoản
-                    </DialogDescription>
-                  </DialogHeader>
-                  <DialogFooter>
-                    <DialogClose asChild>
-                      <Button type="button" variant="secondary">
-                        Đóng
-                      </Button>
-                    </DialogClose>
-                    <Button type="submit" onClick={handleChangeRole}>
-                      Xác nhận
-                    </Button>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
-              <Dialog open={open} onOpenChange={setOpen}>
-                <DialogTrigger asChild>
-                  <Button className="text-Primary bg-Light border-Primary border hover:bg-Tertiary/20">
-                    Thay đổi trạng thái
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
-                  <DialogHeader>
-                    <DialogTitle>Change Status</DialogTitle>
-                    <DialogDescription>
-                      Bạn có chắc chắn muốn{" "}
-                      {account?.status === "active" ? "khoá " : "mở khoá "} tài
-                      khoản?
-                    </DialogDescription>
-                  </DialogHeader>
-                  <DialogFooter>
-                    <DialogClose asChild>
-                      <Button type="button" variant="secondary">
-                        Đóng
-                      </Button>
-                    </DialogClose>
-                    <Button type="submit" onClick={handleChangeStatus}>
-                      Xác nhận
-                    </Button>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
-            </div>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-col justify-center items-center gap-5">
-            <div className="flex items-center justify-center space-x-4">
-              <div className=" relative rounded-full border border-slate-300 w-[180px] h-[180px] overflow-hidden">
-                <Image
-                  src={account?.avatar || ""}
-                  fill
-                  objectFit="cover"
-                  alt="Avatar"
-                />
+      {account?.fullName ? (
+        <Card x-chunk="dashboard-06-chunk-0 mt-3">
+          <CardHeader>
+            <div className="flex justify-between">
+              <div>
+                <CardTitle>Nhân viên</CardTitle>
+                <CardDescription>Quản lý nhân viên.</CardDescription>
               </div>
-              <div className="font-medium">
-                <h5 className="text-3xl font-semibold text-gray-900 mb-3">
-                  {account?.fullName}
-                </h5>
-                <span className="text-xl text-gray-500">{account?.email}</span>
+              <div className="flex gap-2">
+                <Dialog open={openPermiss} onOpenChange={setOpenPermiss}>
+                  <DialogTrigger asChild>
+                    <Button className="text-Primary bg-Light border-Primary border hover:bg-Tertiary/20">
+                      Thay đổi quyền
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                      <DialogTitle>Thay đổi quyền tài khoản</DialogTitle>
+                      <DialogDescription>
+                        Bạn có chắc chắn muốn{" "}
+                        {account?.role === "user" ? "cấp phép " : "thu hồi "}
+                        quyền nhân viên của tài khoản
+                      </DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter>
+                      <DialogClose asChild>
+                        <Button type="button" variant="secondary">
+                          Đóng
+                        </Button>
+                      </DialogClose>
+                      <Button type="submit" onClick={handleChangeRole}>
+                        Xác nhận
+                      </Button>
+                    </DialogFooter>
+                  </DialogContent>
+                </Dialog>
+                <Dialog open={open} onOpenChange={setOpen}>
+                  <DialogTrigger asChild>
+                    <Button className="text-Primary bg-Light border-Primary border hover:bg-Tertiary/20">
+                      Thay đổi trạng thái
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                      <DialogTitle>Thay đổi trạng thái</DialogTitle>
+                      <DialogDescription>
+                        Bạn có chắc chắn muốn{" "}
+                        {account?.status === "active" ? "khoá " : "mở khoá "}{" "}
+                        tài khoản?
+                      </DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter>
+                      <DialogClose asChild>
+                        <Button type="button" variant="secondary">
+                          Đóng
+                        </Button>
+                      </DialogClose>
+                      <Button type="submit" onClick={handleChangeStatus}>
+                        Xác nhận
+                      </Button>
+                    </DialogFooter>
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
-            <div className="w-1/2 h-fit p-4 border shadow-md">
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr>
-                    <th colSpan={2} className="pb-3 text-lg">
-                      Thông tin
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border border-slate-300 p-2">
-                      <strong>Tên tài khoản:</strong>
-                    </td>
-                    <td className="border border-slate-300 p-2">
-                      {account?.accountName}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border border-slate-300 p-2">
-                      <strong>Quyền:</strong>
-                    </td>
-                    <td className="border border-slate-300 p-2">
-                      {account?.role}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border border-slate-300 p-2">
-                      <strong>Điện thoại:</strong>
-                    </td>
-                    <td className="border border-slate-300 p-2">
-                      {account?.phone}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border border-slate-300 p-2">
-                      <strong>Ngày sinh:</strong>
-                    </td>
-                    <td className="border border-slate-300 p-2">
-                      {account?.dateOfBirth
-                        ? formatDate(account?.dateOfBirth)
-                        : "//"}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border border-slate-300 p-2">
-                      <strong>Trạng thái:</strong>
-                    </td>
-                    <td className="border border-slate-300 p-2">
-                      <Badge
-                        className={` ${
-                          account?.status === "active"
-                            ? "bg-green-800"
-                            : "bg-Primary"
-                        }`}
-                      >
-                        {account?.status}
-                      </Badge>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border border-slate-300 p-2">
-                      <strong>Ngày tạo:</strong>
-                    </td>
-                    <td className="border border-slate-300 p-2">
-                      {formatDate(account?.createdAt)}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border border-slate-300 p-2">
-                      <strong>Số lần đăng ký:</strong>
-                    </td>
-                    <td className="border border-slate-300 p-2">
-                      {account?.count ? account?.count : 0}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-col justify-center items-center gap-5">
+              <div className="flex items-center justify-center space-x-4">
+                <div className=" relative rounded-full border border-slate-300 w-[180px] h-[180px] overflow-hidden">
+                  <Image
+                    src={account?.avatar || ""}
+                    fill
+                    objectFit="cover"
+                    alt="Avatar"
+                  />
+                </div>
+                <div className="font-medium">
+                  <h5 className="text-3xl font-semibold text-gray-900 mb-3">
+                    {account?.fullName}
+                  </h5>
+                  <span className="text-xl text-gray-500">
+                    {account?.email}
+                  </span>
+                </div>
+              </div>
+              <div className="w-1/2 h-fit p-4 border shadow-md">
+                <table className="w-full border-collapse">
+                  <thead>
+                    <tr>
+                      <th colSpan={2} className="pb-3 text-lg">
+                        Thông tin
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-slate-300 p-2">
+                        <strong>Tên tài khoản:</strong>
+                      </td>
+                      <td className="border border-slate-300 p-2">
+                        {account?.accountName}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-slate-300 p-2">
+                        <strong>Quyền:</strong>
+                      </td>
+                      <td className="border border-slate-300 p-2">
+                        {account?.role === "user"
+                          ? "người tập"
+                          : account?.role === "trainee"
+                          ? "nhân viên"
+                          : "chủ phòng"}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-slate-300 p-2">
+                        <strong>Điện thoại:</strong>
+                      </td>
+                      <td className="border border-slate-300 p-2">
+                        {account?.phone}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-slate-300 p-2">
+                        <strong>Ngày sinh:</strong>
+                      </td>
+                      <td className="border border-slate-300 p-2">
+                        {account?.dateOfBirth
+                          ? formatDate(account?.dateOfBirth)
+                          : "//"}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-slate-300 p-2">
+                        <strong>Trạng thái:</strong>
+                      </td>
+                      <td className="border border-slate-300 p-2">
+                        <Badge
+                          className={` ${
+                            account?.status === "active"
+                              ? "bg-green-800"
+                              : "bg-Primary"
+                          }`}
+                        >
+                          {account?.status}
+                        </Badge>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-slate-300 p-2">
+                        <strong>Ngày tạo:</strong>
+                      </td>
+                      <td className="border border-slate-300 p-2">
+                        {formatDate(account?.createdAt)}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-slate-300 p-2">
+                        <strong>Số lần đăng ký:</strong>
+                      </td>
+                      <td className="border border-slate-300 p-2">
+                        {account?.count ? account?.count : 0}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      ) : (
+        <div className="text-2xl font-medium text-center mt-8">
+          Tài khoản này không có trong hệ thống!
+        </div>
+      )}
     </section>
   );
 }

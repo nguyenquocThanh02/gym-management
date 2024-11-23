@@ -124,8 +124,8 @@ export default function DetailAccount({
         <CardHeader>
           <div className="flex justify-between">
             <div>
-              <CardTitle>Bài báo</CardTitle>
-              <CardDescription>Quản lý bài báo.</CardDescription>
+              <CardTitle>Bài viết</CardTitle>
+              <CardDescription>Quản lý bài viết.</CardDescription>
             </div>
             <div className="flex gap-2">
               <Dialog open={openPermiss} onOpenChange={setOpenPermiss}>

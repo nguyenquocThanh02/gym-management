@@ -332,7 +332,7 @@ const DetailsPackageForm: React.FC<{
                         <FormLabel>Mô tả</FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder="Experience training for artist ..."
+                            placeholder="Gym bắt đầu từ số 0 ..."
                             {...field}
                           />
                         </FormControl>

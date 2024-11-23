@@ -64,6 +64,9 @@ const ManageTrainee = () => {
         toast.success("Đã mời thành công");
         form.reset();
         setOpen(false);
+      } else if (result?.status === 203) {
+        toast.success(result?.message);
+        window.location.reload();
       } else {
         toast.error(result?.message);
       }

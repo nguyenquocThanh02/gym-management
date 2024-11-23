@@ -11,9 +11,9 @@ export const PackageApis = {
       return error;
     }
   },
-  getAllPackage: async () => {
+  getAllPackage: async (getAll: boolean) => {
     try {
-      const response = await noAuthInstance.get("/package/get-all");
+      const response = await noAuthInstance.get(`/package/get-all/${getAll}`);
       return response;
     } catch (error) {
       return error;

@@ -115,7 +115,7 @@ const CountrySelect = ({
         <Command>
           <CommandList>
             <ScrollArea className="h-72">
-              <CommandInput placeholder="Search country..." />
+              <CommandInput placeholder="Tìm kiếm..." />
               <CommandEmpty>No country found.</CommandEmpty>
               <CommandGroup>
                 {options

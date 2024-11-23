@@ -31,10 +31,10 @@ const ListPackage: React.FC<{ data: typeResponsePackage[] }> = ({ data }) => {
                 key={index}
                 href={`/admin/manage-package/details/${item?.packages?._id}`}
               >
-                <div className="border shadow-lg rounded-lg w-full hover:animate-pulse hover:cursor-pointer bg-slate-300  md:w-[254px] md:h-[240px] flex justify-center items-center">
-                  <div className="text-center text-Light text-shadow">
+                <div className="border shadow-lg rounded-lg w-full hover:animate-pulse hover:cursor-pointer bg-slate-400  md:w-[254px] md:h-[240px] flex justify-center items-center">
+                  <div className="text-center text-Light ">
                     <h2 className="text-xl font-bold">{index + 1}.</h2>
-                    <h3 className="font-semibold text-lg ">
+                    <h3 className="font-semibold text-lg px-2">
                       {item?.packages?.name}
                     </h3>
                     <p className="text-xl font-semibold ">

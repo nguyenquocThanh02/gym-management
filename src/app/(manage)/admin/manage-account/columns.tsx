@@ -78,9 +78,7 @@ export const columns: ColumnDef<typeAccount>[] = [
       );
     },
 
-    cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("fullName")}</div>
-    ),
+    cell: ({ row }) => <div className="">{row.getValue("fullName")}</div>,
   },
   {
     accessorKey: "accountName",
@@ -96,13 +94,11 @@ export const columns: ColumnDef<typeAccount>[] = [
       );
     },
 
-    cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("accountName")}</div>
-    ),
+    cell: ({ row }) => <div className="">{row.getValue("accountName")}</div>,
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: "Trạng thái",
     cell: ({ row }) => (
       <Badge
         className={`capitalize ${
@@ -116,9 +112,7 @@ export const columns: ColumnDef<typeAccount>[] = [
   {
     accessorKey: "email",
     header: "email",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("email")}</div>
-    ),
+    cell: ({ row }) => <div className="">{row.getValue("email")}</div>,
   },
 
   {

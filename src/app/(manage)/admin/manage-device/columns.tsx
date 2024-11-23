@@ -78,11 +78,11 @@ export const columns: ColumnDef<typeDevice>[] = [
       );
     },
 
-    cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
+    cell: ({ row }) => <div className="">{row.getValue("name")}</div>,
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: "Trạng thái",
     cell: ({ row }) => (
       <Badge
         className={`capitalize ${
@@ -98,7 +98,7 @@ export const columns: ColumnDef<typeDevice>[] = [
   {
     accessorKey: "type",
     header: "Type",
-    cell: ({ row }) => <div className="capitalize">{row.getValue("type")}</div>,
+    cell: ({ row }) => <div className="">{row.getValue("type")}</div>,
   },
 
   {

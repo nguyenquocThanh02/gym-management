@@ -77,7 +77,7 @@ const ArticalForm: React.FC<{
                 <FormItem>
                   <FormLabel>Tiêu đề</FormLabel>
                   <FormControl>
-                    <Input placeholder="Bài báo" {...field} />
+                    <Input placeholder="Bài viết" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -114,7 +114,7 @@ const ArticalForm: React.FC<{
                   <FormLabel>Mô tả</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Experience training for artist ..."
+                      placeholder="Gym bắt đầu từ số 0 ..."
                       {...field}
                     />
                   </FormControl>

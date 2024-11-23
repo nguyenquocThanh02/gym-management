@@ -22,7 +22,7 @@ export default function DeviceManagePage() {
 
   const { data, isLoading } = useQuery<any>({
     queryKey: ["packages"],
-    queryFn: PackageApis.getAllPackage,
+    queryFn: () => PackageApis.getAllPackage(true),
   });
 
   const arrs: typeResponsePackage[] = data?.data || [];

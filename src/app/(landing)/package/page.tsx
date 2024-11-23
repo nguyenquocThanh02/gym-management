@@ -9,7 +9,7 @@ import React from "react";
 const PackagePage = () => {
   const { data, isLoading } = useQuery<any>({
     queryKey: ["packages"],
-    queryFn: PackageApis.getAllPackage,
+    queryFn: () => PackageApis.getAllPackage(false),
   });
   const breadcrumbs = [
     {

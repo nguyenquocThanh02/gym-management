@@ -31,7 +31,7 @@ export default function DiscountManagePage() {
 
   const { data, isLoading } = useQuery<any>({
     queryKey: ["discounts"],
-    queryFn: DiscountApis.getAllDiscounts,
+    queryFn: () => DiscountApis.getAllDiscounts(true),
   });
 
   const arrs: typeDiscount[] = data?.data || [];

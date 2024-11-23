@@ -13,7 +13,7 @@ export default function CalendarForPT() {
 
   const { data: PT } = useQuery({
     queryKey: ["PTs"],
-    queryFn: () => PTApis.getAllPT(),
+    queryFn: () => PTApis.getAllPT(false),
   });
 
   return (

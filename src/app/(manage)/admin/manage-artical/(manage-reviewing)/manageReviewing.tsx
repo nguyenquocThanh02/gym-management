@@ -29,7 +29,7 @@ const ManageReviewing = () => {
             <div>
               <CardTitle>Bài viết đang xem xét</CardTitle>
               <CardDescription>
-                Quản lý tất cả bài báo đang được xem xét.
+                Quản lý tất cả bài viết đang được xem xét.
               </CardDescription>
             </div>
           </div>

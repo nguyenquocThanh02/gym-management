@@ -195,7 +195,7 @@ const DetailsDiscountForm: React.FC<{
                     <FormItem>
                       <FormLabel>Tên</FormLabel>
                       <FormControl>
-                        <Input placeholder="Discount middle month" {...field} />
+                        <Input placeholder="Giảm giá tháng" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -249,7 +249,7 @@ const DetailsDiscountForm: React.FC<{
                   name="validTo"
                   render={({ field }) => (
                     <FormItem className="flex flex-col">
-                      <FormLabel>Valid To</FormLabel>
+                      <FormLabel>Đến ngày</FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
@@ -311,7 +311,7 @@ const DetailsDiscountForm: React.FC<{
                       <FormLabel>Mô tả </FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Sale middle month ..."
+                          placeholder="Giảm giá giữa tháng ..."
                           {...field}
                         />
                       </FormControl>

@@ -58,7 +58,7 @@ export const columns: ColumnDef<typeDiscount>[] = [
       );
     },
 
-    cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
+    cell: ({ row }) => <div className="">{row.getValue("name")}</div>,
   },
   {
     accessorKey: "status",
@@ -77,7 +77,7 @@ export const columns: ColumnDef<typeDiscount>[] = [
     accessorKey: "percent",
     header: "Phần trăm",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("percent")} %</div>
+      <div className="">{row.getValue("percent")} %</div>
     ),
   },
   {

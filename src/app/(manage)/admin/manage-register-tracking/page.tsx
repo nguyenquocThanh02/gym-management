@@ -42,7 +42,7 @@ const RegisterTrackingManagePage = () => {
     <div>
       <div className="flex justify-between items-center">
         <BreadcrumbCustom links={breadcrumbs} />
-        <Link href={"/package"}>
+        <Link href={"/admin/registerPackage"}>
           <ButtonCustom>Đăng ký gói tập</ButtonCustom>
         </Link>
       </div>

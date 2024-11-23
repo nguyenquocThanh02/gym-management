@@ -100,7 +100,7 @@ const Interactive: React.FC = () => {
             className="hover:bg-transparent"
             onClick={setOpenChat}
           >
-            <PanelRightClose color="black" />
+            <PanelRightClose color="white" />
           </Button>
           <h2 className="text-center uppercase">Nhắn tin với Gymmax</h2>
         </div>
@@ -122,7 +122,7 @@ const Interactive: React.FC = () => {
                         ? ""
                         : "https://firebasestorage.googleapis.com/v0/b/videocallapp-4fbc2.appspot.com/o/images%2Flogo.png?alt=media&token=641d8dec-f390-4810-91e1-ef833ce3d99d"
                     }
-                    name={item?.senderByUser === true ? "You" : "GymMax"}
+                    name={item?.senderByUser === true ? "Tôi" : "GymMax"}
                   />
                 ))}
             </div>

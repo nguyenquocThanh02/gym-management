@@ -69,17 +69,17 @@ const ArticalPage = () => {
           className="flex items-center gap-2 border p-2 rounded-md hover:opacity-80"
         >
           <Plus size={28} />
-          <span className="text-xl">Bài báo mới</span>
+          <span className="text-xl">Bài viết mới</span>
         </Link>
       </div>
       <div className="l-container py-8">
         <h2 className="text-Primary text-shadow  text-3xl font-bold mb-3">
-          Bài báo mới
+          Bài viết mới
         </h2>
         <NewArticals />
         <hr className="mt-8" />
         <div className="flex justify-between">
-          <h2 className="font-bold text-2xl md:text-3xl pt-3 mb-5">Articals</h2>
+          <h2 className="font-bold text-2xl md:text-3xl pt-3 mb-5">Bài viết</h2>
           <form>
             <div className="relative ml-auto flex-1 md:grow-0 text-Dark py-4 pl-4">
               <Search className="absolute left-[26px] top-[26px] h-4 w-4 text-muted-foreground" />

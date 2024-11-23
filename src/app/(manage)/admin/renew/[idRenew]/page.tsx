@@ -91,7 +91,7 @@ const RenewRTPage = ({ params }: { params: { idRenew: string } }) => {
 
   const pts = useQuery({
     queryKey: ["pts"],
-    queryFn: () => PTApis.getAllPT(),
+    queryFn: () => PTApis.getAllPT(false),
   });
   const dataPts = pts?.data?.data || [];
 

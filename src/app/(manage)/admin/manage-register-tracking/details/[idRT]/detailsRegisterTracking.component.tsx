@@ -218,7 +218,7 @@ const DetailsRegisterTrackingComponent: React.FC<{
             <li className="flex gap-3 my-5 items-center">
               Đã thanh toán?:{" "}
               <p className="border p-1 bg-slate-50 rounded-md">
-                {data?.isPaid ? "Xong" : "Chưa"}
+                {data?.isPaid ? "Hoàn thành" : "Chưa"}
               </p>
             </li>
           </ul>

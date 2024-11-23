@@ -11,9 +11,9 @@ export const DiscountApis = {
       return error;
     }
   },
-  getAllDiscounts: async () => {
+  getAllDiscounts: async (getAll: boolean) => {
     try {
-      const response = await noAuthInstance.get(`/discount/get-all`);
+      const response = await noAuthInstance.get(`/discount/get-all/${getAll}`);
       return response;
     } catch (error) {
       return error;

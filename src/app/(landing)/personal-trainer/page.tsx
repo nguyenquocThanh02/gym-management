@@ -9,7 +9,7 @@ import React from "react";
 const PersonalTrainer = () => {
   const { data, isLoading } = useQuery<any>({
     queryKey: ["personal-trainers"],
-    queryFn: PTApis.getAllPT,
+    queryFn: () => PTApis.getAllPT(false),
   });
 
   const arrs: typePT[] = data?.data || [];

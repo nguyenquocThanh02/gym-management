@@ -83,14 +83,12 @@ export const columns: ColumnDef<typePT>[] = [
       );
     },
 
-    cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
+    cell: ({ row }) => <div className="">{row.getValue("name")}</div>,
   },
   {
     accessorKey: "specialty",
     header: "Chuyên môn",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("specialty")}</div>
-    ),
+    cell: ({ row }) => <div className="">{row.getValue("specialty")}</div>,
   },
 
   {

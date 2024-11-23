@@ -25,6 +25,8 @@ const PaymentRegister: React.FC<{ inforPackage: any; inforUser: any }> = ({
   inforPackage,
   inforUser,
 }) => {
+  const { inforUser: inforRealUser } = mainStore();
+
   const { confirmInforRegister } = mainStore();
   const [open, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
@@ -46,6 +48,10 @@ const PaymentRegister: React.FC<{ inforPackage: any; inforUser: any }> = ({
     return Number((price * (100 - discount)) / 100);
   };
 
+  const totalPriceUS = (price: any, discount: number) => {
+    return Math.round(Number((price * (100 - discount)) / 100 / 22000));
+  };
+
   const handleTimeDate = (timeStart: any, duration: number | string) => {
     const timeEnd = new Date(
       new Date(timeStart).getTime() + Number(duration) * 24 * 60 * 60 * 1000
@@ -64,7 +70,7 @@ const PaymentRegister: React.FC<{ inforPackage: any; inforUser: any }> = ({
       user: {
         fullName: inforUser?.fullName,
         email: inforUser?.email,
-        phone: inforUser?.phone || "",
+        phone: inforRealUser?.phone || "",
         idUser: localStorage.getItem(localStorageKey?.userId) || undefined,
       },
       discount: {
@@ -88,10 +94,10 @@ const PaymentRegister: React.FC<{ inforPackage: any; inforUser: any }> = ({
       ),
       isPaid: paypal?.isPaid || false,
       paidAt: paypal?.paidAt || undefined,
-      timeStart: inforUser?.timeStart || new Date(Date.now()),
+      timeStart: inforRealUser?.timeStart || new Date(Date.now()),
       timeEnd: new Date(
         handleTimeDate(
-          inforUser?.timeStart || new Date(Date.now()),
+          inforRealUser?.timeStart || new Date(Date.now()),
           inforPackage?.packages?.duration
         )
       ),
@@ -129,13 +135,13 @@ const PaymentRegister: React.FC<{ inforPackage: any; inforUser: any }> = ({
         <div className="relative">
           <div className="absolute z-10 h-[104px] top-0 right-0 left-0 bg-Dark font-light flex items-center text-Light">
             <i className="border border-Light p-1 text-sm opacity-80">
-              Bằng cách dùng <strong>Paypal</strong>, bạn có thể thanh toán cách
+              Bằng cách dùng <strong>Paypal</strong>, bạn có thể thanh toán các
               đăng ký dễ dàng hơn. Chọn thanh toán để tiếp tục
             </i>
           </div>
           <div className="relative !z-0">
             <PayPalButton
-              amount={totalPrice(
+              amount={totalPriceUS(
                 inforPackage?.packages?.price,
                 sumDiscount(inforPackage?.discount)
               )}
@@ -181,7 +187,7 @@ const PaymentRegister: React.FC<{ inforPackage: any; inforUser: any }> = ({
               <hr />
               <div className="flex justify-evenly gap-4">
                 <ul className="list-inside">
-                  <h3 className="text-center font-semibold">Gói tập: </h3>
+                  <h3 className=" font-semibold">Gói tập: </h3>
                   <li>Tên: {inforPackage?.packages?.name}</li>
                   <li>
                     Giá:{" "}
@@ -194,14 +200,14 @@ const PaymentRegister: React.FC<{ inforPackage: any; inforUser: any }> = ({
                   </li>
                 </ul>
                 <ul>
-                  <h3 className="text-center font-semibold">Người dùng: </h3>
+                  <h3 className=" font-semibold">Người dùng: </h3>
                   <li>Tên: {inforUser?.fullName}</li>
                   <li>Email: {inforUser?.email}</li>
-                  <li>Điện thoại: {inforUser?.phone}</li>
+                  <li>Điện thoại: {inforRealUser?.phone}</li>
                 </ul>
               </div>
               <hr />
-              <div className="flex justify-center gap-3">
+              <div className="flex justify-end gap-3">
                 <Button
                   variant={"outline"}
                   className="border border-Dark/70"

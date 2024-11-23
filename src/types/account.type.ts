@@ -11,6 +11,7 @@ export type typeAccount = {
   core?: number | string;
   status?: "active" | "block";
   createdAt?: string;
+  timeStart?: string;
 };
 
 export type typeInforUser = {

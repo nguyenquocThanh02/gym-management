@@ -28,6 +28,7 @@ const CalendarAll: React.FC<{ data: any; pt: any; justView?: boolean }> = ({
     const result = await RegisterTrackingApis.addPTtoRT(idRT, idPT);
     toast.info("Đã thêm huấn luyện viên thành công");
     console.log(result);
+    window.location.reload();
   };
   return (
     <div>
@@ -37,7 +38,7 @@ const CalendarAll: React.FC<{ data: any; pt: any; justView?: boolean }> = ({
       <div className="mt-5">
         <div className="flex shadow w-full h-8 items-center px-2">
           <div className="w-20">STT</div>
-          <div className="flex-1">Số buổi hướng dẫn</div>
+          <div className="flex-1">Yêu cầu</div>
           <div className="flex-1">Loại gói</div>
           <div className="flex-1">Ngày bắt đầu</div>
           <div className="flex-1">Người dùng</div>

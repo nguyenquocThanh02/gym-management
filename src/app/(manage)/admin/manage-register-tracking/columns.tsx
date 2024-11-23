@@ -115,9 +115,7 @@ export const columns: ColumnDef<typeRegisterTracking>[] = [
       );
     },
 
-    cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("userFullName")}</div>
-    ),
+    cell: ({ row }) => <div className="">{row.getValue("userFullName")}</div>,
   },
   {
     accessorKey: "totalPrice",
@@ -134,7 +132,7 @@ export const columns: ColumnDef<typeRegisterTracking>[] = [
     },
 
     cell: ({ row }) => (
-      <div className="lowercase">{renderVND(row.getValue("totalPrice"))}</div>
+      <div className="">{renderVND(row.getValue("totalPrice"))}</div>
     ),
   },
   {
@@ -142,7 +140,7 @@ export const columns: ColumnDef<typeRegisterTracking>[] = [
     header: "Đã thanh toán?",
     cell: ({ row }) => (
       <div className="capitalize">
-        {row.getValue("isPaid") ? "Completed" : "None"}{" "}
+        {row.getValue("isPaid") ? "Đã thanh toán" : "Chưa"}{" "}
       </div>
     ),
   },
@@ -154,7 +152,7 @@ export const columns: ColumnDef<typeRegisterTracking>[] = [
 
       const formattedDate = formatDate(dateValue);
       return (
-        <div className="text-right">{dateValue ? formattedDate : "None"}</div>
+        <div className="text-right">{dateValue ? formattedDate : "Chưa"}</div>
       );
     },
   },

@@ -23,7 +23,7 @@ export default function PTManagePage() {
 
   const { data, isLoading } = useQuery<any>({
     queryKey: ["personal-trainers"],
-    queryFn: PTApis.getAllPT,
+    queryFn: () => PTApis.getAllPT(true),
   });
 
   const arrs: typePT[] = data?.data || [];

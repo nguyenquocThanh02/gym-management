@@ -21,7 +21,7 @@ import {
   HoverCardTrigger,
 } from "../ui/hover-card";
 import { Button } from "../ui/button";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { localStorageKey } from "@/constants/localStorage";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { useQuery } from "@tanstack/react-query";
@@ -31,6 +31,8 @@ import { typeAccount } from "@/types";
 const Header = () => {
   const headerRef: RefObject<HTMLDivElement> = useRef(null);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+
+  const router = useRouter();
 
   const idUser = localStorage.getItem(localStorageKey?.userId) || "";
 
@@ -110,6 +112,7 @@ const Header = () => {
     localStorage.removeItem(localStorageKey?.refreshToken);
     localStorage.removeItem(localStorageKey?.userId);
     localStorage.removeItem(localStorageKey?.roomId);
+    router.push("/");
     window.location.reload();
   };
 

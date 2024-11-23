@@ -214,7 +214,7 @@ const HomePage = () => {
                   <DialogHeader>
                     <DialogTitle>Xác nhận thanh toán</DialogTitle>
                     <DialogDescription>
-                      Nhấn về xác nhận bên dưới để lưu thông tin thanh toán cho
+                      Nhấn vào xác nhận bên dưới để lưu thông tin thanh toán cho
                       khách hàng
                     </DialogDescription>
                   </DialogHeader>

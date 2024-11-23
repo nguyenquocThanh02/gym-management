@@ -58,7 +58,7 @@ const DetailsArtical = ({ params }: { params: { idArtical: string } }) => {
       )}
       <div data-aos={"fade-up"} className="my-10">
         <h2 className="text-Primary text-shadow  text-3xl font-bold mb-2">
-          Bài báo mới
+          Bài viết mới
         </h2>
         <NewArticals />
       </div>

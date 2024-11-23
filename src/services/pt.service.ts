@@ -13,9 +13,11 @@ export const PTApis = {
       return error;
     }
   },
-  getAllPT: async () => {
+  getAllPT: async (getAll: boolean) => {
     try {
-      const response = await noAuthInstance.get("/personal-trainer/get-all");
+      const response = await noAuthInstance.get(
+        `/personal-trainer/get-all/${getAll}`
+      );
       return response;
     } catch (error) {
       return error;

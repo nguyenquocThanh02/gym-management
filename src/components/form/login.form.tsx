@@ -56,7 +56,7 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
 
     const resultReset = await AuthenApis.resetPassword(values.email);
     if (resultReset?.status === 200) {
-      toast.info(
+      toast.success(
         "Xác nhận email thành công! Vui lòng kiểm tra hộp thư đến của bạn để biết thêm hướng dẫn hoàn tất quá trình."
       );
     } else {
@@ -174,10 +174,10 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Quên mật khẩu? Đặt lại mật khẩu</DialogTitle>
+              <DialogTitle>Quên mật khẩu?</DialogTitle>
               <DialogDescription>
-                Vui lòng nhập email của bạn để nhận một email và đặt lại mật
-                khẩu
+                Vui lòng nhập email của bạn để nhận một email xác thực và đặt
+                lại mật khẩu.
               </DialogDescription>
             </DialogHeader>
             <Form {...formPassword}>
@@ -205,7 +205,11 @@ const LoginForm: React.FC<{ role: string }> = ({ role }) => {
                 />
                 <div className="text-right">
                   <DialogClose>
-                    <Button variant={"secondary"} className="mr-2">
+                    <Button
+                      variant={"secondary"}
+                      className="mr-2"
+                      type="button"
+                    >
                       Huỷ
                     </Button>
                   </DialogClose>

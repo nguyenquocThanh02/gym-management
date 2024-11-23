@@ -76,7 +76,7 @@ const RegisterPackagePage = () => {
 
   const pts = useQuery({
     queryKey: ["pts"],
-    queryFn: () => PTApis.getAllPT(),
+    queryFn: () => PTApis.getAllPT(false),
   });
   const dataPts = pts?.data?.data || [];
 

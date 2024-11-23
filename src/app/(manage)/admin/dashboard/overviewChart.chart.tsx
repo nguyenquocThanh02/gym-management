@@ -52,10 +52,12 @@ export default function OverviewChart() {
     enabled: !!theMonth,
   });
 
+  console.log("data:", data);
+
   const total = React.useMemo(
     () => ({
-      paypal: data?.data?.reduce((acc, curr) => acc + curr.paypal, 0),
-      offline: data?.data?.reduce((acc, curr) => acc + curr.offline, 0),
+      paypal: data?.data?.chart?.reduce((acc, curr) => acc + curr.paypal, 0),
+      offline: data?.data?.chart?.reduce((acc, curr) => acc + curr.offline, 0),
     }),
     [data]
   );
@@ -68,6 +70,26 @@ export default function OverviewChart() {
         onChange={(e) => setTheMonth(e.target.value)}
         className="p-1 my-2 border rounded-md"
       />
+
+      {data?.data?.package?.length > 0 && (
+        <div className="my-5 mb-8">
+          <h2 className="text-2xl font-semibold leading-none tracking-tight">
+            Gói tập được đăng ký nhiều nhất
+          </h2>
+          <div className="space-y-3 mt-3">
+            {data?.data?.package?.map((item, index) => (
+              <div
+                key={index}
+                className="flex gap-4 items-center bg-slate-400 rounded-2xl p-2 w-fit text-Light"
+              >
+                <span className="font-medium">Top {index + 1} - </span>
+                <p>{item?.packageName}</p>
+                <p>({item?.count})</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <Card>
         <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
@@ -103,7 +125,7 @@ export default function OverviewChart() {
           >
             <BarChart
               accessibilityLayer
-              data={data?.data}
+              data={data?.data?.chart}
               margin={{
                 left: 12,
                 right: 12,

@@ -34,15 +34,15 @@ const RegisterPackage = () => {
     fullName: inforUser?.fullName || "",
     email: inforUser?.email || "",
     phone: inforUser?.phone || "",
-    timeStart: inforUser?.timeStart || new Date(Date.now()),
+    timeStart: new Date(Date.now()),
   });
 
   async function onSubmit(values: z.infer<typeof registerPackageRule>) {
-    if (inforUser?.email) {
-      setInforUser(inforUser);
-    } else {
-      setInforUser(values);
-    }
+    // if (inforUser?.email) {
+    //   setInforUser(inforUser);
+    // } else {
+    // }
+    setInforUser(values);
     setConfirmInforRegister(true);
   }
   return (
@@ -59,6 +59,7 @@ const RegisterPackage = () => {
                     <FormLabel>Họ và tên</FormLabel>
                     <FormControl>
                       <Input
+                        disabled={!!inforUser?.fullName}
                         className="bg-BgDark"
                         placeholder="Họ và tên"
                         {...field}
@@ -93,6 +94,7 @@ const RegisterPackage = () => {
                     <FormLabel>Email</FormLabel>
                     <FormControl>
                       <Input
+                        disabled={!!inforUser?.email}
                         className="bg-BgDark"
                         placeholder="email"
                         {...field}

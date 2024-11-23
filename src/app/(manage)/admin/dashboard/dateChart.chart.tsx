@@ -95,7 +95,7 @@ export default function DateChart() {
         className="border mb-3 p-1 rounded-md"
       />
       <div className="flex flex-col md:flex-row items-center justify-start gap-5 mb-3">
-        <Card className="bg-slate-300 w-[280px] h-[160px] rounded-lg  text-Light">
+        <Card className="bg-slate-400 w-[280px] h-[160px] rounded-lg  text-Light">
           <CardContent className="h-full w-full flex justify-between items-center">
             <div className="">
               <h3 className="font-semibold text-lg">Tổng người dùng</h3>
@@ -109,10 +109,10 @@ export default function DateChart() {
             </div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-300 w-[280px] h-[160px] rounded-lg  text-Light">
+        <Card className="bg-slate-400 w-[280px] h-[160px] rounded-lg  text-Light">
           <CardContent className="h-full w-full flex justify-between items-center">
             <div className="">
-              <h3 className="font-semibold text-lg">Tổng bài báo</h3>
+              <h3 className="font-semibold text-lg">Tổng bài viết</h3>
               <div className="flex gap-3 items-center mt-2 text-4xl">
                 <p>{data?.data?.amountArtical}</p>
                 <TrendingUpIcon />
@@ -125,7 +125,7 @@ export default function DateChart() {
         </Card>
         <Sheet>
           <SheetTrigger>
-            <Card className="bg-slate-300 w-[280px] h-[160px] rounded-lg  text-Light">
+            <Card className="bg-slate-400 w-[280px] h-[160px] rounded-lg  text-Light">
               <CardContent className="h-full w-full flex justify-between items-center">
                 <div className="">
                   <h3 className="font-semibold text-lg">Tổng doanh thu</h3>
